@@ -148,7 +148,8 @@ input,select{font:inherit;color:inherit}
 .ex{background:var(--card2);border-color:var(--line);border-left:4px solid var(--a)}
 .tag{display:inline-block;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:1px 6px;border-radius:5px;background:var(--accbg);color:var(--acc);vertical-align:middle}
 .chain{display:flex;flex-wrap:wrap;align-items:center;gap:6px 0;margin:12px 0;font-size:13.5px}
-.chain span{background:var(--card2);border:1px solid var(--line2);border-radius:20px;padding:4px 11px;font-weight:600}
+.chain span{background:var(--card2);border:1px solid var(--line2);border-radius:20px;padding:4px 11px;font-weight:600;white-space:nowrap;flex-shrink:0}
+@media (max-width:420px){.chain span{white-space:normal;flex-shrink:1}}
 .chain span:not(:last-child)::after{content:"→";margin:0 -4px 0 10px;color:var(--at);font-weight:800}
 .chain span:not(:last-child){margin-right:16px}
 .chain.lbl::before{content:attr(data-lbl);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--at);width:72px;flex-shrink:0}
