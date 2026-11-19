@@ -316,11 +316,15 @@ function monoChart(M, mode = 'livre', opt = {}) {
   const { a, b, F, c, d } = M;
   const xmax = a / b * 1.08, ymax = a * 1.1;
   const curves = [
-    { g: y => (a - y) / b, cls: 'd', lab: 'D', labEnd: 'a', dy: -6 },
-    { g: y => (a - y) / (2 * b), cls: 'o', lab: 'RM', dx: -4, anchor: 'end', dy: -6, labEnd: 'a' },
+    { g: y => (a - y) / b, cls: 'd', lab: 'D', labAt: [0.72 * a / b, 0.28 * a], dx: 7, dy: -2 },
+    { g: y => (a - y) / (2 * b), cls: 'o', lab: 'RM', labAt: [0.36 * a / b, 0.28 * a], dx: -7, dy: -2, anchor: 'end' },
     { f: q => c + 2 * d * q, a: 0, b: xmax, cls: 'm', lab: 'CM' }
   ];
-  if (F > 0 && opt.ctm !== false) curves.push({ f: q => F / q + c + d * q, a: 0.01, b: xmax, cls: 'v', lab: 'CTM' });
+  if (F > 0 && opt.ctm !== false) {
+    const ctmF = q => F / q + c + d * q;
+    let ql = xmax * 0.16; while (ctmF(ql) > ymax * 0.75 && ql < xmax * 0.6) ql += xmax * 0.02;
+    curves.push({ f: ctmF, a: 0.01, b: xmax, cls: 'v', lab: 'CTM', labAt: [ql, ctmF(ql)], dx: 6, dy: -6 });
+  }
   let q, pr;
   if (mode === 'pcm') { q = M.qe; pr = M.pe; }
   else if (mode === 'pctm' && M.best) { q = M.best.q; pr = M.best.p; }
@@ -330,7 +334,7 @@ function monoChart(M, mode = 'livre', opt = {}) {
   const ctm = F / q + c + d * q;
   if (opt.profit !== false && q > 0 && F > 0) areas.push({ pts: [[0, ctm], [0, pr], [q, pr], [q, ctm]], cls: pr >= ctm ? 'profit' : 'loss' });
   const points = [{ x: q, y: pr, yt: fmtA(pr), xt: fmtA(q), lab: mode === 'livre' ? 'Máx. lucro' : 'regulado' }];
-  if (mode === 'livre') points.push({ x: q, y: M.CM(q), guide: false }, { x: M.qe, y: M.pe, cls: 'old', xt: fmtA(M.qe), lab: 'Eficiente', dx: 8 });
+  if (mode === 'livre') points.push({ x: q, y: M.CM(q), guide: false }, { x: M.qe, y: M.pe, cls: 'old', xt: fmtA(M.qe), lab: 'Eficiente', ...(M.pe < ymax * 0.15 ? { anchor: 'end', dx: -8, dy: -8 } : { anchor: 'middle', dx: 0, dy: 22 }) });
   return chart({ xr: [0, xmax], yr: [0, ymax], xl: opt.xl || 'q', yl: opt.yl || 'R$', curves, areas, points, title: opt.title, h: opt.h || 300, w: opt.w });
 }
 

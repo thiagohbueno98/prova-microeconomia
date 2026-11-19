@@ -40,7 +40,7 @@ const QUESTOES = {
     {q:"12. Um bem é inferior quando:",
      o:["A) sua demanda diminui quando a renda aumenta.","B) sua demanda aumenta quando a renda aumenta.","C) sua demanda diminui quando seu preço aumenta.","D) tem poucos substitutos.","E) é produzido com tecnologia inferior."],
      c:0, e:"Bem inferior: renda ↑ ⇒ demanda ↓ (produtos de menor qualidade; motos, para quem passa a poder comprar carro). Bem normal: renda ↑ ⇒ demanda ↑."},
-    {q:"13. O Desenrola Brasil 2.0 limpa o nome de inadimplentes, abrindo caminho para novas compras a prazo. No mercado de bens duráveis (curto prazo), espera-se:",
+    {q:"13. O Desenrola Brasil 2.0 limpa o nome de inadimplentes, abrindo caminho para novas compras a prazo. No mercado de bens duráveis (curto prazo, supondo que nada mais mude), espera-se:",
      o:["A) aumento da oferta e queda do preço.","B) aumento da demanda e aumento da oferta.","C) aumento da quantidade demandada e da oferta; P* cai.","D) aumento da demanda e aumento da quantidade ofertada; P* e Q* sobem.","E) queda da demanda, pois as famílias continuam endividadas."],
      c:3, e:"A curva de demanda se desloca para a direita (variação na DEMANDA). A oferta não se desloca: andamos ao longo dela (variação na QUANTIDADE OFERTADA). Resultado: P* ↑ e Q* ↑.", p:"Slides", fig:"do_desenrola", when:"after"},
     {q:"14. O preço de um bem cai e, ceteris paribus, as pessoas passam a comprar mais dele. Isso é:",
@@ -98,7 +98,7 @@ const QUESTOES = {
      c:3, e:"Variável omitida (habilidade) correlacionada positivamente com escolaridade e com salário ⇒ viés positivo. Mesmo que estudar não afetasse o salário, veríamos correlação positiva.", p:"Questão de prova"},
     {q:"14. O Atlas da Mobilidade Social estima elasticidade intergeracional da renda de 0,5. Se a renda da família A é 100% maior que a da família B, espera-se que, em média, os filhos de A tenham renda:",
      o:["A) igual à dos filhos de B.","B) 5% maior.","C) 50% maior.","D) 100% maior.","E) 200% maior."],
-     c:2, e:"Elasticidade 0,5 ⇒ 100% × 0,5 = 50% maior. Quanto maior essa elasticidade, menor a mobilidade (mais desigualdade de oportunidades).", p:"Slides"},
+     c:2, e:"Elasticidade 0,5 ⇒ 100% × 0,5 = 50% maior (aproximação linear usada no slide; com elasticidade constante o valor exato seria ≈ 41%). Quanto maior essa elasticidade, menor a mobilidade (mais desigualdade de oportunidades).", p:"Slides"},
     {q:"15. O método de Mínimos Quadrados Ordinários escolhe a reta que:",
      o:["A) passa pelo maior número de pontos.","B) minimiza a soma dos erros.","C) liga o primeiro ao último ponto.","D) minimiza a distância horizontal até os pontos.","E) minimiza a soma dos quadrados das distâncias verticais entre a reta e os pontos."],
      c:4, e:"Somar os erros brutos deixaria positivos e negativos se cancelarem; por isso usamos os quadrados dos erros."},
@@ -133,8 +133,8 @@ const QUESTOES = {
      c:1, e:"CTM = 2q + 800/q ⇒ dCTM/dq = 2 − 800/q² = 0 ⇒ q = 20 ⇒ CTM = 40 + 40 = 80. Confere: CM = 4q = 80.", p:"Questão de prova"},
     {q:"9. Café: CT(q) = 1800q² + 18 (custo em milhões de US$, q em milhões de sacas). O custo total médio mínimo é:",
      o:["A) US$ 180 por saca, em q = 0,1.","B) US$ 360 por saca, em q = 0,1.","C) US$ 360 por saca, em q = 1.","D) US$ 3.600 por saca, em q = 0,01.","E) US$ 18 por saca, em q = 0."],
-     c:1, e:"CTM = 1800q + 18/q ⇒ 1800 − 18/q² = 0 ⇒ q² = 0,01 ⇒ q = 0,1 ⇒ CTM = 180 + 180 = 360. Esse é o preço de equilíbrio de longo prazo do mercado.", p:"Prova 2025 (manhã)"},
-    {q:"10. O aluguel da confeitaria aumenta (o custo fixo sobe). Quais curvas se deslocam?",
+     c:1, e:"CTM = 1800q + 18/q ⇒ 1800 − 18/q² = 0 ⇒ q² = 0,01 ⇒ q = 0,1 ⇒ CTM = 180 + 180 = 360. Se o mercado for competitivo com livre entrada, esse é o preço de equilíbrio de longo prazo (Tema 4).", p:"Prova 2025 (manhã)"},
+    {q:"10. No curto prazo, o aluguel da confeitaria aumenta (o custo fixo sobe). Quais curvas se deslocam?",
      o:["A) CTM e CFM; o CM e o CVM não mudam.","B) Somente o CM.","C) CM e CVM.","D) Todas as curvas de custo.","E) Nenhuma."],
      c:0, e:"O CF não varia com q: CM = dCV/dq e CVM = CV/q não dependem dele. Mudam o CT, o CTM e o CFM."},
     {q:"11. Sobre curto e longo prazo na teoria dos custos:",
@@ -169,7 +169,7 @@ const QUESTOES = {
     {q:"5. No longo prazo, uma empresa competitiva sai do mercado quando:",
      o:["A) p < CVM.","B) p < CM.","C) p < CTM.","D) p > CTM.","E) o lucro contábil é zero."],
      c:2, e:"No LP não há custo fixo: sai se lucro < 0 ⇔ RT < CT ⇔ p < CTM."},
-    {q:"6. A confeitaria (CF = 154) enfrenta preço de mercado 58. Produzindo 5 bolos (CT = 380), ela:",
+    {q:"6. A confeitaria (CF = 154) enfrenta preço de mercado 58. Ela produz 5 bolos, onde p = CM (CT = 380; CVM(5) = 45,2; mín CTM = 76). Ela:",
      o:["A) suspende a produção no curto prazo, pois tem prejuízo.","B) é indiferente entre produzir e parar.","C) produz e permanece no longo prazo.","D) produz no curto prazo (prejuízo de 90, menor que os 154 de parar) e sai do mercado no longo prazo.","E) tem lucro de 290."],
      c:3, e:"Lucro = 58×5 − 380 = −90 > −154 (lucro se parar). p = 58 ≥ CVM(5) = 45,2 ⇒ produz no CP. Como p < mín CTM (76), sai no LP.", p:"Planilha da aula"},
     {q:"7. A confeitaria enfrenta preço 145 e escolhe q onde p = CM: q = 9 (CT = 815). O lucro econômico é:",
@@ -207,10 +207,10 @@ const QUESTOES = {
      c:0, e:"A cada preço, somam-se as quantidades que cada empresa oferta: Q(p) = Σ qⱼ(p). Cada ponto mostra o custo adicional do setor para produzir a n-ésima unidade."},
     {q:"18. Café competitivo: CT_LP(q) = 1800q² + 18 (q > 0); demanda mundial QD = 96 − 0,2p (milhões de sacas, US$/saca). No equilíbrio de longo prazo inicial:",
      o:["A) p = 360 e há 240 produtores.","B) p = 360 e há 24 produtores.","C) p = 480 e há 240 produtores.","D) p = 180 e há 600 produtores.","E) p = 360 e há 120 produtores."],
-     c:0, e:"p = mín CTM = 360 (q = 0,1 por produtor). QD(360) = 96 − 72 = 24 milhões de sacas ⇒ 24/0,1 = 240 produtores (120 em cada país exportador).", p:"Prova 2025 (manhã)"},
-    {q:"19. (Desafio) No café da questão anterior, o País 1 impõe tarifa de US$ 900/saca aos produtores do País A (inviabiliza a importação) e de US$ 60/saca aos do País B. Demandas: QD1 = QD2 = 48 − 0,1p; oferta mundial de CP: QO = p/15. Os produtores podem redirecionar vendas sem custo. No novo equilíbrio de CP:",
+     c:0, e:"p = mín CTM = 360 (q = 0,1 por produtor). QD(360) = 96 − 72 = 24 milhões de sacas ⇒ 24/0,1 = 240 produtores (na prova, 120 em cada um dos dois países exportadores).", p:"Prova 2025 (manhã)"},
+    {q:"19. (Desafio) No café da questão anterior, há dois países exportadores (A e B, 120 produtores cada) e dois importadores (1 e 2). O País 1 impõe tarifa de US$ 900/saca aos produtores do País A (inviabiliza a importação) e de US$ 60/saca aos do País B; o País 2 não cobra tarifa. Demandas: QD1 = QD2 = 48 − 0,1p; oferta mundial de CP: QO = p/15. Os produtores podem redirecionar vendas sem custo. No novo equilíbrio de CP:",
      o:["A) todos os produtores, de qualquer país, recebem 337,5 por saca.","B) o preço no País 2 é 375.","C) os produtores do País A recebem 277,5.","D) o preço no País 2 é 420.","E) os consumidores do País 1 pagam 420, incluindo a tarifa."],
-     c:0, e:"Arbitragem iguala o preço recebido nos dois mercados. Demanda do País 1 vista pelos produtores: 42 − 0,1p. Demanda total: 90 − 0,2p = p/15 ⇒ p = 337,5 para todos. Consumidores do País 1 pagam 337,5 + 60 = 397,5. Lucro = −2,18 (prejuízo).", p:"Prova 2025 (manhã)"}
+     c:0, e:"Arbitragem iguala o preço recebido nos dois mercados. Demanda do País 1 vista pelos produtores: 42 − 0,1p. Demanda total: 90 − 0,2p = p/15 ⇒ p = 337,5 para todos. Consumidores do País 1 pagam 337,5 + 60 = 397,5. Cada produtor vende 22,5/240 = 0,09375 milhão de sacas: RT = 337,5 × 0,09375 ≈ 31,64 e CT = 1800 × 0,09375² + 18 ≈ 33,82 ⇒ lucro ≈ −2,18 (prejuízo). A arbitragem vale porque os produtores de B ainda vendem ao País 1 (QD1 = 8,25 > 0).", p:"Prova 2025 (manhã)"}
   ],
   "Tema 5": [
     {q:"1. No equilíbrio de longo prazo de um mercado competitivo, NÃO é correto afirmar:",
@@ -286,7 +286,7 @@ const QUESTOES = {
      c:2, e:"Inverta a demanda: p = 4 − 0,25q. RM = 4 − 0,5q = CM = 1 ⇒ q = 6 ⇒ p = 2,5. Lucro = 15 − 6 − 6,4 = 2,6 milhões.", p:"Questão de prova"},
     {q:"11. Continuação (p = 4 − 0,25q; CT = q + 6,4). O teto que minimiza o peso morto sem gerar prejuízo nem exigir subsídio é aproximadamente:",
      o:["A) R$ 1,00 (p = CM).","B) R$ 1,69.","C) R$ 2,50.","D) R$ 3,31.","E) R$ 2,00."],
-     c:1, e:"p = CTM: 4 − 0,25q = 1 + 6,4/q ⇒ 0,25q² − 3q + 6,4 = 0 ⇒ q ≈ 2,78 ou 9,22. Escolhe a maior quantidade (menor preço): p = 4 − 0,25×9,22 ≈ 1,69.", p:"Questão de prova"},
+     c:1, e:"p = CTM: 4 − 0,25q = 1 + 6,4/q ⇒ 0,25q² − 3q + 6,4 = 0 ⇒ q ≈ 2,78 ou 9,22. Escolhe a maior quantidade (menor preço), pois com lucro ≥ 0, quanto maior q, mais perto do eficiente e menor o peso morto: p = 4 − 0,25×9,22 ≈ 1,69.", p:"Questão de prova"},
     {q:"12. Ponte com pedágio: p(q) = 85 − 6q (R$ por veículo; q em mil veículos/dia) e CT(q) = 168 + 5q + 2q² (R$ mil/dia). Se a concessionária maximiza lucro livremente, é correto:",
      o:["A) O peso morto será de aproximadamente R$ 30 mil por dia.","B) O pedágio será de R$ 37,00.","C) O lucro econômico será de R$ 32 mil por dia.","D) O excedente do consumidor será de R$ 45 mil por dia.","E) Serão atendidos 8 mil veículos por dia."],
      c:2, e:"RM = 85 − 12q = CM = 5 + 4q ⇒ q = 5; p = 55; lucro = 275 − (168 + 25 + 50) = 32. Eficiente: q = 8, p = 37; PM = (55 − 25)(8 − 5)/2 = 45; EC = (85 − 55)·5/2 = 75.", p:"Prova 2025 (tarde)"},
@@ -371,7 +371,7 @@ const QUESTOES = {
      c:0, e:"Assimetria quanto ao TIPO das plataformas, que altera a composição do mercado a favor do “pior tipo”.", p:"Prova 2025 (tarde)"},
     {q:"4. “O fato de algumas plataformas terem interrompido a venda de títulos do Banco Master demonstra que a competição entre plataformas, por si só, alinhou os incentivos privados ao interesse da sociedade e gerou resultado eficiente.” A afirmação é:",
      o:["A) Verdadeira.","B) Falsa: a competição pressionava as plataformas a continuar oferecendo os títulos para não perder clientes.","C) Verdadeira, pois mercados competitivos são sempre eficientes.","D) Falsa, porque o FGC não existia.","E) Verdadeira, pois o Banco Central fiscalizava o banco."],
-     c:1, e:"Quem parava de vender perdia clientes para quem continuava: a competição pode ter retardado a interrupção.", p:"Prova 2025 (tarde)"},
+     c:1, e:"Quem parava de vender perdia clientes para quem continuava: a competição pode ter retardado a interrupção. (FGC = Fundo Garantidor de Créditos, que cobre até R$ 250 mil por pessoa por banco.)", p:"Prova 2025 (tarde)"},
     {q:"5. A ludopatia causada por bets gera custos a familiares e ao SUS não considerados nas decisões privadas (mercado competitivo, sem outras falhas). Qual gráfico representa corretamente a externalidade negativa e a perda social?",
      o:["A) Gráfico (a).","B) Gráfico (b).","C) Gráfico (c).","D) Gráfico (d)."],
      c:0, e:"Custo social = custo privado + custo externo ⇒ curva ACIMA da oferta. O mercado produz onde oferta = demanda, mais que o eficiente (custo social = demanda). A perda é o triângulo à direita da quantidade eficiente. Em (b) o custo social está abaixo da oferta; em (c) e (d) mexe-se na demanda, o que só faria sentido com externalidade positiva.", p:"Prova 2025 (tarde)", fig:"q_ext4", when:"before"},
@@ -395,6 +395,6 @@ const QUESTOES = {
      c:2, e:"Mudança de COMPORTAMENTO não observável depois do contrato, com interesses desalinhados (seguradora × segurado)."},
     {q:"12. Algoritmos de redes sociais priorizam engajamento, com impacto negativo sobre a saúde mental dos jovens; o custo recai sobre a sociedade. Qual afirmação é correta?",
      o:["A) Há apenas uma falha de mercado envolvida: poder de mercado.","B) Não há assimetria de informação.","C) A competição intensa entre plataformas garante resultado eficiente.","D) Há externalidade negativa, e também perigo moral (a plataforma sabe mais sobre o algoritmo e lucra com conteúdo danoso).","E) É um caso de carona."],
-     c:3, e:"A resposta-modelo da prova de 2025 aponta externalidade negativa, perigo moral e seleção adversa (sobrevivem as empresas do “pior tipo”), além da tendência a monopólio por efeitos de rede.", p:"Prova 2025 (manhã)"}
+     c:3, e:"A alternativa correta já basta sozinha. A resposta-modelo da prova de 2025 também aponta externalidade negativa, perigo moral e seleção adversa (sobrevivem as empresas do “pior tipo”), além da tendência a monopólio por efeitos de rede.", p:"Prova 2025 (manhã)"}
   ]
 };
