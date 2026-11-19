@@ -40,10 +40,10 @@ const AULAS = [
       <ol class="mini">
         <li>Equilíbrio: \\(5{,}6 - 0{,}2P = -1 + 2P \\Rightarrow 6{,}6 = 2{,}2P \\Rightarrow P^* = 3\\) reais/kg.</li>
         <li>\\(Q^* = -1 + 2(3) = 5\\) toneladas (= 5.000 kg). Confere na demanda: \\(5{,}6 - 0{,}6 = 5\\). ✔</li>
-        <li>EC: a demanda zera em P = 28 ⇒ \\(EC = (28-3)\\times 5.000/2 =\\) <b>R$ 62.500</b>.</li>
-        <li>EP: a oferta começa em P = 0,5 ⇒ \\(EP = (3-0{,}5)\\times 5.000/2 =\\) <b>R$ 6.250</b>.</li>
+        <li>EC: a demanda zera em P = 28 ⇒ \\(EC = \\dfrac{(28-3)\\times 5.000}{2} =\\) <b>R$ 62.500</b>.</li>
+        <li>EP: a oferta começa em P = 0,5 ⇒ \\(EP = \\dfrac{(3-0{,}5)\\times 5.000}{2} =\\) <b>R$ 6.250</b>.</li>
       </ol>
-      <span class="muted">Os excedentes são triângulos: <b>área = base × altura / 2</b>. Cuidado com unidades: P em R$/<b>kg</b> e Q em <b>toneladas</b> ⇒ converta Q para kg antes de calcular áreas em reais.</span></div>
+      <span class="muted">Os excedentes são triângulos: <b>área = \\(\\dfrac{\\text{base} \\times \\text{altura}}{2}\\)</b>. Cuidado com unidades: P em R$/<b>kg</b> e Q em <b>toneladas</b> ⇒ converta Q para kg antes de calcular áreas em reais.</span></div>
   </section>
 
   <section class="sec">
@@ -137,7 +137,7 @@ const AULAS = [
   tema: "Elasticidade-preço, renda, cruzada e da oferta; regressão em log",
   lab: "elast",
   resumo: `
-  <div class="tldr"><b>Em uma frase:</b> elasticidade mede <b>quão sensível</b> uma variável é a outra em <b>termos percentuais</b>: \\(\\varepsilon = \\dfrac{\\Delta\\%Q}{\\Delta\\%P}\\). Convenção do curso: variação % = (final − inicial)/inicial. Por ser adimensional, a elasticidade permite comparar países, moedas e unidades — coisa que a inclinação (derivada) não permite.</div>
+  <div class="tldr"><b>Em uma frase:</b> elasticidade mede <b>quão sensível</b> uma variável é a outra em <b>termos percentuais</b>: \\(\\varepsilon = \\dfrac{\\Delta\\%Q}{\\Delta\\%P}\\). Convenção do curso: variação % = \\(\\dfrac{\\text{final} - \\text{inicial}}{\\text{inicial}}\\). Por ser adimensional, a elasticidade permite comparar países, moedas e unidades — coisa que a inclinação (derivada) não permite.</div>
 
   <section class="sec">
     <h3><span class="n">1</span> Por que não usar a inclinação?</h3>
@@ -147,8 +147,8 @@ const AULAS = [
 
   <section class="sec">
     <h3><span class="n">2</span> Elasticidade-preço da demanda</h3>
-    <p class="f big">\\(\\varepsilon = \\dfrac{\\Delta\\%Q_d}{\\Delta\\%P} = \\dfrac{\\Delta Q / Q}{\\Delta P / P} = \\dfrac{\\Delta Q}{\\Delta P}\\cdot\\dfrac{P}{Q} \\;\\xrightarrow{\\;\\Delta \\to 0\\;}\\; \\dfrac{dQ}{dP}\\cdot\\dfrac{P}{Q}\\)</p>
-    <div class="ex"><b>Gasolina (FMI, 2013):</b> preço +20% ⇒ quantidade −6% ⇒ \\(\\varepsilon = -6\\%/20\\% = -0{,}3\\).<br><b>Leitura correta:</b> “um aumento de <b>1%</b> no preço causa uma queda de <b>0,3%</b> na quantidade demandada”.</div>
+    <p class="f big">\\(\\varepsilon = \\dfrac{\\Delta\\%Q_d}{\\Delta\\%P} = \\dfrac{\\tfrac{\\Delta Q}{Q}}{\\tfrac{\\Delta P}{P}} = \\dfrac{\\Delta Q}{\\Delta P}\\cdot\\dfrac{P}{Q} \\;\\xrightarrow{\\;\\Delta \\to 0\\;}\\; \\dfrac{dQ}{dP}\\cdot\\dfrac{P}{Q}\\)</p>
+    <div class="ex"><b>Gasolina (FMI, 2013):</b> preço +20% ⇒ quantidade −6% ⇒ \\(\\varepsilon = \\dfrac{-6\\%}{20\\%} = -0{,}3\\).<br><b>Leitura correta:</b> “um aumento de <b>1%</b> no preço causa uma queda de <b>0,3%</b> na quantidade demandada”.</div>
     <table class="t">
       <thead><tr><th>Valor</th><th>Nome</th><th>Significado</th></tr></thead>
       <tbody>
@@ -167,11 +167,11 @@ const AULAS = [
 
   <section class="sec">
     <h3><span class="n">3</span> A família das elasticidades</h3>
-    <p>De forma geral, elasticidade de Y em relação a X = \\(\\Delta\\%Y / \\Delta\\%X\\).</p>
+    <p>De forma geral, elasticidade de Y em relação a X = \\(\\dfrac{\\Delta\\%Y}{\\Delta\\%X}\\).</p>
     <div class="grid2">
-      <div class="box"><b class="c1">Elasticidade-preço da oferta</b><br>\\(\\Delta\\%Q_s / \\Delta\\%P\\) (positiva).</div>
-      <div class="box"><b class="c3">Elasticidade-preço cruzada</b><br>\\(\\Delta\\%Q_A / \\Delta\\%P_B\\). &gt; 0: substitutos; &lt; 0: complementares.</div>
-      <div class="box"><b class="c2">Elasticidade-renda</b><br>\\(\\Delta\\%Q / \\Delta\\%\\text{Renda}\\). &gt; 0 normal (gasolina no LP: 0,88); &gt; 1 luxo (FMI: 2,5); &lt; 0 inferior.</div>
+      <div class="box"><b class="c1">Elasticidade-preço da oferta</b><br>\\(\\dfrac{\\Delta\\%Q_s}{\\Delta\\%P}\\) (positiva).</div>
+      <div class="box"><b class="c3">Elasticidade-preço cruzada</b><br>\\(\\dfrac{\\Delta\\%Q_A}{\\Delta\\%P_B}\\). &gt; 0: substitutos; &lt; 0: complementares.</div>
+      <div class="box"><b class="c2">Elasticidade-renda</b><br>\\(\\dfrac{\\Delta\\%Q}{\\Delta\\%\\text{Renda}}\\). &gt; 0 normal (gasolina no LP: 0,88); &gt; 1 luxo (FMI: 2,5); &lt; 0 inferior.</div>
       <div class="box"><b class="c4">Elasticidade intergeracional da renda</b><br>Atlas da Mobilidade Social: 0,5 ⇒ renda dos pais 100% maior ⇒ filhos ganham, em média, 50% mais (leitura do slide, pela aproximação 100% × 0,5; o valor exato com elasticidade constante seria 2<sup>0,5</sup> − 1 ≈ 41%). Desigualdade de oportunidades.</div>
     </div>
     <div class="trap"><b>Pegadinha de prova (2025):</b> “elasticidade-<b>renda</b> das canetinhas emagrecedoras = 0,25 ⇒ preço +1% reduz quantidade em 0,25%” é <b>FALSA</b>: é renda +1% ⇒ quantidade +0,25%. E “ε-preço do café = −0,25 ⇒ preço +1% reduz a quantidade em 0,25 <b>unidades</b>” também é <b>FALSA</b>: são 0,25 <b>%</b>.</div>
@@ -192,7 +192,7 @@ const AULAS = [
   <section class="sec art">
     <h3><span class="n">5</span> Elasticidade e receita <span class="tag">Complemento</span></h3>
     <div class="two"><div class="figslot" data-fig="el_linear"></div><div>
-      <p>Numa demanda linear a <b>inclinação é constante, mas a elasticidade não</b>: \\(\\varepsilon = -b\\,P/Q\\) vale 0 onde a reta toca o eixo Q (P = 0), tende a −∞ onde toca o eixo P (Q = 0) e passa por −1 no ponto médio.</p>
+      <p>Numa demanda linear a <b>inclinação é constante, mas a elasticidade não</b>: \\(\\varepsilon = -b\\,\\dfrac{P}{Q}\\) vale 0 onde a reta toca o eixo Q (P = 0), tende a −∞ onde toca o eixo P (Q = 0) e passa por −1 no ponto médio.</p>
       <ul><li>Demanda <b>elástica</b>: subir o preço <b>reduz</b> a receita P·Q.</li><li>Demanda <b>inelástica</b>: subir o preço <b>aumenta</b> a receita.</li></ul>
       <p class="muted">Útil no Tema 6: o monopolista nunca opera no trecho inelástico (lá, a RM é negativa).</p>
     </div></div>
@@ -258,12 +258,12 @@ const AULAS = [
       <div class="box"><b>CF — custo fixo</b><br>Não varia com q; no curto prazo é pago mesmo se q = 0. Quando não dá para recuperá-lo, é custo <b>afundado</b> (<i>sunk cost</i>).</div>
       <div class="box"><b>CV — custo variável</b><br>Muda com a quantidade produzida.</div>
       <div class="box"><b>CT = CF + CV</b></div>
-      <div class="box"><b>CFM = CF/q</b><br>Sempre decrescente (diluição).</div>
-      <div class="box"><b>CVM = CV/q</b></div>
-      <div class="box"><b>CTM = CT/q = CVM + CFM</b></div>
+      <div class="box"><b>CFM = \\(\\dfrac{CF}{q}\\)</b><br>Sempre decrescente (diluição).</div>
+      <div class="box"><b>CVM = \\(\\dfrac{CV}{q}\\)</b></div>
+      <div class="box"><b>CTM = \\(\\dfrac{CT}{q}\\) = CVM + CFM</b></div>
     </div>
     <p class="f big">\\(CM(q) = \\dfrac{\\Delta CT}{\\Delta q} \\;\\xrightarrow{\\;\\Delta q\\to 0\\;}\\; \\dfrac{dCT}{dq}\\)</p>
-    <p>Como o CF não muda com q, \\(CM = dCV/dq\\): <b>o custo fixo não afeta o custo marginal</b> (nem o CVM).</p>
+    <p>Como o CF não muda com q, \\(CM = \\dfrac{dCV}{dq}\\): <b>o custo fixo não afeta o custo marginal</b> (nem o CVM).</p>
     <div class="two"><div class="figslot" data-fig="cu_bolo"></div><div>
       <table class="t sm"><thead><tr><th>q</th><th>CT</th><th>CVM</th><th>CTM</th><th>CM</th></tr></thead><tbody>
         <tr><td>1</td><td>214</td><td>60</td><td>214</td><td>60</td></tr><tr><td>2</td><td>250</td><td>48</td><td>125</td><td>36</td></tr>
@@ -278,8 +278,8 @@ const AULAS = [
     <h3><span class="n">4</span> Por que o CM corta o CTM no mínimo?</h3>
     <p>Intuição: se o custo da próxima unidade (CM) é menor que a média, ele <b>puxa a média para baixo</b>; se é maior, <b>puxa para cima</b>. A média para de cair exatamente quando CM = CTM.</p>
     <div class="ex">\\(\\dfrac{dCTM}{dq} = \\dfrac{d}{dq}\\Big(\\dfrac{CT(q)}{q}\\Big) = \\dfrac{CM(q)\\,q - CT(q)}{q^2} = 0 \\;\\Rightarrow\\; CM(q) = \\dfrac{CT(q)}{q} = CTM(q)\\)</div>
-    <div class="ex"><b>Estilo prova:</b> \\(CT(q) = 2q^2 + 800\\) ⇒ \\(CM = 4q\\), \\(CVM = 2q\\), \\(CTM = 2q + 800/q\\). Mínimo: \\(2 - 800/q^2 = 0 \\Rightarrow q = 20\\), \\(CTM(20) = 80\\). Confere: CM(20) = 80. ✔<br>
-      Café (prova 2025): \\(CT = 1800q^2 + 18\\) ⇒ \\(CTM = 1800q + 18/q\\) ⇒ \\(q = 0{,}1\\) e CTM mín = <b>360</b>.</div>
+    <div class="ex"><b>Estilo prova:</b> \\(CT(q) = 2q^2 + 800\\) ⇒ \\(CM = 4q\\), \\(CVM = 2q\\), \\(CTM = 2q + \\dfrac{800}{q}\\). Mínimo: \\(2 - \\dfrac{800}{q^2} = 0 \\Rightarrow q = 20\\), \\(CTM(20) = 80\\). Confere: CM(20) = 80. ✔<br>
+      Café (prova 2025): \\(CT = 1800q^2 + 18\\) ⇒ \\(CTM = 1800q + \\dfrac{18}{q}\\) ⇒ \\(q = 0{,}1\\) e CTM mín = <b>360</b>.</div>
   </section>
 
   <section class="sec">
@@ -302,8 +302,8 @@ const AULAS = [
     ["Custo de oportunidade", "A melhor alternativa de que se abre mão ao dedicar um recurso a um empreendimento."],
     ["Custo econômico", "Todos os insumos avaliados a preço de mercado ou custo de oportunidade (inclui seu tempo e capital)."],
     ["Uber: receita 200, gastos 80 + 50, alternativa 150", "Lucro econômico = 200 − 280 = −80 ⇒ não vale a pena."],
-    ["Custo marginal", "\\(CM = dCT/dq\\): custo de produzir uma unidade a mais."],
-    ["CTM", "\\(CTM = CT/q = CVM + CFM\\)"],
+    ["Custo marginal", "\\(CM = \\dfrac{dCT}{dq}\\): custo de produzir uma unidade a mais."],
+    ["CTM", "\\(CTM = \\dfrac{CT}{q} = CVM + CFM\\)"],
     ["Onde o CM corta o CTM?", "No mínimo do CTM (e também no mínimo do CVM)."],
     ["Produto marginal do trabalho", "Produção extra de um trabalhador a mais. Bolos: 1, 4, 2, 1."],
     ["Rendimentos marginais decrescentes", "Com outros insumos fixos, cada unidade extra do insumo variável acrescenta cada vez menos ⇒ custo cresce cada vez mais rápido."],
@@ -394,9 +394,9 @@ const AULAS = [
   <section class="sec art">
     <h3><span class="n">7</span> Questão numérica (Reforma Tributária)</h3>
     <div class="ex">\\(CT_{LP} = 2q^2 + 800\\) (q &gt; 0), demanda \\(Q_D = 1030 - 0{,}2p\\). A isenção reduz o custo em <b>30 por unidade</b>: \\(CT = 2q^2 + 800 - 30q\\).<br>
-    Novo CTM = \\(2q + 800/q - 30\\) ⇒ mínimo em q = 20 (o deslocamento constante não muda o ponto de mínimo) ⇒ <b>p de LP = 80 − 30 = 50</b>.<br>
-    Quantidade de LP: \\(Q_D(50) = 1030 - 10 = 1020\\). Cada empresa produz 20 ⇒ <b>1020/20 = 51 empresas</b>.<br>
-    EC = (5150 − 50)·1020/2 = 2.601.000 (a demanda zera em p = 5150).</div>
+    Novo CTM = \\(2q + \\dfrac{800}{q} - 30\\) ⇒ mínimo em q = 20 (o deslocamento constante não muda o ponto de mínimo) ⇒ <b>p de LP = 80 − 30 = 50</b>.<br>
+    Quantidade de LP: \\(Q_D(50) = 1030 - 10 = 1020\\). Cada empresa produz 20 ⇒ <b>\\(\\dfrac{1020}{20}\\) = 51 empresas</b>.<br>
+    EC = \\(\\dfrac{(5150 - 50)\\cdot 1020}{2}\\) = 2.601.000 (a demanda zera em p = 5150).</div>
   </section>`,
   pegadinhas: [
     "No CP a empresa suspende se p < mín CVM (e não CTM). Com CVM ≤ p < CTM ela produz COM prejuízo, porque perde menos que o custo fixo.",
@@ -470,7 +470,7 @@ const AULAS = [
       <p>Um imposto de T por unidade cria uma <b>cunha</b>: o consumidor paga Pc, o produtor recebe Ps = Pc − T, e a quantidade cai de 16 para Qt.</p>
       <ul>
         <li><b>Incidência</b>: quem paga mais é o lado <b>mais inelástico</b> — não importa quem recolhe ao governo.</li>
-        <li><b>Peso morto</b>: as trocas que deixam de acontecer (triângulo vermelho). Com T = 100: Qt = 12, Pc = 270, Ps = 170, arrecadação 1.200, peso morto = 100×4/2 = <b>200</b>. Aqui as duas curvas têm a mesma inclinação, por isso o ônus fica 50/50 (consumidor paga +50, produtor recebe −50).</li>
+        <li><b>Peso morto</b>: as trocas que deixam de acontecer (triângulo vermelho). Com T = 100: Qt = 12, Pc = 270, Ps = 170, arrecadação 1.200, peso morto = \\(\\dfrac{100\\times 4}{2}\\) = <b>200</b>. Aqui as duas curvas têm a mesma inclinação, por isso o ônus fica 50/50 (consumidor paga +50, produtor recebe −50).</li>
         <li>Dobrar o imposto (T = 200) ⇒ Qt = 8 e peso morto = 800: <b>quadruplica</b>.</li>
       </ul>
     </div></div>
@@ -522,7 +522,7 @@ const AULAS = [
       \\(RM = 56 - 5q\\), \\(CM = 1\\) ⇒ \\(56 - 5q = 1 \\Rightarrow q = 11\\) milhões de m³.<br>
       Preço na demanda: \\(p(11) = 56 - 27{,}5 = 28{,}5\\).<br>
       Lucro = 28,5×11 − 111 = <b>202,5</b>.<br>
-      Eficiente: p = CM = 1 ⇒ q = 22. Peso morto = (28,5 − 1)(22 − 11)/2 = <b>151,25</b>.</div>
+      Eficiente: p = CM = 1 ⇒ q = 22. Peso morto = \\(\\dfrac{(28{,}5 - 1)(22 - 11)}{2}\\) = <b>151,25</b>.</div>
     </div></div>
     <div class="trap"><b>Erro clássico:</b> achar q por RM = CM e esquecer de levar q à <b>demanda</b> para achar o preço. O preço vem de p(q), não da RM nem do CM!</div>
   </section>
@@ -530,13 +530,13 @@ const AULAS = [
   <section class="sec">
     <h3><span class="n">3</span> Por que é ineficiente?</h3>
     <p>Na quantidade de máximo lucro há pessoas dispostas a pagar <b>mais</b> por unidades extras do que custaria produzi-las (p &gt; CM). Há espaço para aumentar o excedente total ⇒ <b>ônus do poder de mercado</b> (perda social, peso morto, <i>deadweight loss</i>).</p>
-    <div class="ex"><b>Outro exemplo:</b> \\(p = 20 - q\\), \\(CT = 0{,}2q^2 + 3{,}2q + 50\\). RM = 20 − 2q; CM = 0,4q + 3,2 ⇒ q = 7, p = 13 (CM(7) = 6). Eficiente: 20 − q = 0,4q + 3,2 ⇒ q = 12, p = 8. <b>Peso morto = (13 − 6)(12 − 7)/2 = 17,5</b>.</div>
+    <div class="ex"><b>Outro exemplo:</b> \\(p = 20 - q\\), \\(CT = 0{,}2q^2 + 3{,}2q + 50\\). RM = 20 − 2q; CM = 0,4q + 3,2 ⇒ q = 7, p = 13 (CM(7) = 6). Eficiente: 20 − q = 0,4q + 3,2 ⇒ q = 12, p = 8. <b>Peso morto = \\(\\dfrac{(13 - 6)(12 - 7)}{2}\\) = 17,5</b>.</div>
     <p>O que fazer? <b>Lei da Concorrência</b> (Sistema Brasileiro de Defesa da Concorrência): análise de fusões, aquisições, cartéis, acordos de preços. Na Europa, o <b>Digital Markets Act</b> multou o Google em US$ 1 bi por favorecer seus serviços na Google Play.</p>
   </section>
 
   <section class="sec">
     <h3><span class="n">4</span> Monopólio natural e regulação</h3>
-    <p><b>Monopólio natural</b>: uma empresa atende todo o mercado a custo menor do que duas ou mais. Típico com custo fixo alto e CTM <b>decrescente</b> (água: CTM = 1 + 100/q). Dividir o mercado só duplicaria o custo fixo.</p>
+    <p><b>Monopólio natural</b>: uma empresa atende todo o mercado a custo menor do que duas ou mais. Típico com custo fixo alto e CTM <b>decrescente</b> (água: CTM = 1 + \\(\\dfrac{100}{q}\\)). Dividir o mercado só duplicaria o custo fixo.</p>
     <div class="two"><div class="figslot" data-fig="mo_reg"></div><div>
     <table class="t sm"><thead><tr><th>Regra</th><th>Resultado</th></tr></thead><tbody>
       <tr><td><b>Sem regulação</b> (RM = CM)</td><td>Lucro máximo, peso morto grande.</td></tr>
@@ -545,10 +545,10 @@ const AULAS = [
     </tbody></table>
     <p>Alternativas: <b>leilões de concessão</b> (rodovias, pontes, metrô), <b>agências reguladoras</b> (ANA — águas, Aneel — energia, ANAC — aviação) ou o governo operar o monopólio (risco: baixa capacidade de investir, gestão ineficiente, corrupção).</p></div></div>
     <div class="ex"><b>Questão de prova (pedágio, 2025).</b> \\(p = 85 - 6q\\), \\(CT = 168 + 5q + 2q^2\\).<br>
-      RM = 85 − 12q, CM = 5 + 4q ⇒ q = 5, p = 55, lucro = 275 − 243 = <b>32</b> (na prova, alternativa a). Eficiente: 85 − 6q = 5 + 4q ⇒ q = 8, p = 37 ⇒ peso morto = (55 − 25)(8 − 5)/2 = 45; EC = (85 − 55)·5/2 = 75.<br>
+      RM = 85 − 12q, CM = 5 + 4q ⇒ q = 5, p = 55, lucro = 275 − 243 = <b>32</b> (na prova, alternativa a). Eficiente: 85 − 6q = 5 + 4q ⇒ q = 8, p = 37 ⇒ peso morto = \\(\\dfrac{(55 - 25)(8 - 5)}{2}\\) = 45; EC = \\(\\dfrac{(85 - 55)\\cdot 5}{2}\\) = 75.<br>
       <b>Teto que maximiza q sem prejuízo e sem subsídio:</b> lucro = 80q − 8q² − 168 = 0 ⇒ q² − 10q + 21 = 0 ⇒ q = 3 ou 7 ⇒ escolhe <b>q = 7 ⇒ p = 43</b> (na prova, alternativa d). Fica-se com a maior raiz porque, respeitando lucro ≥ 0, quanto maior q, mais perto do eficiente. Com p = 37 (eficiente), o lucro seria −40.</div>
-    <div class="ex"><b>App de mobilidade.</b> \\(p = 4 - 0{,}2q\\), \\(CT = 0{,}4q + 6{,}4\\): q = 9, p = 2,2, lucro = 9,8, peso morto = (2,2 − 0,4)(18 − 9)/2 = 8,1. Teto p = 0,4 ⇒ q = 18 e prejuízo = 6,4 ⇒ subsídio de 6,4.<br>
-      Versão \\(q = 16 - 4p\\), \\(CT = q + 6{,}4\\): primeiro isole p (p = 4 − 0,25q) e use RT = p(q)·q ⇒ RM = 4 − 0,5q = CM = 1 ⇒ q = 6, p = 2,5, lucro 2,6. Melhor teto sem subsídio: p = CTM ⇒ 0,25q² − 3q + 6,4 = 0 (×4: q² − 12q + 25,6 = 0 ⇒ q = (12 ± √41,6)/2 ≈ 2,78 ou 9,22) ⇒ maior raiz q ≈ 9,22 ⇒ <b>p ≈ 1,69</b>.</div>
+    <div class="ex"><b>App de mobilidade.</b> \\(p = 4 - 0{,}2q\\), \\(CT = 0{,}4q + 6{,}4\\): q = 9, p = 2,2, lucro = 9,8, peso morto = \\(\\dfrac{(2{,}2 - 0{,}4)(18 - 9)}{2}\\) = 8,1. Teto p = 0,4 ⇒ q = 18 e prejuízo = 6,4 ⇒ subsídio de 6,4.<br>
+      Versão \\(q = 16 - 4p\\), \\(CT = q + 6{,}4\\): primeiro isole p (p = 4 − 0,25q) e use RT = p(q)·q ⇒ RM = 4 − 0,5q = CM = 1 ⇒ q = 6, p = 2,5, lucro 2,6. Melhor teto sem subsídio: p = CTM ⇒ 0,25q² − 3q + 6,4 = 0 (×4: q² − 12q + 25,6 = 0 ⇒ q = \\(\\dfrac{12 \\pm \\sqrt{41{,}6}}{2}\\) ≈ 2,78 ou 9,22) ⇒ maior raiz q ≈ 9,22 ⇒ <b>p ≈ 1,69</b>.</div>
   </section>
 
   <section class="sec">
@@ -629,11 +629,11 @@ const AULAS = [
     <p class="f big">\\(\\pi_i = [a - b(q_i + Q_{-i})]\\,q_i - c\\,q_i \\;\\Rightarrow\\; q_i = \\dfrac{a - c - bQ_{-i}}{2b}\\)</p>
     <p>Derivando o lucro em relação a \\(q_i\\) e igualando a zero: \\(a - 2bq_i - bQ_{-i} - c = 0\\), que dá a função de reação acima. Com n empresas iguais, \\(Q_{-i} = (n-1)q\\):</p>
     <p class="f big">\\(n \\text{ empresas: } q = \\dfrac{a-c}{b(n+1)},\\quad P = \\dfrac{a + nc}{n+1},\\quad PM = \\dfrac{(a-c)^2}{2b(n+1)^2}\\)</p>
-    <div class="ex"><b>Planos de saúde</b>: \\(p = 10 - Q/12\\), CM = 4, CF = 0 (p em mil R$/ano, Q em milhões de pessoas).
+    <div class="ex"><b>Planos de saúde</b>: \\(p = 10 - \\dfrac{Q}{12}\\), CM = 4, CF = 0 (p em mil R$/ano, Q em milhões de pessoas).
       <ul class="mini">
-        <li><b>Cartel</b> (age como monopólio): lucro conjunto = 6Q − Q²/12 ⇒ 6 − Q/6 = 0 ⇒ Q = 36 (18 cada), p = 7, lucro de cada = (7 − 4)·18 = <b>54 bilhões</b>. Peso morto = (7 − 4)(72 − 36)/2 = <b>54 bilhões</b>.</li>
+        <li><b>Cartel</b> (age como monopólio): lucro conjunto = 6Q − \\(\\dfrac{Q^2}{12}\\) ⇒ 6 − \\(\\dfrac{Q}{6}\\) = 0 ⇒ Q = 36 (18 cada), p = 7, lucro de cada = (7 − 4)·18 = <b>54 bilhões</b>. Peso morto = \\(\\dfrac{(7 - 4)(72 - 36)}{2}\\) = <b>54 bilhões</b>.</li>
         <li><b>Teto que elimina o peso morto</b>: p = CM = <b>4</b> (Q = 72).</li>
-        <li><b>Desvio</b>: se a empresa 2 produz 18, a 1 maximiza 4,5q₁ − q₁²/12 ⇒ q₁ = 27, Q = 45, p = <b>6,25</b>; lucros 60,75 e 40,5 ⇒ cartel instável.</li>
+        <li><b>Desvio</b>: se a empresa 2 produz 18, a 1 maximiza 4,5q₁ − \\(\\dfrac{q_1^2}{12}\\) ⇒ q₁ = 27, Q = 45, p = <b>6,25</b>; lucros 60,75 e 40,5 ⇒ cartel instável.</li>
         <li><b>Cournot</b>: q₁ = 36 − 0,5q₂ e q₂ = 36 − 0,5q₁ ⇒ <b>q = 24 cada</b>, Q = 48, p = 6, lucro = 48 cada.</li>
         <li><b>Concorrência</b>: p = 4, Q = 72, lucro zero.</li>
       </ul></div>
@@ -643,8 +643,8 @@ const AULAS = [
     <h3><span class="n">5</span> Jogos repetidos: a cooperação pode se sustentar</h3>
     <p>Jogado uma vez, o dilema leva à não cooperação. Repetido <b>para sempre</b>, com a estratégia <b>gatilho</b> (coopera enquanto o outro cooperou; se alguém desviar, nunca mais coopera), cooperar pode ser ótimo.</p>
     <div class="ex"><b>Fragrâncias (prova 2025)</b>: cooperam: 9 cada; um desvia: quem desvia ganha 11,53 e quem coopera, 4,88; ninguém coopera: 6,75 cada. Juros de 10% ao mês.<br>
-      Coopera sempre: \\(9 + 9/0{,}1 = 99\\). Desvia hoje: \\(11{,}53 + 6{,}75/0{,}1 = 79{,}03\\). Como 99 &gt; 79,03, seguir a estratégia é ótimo em todo mês ⇒ <b>há Equilíbrio de Nash em que as duas cooperam</b>. Jogado uma única vez, “não cooperar” é dominante e o único Nash é (não coopera, não coopera).</div>
-    <p class="note">Valor presente: com juros r por mês (aqui r = 0,1), receber π todo mês, a partir do próximo, para sempre, vale π/r hoje. O lucro do mês atual entra sem desconto: cooperar = 9 (hoje) + 9/0,1 (futuro) = 99.</p>
+      Coopera sempre: \\(9 + \\dfrac{9}{0{,}1} = 99\\). Desvia hoje: \\(11{,}53 + \\dfrac{6{,}75}{0{,}1} = 79{,}03\\). Como 99 &gt; 79,03, seguir a estratégia é ótimo em todo mês ⇒ <b>há Equilíbrio de Nash em que as duas cooperam</b>. Jogado uma única vez, “não cooperar” é dominante e o único Nash é (não coopera, não coopera).</div>
+    <p class="note">Valor presente: com juros r por mês (aqui r = 0,1), receber π todo mês, a partir do próximo, para sempre, vale \\(\\dfrac{\\pi}{r}\\) hoje. O lucro do mês atual entra sem desconto: cooperar = 9 (hoje) + \\(\\dfrac{9}{0{,}1}\\) (futuro) = 99.</p>
   </section>`,
   pegadinhas: [
     "Equilíbrio de Nash é um PAR DE ESTRATÉGIAS, não de payoffs.",
@@ -662,12 +662,12 @@ const AULAS = [
     ["Dilema dos prisioneiros", "Cada um tem estratégia dominante de não cooperar; o resultado é pior para ambos do que cooperar."],
     ["Guerra de preços (100/100, 50/150, 75/75)", "Preço baixo é dominante ⇒ ambos cobram baixo (75 cada)."],
     ["Embraer × ABDG", "Sem estratégia dominante; dois Equilíbrios de Nash (cada uma num segmento diferente)."],
-    ["Função de reação de Cournot", "\\(q_i = (a - c - bQ_{-i})/(2b)\\)"],
-    ["Cournot com n empresas", "\\(q = (a-c)/[b(n+1)]\\), \\(P = (a+nc)/(n+1)\\)"],
+    ["Função de reação de Cournot", "\\(q_i = \\dfrac{a - c - bQ_{-i}}{2b}\\)"],
+    ["Cournot com n empresas", "\\(q = \\dfrac{a-c}{b(n+1)}\\), \\(P = \\dfrac{a+nc}{n+1}\\)"],
     ["Planos de saúde: cartel", "Q = 36, p = 7, lucro 54 cada, peso morto 54."],
     ["Planos de saúde: Cournot", "q = 24 cada, Q = 48, p = 6, lucro 48 cada."],
     ["Estratégia gatilho", "Coopera enquanto o outro cooperou; se alguém desviar, nunca mais coopera."],
-    ["Cooperação sustentável quando…", "π_c + π_c/r ≥ π_desvio + π_Nash/r."]
+    ["Cooperação sustentável quando…", "π_c + \\(\\dfrac{\\pi _c}{r}\\) ≥ π_desvio + \\(\\dfrac{\\pi _{\\text{Nash}}}{r}\\)."]
   ]
 },
 /* ============================================================ TEMA 8 */
@@ -745,12 +745,12 @@ const FORMULAS = [
   ["Tema 3", "Custo total", "\\(CT = CF + CV\\)", ""],
   ["Tema 3", "Custos médios", "\\(CTM = \\dfrac{CT}{q} = CVM + CFM\\)", ""],
   ["Tema 3", "Custo marginal", "\\(CM = \\dfrac{dCT}{dq} = \\dfrac{dCV}{dq}\\)", "não depende do CF"],
-  ["Tema 3", "Mínimo do CTM", "\\(CM(q) = CTM(q)\\)", "CT = aq² + F ⇒ q = √(F/a), CTM = 2√(aF)"],
+  ["Tema 3", "Mínimo do CTM", "\\(CM(q) = CTM(q)\\)", "CT = aq² + F ⇒ q = \\(\\sqrt{\\tfrac{F}{a}}\\), CTM = 2√(aF)"],
   ["Tema 4", "Maximização de lucro", "\\(RM(q) = CM(q)\\)", "competição: p = CM"],
   ["Tema 4", "Suspender no curto prazo", "\\(p < \\min CVM\\)", ""],
   ["Tema 4", "Sair no longo prazo", "\\(p < \\min CTM\\)", ""],
   ["Tema 4", "Equilíbrio de LP", "\\(p = CM = \\min CTM\\)", "lucro econômico zero"],
-  ["Tema 4", "Nº de empresas no LP", "\\(n = Q_D(p_{LP}) / q_{\\min CTM}\\)", "1020/20 = 51"],
+  ["Tema 4", "Nº de empresas no LP", "\\(n = \\dfrac{Q_D(p_{LP})}{q_{\\min CTM}}\\)", "\\(\\dfrac{1020}{20}\\) = 51"],
   ["Tema 4", "Oferta de mercado", "\\(Q(p) = \\sum_j q_j(p)\\)", "soma horizontal"],
   ["Tema 5", "Excedente total", "\\(ET = EC + EP\\)", "máximo no equilíbrio competitivo"],
   ["Tema 5", "Peso morto de imposto (linear)", "\\(PM = \\tfrac{1}{2}\\,T\\,(Q^* - Q_T)\\)", "Complemento"],

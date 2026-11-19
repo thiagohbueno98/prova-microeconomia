@@ -6,6 +6,7 @@
 /* ---------- utilidades ---------- */
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const fr = (n, d) => `<span class="fr"><span>${n}</span><span>${d}</span></span>`; // fração empilhada (HTML)
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const fmt = (n, d = 1) => Number(n).toLocaleString('pt-BR', { minimumFractionDigits: d, maximumFractionDigits: d });
 const fmtA = (n, d = 2) => Number(n).toLocaleString('pt-BR', { maximumFractionDigits: d }); // sem zeros à direita

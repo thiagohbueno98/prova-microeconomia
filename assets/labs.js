@@ -107,8 +107,8 @@ LAB.oferta = el => {
     const ctrl = P.ctrl !== 'nenhum' ? P.v : undefined;
     $('#doEqCh', el).innerHTML = dsChart(P.a, P.b, P.c, P.d, { ctrl, ctrlLab: P.ctrl === 'teto' ? 'teto' : 'piso', areas: ctrl === undefined });
     let ro = `<div><small>P*</small><b>${fmtA(e.P, 3)}</b></div><div><small>Q*</small><b>${fmtA(e.Q, 3)}</b></div><div><small>Exc. consumidor</small><b>${fmtA(e.EC, 2)}</b></div><div><small>Exc. produtor</small><b>${fmtA(e.EP, 2)}</b></div>`;
-    let ex = `<p><b>Equilíbrio:</b> Qd = Qs ⇒ ${fmtA(P.a)} − ${fmtA(P.b)}P = ${fmtA(P.c)} + ${fmtA(P.d)}P ⇒ P* = (${fmtA(P.a)} − (${fmtA(P.c)}))/(${fmtA(P.b)} + ${fmtA(P.d)}) = <b>${fmtA(e.P, 3)}</b> e Q* = <b>${fmtA(e.Q, 3)}</b>.</p>
-      <p><b>EC</b> = área do triângulo abaixo da demanda e acima de P*: (${fmtA(e.Pmax, 3)} − ${fmtA(e.P, 3)}) × ${fmtA(e.Q, 3)} / 2 = <b>${fmtA(e.EC, 3)}</b>. <b>EP</b> = área acima da oferta e abaixo de P*${P.c <= 0 ? `: (${fmtA(e.P, 3)} − ${fmtA(e.Pmin, 3)}) × ${fmtA(e.Q, 3)} / 2` : ''} = <b>${fmtA(e.EP, 3)}</b>.</p><p class="note">${DO_PRESETS[pre] ? DO_PRESETS[pre].u : ''}${pre === 'arroz' ? ' — como Q está em toneladas e P em R$/kg, multiplique as áreas por 1.000 para ter R$ (EC = R$ 62.500; EP = R$ 6.250).' : ''}</p>`;
+    let ex = `<p><b>Equilíbrio:</b> Qd = Qs ⇒ ${fmtA(P.a)} − ${fmtA(P.b)}P = ${fmtA(P.c)} + ${fmtA(P.d)}P ⇒ P* = ${fr(`${fmtA(P.a)} − (${fmtA(P.c)})`, `${fmtA(P.b)} + ${fmtA(P.d)}`)} = <b>${fmtA(e.P, 3)}</b> e Q* = <b>${fmtA(e.Q, 3)}</b>.</p>
+      <p><b>EC</b> = área do triângulo abaixo da demanda e acima de P*: ${fr(`(${fmtA(e.Pmax, 3)} − ${fmtA(e.P, 3)}) × ${fmtA(e.Q, 3)}`, 2)} = <b>${fmtA(e.EC, 3)}</b>. <b>EP</b> = área acima da oferta e abaixo de P*${P.c <= 0 ? `: ${fr(`(${fmtA(e.P, 3)} − ${fmtA(e.Pmin, 3)}) × ${fmtA(e.Q, 3)}`, 2)}` : ''} = <b>${fmtA(e.EP, 3)}</b>.</p><p class="note">${DO_PRESETS[pre] ? DO_PRESETS[pre].u : ''}${pre === 'arroz' ? ' — como Q está em toneladas e P em R$/kg, multiplique as áreas por 1.000 para ter R$ (EC = R$ 62.500; EP = R$ 6.250).' : ''}</p>`;
     if (ctrl !== undefined) {
       const qd = P.a - P.b * ctrl, qs = P.c + P.d * ctrl;
       const bind = P.ctrl === 'teto' ? ctrl < e.P : ctrl > e.P;
@@ -157,7 +157,7 @@ LAB.elast = el => {
     <div class="readout" id="elRo"></div><div class="explain" id="elEx"></div>
   </div>
   <div class="lab"><h3>📉 Elasticidade ao longo de uma demanda linear <span class="tag">Complemento</span></h3>
-    <p class="muted">Demanda <b>Q = a − bP</b>. A inclinação é constante, mas a elasticidade <b>muda</b> em cada ponto: ε = (dQ/dP)·(P/Q) = −b·P/Q.</p>
+    <p class="muted">Demanda <b>Q = a − bP</b>. A inclinação é constante, mas a elasticidade <b>muda</b> em cada ponto: ε = ${fr('dQ', 'dP')} · ${fr('P', 'Q')} = −b · ${fr('P', 'Q')}.</p>
     <div class="fields">${[['a', 'a'], ['b', 'b']].map(([k, l]) => `<label class="field">${l}<input type="number" step="any" data-l="${k}" value="${L[k]}"></label>`).join('')}<label class="field">Preço P = <span id="elPv"></span><input type="range" id="elP" min="0" max="100" value="30"></label></div>
     <div class="lab-grid"><div id="elLinCh"></div><div><div class="readout" id="elLinRo"></div><div class="explain" id="elLinEx"></div></div></div>
   </div>
@@ -172,7 +172,7 @@ LAB.elast = el => {
     const mq = (E.q2 - E.q1) / ((E.q1 + E.q2) / 2) * 100, mp = (E.p2 - E.p1) / ((E.p1 + E.p2) / 2) * 100;
     const cls = Math.abs(eps) < 1 ? 'inelástica' : Math.abs(eps) > 1 ? 'elástica' : 'unitária';
     $('#elRo', el).innerHTML = `<div><small>Δ%Q</small><b>${fmt(dq, 2)}%</b></div><div><small>Δ%P</small><b>${fmt(dp, 2)}%</b></div><div><small>ε</small><b>${isFinite(eps) ? fmt(eps, 3) : '—'}</b></div><div><small>ε (ponto médio)</small><b>${isFinite(mq / mp) ? fmt(mq / mp, 3) : '—'}</b></div>`;
-    $('#elEx', el).innerHTML = isFinite(eps) ? `<p>ε = Δ%Q / Δ%P = ${fmt(dq, 2)}% / ${fmt(dp, 2)}% = <b>${fmt(eps, 3)}</b> ⇒ demanda <b>${cls}</b> nesse trecho (|ε| ${Math.abs(eps) < 1 ? '<' : Math.abs(eps) > 1 ? '>' : '='} 1).</p><p><b>Leitura:</b> um aumento de 1% no preço está associado a uma ${eps < 0 ? 'queda' : 'alta'} de ${fmt(Math.abs(eps), 2)}% na quantidade.</p><p class="note">Variação percentual = (final − inicial)/inicial × 100%. É adimensional: trocar reais por dólares não muda nada. O “ponto médio” (divide pela média dos dois valores) dá o mesmo resultado nos dois sentidos — é um complemento do Mankiw.</p>` : '<p>Δ%P não pode ser zero.</p>';
+    $('#elEx', el).innerHTML = isFinite(eps) ? `<p>ε = ${fr('Δ%Q', 'Δ%P')} = ${fr(fmt(dq, 2) + '%', fmt(dp, 2) + '%')} = <b>${fmt(eps, 3)}</b> ⇒ demanda <b>${cls}</b> nesse trecho (|ε| ${Math.abs(eps) < 1 ? '<' : Math.abs(eps) > 1 ? '>' : '='} 1).</p><p><b>Leitura:</b> um aumento de 1% no preço está associado a uma ${eps < 0 ? 'queda' : 'alta'} de ${fmt(Math.abs(eps), 2)}% na quantidade.</p><p class="note">Variação percentual = ${fr('final − inicial', 'inicial')} × 100%. É adimensional: trocar reais por dólares não muda nada. O “ponto médio” (divide pela média dos dois valores) dá o mesmo resultado nos dois sentidos — é um complemento do Mankiw.</p>` : '<p>Δ%P não pode ser zero.</p>';
   };
   const drawL = () => {
     const pmax = L.a / L.b, P = pmax * (+$('#elP', el).value) / 100, Q = L.a - L.b * P, eps = Q > 0 ? -L.b * P / Q : -Infinity;
@@ -180,7 +180,7 @@ LAB.elast = el => {
     const mid = pmax / 2;
     $('#elLinCh', el).innerHTML = chart({ xr: [0, L.a * 1.08], yr: [0, pmax * 1.1], xl: 'Q', yl: 'P', curves: [{ pts: [[0, pmax], [L.a / 2, mid]], cls: 'm', lab: '|ε| > 1 (elástica)', labAt: [L.a * 0.12, pmax * 0.9], dx: 12 }, { pts: [[L.a / 2, mid], [L.a, 0]], cls: 's', lab: '|ε| < 1 (inelástica)', labAt: [L.a * 0.62, mid * 0.62], dx: 8 }], points: [{ x: Q, y: P, xt: fmtA(Q, 1), yt: fmtA(P, 2) }, { x: L.a / 2, y: mid, cls: 'old', guide: false, lab: '|ε| = 1', dx: 10, dy: 4 }], areas: [{ pts: [[0, 0], [0, P], [Q, P], [Q, 0]], cls: 'tax' }], h: 280 });
     $('#elLinRo', el).innerHTML = `<div><small>Q</small><b>${fmt(Q, 1)}</b></div><div><small>ε</small><b>${isFinite(eps) ? fmt(eps, 2) : '−∞'}</b></div><div><small>Receita P·Q</small><b>${fmt(P * Q, 1)}</b></div>`;
-    $('#elLinEx', el).innerHTML = `<p>ε = −b·P/Q = −${fmtA(L.b)} × ${fmt(P, 2)} / ${fmt(Q, 1)} = <b>${isFinite(eps) ? fmt(eps, 2) : '−∞'}</b>.</p><p>Acima do ponto médio a demanda é elástica: <b>baixar</b> o preço aumenta a receita (área amarela). Abaixo, é inelástica: <b>subir</b> o preço aumenta a receita. A receita é máxima em |ε| = 1.</p>`;
+    $('#elLinEx', el).innerHTML = `<p>ε = −b · ${fr('P', 'Q')} = −${fmtA(L.b)} × ${fr(fmt(P, 2), fmt(Q, 1))} = <b>${isFinite(eps) ? fmt(eps, 2) : '−∞'}</b>.</p><p>Acima do ponto médio a demanda é elástica: <b>baixar</b> o preço aumenta a receita (área amarela). Abaixo, é inelástica: <b>subir</b> o preço aumenta a receita. A receita é máxima em |ε| = 1.</p>`;
   };
   const drawR = () => {
     const xs = RENDA.map(r => logv ? Math.log(r[1]) : r[1]), ys = RENDA.map(r => logv ? Math.log(r[0]) : r[0]);
@@ -193,7 +193,7 @@ LAB.elast = el => {
     svg = svg.replace('</svg>', xs.map((x, i) => `<circle cx="${X(x).toFixed(1)}" cy="${Y(ys[i]).toFixed(1)}" r="3" fill="var(--c1)" opacity=".75"/>`).join('') + '</svg>');
     $('#elRegCh', el).innerHTML = svg;
     $('#elRegEx', el).innerHTML = logv
-      ? `<p>ln(y) = ${fmt(a, 2)} + <b>${fmt(b, 3)}</b>·ln(x)</p><p>Em log-log, o coeficiente é a <b>elasticidade</b>: renda do pai 1% maior ⇒ renda do filho ≈ ${fmt(b, 2)}% maior. É a “elasticidade intergeracional ≈ 0,5” do Atlas da Mobilidade Social.</p><p class="note">Prova: ln y = α + β ln x ⇒ y = e^(α+β ln x) ⇒ dy/dx = y·β/x ⇒ (dy/dx)(x/y) = β.</p>`
+      ? `<p>ln(y) = ${fmt(a, 2)} + <b>${fmt(b, 3)}</b>·ln(x)</p><p>Em log-log, o coeficiente é a <b>elasticidade</b>: renda do pai 1% maior ⇒ renda do filho ≈ ${fmt(b, 2)}% maior. É a “elasticidade intergeracional ≈ 0,5” do Atlas da Mobilidade Social.</p><p class="note">Prova: ln y = α + β ln x ⇒ y = e^(α+β ln x) ⇒ ${fr('dy', 'dx')} = ${fr('y·β', 'x')} ⇒ ${fr('dy', 'dx')} · ${fr('x', 'y')} = β.</p>`
       : `<p>y = ${fmt(a, 0)} + <b>${fmt(b, 3)}</b>·x</p><p>Em níveis, b é a <b>inclinação</b>: R$ 1 a mais na renda do pai ⇒ R$ ${fmt(b, 2)} a mais na do filho. Muda se mudarmos as unidades — <b>não</b> é elasticidade.</p>`;
     $('#elLog1', el).classList.toggle('on', logv); $('#elLog0', el).classList.toggle('on', !logv);
   };
@@ -251,8 +251,8 @@ LAB.custos = el => {
     const xmax = Math.max(qm * 2.2, 0.0001), ymax = Math.max(cm * 2.2, c + 2 * a * xmax * 0.9, 1);
     $('#cuQCh', el).innerHTML = chart({ xr: [0, xmax], yr: [Math.min(0, c), ymax], xl: 'q', yl: 'R$', curves: [{ f: q => c + 2 * a * q, a: 0, b: xmax, cls: 'm', lab: 'CM' }, { f: q => c + a * q + F / q, a: xmax * 0.02, b: xmax, cls: 'd', lab: 'CTM' }, { f: q => c + a * q, a: 0, b: xmax, cls: 's', lab: 'CVM' }], points: [{ x: qm, y: cm, xt: fmtA(qm, 3), yt: fmtA(cm, 2), lab: 'mín CTM' }], h: 280 });
     $('#cuQRo', el).innerHTML = `<div><small>q do mín CTM</small><b>${fmtA(qm, 4)}</b></div><div><small>CTM mínimo</small><b>${fmtA(cm, 3)}</b></div>`;
-    $('#cuQEx', el).innerHTML = `<p>CM = dCT/dq = ${fmtA(c)} + ${fmtA(2 * a)}q · CVM = CV/q = ${fmtA(c)} + ${fmtA(a)}q · CTM = ${fmtA(c)} + ${fmtA(a)}q + ${fmtA(F)}/q</p>
-      <p><b>Mínimo do CTM:</b> dCTM/dq = ${fmtA(a)} − ${fmtA(F)}/q² = 0 ⇒ q = √(${fmtA(F)}/${fmtA(a)}) = <b>${fmtA(qm, 4)}</b> ⇒ CTM = <b>${fmtA(cm, 3)}</b>. Confira: CM(${fmtA(qm, 4)}) = ${fmtA(c + 2 * a * qm, 3)} = CTM. ✔</p>
+    $('#cuQEx', el).innerHTML = `<p>CM = ${fr('dCT', 'dq')} = ${fmtA(c)} + ${fmtA(2 * a)}q · CVM = ${fr('CV', 'q')} = ${fmtA(c)} + ${fmtA(a)}q · CTM = ${fmtA(c)} + ${fmtA(a)}q + ${fr(fmtA(F), 'q')}</p>
+      <p><b>Mínimo do CTM:</b> ${fr('dCTM', 'dq')} = ${fmtA(a)} − ${fr(fmtA(F), 'q²')} = 0 ⇒ q = <span class="sq">√<span>${fr(fmtA(F), fmtA(a))}</span></span> = <b>${fmtA(qm, 4)}</b> ⇒ CTM = <b>${fmtA(cm, 3)}</b>. Confira: CM(${fmtA(qm, 4)}) = ${fmtA(c + 2 * a * qm, 3)} = CTM. ✔</p>
       <p class="note">${CU_PRE[pre] ? CU_PRE[pre].u : ''}. Esse mínimo será o <b>preço de equilíbrio de longo prazo</b> no mercado competitivo (Tema 4).</p>`;
   };
   const drawU = () => {
@@ -386,7 +386,7 @@ LAB.efic = el => {
     $('#efCh', el).innerHTML = chart({ xr: [0, 32], yr: [0, 460], xl: 'Q', yl: 'P', curves: [{ g: y => (420 - y) / 12.5, cls: 'd', lab: 'D', labEnd: 'a', dy: -6 }, { g: y => (y - 20) / 12.5, cls: 's', lab: 'O' }, { x: Qf, cls: 'ghost', lab: 'Q', anchor: 'middle', dx: 0 }], areas, points: [{ x: 16, y: 220, xt: '16', yt: '220', cls: Qf === 16 ? '' : 'old' }], h: 300 });
     const et = ET(Qf);
     $('#efRo', el).innerHTML = `<div><small>Excedente total</small><b>${fmtA(et)}</b></div><div><small>Máximo (Q = 16)</small><b>3.200</b></div><div><small>Perda</small><b class="${3200 - et > 0.01 ? 'no' : ''}">${fmtA(3200 - et)}</b></div>`;
-    $('#efEx', el).innerHTML = Qf < 16 ? `<p>Produzindo menos que 16, deixamos de trocar unidades que valem para o comprador (altura da D) <b>mais</b> do que custam para produzir (altura da O). Essa oportunidade perdida é o <b>peso morto</b>.</p>` : Qf > 16 ? `<p>Produzindo mais que 16, as unidades extras custam (O) <b>mais</b> do que valem para quem compra (D): destrói valor. Também há peso morto.</p>` : `<p>Q = 16: <b>todos os possíveis ganhos de troca são explorados</b>. EC = (420 − 220)·16/2 = 1.600; EP = (220 − 20)·16/2 = 1.600; ET = 3.200. É a quantidade <b>eficiente</b> — a “mão invisível” de Adam Smith.</p>`;
+    $('#efEx', el).innerHTML = Qf < 16 ? `<p>Produzindo menos que 16, deixamos de trocar unidades que valem para o comprador (altura da D) <b>mais</b> do que custam para produzir (altura da O). Essa oportunidade perdida é o <b>peso morto</b>.</p>` : Qf > 16 ? `<p>Produzindo mais que 16, as unidades extras custam (O) <b>mais</b> do que valem para quem compra (D): destrói valor. Também há peso morto.</p>` : `<p>Q = 16: <b>todos os possíveis ganhos de troca são explorados</b>. EC = ${fr('(420 − 220) · 16', 2)} = 1.600; EP = ${fr('(220 − 20) · 16', 2)} = 1.600; ET = 3.200. É a quantidade <b>eficiente</b> — a “mão invisível” de Adam Smith.</p>`;
   };
   const drawT = () => {
     const t = taxModel(T, bD, bS);
@@ -394,7 +394,7 @@ LAB.efic = el => {
     $('#efTCh', el).innerHTML = taxChart(T, bD, bS);
     $('#efTRo', el).innerHTML = `<div><small>Q com imposto</small><b>${fmt(t.Qt, 2)}</b></div><div><small>Pc (consumidor)</small><b>${fmt(t.Pc, 1)}</b></div><div><small>Ps (produtor)</small><b>${fmt(t.Ps, 1)}</b></div><div><small>Arrecadação</small><b>${fmtA(t.rev, 1)}</b></div><div><small>Peso morto</small><b class="no">${fmtA(t.dwl, 1)}</b></div>`;
     $('#efTEx', el).innerHTML = `<p>Consumidor paga ${fmt(t.Pc - 220, 1)} a mais (<b>${pct(t.Pc - 220, T || 1)}%</b> do imposto) e o produtor recebe ${fmt(220 - t.Ps, 1)} a menos (<b>${pct(220 - t.Ps, T || 1)}%</b>). Não importa quem recolhe o imposto ao governo: a divisão depende só das elasticidades.</p>
-      <p>Peso morto = T × (16 − Qt)/2 = ${fmtA(t.dwl, 1)}. Dobrar o imposto ≈ <b>quadruplica</b> o peso morto (base e altura do triângulo dobram).</p>`;
+      <p>Peso morto = ${fr('T × (16 − Qt)', 2)} = ${fmtA(t.dwl, 1)}. Dobrar o imposto ≈ <b>quadruplica</b> o peso morto (base e altura do triângulo dobram).</p>`;
   };
   el.addEventListener('input', e => {
     if (e.target.id === 'efQ') { Qf = +e.target.value; drawQ(); }
@@ -441,9 +441,9 @@ LAB.mono = el => {
     const base = `<p><b>Receita:</b> RT = p(q)·q = ${f(a)}q − ${f(b, 4)}q² ⇒ <b>RM = ${f(a)} − ${f(2 * b, 4)}q</b> (mesmo intercepto, inclinação dobrada). <b>CM = ${f(c)}${d ? ' + ' + f(2 * d) + 'q' : ''}</b>.</p>`;
     let ex;
     if (mode === 'livre') ex = base + `<p><b>Máximo lucro:</b> RM = CM ⇒ q = ${f(M.qm)}; preço na demanda: p = ${f(a)} − ${f(b, 4)}×${f(M.qm)} = <b>${f(M.pm)}</b>. Lucro = ${f(M.pm)}×${f(M.qm)} − CT = <b>${f(M.lm)}</b>.</p>
-      <p><b>Eficiente:</b> p(q) = CM ⇒ q = ${f(M.qe)} (p = ${f(M.pe)}). <b>Peso morto</b> = (${f(M.pm)} − ${f(M.CM(M.qm))})×(${f(M.qe)} − ${f(M.qm)})/2 = <b>${f(M.dwl(M.qm))}</b>. Há gente disposta a pagar mais do que custa produzir unidades extras, mas o monopolista não as produz.</p>`;
+      <p><b>Eficiente:</b> p(q) = CM ⇒ q = ${f(M.qe)} (p = ${f(M.pe)}). <b>Peso morto</b> = ${fr(`(${f(M.pm)} − ${f(M.CM(M.qm))}) × (${f(M.qe)} − ${f(M.qm)})`, 2)} = <b>${f(M.dwl(M.qm))}</b>. Há gente disposta a pagar mais do que custa produzir unidades extras, mas o monopolista não as produz.</p>`;
     else if (mode === 'pcm') ex = base + `<p><b>Teto p = CM:</b> q = ${f(M.qe)}, p = ${f(M.pe)} ⇒ peso morto <b>zero</b> (todos os ganhos de troca realizados). Lucro = <b>${f(M.le)}</b>${M.le < -1e-9 ? ` ⇒ <b>prejuízo</b>: para continuar no mercado no LP precisaria de <b>subsídio de ${f(-M.le)}</b> (típico de monopólio natural: CM abaixo do CTM).` : ' ⇒ sem prejuízo: esse é o melhor teto possível.'}</p>`;
-    else ex = base + (M.le >= -1e-9 ? `<p>Como p = CM já não gera prejuízo, o melhor teto é o próprio <b>p = ${f(M.pe)}</b>.</p>` : `<p><b>Melhor teto sem subsídio:</b> o menor preço que ainda dá lucro ≥ 0 é onde <b>p(q) = CTM(q)</b>: ${f(a)} − ${f(b, 4)}q = ${f(F)}/q + ${f(c)}${d ? ' + ' + f(d) + 'q' : ''} ⇒ ${f(b + d, 4)}q² − ${f(a - c)}q + ${f(F)} = 0 ⇒ maior raiz q = <b>${f(q)}</b> ⇒ teto <b>p = ${f(pr)}</b>.</p><p>Sobra um peso morto pequeno (${f(dwl)}), bem menor que sem regulação (${f(M.dwl(M.qm))}). Problema: regular pelo custo não dá incentivo para reduzir custo.</p>`);
+    else ex = base + (M.le >= -1e-9 ? `<p>Como p = CM já não gera prejuízo, o melhor teto é o próprio <b>p = ${f(M.pe)}</b>.</p>` : `<p><b>Melhor teto sem subsídio:</b> o menor preço que ainda dá lucro ≥ 0 é onde <b>p(q) = CTM(q)</b>: ${f(a)} − ${f(b, 4)}q = ${fr(f(F), 'q')} + ${f(c)}${d ? ' + ' + f(d) + 'q' : ''} ⇒ ${f(b + d, 4)}q² − ${f(a - c)}q + ${f(F)} = 0 ⇒ maior raiz q = <b>${f(q)}</b> ⇒ teto <b>p = ${f(pr)}</b>.</p><p>Sobra um peso morto pequeno (${f(dwl)}), bem menor que sem regulação (${f(M.dwl(M.qm))}). Problema: regular pelo custo não dá incentivo para reduzir custo.</p>`);
     $('#moEx', el).innerHTML = ex + `<p class="note">${MO_PRE[pre] ? MO_PRE[pre].u : ''}</p>`;
     $$('#moMode button', el).forEach(bt => bt.classList.toggle('on', bt.dataset.m === mode));
   };
@@ -488,7 +488,7 @@ LAB.oligo = el => {
     <div id="gmT" style="overflow-x:auto"></div><div class="explain" id="gmEx"></div>
   </div>
   <div class="lab"><h3>🏭🏭 Cournot × cartel × concorrência</h3>
-    <p class="muted">Demanda <b>p = a − b·Q</b>, custo marginal constante <b>c</b>, <b>n</b> empresas idênticas que escolhem quantidades simultaneamente. Padrão: planos de saúde da prova (p = 10 − Q/12, CM = 4).</p>
+    <p class="muted">Demanda <b>p = a − b·Q</b>, custo marginal constante <b>c</b>, <b>n</b> empresas idênticas que escolhem quantidades simultaneamente. Padrão: planos de saúde da prova (p = 10 − ${fr('Q', 12)}, CM = 4).</p>
     <div class="fields">${[['a', 'a'], ['b', 'b'], ['c', 'c (CM)']].map(([k, l]) => `<label class="field">${l}<input type="text" inputmode="decimal" data-c="${k}" value="${C[k]}"></label>`).join('')}<label class="field">n empresas = <span id="coNv">2</span><input type="range" id="coN" min="1" max="12" value="2"></label></div>
     <div id="coT" style="overflow-x:auto"></div>
     <div class="lab-grid"><div id="coCh"></div><div class="explain" id="coEx"></div></div>
@@ -526,17 +526,17 @@ LAB.oligo = el => {
     // funções de reação (n = 2)
     const r = q => (a - c) / (2 * b) - q / 2, lim = (a - c) / b * 1.08;
     $('#coCh', el).innerHTML = n === 2 ? chart({ xr: [0, lim], yr: [0, lim], xl: 'q₁', yl: 'q₂', curves: [{ f: x => (a - c) / b - 2 * x, a: 0, b: (a - c) / (2 * b), n: 120, cls: 's', lab: 'R₁(q₂)', labAt: [(a - c) / (12 * b), (a - c) / b * 5 / 6], dx: 8 }, { f: x => r(x), a: 0, b: (a - c) / b, n: 120, cls: 'm', lab: 'R₂(q₁)', labAt: [(a - c) / (1.6 * b), (a - c) / (5.3 * b)], dy: -8 }, { f: x => Qm - x, a: 0, b: Qm, n: 60, cls: 'ghost' }], points: [{ x: qn, y: qn, lab: 'Nash', xt: fmtA(qn, 2), yt: fmtA(qn, 2) }, { x: Qm / 2, y: Qm / 2, cls: 'old', lab: 'cartel', anchor: 'end', dx: -8, dy: 16, guide: false }, { x: dev.q1, y: dev.q2, cls: 'old', lab: 'desvio', guide: false, dy: 16 }], h: 300 }) : '<p class="note">Com n ≠ 2 o gráfico de funções de reação não se aplica — veja a tabela.</p>';
-    $('#coEx', el).innerHTML = `<p><b>Empresa i:</b> lucro = [a − b(qᵢ + Q₋ᵢ)]qᵢ − c·qᵢ. CPO: a − 2bqᵢ − bQ₋ᵢ − c = 0 ⇒ <b>qᵢ = (a − c − bQ₋ᵢ)/(2b)</b> (função de reação).</p>
-      <p>Simétrico (qᵢ = q): <b>q = (a − c)/[b(n + 1)]</b> = ${fmtA(qn, 3)}, <b>P = (a + n·c)/(n + 1)</b> = ${fmtA(Pn, 3)}.</p>
-      <p>Peso morto de Cournot = (a − c)²/[2b(n + 1)²] = ${fmtA((a - c) ** 2 / (2 * b * (n + 1) ** 2), 3)}. Quanto mais empresas, mais perto da concorrência (P → c).</p>`;
+    $('#coEx', el).innerHTML = `<p><b>Empresa i:</b> lucro = [a − b(qᵢ + Q₋ᵢ)]qᵢ − c·qᵢ. CPO: a − 2bqᵢ − bQ₋ᵢ − c = 0 ⇒ <b>qᵢ = ${fr('a − c − bQ₋ᵢ', '2b')}</b> (função de reação).</p>
+      <p>Simétrico (qᵢ = q): <b>q = ${fr('a − c', 'b(n + 1)')}</b> = ${fmtA(qn, 3)}, <b>P = ${fr('a + n·c', 'n + 1')}</b> = ${fmtA(Pn, 3)}.</p>
+      <p>Peso morto de Cournot = ${fr('(a − c)²', '2b(n + 1)²')} = ${fmtA((a - c) ** 2 / (2 * b * (n + 1) ** 2), 3)}. Quanto mais empresas, mais perto da concorrência (P → c).</p>`;
   };
   const drawR = () => {
     const r = R.r / 100, vc = R.pc + R.pc / r, vd = R.pd + R.pn / r, rs = (R.pc - R.pn) / (R.pd - R.pc);
     $('#rpRv', el).textContent = R.r;
     $('#rpRo', el).innerHTML = `<div><small>VP se coopera</small><b>${fmt(vc, 2)}</b></div><div><small>VP se desvia</small><b>${fmt(vd, 2)}</b></div><div><small>r crítico</small><b>${isFinite(rs) && rs > 0 ? fmt(100 * rs, 1) + '%' : '—'}</b></div>`;
-    $('#rpEx', el).innerHTML = `<p><b>Coopera sempre:</b> ${fmtA(R.pc)} + ${fmtA(R.pc)}/${fmtA(r, 3)} = <b>${fmt(vc, 2)}</b>. <b>Desvia hoje:</b> ganha ${fmtA(R.pd)} agora e depois ${fmtA(R.pn)} para sempre: ${fmtA(R.pd)} + ${fmtA(R.pn)}/${fmtA(r, 3)} = <b>${fmt(vd, 2)}</b>.</p>
+    $('#rpEx', el).innerHTML = `<p><b>Coopera sempre:</b> ${fmtA(R.pc)} + ${fr(fmtA(R.pc), fmtA(r, 3))} = <b>${fmt(vc, 2)}</b>. <b>Desvia hoje:</b> ganha ${fmtA(R.pd)} agora e depois ${fmtA(R.pn)} para sempre: ${fmtA(R.pd)} + ${fr(fmtA(R.pn), fmtA(r, 3))} = <b>${fmt(vd, 2)}</b>.</p>
       <p>${vc >= vd ? '✅ Cooperar vale mais ⇒ seguir a estratégia gatilho é a melhor resposta à estratégia gatilho do outro ⇒ <b>há Equilíbrio de Nash em que ambos cooperam</b> (todo mês).' : '❌ Desviar vale mais: a cooperação não se sustenta com juros tão altos (o futuro pesa pouco).'}</p>
-      <p class="note">Valor presente de uma perpetuidade que começa no mês seguinte = π/r. Coopera-se enquanto r ≤ (π_coop − π_Nash)/(π_desvio − π_coop).</p>`;
+      <p class="note">Valor presente de uma perpetuidade que começa no mês seguinte = ${fr('π', 'r')}. Coopera-se enquanto r ≤ ${fr('π_coop − π_Nash', 'π_desvio − π_coop')}.</p>`;
   };
   el.addEventListener('click', e => { const b = e.target.closest('#gmPre [data-g]'); if (b) { gk = b.dataset.g; G = JSON.parse(JSON.stringify(GAMES[gk])); drawG(); } });
   el.addEventListener('change', e => { const k = e.target.dataset.pr; if (k) { G.p[+k[0]][+k[1]][+k[2]] = parseNum(e.target.value, 0); drawG(); } });
