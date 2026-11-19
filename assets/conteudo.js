@@ -675,7 +675,7 @@ const AULAS = [
   id: "Tema 8",
   cor: "#fb923c",
   titulo: "Falhas de Mercado",
-  cap: "Provas 2025 · Mankiw",
+  cap: "Provas 2025",
   tema: "Externalidades, perigo moral, seleção adversa, tragédia dos comuns e carona",
   lab: "falhas",
   resumo: `

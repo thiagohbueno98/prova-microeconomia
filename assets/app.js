@@ -68,7 +68,7 @@ const FIGLIB = {
   ef_tax: () => taxChart(100, 12.5, 12.5, { h: 270 }),
   mo_agua: () => monoChart(monoModel(56, 2.5, 100, 1, 0), 'livre', { profit: false, h: 280 }),
   mo_reg: () => monoChart(monoModel(56, 2.5, 100, 1, 0), 'pctm', { h: 280 }),
-  ol_prec: () => payTable(GAMES.precos, true),
+  ol_prec: () => `<div class="mtx-wrap">${payTable(GAMES.precos, true)}</div>`,
   fm_ext: () => extChart(120, 'neg', { h: 270 }),
   q_saude: () => monoChart(monoModel(10, 1 / 12, 0, 4, 0), 'livre', { xl: 'Q (milhões)', yl: 'p (mil R$)', h: 270 }),
   q_ext4: ext4
