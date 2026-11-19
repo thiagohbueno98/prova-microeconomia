@@ -164,8 +164,8 @@ function boloChart(CF = 154, opt = {}) {
   const T = boloTab(CF).slice(1);
   const curves = [
     { pts: T.map(r => [r.q, r.CM]), cls: 'm', lab: 'CM' },
-    { pts: T.map(r => [r.q, r.CTM]), cls: 'd', lab: 'CTM', labAt: [10, T[9].CTM], dy: 14 },
-    { pts: T.map(r => [r.q, r.CVM]), cls: 's', lab: 'CVM' }
+    { pts: T.map(r => [r.q, r.CTM]), cls: 'd', lab: 'CTM', labAt: [10, T[9].CTM], dy: -6 },
+    { pts: T.map(r => [r.q, r.CVM]), cls: 's', lab: 'CVM', labAt: [10, T[9].CVM], dy: 14 }
   ];
   if (opt.cfm) curves.push({ pts: T.map(r => [r.q, r.CFM]), cls: 'v', lab: 'CFM' });
   const minT = T.reduce((a, r) => r.CTM < a.CTM ? r : a), minV = T.reduce((a, r) => r.CVM < a.CVM ? r : a);
