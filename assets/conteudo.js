@@ -1,7 +1,9 @@
 // Conteúdo didático: resumos, flashcards, pegadinhas e formulário.
-// Base: slides de GED-72 (Marchon, "Introdução à Microeconomia", caps. 1–9; Mankiw) e as
-// provas de 2025 resolvidas. Blocos marcados "Complemento" vão além dos slides.
+// Base: slides de GED-72 (Marchon, "Introdução à Microeconomia", caps. 1–9; Mankiw), o livro
+// "Introdução à Microeconomia" (Marchon) e as provas de 2025 resolvidas.
+// Blocos marcados "Complemento" vão além dos slides; blocos marcados "Livro" vêm do livro-texto.
 // <div class="figslot" data-fig="nome"></div> é preenchido por FIGLIB (app.js).
+// Caixas: .sig = siglas do tema · .ler = como ler o gráfico · dl.sym = significado de cada símbolo.
 
 const AULAS = [
 /* ============================================================ TEMA 1 */
@@ -13,90 +15,159 @@ const AULAS = [
   tema: "Preço reserva, equilíbrio, excedentes, controle de preços e deslocamentos",
   lab: "oferta",
   resumo: `
-  <div class="tldr"><b>Em uma frase:</b> cada comprador tem um <b>preço reserva</b> (o máximo que pagaria) e cada vendedor também (o mínimo que aceitaria). Empilhando esses preços obtemos as curvas de <b>demanda</b> e <b>oferta</b>; o mercado se ajusta até o <b>preço de equilíbrio</b>, onde quantidade demandada = quantidade ofertada — e ninguém precisou conhecer o preço reserva dos outros.</div>
+  <div class="tldr"><b>A ideia central:</b> cada comprador tem um <b>preço reserva</b> (o máximo que aceitaria pagar) e cada vendedor também (o mínimo que aceitaria receber). Se colocarmos esses preços em ordem, obtemos as curvas de <b>demanda</b> e de <b>oferta</b>. O mercado se ajusta sozinho até o <b>preço de equilíbrio</b>, onde a quantidade que as pessoas querem comprar é igual à quantidade que querem vender — e ninguém precisou saber o preço reserva de ninguém.</div>
 
-  <section class="sec">
-    <h3><span class="n">1</span> Preço reserva e as curvas</h3>
-    <p>Pense em vender seu carro usado para comprar um zero: abaixo de certo valor “não compensa”. Esse valor mínimo é o seu <b>preço reserva</b> como vendedor. Para quem compra, o preço reserva é o <b>máximo</b> que está disposto a pagar.</p>
-    <div class="grid2">
-      <div class="box"><b class="c2">Curva de demanda</b><br>Indica a <b>quantidade demandada</b> para <b>cada preço</b>. Negativamente inclinada: quanto menor o preço, mais gente tem preço reserva acima dele.</div>
-      <div class="box"><b class="c1">Curva de oferta</b><br>Indica a <b>quantidade ofertada</b> para <b>cada preço</b>. Positivamente inclinada: quanto maior o preço, mais vendedores aceitam vender.</div>
-    </div>
-    <div class="grid2">
-      <div class="box"><b>Preço de equilíbrio (P*)</b>: preço em que a quantidade ofertada se iguala à demandada.</div>
-      <div class="box"><b>Quantidade de equilíbrio (Q*)</b>: a quantidade ofertada (= demandada) ao preço de equilíbrio.</div>
-    </div>
-    <p>Quem de fato compra no equilíbrio? Os compradores com preço reserva ≥ P*. Quem vende? Os vendedores com preço reserva ≤ P*.</p>
+  <section class="sec sig">
+    <h3>🔤 Siglas e símbolos deste tema</h3>
+    <dl class="sym">
+      <dt>P</dt><dd>Preço do bem (sempre no eixo <b>vertical</b> do gráfico).</dd>
+      <dt>Q</dt><dd>Quantidade (sempre no eixo <b>horizontal</b>).</dd>
+      <dt>D / Q<sub>d</sub></dt><dd>Demanda / quantidade demandada (quanto os compradores querem comprar a cada preço).</dd>
+      <dt>O (ou S) / Q<sub>s</sub></dt><dd>Oferta / quantidade ofertada (quanto os vendedores querem vender). “s” vem de <i>supply</i>, oferta em inglês.</dd>
+      <dt>P* e Q*</dt><dd>Preço e quantidade de <b>equilíbrio</b> (o asterisco indica “de equilíbrio”).</dd>
+      <dt>EC</dt><dd>Excedente do consumidor (o “lucro” de quem compra).</dd>
+      <dt>EP</dt><dd>Excedente do produtor (o “lucro” de quem vende).</dd>
+      <dt>ET</dt><dd>Excedente total = EC + EP.</dd>
+      <dt>L e w</dt><dd>No mercado de trabalho: L = quantidade de trabalho (<i>labor</i>) e w = salário (<i>wage</i>). L<sub>D</sub> = demanda das empresas; L<sub>O</sub> = oferta dos trabalhadores.</dd>
+      <dt>⇒, ↑, ↓</dt><dd>“Implica”, “sobe”, “cai”.</dd>
+    </dl>
   </section>
 
   <section class="sec">
-    <h3><span class="n">2</span> Excedentes: o ganho de quem participa</h3>
+    <h3><span class="n">1</span> Preço reserva: de onde vêm as curvas</h3>
+    <p>Pense em vender seu carro usado para comprar um zero: abaixo de certo valor “não compensa” vender. Esse valor mínimo é o seu <b>preço reserva como vendedor</b>. Para quem compra, o preço reserva é o <b>máximo</b> que está disposto a pagar — acima disso, prefere ficar sem o bem.</p>
+    <div class="ex"><b>Exemplo do livro: livros usados de Cálculo I.</b> Numa turma, cada aluno que quer comprar tem um preço máximo e cada aluno que quer vender tem um preço mínimo:
+      <table class="t sm"><thead><tr><th>Quantidade (nº do livro)</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th class="hl">7</th><th>8</th><th>9</th><th>10</th></tr></thead><tbody>
+        <tr><td><b class="c2">Preço reserva dos compradores</b> (demanda)</td><td>120</td><td>105</td><td>90</td><td>78</td><td>66</td><td>55</td><td><b>45</b></td><td>36</td><td>27</td><td>20</td></tr>
+        <tr><td><b class="c1">Preço reserva dos vendedores</b> (oferta)</td><td>15</td><td>20</td><td>25</td><td>30</td><td>35</td><td>40</td><td><b>45</b></td><td>51</td><td>58</td><td>70</td></tr></tbody></table>
+      <ul class="mini">
+        <li>Ordenamos os <b>compradores do que paga mais para o que paga menos</b>: isso é a curva de demanda (descendo).</li>
+        <li>Ordenamos os <b>vendedores do que aceita menos para o que aceita mais</b>: isso é a curva de oferta (subindo).</li>
+        <li>Se o preço estivesse em R$ 20, haveria 10 interessados em comprar e só 2 em vender: compradores disputariam os livros e o preço subiria. Se estivesse alto demais, sobrariam livros e o preço cairia.</li>
+        <li>O preço para de mudar em <b>R$ 45</b>, onde 7 querem comprar e 7 querem vender: <b>P* = 45 e Q* = 7</b>.</li>
+      </ul></div>
+    <div class="grid2">
+      <div class="box"><b class="c2">Curva de demanda</b><br>Mostra a <b>quantidade demandada</b> para <b>cada preço</b>. É <b>negativamente inclinada</b> (desce da esquerda para a direita): quanto menor o preço, mais gente tem preço reserva acima dele e entra no mercado.</div>
+      <div class="box"><b class="c1">Curva de oferta</b><br>Mostra a <b>quantidade ofertada</b> para <b>cada preço</b>. É <b>positivamente inclinada</b> (sobe): quanto maior o preço, mais vendedores acham que vale a pena vender.</div>
+    </div>
+    <div class="grid2">
+      <div class="box"><b>Preço de equilíbrio (P*)</b>: o preço em que <b>quantidade ofertada = quantidade demandada</b>.</div>
+      <div class="box"><b>Quantidade de equilíbrio (Q*)</b>: a quantidade comprada e vendida ao preço de equilíbrio.</div>
+    </div>
+    <p><b>Quem compra no equilíbrio?</b> Só quem tem preço reserva ≥ P* (não faz sentido quem valoriza o livro em R$ 10 pagar R$ 45). <b>Quem vende?</b> Só quem tem preço reserva ≤ P* (quem valoriza seu livro em R$ 90 não o vende por R$ 45).</p>
+  </section>
+
+  <section class="sec">
+    <h3><span class="n">2</span> Como achar o equilíbrio com equações</h3>
+    <p>Nas provas, demanda e oferta vêm como retas. O método é sempre o mesmo:</p>
+    <ol>
+      <li><b>Iguale</b> a quantidade demandada à ofertada: \\(Q_d(P) = Q_s(P)\\).</li>
+      <li><b>Resolva</b> para P ⇒ encontra P*.</li>
+      <li><b>Substitua</b> P* em qualquer uma das duas equações ⇒ encontra Q*. (Substitua na outra para conferir.)</li>
+    </ol>
+    <div class="extra"><b>Para desenhar uma reta de demanda ou oferta</b>, ache onde ela toca os eixos. Em \\(Q_d = 5{,}6 - 0{,}2P\\): com P = 0, Q = 5,6 (toca o eixo horizontal); com Q = 0, \\(P = \\dfrac{5{,}6}{0{,}2} = 28\\) (toca o eixo vertical). Esse ponto em que a demanda toca o eixo P é o <b>maior preço que alguém pagaria</b> (P<sub>máx</sub>). Na oferta \\(Q_s = -1 + 2P\\), Q = 0 quando P = 0,5: abaixo de R$ 0,50 ninguém vende (P<sub>mín</sub>).</div>
+  </section>
+
+  <section class="sec">
+    <h3><span class="n">3</span> Excedentes: o ganho de quem participa</h3>
+    <p><b class="c2">Excedente do consumidor</b> de uma pessoa = <b>preço reserva − preço pago</b>. No exemplo dos livros, quem pagaria até R$ 120 e pagou R$ 45 ganhou R$ 75 “de presente”.</p>
+    <p><b class="c1">Excedente do produtor</b> de uma pessoa = <b>preço recebido − preço reserva</b> (o custo dela). Quem aceitaria vender por R$ 15 e recebeu R$ 45 ganhou R$ 30.</p>
+    <p>Somando os ganhos de todos os participantes, os excedentes viram <b>áreas no gráfico</b>:</p>
     <div class="two"><div class="figslot" data-fig="do_eq"></div><div>
-      <p><b class="c2">Excedente do consumidor</b> = preço reserva − preço pago. Somando todos: <b>área abaixo da demanda e acima de P*</b> (aproximadamente).</p>
-      <p><b class="c1">Excedente do produtor</b> = preço recebido − preço reserva (custo). Somando: <b>área acima da oferta e abaixo de P*</b>.</p>
-      <p>Excedente total = EC + EP. (No Tema 5 veremos que o equilíbrio competitivo <b>maximiza</b> esse total.)</p>
+      <div class="ler"><b>📊 Como ler este gráfico (arroz)</b>
+        <ul>
+          <li>Eixo vertical: <b>P</b> (R$/kg). Eixo horizontal: <b>Q</b> (toneladas).</li>
+          <li>A reta <b class="c2">verde D</b> (demanda) desce; a reta <b class="c1">azul O</b> (oferta) sobe. Elas se cruzam no equilíbrio (Q*, P*).</li>
+          <li><b class="c2">Triângulo verde (EC)</b>: fica <b>abaixo da demanda e acima da linha de P*</b>. Cada “fatia” vertical é o ganho de um comprador (o quanto aceitaria pagar menos o que pagou).</li>
+          <li><b class="c1">Área azul (EP)</b>: fica <b>acima da oferta e abaixo da linha de P*</b>. Cada fatia é o ganho de um vendedor (o que recebeu menos seu custo).</li>
+          <li>Excedente total = EC + EP = toda a área entre as duas retas, de 0 até Q*.</li>
+        </ul></div>
     </div></div>
-    <div class="ex"><b>Questão 1 do livro (resolvida em aula).</b> Arroz: \\(Q_d = 5{,}6 - 0{,}2P\\) e \\(Q_s = -1 + 2P\\) (P em R$/kg, Q em toneladas).
+    <div class="ex"><b>Questão 1 do livro (resolvida em aula).</b>
+      <div class="qfull"><div class="qfull-h">📝 Questão na íntegra<span class="q-src">Livro, cap. 1</span></div>
+        <p class="q-txt">Suponha que as curvas de oferta e demanda por arroz em uma certa localidade, em um determinado intervalo de tempo, podem ser representadas pelas equações \\(Q_d = 5{,}6 - 0{,}2P\\) e \\(Q_s = -1 + 2P\\), onde P representa o preço do quilo do arroz em reais, Q representa a quantidade em toneladas e os subscritos d e s representam demanda e oferta, respectivamente. (Note que preços e quantidades não podem assumir valores negativos.)<br>(i) Qual o preço de equilíbrio neste mercado? (ii) Qual a quantidade de equilíbrio? (iii) No equilíbrio, qual o excedente do consumidor? (iv) No equilíbrio, qual o excedente do produtor?</p></div>
+      <b>Resolução:</b>
       <ol class="mini">
-        <li>Equilíbrio: \\(5{,}6 - 0{,}2P = -1 + 2P \\Rightarrow 6{,}6 = 2{,}2P \\Rightarrow P^* = 3\\) reais/kg.</li>
-        <li>\\(Q^* = -1 + 2(3) = 5\\) toneladas (= 5.000 kg). Confere na demanda: \\(5{,}6 - 0{,}6 = 5\\). ✔</li>
-        <li>EC: a demanda zera em P = 28 ⇒ \\(EC = \\dfrac{(28-3)\\times 5.000}{2} =\\) <b>R$ 62.500</b>.</li>
-        <li>EP: a oferta começa em P = 0,5 ⇒ \\(EP = \\dfrac{(3-0{,}5)\\times 5.000}{2} =\\) <b>R$ 6.250</b>.</li>
+        <li><b>Equilíbrio:</b> \\(5{,}6 - 0{,}2P = -1 + 2P \\Rightarrow 6{,}6 = 2{,}2P \\Rightarrow P^* = 3\\) reais/kg.</li>
+        <li><b>Quantidade:</b> \\(Q^* = -1 + 2(3) = 5\\) toneladas (= 5.000 kg). Conferindo na demanda: \\(5{,}6 - 0{,}6 = 5\\). ✔</li>
+        <li><b>EC:</b> é um triângulo com base Q* e altura (P<sub>máx</sub> − P*). A demanda zera em P = 28 ⇒ \\(EC = \\dfrac{(28-3)\\times 5.000}{2} =\\) <b>R$ 62.500</b>.</li>
+        <li><b>EP:</b> triângulo com base Q* e altura (P* − P<sub>mín</sub>). A oferta começa em P = 0,5 ⇒ \\(EP = \\dfrac{(3-0{,}5)\\times 5.000}{2} =\\) <b>R$ 6.250</b>.</li>
       </ol>
-      <span class="muted">Os excedentes são triângulos: <b>área = \\(\\dfrac{\\text{base} \\times \\text{altura}}{2}\\)</b>. Cuidado com unidades: P em R$/<b>kg</b> e Q em <b>toneladas</b> ⇒ converta Q para kg antes de calcular áreas em reais.</span></div>
+      <p class="f big">\\(EC = \\dfrac{(P_{\\max} - P^*)\\times Q^*}{2} \\qquad EP = \\dfrac{(P^* - P_{\\min})\\times Q^*}{2}\\)</p>
+      <span class="muted">Por que dividir por 2? Porque é a área de um <b>triângulo</b>: base × altura ÷ 2. <b>Cuidado com unidades:</b> P está em R$/<b>kg</b> e Q em <b>toneladas</b> ⇒ converta Q para kg antes, senão a resposta sai 1.000 vezes menor.</span></div>
   </section>
 
   <section class="sec">
-    <h3><span class="n">3</span> Controle de preços</h3>
+    <h3><span class="n">4</span> Controle de preços: teto e piso</h3>
+    <p>Às vezes o governo proíbe que o preço fique no equilíbrio. Há dois tipos de controle:</p>
     <div class="grid2">
-      <div><div class="figslot" data-fig="do_teto"></div><p><b>Preço-teto</b> abaixo de P* (ex.: P* = 8, teto = 5): ao preço de 5, Qd = 4.000 &gt; Qs = 1.000 ⇒ <b>excesso de demanda</b> (escassez) de 3.000. É o que aconteceu no <b>tabelamento do Plano Cruzado (1986)</b>: crise de abastecimento, filas, ágio.</p></div>
-      <div><div class="figslot" data-fig="do_piso"></div><p><b>Preço-piso</b> acima de P* (ex.: salário mínimo 12 com w* = 10): quantidade ofertada de trabalho 650 &gt; demandada 400 ⇒ <b>excesso de oferta</b> (desemprego) de 250. Salário mínimo 2026: R$ 1.621.</p></div>
+      <div><div class="figslot" data-fig="do_teto"></div>
+        <div class="ler"><b>📊 Preço-teto (preço máximo)</b><br>A linha laranja horizontal é o teto (5), <b>abaixo</b> de P* = 8. Nesse preço, olhe onde a linha corta cada curva: a demanda pede <b>Qd = 4.000</b>, mas a oferta só entrega <b>Qs = 1.000</b>. A distância entre os dois pontos é o <b>excesso de demanda</b> (escassez) = 4.000 − 1.000 = 3.000. Foi o que aconteceu no <b>tabelamento do Plano Cruzado (1986)</b>: prateleiras vazias, filas e ágio (cobrança “por fora”).</div></div>
+      <div><div class="figslot" data-fig="do_piso"></div>
+        <div class="ler"><b>📊 Preço-piso (preço mínimo)</b><br>Aqui o eixo vertical é o salário w e o horizontal é o trabalho L. O piso (salário mínimo 12) fica <b>acima</b> do salário de equilíbrio w* = 10. Nesse salário, os trabalhadores oferecem <b>650</b>, mas as empresas só querem contratar <b>400</b> ⇒ <b>excesso de oferta</b> de 250 = <b>desemprego</b>. (Salário mínimo 2026: R$ 1.621.)</div></div>
     </div>
-    <div class="trap"><b>Só é restritivo se “morder”:</b> teto <b>abaixo</b> de P* e piso <b>acima</b> de P*. Teto acima de P* ou piso abaixo de P* não mudam nada.</div>
-    <div class="ex"><b>Questão 4 do livro (V ou F).</b> \\(L_D = 1000 - 50w\\), \\(L_O = 200 + 50w\\). “Salário mínimo de R$ 10 gera excesso de demanda de 200 trabalhadores.”<br>
-      Equilíbrio: \\(1000 - 50w = 200 + 50w \\Rightarrow w^* = 8\\). Como 10 &gt; 8, o piso é restritivo: \\(L_D(10) = 500\\), \\(L_O(10) = 700\\) ⇒ <b>excesso de OFERTA</b> de 200. <b class="no">Falsa.</b><br><span class="muted">No mercado de trabalho, quem <b>oferta</b> são os trabalhadores e quem <b>demanda</b> são as empresas. Excesso de oferta = mais gente procurando emprego do que vagas (desemprego); excesso de demanda = vagas sobrando (falta de mão de obra).</span></div>
+    <div class="trap"><b>Só “morde” se estiver do lado certo:</b> teto só tem efeito se estiver <b>abaixo</b> de P*; piso só tem efeito se estiver <b>acima</b> de P*. Um teto acima de P* (ou piso abaixo) não muda nada: o mercado continua no equilíbrio, que já respeita a regra.</div>
+    <div class="extra"><b>Truque para não errar o nome:</b> “excesso de X” = tem <b>X sobrando</b>. Excesso de demanda: sobra gente querendo comprar (falta produto). Excesso de oferta: sobra produto (ou trabalhador) sem comprador.</div>
+    <div class="ex"><b>Questão 4 do livro (V ou F).</b>
+      <div class="qfull"><div class="qfull-h">📝 Questão na íntegra<span class="q-src">Livro, cap. 1</span></div>
+        <p class="q-txt">Suponha que as curvas de demanda e oferta de um tipo de trabalho em uma localidade, em um determinado intervalo de tempo, podem ser representadas pelas equações \\(L_D = 1000 - 50w\\) e \\(L_O = 200 + 50w\\), onde w representa o salário por hora, L<sub>D</sub> a quantidade demandada de trabalhadores e L<sub>O</sub> a quantidade ofertada de trabalhadores. Indique se a afirmação é verdadeira ou falsa: “Se o governo estabelece um salário-mínimo igual a 10 reais por hora, haverá um excesso de demanda de 200 trabalhadores.”</p></div>
+      <b>Resolução:</b><br>
+      <b>Passo 1 — equilíbrio:</b> \\(1000 - 50w = 200 + 50w \\Rightarrow 800 = 100w \\Rightarrow w^* = 8\\).<br>
+      <b>Passo 2 — o piso morde?</b> 10 &gt; 8, então sim.<br>
+      <b>Passo 3 — quantidades no piso:</b> \\(L_D(10) = 500\\) (vagas), \\(L_O(10) = 700\\) (candidatos) ⇒ sobram 200 trabalhadores ⇒ <b>excesso de OFERTA</b> de 200. <b class="no">Falsa.</b><br><span class="muted">No mercado de trabalho, quem <b>oferta</b> são os trabalhadores e quem <b>demanda</b> são as empresas. É o contrário do que a intuição costuma sugerir!</span></div>
     <p class="muted">Contexto histórico da inflação antes do Real (IPCA de 82,39% em março de 1990): máquinas de remarcar preços, compras do mês e freezers, overnight, crédito raro, Plano Collor e o confisco da poupança.</p>
   </section>
 
   <section class="sec">
-    <h3><span class="n">4</span> Variação na quantidade × variação na demanda</h3>
+    <h3><span class="n">5</span> Variação na quantidade × variação na demanda</h3>
+    <p>Esta distinção cai em toda prova. O gráfico só tem dois eixos: <b>o preço do próprio bem</b> e a <b>quantidade</b>. Então:</p>
+    <ul>
+      <li>Se muda o <b>preço do próprio bem</b>, você apenas <b>anda sobre a curva</b> (a curva continua no lugar).</li>
+      <li>Se muda <b>qualquer outra coisa</b> (renda, preço de outro bem, gosto…), não há eixo para mostrar isso: a única forma de representar é <b>deslocar a curva inteira</b>.</li>
+    </ul>
     <div class="figslot" data-fig="do_mov"></div>
+    <div class="ler"><b>📊 Como ler os dois gráficos</b><br><b>Esquerda:</b> uma só curva D; o ponto passa de 1 (preço P₁, alto) para 2 (preço P₂, mais baixo). A curva não se mexeu ⇒ <b>variação na quantidade demandada</b>.<br><b>Direita:</b> a curva tracejada D₁ é a antiga; a curva D₂ está mais à direita. <b>Ao mesmo preço P</b>, as pessoas agora querem comprar mais (seta horizontal) ⇒ <b>variação na demanda</b> (aumento da demanda).</div>
     <table class="t">
-      <thead><tr><th>O que mudou?</th><th>O que acontece</th><th>Nome correto</th></tr></thead>
+      <thead><tr><th>O que mudou?</th><th>O que acontece no gráfico</th><th>Nome correto</th></tr></thead>
       <tbody>
         <tr><td>O <b>preço do próprio bem</b></td><td>Movimento <b>ao longo</b> da curva</td><td>Variação na <b>quantidade</b> demandada (ou ofertada)</td></tr>
-        <tr><td>Renda, preço de outros bens, gostos, expectativas, nº de compradores</td><td>A curva de demanda <b>inteira se desloca</b></td><td>Variação na <b>demanda</b></td></tr>
-        <tr><td>Custo de insumos, tecnologia, nº de vendedores, clima, câmbio</td><td>A curva de oferta <b>inteira se desloca</b></td><td>Variação na <b>oferta</b></td></tr>
+        <tr><td>Renda, preço de outros bens, gostos, expectativas, nº de compradores</td><td>A curva de demanda <b>inteira se desloca</b> (direita = aumenta; esquerda = diminui)</td><td>Variação na <b>demanda</b></td></tr>
+        <tr><td>Custo de insumos, tecnologia, nº de vendedores, clima, câmbio</td><td>A curva de oferta <b>inteira se desloca</b> (direita = aumenta; esquerda = diminui)</td><td>Variação na <b>oferta</b></td></tr>
       </tbody>
     </table>
+    <div class="trap"><b>Cuidado com “oferta para cima”:</b> um custo maior desloca a oferta para <b>cima/esquerda</b> — isso é <b>redução</b> da oferta (a cada preço, vende-se menos; ou, para vender a mesma quantidade, exige-se preço maior).</div>
     <div class="grid2">
-      <div class="box"><b>Substitutos</b> (carro novo × usado): o preço de um <b>sobe</b> ⇒ a demanda do outro <b>sobe</b>.</div>
-      <div class="box"><b>Complementares</b> (carro × gasolina): o preço de um <b>sobe</b> ⇒ a demanda do outro <b>cai</b>.</div>
-      <div class="box"><b>Bem normal</b>: renda ↑ ⇒ demanda ↑.</div>
-      <div class="box"><b>Bem inferior</b>: renda ↑ ⇒ demanda ↓ (produtos de menor qualidade; motos para quem passa a comprar carro).</div>
+      <div class="box"><b>Substitutos</b> (carro novo × usado; café × chá): um substitui o outro. O preço de um <b>sobe</b> ⇒ a demanda pelo outro <b>sobe</b>.</div>
+      <div class="box"><b>Complementares</b> (carro × gasolina; impressora × tinta): usados juntos. O preço de um <b>sobe</b> ⇒ a demanda pelo outro <b>cai</b>.</div>
+      <div class="box"><b>Bem normal</b>: renda ↑ ⇒ demanda ↑ (a maioria dos bens).</div>
+      <div class="box"><b>Bem inferior</b>: renda ↑ ⇒ demanda ↓ (produtos de menor qualidade; motos para quem passa a poder comprar carro).</div>
     </div>
   </section>
 
   <section class="sec">
-    <h3><span class="n">5</span> Casos das aulas</h3>
+    <h3><span class="n">6</span> Casos das aulas: quando as duas curvas se mexem</h3>
     <div class="two"><div class="figslot" data-fig="do_usados"></div><div>
-      <p><b>Tarifas dos EUA</b> (carros europeus de 15% → 25%; 50% sobre aço e alumínio) encarecem o carro novo. No mercado de <b>usados</b>:</p>
-      <ul><li><b>Demanda ↑</b>: o usado fica mais atrativo frente ao novo (substitutos).</li>
-      <li><b>Oferta ↓</b>: fica menos interessante trocar o usado por um novo.</li></ul>
-      <p>Resultado: <b>P* sobe</b>; <b>Q* ambíguo</b> (depende de qual deslocamento é maior).</p>
+      <p><b>Tarifas dos EUA</b> (carros europeus de 15% → 25%; 50% sobre aço e alumínio) encarecem o carro novo. No mercado de carros <b>usados</b>:</p>
+      <ul><li><b>Demanda ↑</b> (curva para a direita): o usado fica mais atrativo frente ao novo, que encareceu (são substitutos).</li>
+      <li><b>Oferta ↓</b> (curva para a esquerda): menos gente troca o usado por um novo, então menos usados chegam à venda.</li></ul>
+      <p>Resultado: as duas mudanças empurram o <b>preço para cima</b> ⇒ <b>P* sobe com certeza</b>. Já a quantidade: a demanda maior puxa Q para cima e a oferta menor puxa para baixo ⇒ <b>Q* é ambíguo</b> (depende de qual deslocamento é maior).</p>
     </div></div>
+    <div class="extra"><b>Regra prática para dois deslocamentos:</b> analise cada um sozinho e anote o efeito em P e em Q. A variável em que os dois efeitos <b>concordam</b> tem resposta certa; aquela em que <b>discordam</b> é ambígua.</div>
     <div class="grid2">
-      <div class="box"><b>Valorização do dólar → carne bovina</b> (Questão 3 do livro): encarece insumos importados e torna a exportação mais atrativa (cada dólar vira mais reais) ⇒ <b>oferta interna ↓</b> ⇒ P* ↑ e Q* ↓. No livro, alternativa (b).</div>
-      <div class="box"><b>Desenrola Brasil 2.0</b>: limpa o nome de inadimplentes, abre novas compras a prazo ⇒ <b>demanda por duráveis ↑</b> ⇒ P* ↑, Q* ↑. Há aumento na <b>demanda</b> e aumento na <b>quantidade ofertada</b>.</div>
+      <div class="box"><b>Desenrola Brasil 2.0</b>: limpa o nome de inadimplentes, abre novas compras a prazo ⇒ <b>demanda por duráveis ↑</b> ⇒ P* ↑, Q* ↑. Há aumento na <b>demanda</b> e aumento na <b>quantidade ofertada</b> (a oferta não se mexeu: os vendedores só andaram sobre ela).</div>
       <div class="box"><b>Petróleo e Ormuz</b>: seguro de guerra dos navios de ~0,25% para até 12% do valor ⇒ custo maior ⇒ <b>oferta ↓</b>.</div>
       <div class="box"><b>Desemprego em 5,4%</b> (2º tri/2026, menor da série): mais renda ⇒ demanda ↑ para bens normais.</div>
     </div>
+    <div class="ex"><b>Questão 3 do livro — valorização do dólar e carne bovina</b>
+      <div class="qslot" data-q="Tema 1#8"></div>
+      <b>Resolução:</b> o dólar mais caro (i) encarece os insumos importados da pecuária e (ii) torna a exportação mais atrativa (cada dólar recebido lá fora vira mais reais). Pelas duas razões, a cada preço sobra menos carne para o mercado interno ⇒ <b>oferta interna ↓</b> (curva para a esquerda) ⇒ P* ↑ e Q* ↓ (E). A demanda não se mexe: o consumidor brasileiro não mudou. <span class="muted">(No livro, que tem 4 alternativas, esta é a letra b.)</span></div>
   </section>
 
   <section class="sec warn">
     <h3>✍️ Roteiro para questões de gráfico de demanda e oferta</h3>
     <ol>
-      <li>Considere <b>apenas</b> o impacto pedido (<i>ceteris paribus</i> = “todo o resto constante”).</li>
+      <li>Considere <b>apenas</b> o impacto pedido (<i>ceteris paribus</i> = expressão latina para “todo o resto constante”).</li>
+      <li>Pergunte: o fator mexe com <b>compradores</b> (demanda) ou com <b>vendedores/custos</b> (oferta)?</li>
       <li>Desenhe e <b>nomeie</b> eixos (Preço, Quantidade) e curvas (Demanda, Oferta).</li>
       <li>Desloque a curva afetada e use uma <b>seta</b> para mostrar a direção.</li>
       <li>Marque o ponto inicial (1) e final (2), com P₁, P₂, Q₁, Q₂ nos eixos.</li>
@@ -110,7 +181,8 @@ const AULAS = [
     "Teto só restringe se estiver abaixo de P*; piso só se estiver acima de P*.",
     "Quando demanda e oferta se deslocam juntas, uma das variáveis (P* ou Q*) fica ambígua.",
     "Dólar valorizado reduz a oferta INTERNA de carne (exportar fica mais atrativo e insumos encarecem): curva de oferta para a esquerda.",
-    "Converta unidades antes de calcular excedentes (R$/kg × toneladas)."
+    "Converta unidades antes de calcular excedentes (R$/kg × toneladas).",
+    "Custo maior desloca a oferta para CIMA/ESQUERDA: é uma REDUÇÃO da oferta, mesmo a curva “subindo”."
   ],
   cards: [
     ["Preço reserva", "Para o comprador: o máximo que está disposto a pagar. Para o vendedor: o mínimo que aceita receber."],
@@ -125,7 +197,8 @@ const AULAS = [
     ["Demanda × quantidade demandada", "Preço do próprio bem muda ⇒ quantidade demandada (ao longo). Outro fator muda ⇒ demanda (desloca)."],
     ["Arroz: Qd = 5,6 − 0,2P; Qs = −1 + 2P", "P* = 3 R$/kg; Q* = 5 t; EC = R$ 62.500; EP = R$ 6.250."],
     ["Demanda ↑ e oferta ↓ ao mesmo tempo", "P* sobe com certeza; Q* é ambíguo."],
-    ["Ceteris paribus", "“Todo o resto constante”: analisa-se só o efeito do fator pedido."]
+    ["Ceteris paribus", "“Todo o resto constante”: analisa-se só o efeito do fator pedido."],
+    ["Livros de Cálculo (livro)", "P* = 45 e Q* = 7: só compra quem tem preço reserva ≥ 45 e só vende quem tem preço reserva ≤ 45."]
   ]
 },
 /* ============================================================ TEMA 2 */
@@ -137,64 +210,141 @@ const AULAS = [
   tema: "Elasticidade-preço, renda, cruzada e da oferta; regressão em log",
   lab: "elast",
   resumo: `
-  <div class="tldr"><b>Em uma frase:</b> elasticidade mede <b>quão sensível</b> uma variável é a outra em <b>termos percentuais</b>: \\(\\varepsilon = \\dfrac{\\Delta\\%Q}{\\Delta\\%P}\\). Convenção do curso: variação % = \\(\\dfrac{\\text{final} - \\text{inicial}}{\\text{inicial}}\\). Por ser adimensional, a elasticidade permite comparar países, moedas e unidades — coisa que a inclinação (derivada) não permite.</div>
+  <div class="tldr"><b>A ideia central:</b> elasticidade mede <b>o quanto uma variável reage quando outra muda</b>, sempre em <b>porcentagem</b>. A pergunta que ela responde é: “se o preço subir <b>1%</b>, a quantidade cai <b>quantos %</b>?”. Por ser uma razão entre porcentagens, ela <b>não tem unidade</b> — por isso dá para comparar gasolina no Brasil (litros, reais) com gasolina nos EUA (galões, dólares).</div>
 
-  <section class="sec">
-    <h3><span class="n">1</span> Por que não usar a inclinação?</h3>
-    <p>“Sempre que o preço da gasolina sobe R$ 2, a quantidade cai mil litros.” Em dólares (1 real = 0,2 dólar): “sobe US$ 0,40, cai mil litros” ⇒ “sobe US$ 1, cai 2.500 litros”. <b>O número muda com as unidades</b>. Já a variação percentual não muda:</p>
-    <p class="f big">\\(\\dfrac{12 - 10}{10} = \\dfrac{12\\times 0{,}2 - 10\\times 0{,}2}{10 \\times 0{,}2} = 20\\%\\)</p>
+  <section class="sec sig">
+    <h3>🔤 Siglas e símbolos deste tema</h3>
+    <dl class="sym">
+      <dt>ε (épsilon)</dt><dd>Letra grega usada para a elasticidade. Às vezes aparece com índice: ε<sub>d</sub> (demanda), ε<sub>R</sub> (renda), ε<sub>AB</sub> (cruzada).</dd>
+      <dt>Δ (delta)</dt><dd>“Variação de”: ΔQ = Q<sub>final</sub> − Q<sub>inicial</sub>.</dd>
+      <dt>Δ%Q</dt><dd>Variação <b>percentual</b> de Q: \\(\\dfrac{\\Delta Q}{Q_{\\text{inicial}}}\\times 100\\%\\).</dd>
+      <dt>|ε|</dt><dd>Valor absoluto (o número sem o sinal). |−0,3| = 0,3. Usamos para classificar elástica/inelástica.</dd>
+      <dt>dQ/dP</dt><dd>Derivada de Q em relação a P (a inclinação da curva num ponto, quando a variação é muito pequena).</dd>
+      <dt>ln</dt><dd>Logaritmo natural (neperiano), na base e ≈ 2,718.</dd>
+      <dt>MQO</dt><dd>Mínimos Quadrados Ordinários: o método estatístico que encontra a “melhor reta” por um conjunto de pontos (regressão).</dd>
+      <dt>α, β (alfa, beta)</dt><dd>Coeficientes estimados numa regressão: α é o intercepto, β é a inclinação.</dd>
+      <dt>CP / LP</dt><dd>Curto prazo / longo prazo.</dd>
+      <dt>RT</dt><dd>Receita total = P × Q (quanto os vendedores faturam).</dd>
+    </dl>
   </section>
 
   <section class="sec">
-    <h3><span class="n">2</span> Elasticidade-preço da demanda</h3>
+    <h3><span class="n">1</span> Por que não usar simplesmente a inclinação?</h3>
+    <p>“Sempre que o preço da gasolina sobe R$ 2, a quantidade cai mil litros” ⇒ \\(\\dfrac{\\Delta Q}{\\Delta P} = \\dfrac{1.000 \\text{ litros}}{2 \\text{ reais}} = 500\\) litros por real.</p>
+    <p>Agora meça em dólares (1 real = 0,2 dólar): R$ 1 = US$ 0,20, então “sobe US$ 0,20, cai 500 litros” ⇒ “sobe US$ 1, cai <b>2.500</b> litros”. <b>O número mudou só porque trocamos a moeda!</b> A inclinação depende das unidades.</p>
+    <p>A variação <b>percentual</b> não tem esse problema, porque a unidade aparece em cima e embaixo e se cancela:</p>
+    <p class="f big">\\(\\dfrac{12 - 10}{10} = \\dfrac{12\\times 0{,}2 - 10\\times 0{,}2}{10 \\times 0{,}2} = 20\\%\\)</p>
+    <p class="muted">Preço de R$ 10 para R$ 12 é +20% — e de US$ 2,00 para US$ 2,40 também é +20%.</p>
+  </section>
+
+  <section class="sec">
+    <h3><span class="n">2</span> Elasticidade-preço da demanda: a fórmula, peça por peça</h3>
     <p class="f big">\\(\\varepsilon = \\dfrac{\\Delta\\%Q_d}{\\Delta\\%P} = \\dfrac{\\tfrac{\\Delta Q}{Q}}{\\tfrac{\\Delta P}{P}} = \\dfrac{\\Delta Q}{\\Delta P}\\cdot\\dfrac{P}{Q} \\;\\xrightarrow{\\;\\Delta \\to 0\\;}\\; \\dfrac{dQ}{dP}\\cdot\\dfrac{P}{Q}\\)</p>
-    <div class="ex"><b>Gasolina (FMI, 2013):</b> preço +20% ⇒ quantidade −6% ⇒ \\(\\varepsilon = \\dfrac{-6\\%}{20\\%} = -0{,}3\\).<br><b>Leitura correta:</b> “um aumento de <b>1%</b> no preço causa uma queda de <b>0,3%</b> na quantidade demandada”.</div>
+    <dl class="sym">
+      <dt>1ª forma</dt><dd>\\(\\dfrac{\\Delta\\%Q_d}{\\Delta\\%P}\\): a definição. Use quando o enunciado já dá as porcentagens.</dd>
+      <dt>2ª/3ª forma</dt><dd>Mesma coisa reorganizada (dividir por uma fração = multiplicar pelo inverso). Use quando o enunciado dá preços e quantidades antes e depois.</dd>
+      <dt>4ª forma</dt><dd>\\(\\dfrac{dQ}{dP}\\cdot\\dfrac{P}{Q}\\): elasticidade <b>num ponto</b>. Use quando há a <b>equação</b> da demanda: derive Q em relação a P e multiplique por P/Q naquele ponto.</dd>
+    </dl>
+    <p><b>Convenção do curso:</b> variação % = \\(\\dfrac{\\text{final} - \\text{inicial}}{\\text{inicial}}\\) (a base é o valor <b>inicial</b>).</p>
+    <p><b>Por que ε é negativa?</b> Porque preço e quantidade demandada andam em sentidos opostos: se Δ%P é positivo, Δ%Q é negativo.</p>
+    <div class="ex"><b>Exemplo do livro (gasolina):</b> \\(Q_D = 9 - 0{,}5p\\) (mil litros). O preço sobe de R$ 8 para R$ 10.
+      <ol class="mini">
+        <li>Quantidades: Q(8) = 9 − 4 = 5 e Q(10) = 9 − 5 = 4.</li>
+        <li>\\(\\Delta\\%Q = \\dfrac{4-5}{5} = -20\\%\\) e \\(\\Delta\\%P = \\dfrac{10-8}{8} = +25\\%\\).</li>
+        <li>\\(\\varepsilon = \\dfrac{-20\\%}{25\\%} = -0{,}8\\).</li>
+        <li>Pela fórmula do ponto, em P = 8: \\(\\dfrac{dQ}{dP} = -0{,}5\\) ⇒ \\(\\varepsilon = -0{,}5\\times\\dfrac{8}{5} = -0{,}8\\). ✔ Mesmo resultado.</li>
+      </ol>
+      <b>Leitura:</b> “cada 1% de aumento no preço reduz a quantidade demandada em 0,8%”.</div>
+    <div class="ex"><b>Gasolina (FMI, 2013):</b> preço +20% ⇒ quantidade −6% ⇒ \\(\\varepsilon = \\dfrac{-6\\%}{20\\%} = -0{,}3\\).<br><b>Leitura correta:</b> “um aumento de <b>1%</b> no preço causa uma queda de <b>0,3%</b> na quantidade demandada”. <span class="no">Errado:</span> “queda de 0,3 litro” ou “queda de 0,3 por real”.</div>
+    <h4>Classificação (sempre pelo valor absoluto)</h4>
     <table class="t">
-      <thead><tr><th>Valor</th><th>Nome</th><th>Significado</th></tr></thead>
+      <thead><tr><th>Valor</th><th>Nome</th><th>Significado</th><th>Exemplo</th></tr></thead>
       <tbody>
-        <tr><td>\\(|\\varepsilon| &lt; 1\\)</td><td><b>Inelástica</b></td><td>|Δ%Q| &lt; |Δ%P|: a quantidade reage pouco (gasolina no curto prazo, −0,3)</td></tr>
-        <tr><td>\\(|\\varepsilon| = 1\\)</td><td>Unitária</td><td>Mesma variação percentual</td></tr>
-        <tr><td>\\(|\\varepsilon| &gt; 1\\)</td><td><b>Elástica</b></td><td>|Δ%Q| &gt; |Δ%P|: a quantidade reage muito</td></tr>
+        <tr><td>\\(|\\varepsilon| = 0\\)</td><td>Perfeitamente inelástica</td><td>A quantidade não reage ao preço. Curva <b>vertical</b>.</td><td>Remédio de pressão para um hipertenso (até certo ponto)</td></tr>
+        <tr><td>\\(|\\varepsilon| &lt; 1\\)</td><td><b>Inelástica</b></td><td>|Δ%Q| &lt; |Δ%P|: a quantidade reage <b>pouco</b>.</td><td>Gasolina no CP (−0,3), refrigerantes, tabaco (−0,5)</td></tr>
+        <tr><td>\\(|\\varepsilon| = 1\\)</td><td>Unitária</td><td>Mesma variação percentual.</td><td>—</td></tr>
+        <tr><td>\\(|\\varepsilon| &gt; 1\\)</td><td><b>Elástica</b></td><td>|Δ%Q| &gt; |Δ%P|: a quantidade reage <b>muito</b>.</td><td>Passagens aéreas internacionais (EUA: −4)</td></tr>
+        <tr><td>\\(|\\varepsilon| \\to \\infty\\)</td><td>Perfeitamente elástica</td><td>Qualquer aumento de preço zera as vendas. Curva <b>horizontal</b>.</td><td>Batatas de <b>um</b> pequeno produtor entre milhares</td></tr>
       </tbody>
     </table>
+    <div class="extra"><b>Memorize assim:</b> “<b>e</b>lástica” = <b>e</b>stica muito (reage mais que o preço). “<b>In</b>elástica” = quase não estica.</div>
     <h4>O que torna a demanda mais elástica?</h4>
     <ul>
-      <li><b>Mais substitutos próximos</b> (Questão 6 do livro, item b). Os morangos de <b>um produtor</b> têm demanda muito mais elástica que a demanda de mercado (os dos vizinhos são idênticos — substitutos perfeitos, o consumidor tanto faz entre eles — item c).</li>
-      <li><b>Mais tempo</b>: no longo prazo as pessoas se ajustam (carros menores e mais eficientes) ⇒ demanda por gasolina mais elástica no LP (item a).</li>
+      <li><b>Mais substitutos próximos</b>: se há alternativas, o consumidor foge quando o preço sobe. Os morangos de <b>um produtor</b> têm demanda muito mais elástica que a demanda de mercado: os dos vizinhos são idênticos — substitutos perfeitos.</li>
+      <li><b>Mais tempo</b>: no longo prazo as pessoas se ajustam (compram carros menores e mais econômicos) ⇒ demanda por gasolina mais elástica no LP.</li>
       <li>Bens supérfluos (de luxo) tendem a ser mais elásticos que necessidades. <span class="tag">Complemento</span></li>
     </ul>
+    <div class="ex"><b>Questão 6 do livro (versão do banco, com 5 alternativas)</b>
+      <div class="qslot" data-q="Tema 2#4"></div>
+      <b>Resolução:</b> A, B e C são exatamente os três fatores acima (tempo, substitutos, produtor individual) — todas corretas. E também é correta: elasticidade é % ÷ %, sem unidade. A errada é a <b>D</b>: em Y = a + bX, b é uma <b>inclinação</b> (depende das unidades); para obter elasticidade é preciso estimar ln Y = α + β ln X (seção 4).</div>
   </section>
 
   <section class="sec">
     <h3><span class="n">3</span> A família das elasticidades</h3>
-    <p>De forma geral, elasticidade de Y em relação a X = \\(\\dfrac{\\Delta\\%Y}{\\Delta\\%X}\\).</p>
+    <p>A ideia vale para quaisquer duas variáveis: elasticidade de Y em relação a X = \\(\\dfrac{\\Delta\\%Y}{\\Delta\\%X}\\) = “quantos % Y muda quando X muda 1%”. O <b>sinal</b> é o que mais cai em prova:</p>
     <div class="grid2">
-      <div class="box"><b class="c1">Elasticidade-preço da oferta</b><br>\\(\\dfrac{\\Delta\\%Q_s}{\\Delta\\%P}\\) (positiva).</div>
-      <div class="box"><b class="c3">Elasticidade-preço cruzada</b><br>\\(\\dfrac{\\Delta\\%Q_A}{\\Delta\\%P_B}\\). &gt; 0: substitutos; &lt; 0: complementares.</div>
-      <div class="box"><b class="c2">Elasticidade-renda</b><br>\\(\\dfrac{\\Delta\\%Q}{\\Delta\\%\\text{Renda}}\\). &gt; 0 normal (gasolina no LP: 0,88); &gt; 1 luxo (FMI: 2,5); &lt; 0 inferior.</div>
-      <div class="box"><b class="c4">Elasticidade intergeracional da renda</b><br>Atlas da Mobilidade Social: 0,5 ⇒ renda dos pais 100% maior ⇒ filhos ganham, em média, 50% mais (leitura do slide, pela aproximação 100% × 0,5; o valor exato com elasticidade constante seria 2<sup>0,5</sup> − 1 ≈ 41%). Desigualdade de oportunidades.</div>
+      <div class="box"><b class="c1">Elasticidade-preço da oferta</b>
+        <span class="f">\\(\\dfrac{\\Delta\\%Q_s}{\\Delta\\%P}\\)</span>Positiva: preço maior ⇒ vendedores ofertam mais.</div>
+      <div class="box"><b class="c3">Elasticidade-preço cruzada</b>
+        <span class="f">\\(\\varepsilon_{AB} = \\dfrac{\\Delta\\%Q_A}{\\Delta\\%P_B}\\)</span>Quanto a demanda por A muda quando o <b>preço de B</b> muda.<br>&gt; 0: <b>substitutos</b> (P do café ↑ ⇒ compram mais chá).<br>&lt; 0: <b>complementares</b> (P da gasolina ↑ ⇒ compram menos carros).</div>
+      <div class="box"><b class="c2">Elasticidade-renda</b>
+        <span class="f">\\(\\varepsilon_R = \\dfrac{\\Delta\\%Q}{\\Delta\\%\\text{Renda}}\\)</span>&gt; 0: bem <b>normal</b> (gasolina no LP: 0,88).<br>&gt; 1: bem de <b>luxo</b> (a demanda cresce mais que a renda; FMI: 2,5).<br>&lt; 0: bem <b>inferior</b>.</div>
+      <div class="box"><b class="c4">Elasticidade intergeracional da renda</b>
+        <span class="f">\\(\\dfrac{\\Delta\\%\\text{renda do filho}}{\\Delta\\%\\text{renda do pai}}\\)</span>Atlas da Mobilidade Social: 0,5 ⇒ pais com renda 100% maior ⇒ filhos ganham, em média, ~50% mais (leitura do slide, pela aproximação 100% × 0,5). No livro, a estimativa para o Brasil é 0,85 (EUA 0,52; Reino Unido 0,31). <b>Quanto maior, menor a mobilidade social</b> (mais a origem determina o destino).</div>
     </div>
-    <div class="trap"><b>Pegadinha de prova (2025):</b> “elasticidade-<b>renda</b> das canetinhas emagrecedoras = 0,25 ⇒ preço +1% reduz quantidade em 0,25%” é <b>FALSA</b>: é renda +1% ⇒ quantidade +0,25%. E “ε-preço do café = −0,25 ⇒ preço +1% reduz a quantidade em 0,25 <b>unidades</b>” também é <b>FALSA</b>: são 0,25 <b>%</b>.</div>
+    <div class="trap"><b>Pegadinhas das provas de 2025:</b> as duas questões abaixo testam a <b>leitura</b> da elasticidade — qual variável mudou (preço ou renda?) e em que unidade (% ou unidades?).</div>
+    <div class="ex"><b>Prova 2025 (tarde) — canetinhas emagrecedoras</b>
+      <div class="qslot" data-q="Tema 2#2"></div>
+      <b>Resolução:</b> a palavra-chave é <b>renda</b>: \\(\\varepsilon_R = \\dfrac{\\Delta\\%Q}{\\Delta\\%\\text{Renda}} = 0{,}25\\) ⇒ renda +1% ⇒ quantidade +0,25% (A). A alternativa B troca renda por preço (foi a afirmação FALSA da prova). Como 0 &lt; 0,25 &lt; 1, é bem <b>normal</b>, não inferior (precisaria ser &lt; 0) nem de luxo (precisaria ser &gt; 1).</div>
+    <div class="ex"><b>Prova 2025 (manhã) — café</b>
+      <div class="qslot" data-q="Tema 2#0"></div>
+      <b>Resolução:</b> elasticidade é <b>% sobre %</b>: preço +1% ⇒ quantidade −0,25% (E). “0,25 unidade” (A) e “US$ 1” (B) misturam unidades com porcentagens. Como |−0,25| &lt; 1, a demanda é <b>inelástica</b>, então C também está errada.</div>
   </section>
 
   <section class="sec">
-    <h3><span class="n">4</span> Medindo elasticidades: regressão em log</h3>
-    <p><b>Mínimos Quadrados Ordinários (MQO)</b>: a reta que melhor representa a relação entre duas variáveis, no sentido de minimizar a <b>soma dos quadrados dos erros</b> (distâncias verticais entre a reta e os pontos — elevamos ao quadrado para que erros positivos e negativos não se cancelem).</p>
+    <h3><span class="n">4</span> Medindo elasticidades na prática: regressão em log</h3>
+    <p><b>Regressão por MQO</b> (Mínimos Quadrados Ordinários): dado um monte de pontos (x, y) — por exemplo, renda do pai e renda do filho de várias pessoas —, MQO encontra a reta que passa “o mais perto possível” de todos. “Mais perto” quer dizer: <b>minimiza a soma dos quadrados dos erros</b>, onde erro = distância vertical entre cada ponto e a reta. Elevamos ao quadrado para que erros positivos (ponto acima da reta) e negativos (abaixo) não se cancelem.</p>
     <div class="grid2">
-      <div class="box"><b>y = a + b·x</b><br>b = inclinação (R$ por R$, litros por real…). <b class="no">Não é elasticidade.</b></div>
-      <div class="box"><b>ln(y) = α + β·ln(x)</b><br>β = <b class="ok">elasticidade</b> de y em relação a x.</div>
+      <div class="box"><b>y = a + b·x</b><br>b = inclinação = “quantas <b>unidades</b> y muda quando x muda <b>1 unidade</b>” (reais por real, litros por real…). <b class="no">Não é elasticidade.</b></div>
+      <div class="box"><b>ln(y) = α + β·ln(x)</b><br>Aplica-se o logaritmo nas duas variáveis antes de rodar a regressão. Aí β = “quantos <b>%</b> y muda quando x muda <b>1%</b>” = <b class="ok">elasticidade</b>.</div>
     </div>
-    <div class="ex"><b>Demonstração (questão de prova):</b> \\(\\ln y = \\alpha + \\beta \\ln x \\Rightarrow y = e^{\\alpha + \\beta \\ln x}\\). Pela regra da cadeia: \\(\\dfrac{dy}{dx} = e^{\\alpha + \\beta\\ln x}\\cdot \\beta \\cdot \\dfrac{1}{x} = y\\cdot\\dfrac{\\beta}{x}\\) ⇒ \\(\\dfrac{dy}{dx}\\cdot\\dfrac{x}{y} = \\beta\\). ∎</div>
-    <p>Quando o enunciado fala em efeitos <b>percentuais</b> (“10% mais diversidade ⇒ 4% mais produtividade”), os pesquisadores devem aplicar o <b>logaritmo neperiano</b> nas variáveis antes da regressão.</p>
-    <div class="trap"><b>Viés de variável omitida (questão de prova):</b> salário = a + b·escolaridade. A <b>habilidade</b> aumenta o salário (mais produtivo) e também a escolaridade (estudar é mais fácil para quem é hábil). Como a habilidade ficou de fora, o b estimado captura parte do efeito dela ⇒ <b>viés positivo</b> (superestima o efeito da educação). Mesmo que estudar não afetasse o salário, veríamos correlação positiva!</div>
+    <div class="ex"><b>Demonstração — por que β é a elasticidade</b> (cobrada em prova como justificativa):
+      <ol class="mini">
+        <li>Comece de \\(\\ln y = \\alpha + \\beta \\ln x\\). Aplique a exponencial dos dois lados (e<sup>ln y</sup> = y): \\(y = e^{\\alpha + \\beta \\ln x}\\).</li>
+        <li>Derive y em relação a x pela <b>regra da cadeia</b> (derivada de fora × derivada de dentro): \\(\\dfrac{dy}{dx} = \\underbrace{e^{\\alpha + \\beta\\ln x}}_{=\\,y}\\cdot \\beta \\cdot \\dfrac{1}{x} = y\\cdot\\dfrac{\\beta}{x}\\).</li>
+        <li>Multiplique os dois lados por \\(\\dfrac{x}{y}\\): \\(\\dfrac{dy}{dx}\\cdot\\dfrac{x}{y} = \\beta\\).</li>
+        <li>O lado esquerdo é exatamente a fórmula da elasticidade (derivada × variável/variável). ∎</li>
+      </ol></div>
+    <div class="ex"><b>Questão de prova — diversidade e produtividade</b>
+      <div class="qslot" data-q="Tema 2#11"></div>
+      <b>Resolução:</b> o resultado está em <b>porcentagens</b> (10% ⇒ 4%), ou seja, é uma elasticidade (≈ 0,4). Pela demonstração acima, para o coeficiente sair como elasticidade é preciso aplicar o <b>logaritmo neperiano</b> nas variáveis antes da regressão (A). MQO em nível (E) dá a inclinação, em unidades.</div>
+    <div class="trap"><b>Viés de variável omitida:</b> salário = a + b·escolaridade. A <b>habilidade</b> aumenta o salário (pessoa mais produtiva) e também a escolaridade (estudar é mais fácil para quem é hábil). Como a habilidade ficou fora da regressão, o b estimado “pega carona” no efeito dela ⇒ <b>viés positivo</b> (superestima o efeito da educação). Mesmo que estudar não afetasse em nada o salário, veríamos correlação positiva entre os dois!</div>
+    <div class="ex"><b>Questão de prova — viés de variável omitida</b>
+      <div class="qslot" data-q="Tema 2#12"></div>
+      <b>Resolução:</b> a variável omitida (habilidade) tem correlação <b>positiva</b> com a escolaridade e efeito <b>positivo</b> no salário ⇒ + × + = viés <b>positivo</b>: b superestima o efeito da escolaridade (D). Também não é elasticidade (E), porque a regressão está em nível, não em log.</div>
   </section>
 
-  <section class="sec art">
-    <h3><span class="n">5</span> Elasticidade e receita <span class="tag">Complemento</span></h3>
+  <section class="sec">
+    <h3><span class="n">5</span> Elasticidade e receita <span class="tag">Livro</span></h3>
+    <p>Receita total do setor: \\(RT = P \\times Q_D(P)\\). Se o preço sobe, cada unidade rende mais, mas vendem-se menos unidades. Qual efeito ganha? Derivando (regra do produto):</p>
+    <p class="f big">\\(\\dfrac{dRT}{dP} = Q_D + P\\,\\dfrac{dQ_D}{dP} = Q_D\\Big(1 + \\dfrac{dQ_D}{dP}\\cdot\\dfrac{P}{Q_D}\\Big) = Q_D\\,(1 + \\varepsilon) = Q_D\\,(1 - |\\varepsilon|)\\)</p>
+    <ul>
+      <li>Demanda <b>inelástica</b> (|ε| &lt; 1): o parêntese é positivo ⇒ <b>subir o preço aumenta a receita</b> (a quantidade cai proporcionalmente menos que o aumento de preço).</li>
+      <li>Demanda <b>elástica</b> (|ε| &gt; 1): o parêntese é negativo ⇒ <b>subir o preço reduz a receita</b>.</li>
+    </ul>
+    <div class="ex"><b>Conferindo com números</b> (gasolina, \\(Q = 9 - 0{,}5P\\)):<br>
+      Trecho inelástico: P de 4 para 5 ⇒ Q de 7 para 6,5 ⇒ RT de 28 para <b>32,5</b> (subiu).<br>
+      Trecho elástico: P de 14 para 16 ⇒ Q de 2 para 1 ⇒ RT de 28 para <b>16</b> (caiu).</div>
+    <div class="ex"><b>Caso do livro — preço mínimo do álcool na Irlanda (2018):</b> a meta era reduzir o consumo, mas os produtores comemoraram. Por quê? A demanda por bebida é <b>inelástica</b> ⇒ preço maior = receita maior; e vendendo menos, o custo cai. Um <b>imposto</b> reduziria o consumo do mesmo jeito, mas o dinheiro extra iria para o governo, não para o setor.</div>
     <div class="two"><div class="figslot" data-fig="el_linear"></div><div>
-      <p>Numa demanda linear a <b>inclinação é constante, mas a elasticidade não</b>: \\(\\varepsilon = -b\\,\\dfrac{P}{Q}\\) vale 0 onde a reta toca o eixo Q (P = 0), tende a −∞ onde toca o eixo P (Q = 0) e passa por −1 no ponto médio.</p>
-      <ul><li>Demanda <b>elástica</b>: subir o preço <b>reduz</b> a receita P·Q.</li><li>Demanda <b>inelástica</b>: subir o preço <b>aumenta</b> a receita.</li></ul>
-      <p class="muted">Útil no Tema 6: o monopolista nunca opera no trecho inelástico (lá, a RM é negativa).</p>
+      <div class="ler"><b>📊 Como ler este gráfico</b><br>É uma única reta de demanda. A <b>inclinação é a mesma</b> em todos os pontos, mas a <b>elasticidade não</b>: \\(\\varepsilon = \\dfrac{dQ}{dP}\\cdot\\dfrac{P}{Q}\\) depende de P/Q.
+        <ul>
+          <li><b class="no">Metade de cima (vermelha)</b>: P alto e Q baixo ⇒ P/Q grande ⇒ <b>|ε| &gt; 1</b> (elástica).</li>
+          <li><b>Ponto médio</b>: |ε| = 1.</li>
+          <li><b class="c1">Metade de baixo (azul)</b>: P baixo e Q alto ⇒ <b>|ε| &lt; 1</b> (inelástica).</li>
+          <li>Nas pontas: ε = 0 onde a reta toca o eixo Q (P = 0) e |ε| → ∞ onde toca o eixo P (Q = 0).</li>
+        </ul></div>
+      <p class="muted">Útil no Tema 6: o monopolista nunca opera no trecho inelástico (lá, subir o preço aumentaria a receita <i>e</i> reduziria o custo).</p>
     </div></div>
   </section>`,
   pegadinhas: [
@@ -204,7 +354,9 @@ const AULAS = [
     "Em y = a + bx, b NÃO é elasticidade; só em ln y = α + β ln x.",
     "A demanda de um único produtor é MAIS elástica que a de mercado.",
     "Demanda por gasolina é mais elástica no LONGO prazo.",
-    "Inclinação depende das unidades; elasticidade é adimensional."
+    "Inclinação depende das unidades; elasticidade é adimensional.",
+    "Numa demanda linear a inclinação é constante, mas a elasticidade muda ao longo da reta.",
+    "Demanda inelástica: subir o preço AUMENTA a receita."
   ],
   cards: [
     ["Elasticidade-preço da demanda", "\\(\\varepsilon = \\dfrac{\\Delta\\%Q}{\\Delta\\%P} = \\dfrac{dQ}{dP}\\cdot\\dfrac{P}{Q}\\)"],
@@ -218,7 +370,10 @@ const AULAS = [
     ["MQO", "Escolhe a reta que minimiza a soma dos quadrados dos erros (distâncias verticais)."],
     ["Viés por habilidade omitida", "Habilidade ↑ salário e ↑ escolaridade ⇒ b de salário × escolaridade fica superestimado (viés positivo)."],
     ["Elasticidade intergeracional 0,5", "Pais com renda 100% maior ⇒ filhos com renda, em média, ~50% maior (aproximação usada no slide)."],
-    ["Demanda mais elástica quando…", "Há mais substitutos próximos, mais tempo para ajuste, é o produto de um produtor individual."]
+    ["Demanda mais elástica quando…", "Há mais substitutos próximos, mais tempo para ajuste, é o produto de um produtor individual."],
+    ["Elasticidade e receita", "\\(\\dfrac{dRT}{dP} = Q(1 - |\\varepsilon|)\\): inelástica ⇒ preço ↑ aumenta a receita; elástica ⇒ reduz."],
+    ["Perfeitamente inelástica × perfeitamente elástica", "Vertical (Q não reage: remédio essencial) × horizontal (um produtor pequeno de batatas)."],
+    ["Q = 9 − 0,5P, preço de 8 para 10", "Δ%Q = −20%, Δ%P = 25% ⇒ ε = −0,8."]
   ]
 },
 /* ============================================================ TEMA 3 */
@@ -230,65 +385,124 @@ const AULAS = [
   tema: "Custo de oportunidade, CF, CV, CT, médias, custo marginal e curto × longo prazo",
   lab: "custos",
   resumo: `
-  <div class="tldr"><b>Em uma frase:</b> para decidir, use o <b>custo econômico</b> (todos os insumos ao seu custo de oportunidade). Com ganhos de especialização no início e <b>rendimentos marginais decrescentes</b> depois, o custo marginal (CM) tem formato de U e <b>corta o CVM e o CTM nos seus pontos de mínimo</b>.</div>
+  <div class="tldr"><b>A ideia central:</b> para decidir se algo vale a pena, conte <b>todos</b> os custos, inclusive o que você deixa de ganhar na melhor alternativa (<b>custo de oportunidade</b>). Depois, entenda como o custo cresce com a produção: no começo cresce devagar (especialização) e depois cada vez mais rápido (<b>rendimentos marginais decrescentes</b>). Por isso o custo marginal (CM) tem formato de U e <b>corta o CVM e o CTM exatamente nos seus pontos mais baixos</b>.</div>
+
+  <section class="sec sig">
+    <h3>🔤 Siglas e símbolos deste tema</h3>
+    <dl class="sym">
+      <dt>q</dt><dd>Quantidade produzida <b>por uma empresa</b> (minúsculo). Q maiúsculo costuma ser o mercado todo.</dd>
+      <dt>L</dt><dd>Trabalho (<i>labor</i>): nº de funcionários ou horas.</dd>
+      <dt>PML</dt><dd>Produto Marginal do Trabalho: produção extra obtida com <b>um</b> trabalhador a mais.</dd>
+      <dt>CF</dt><dd>Custo Fixo: não muda com q (aluguel, contrato). Pago mesmo se q = 0.</dd>
+      <dt>CV</dt><dd>Custo Variável: cresce com q (matéria-prima, horas extras). CV(0) = 0.</dd>
+      <dt>CT</dt><dd>Custo Total = CF + CV.</dd>
+      <dt>CFM</dt><dd>Custo Fixo <b>Médio</b> = CF ÷ q (custo fixo por unidade).</dd>
+      <dt>CVM</dt><dd>Custo Variável <b>Médio</b> = CV ÷ q (custo variável por unidade).</dd>
+      <dt>CTM</dt><dd>Custo Total <b>Médio</b> = CT ÷ q (custo por unidade). Também chamado de “custo médio”.</dd>
+      <dt>CM</dt><dd>Custo <b>Marginal</b>: quanto o custo total aumenta ao produzir <b>uma unidade a mais</b>.</dd>
+      <dt>CP / LP</dt><dd>Curto prazo (há insumo fixo) / longo prazo (tudo pode variar).</dd>
+      <dt>Selic</dt><dd>Taxa básica de juros da economia; usada como custo de oportunidade do dinheiro próprio.</dd>
+    </dl>
+    <p class="note"><b>Dica de leitura das siglas:</b> “M” no final = <b>Médio</b> (dividido por q). “CM” sozinho = <b>Marginal</b> (a próxima unidade). Não confunda CM com CTM!</p>
+  </section>
 
   <section class="sec">
     <h3><span class="n">1</span> Custo de oportunidade e custo econômico</h3>
-    <p><b>Custo de oportunidade</b> é a <b>melhor alternativa de que se abre mão</b> ao dedicar um recurso a um empreendimento.</p>
-    <div class="ex"><b>Virar motorista de aplicativo?</b> Receita: $200/dia. Combustível: $80. Depreciação, lavagens, seguro: $50. Com o mesmo tempo e esforço, ganharia $150 em outra ocupação.<br>
-      Custo econômico = 80 + 50 + <b>150</b> = 280 ⇒ lucro econômico = 200 − 280 = <b class="no">−80</b>. <b>Não vale a pena</b> (mesmo com <b>lucro contábil</b> — receita menos gastos explícitos, sem custo de oportunidade — de 70).</div>
-    <p>Mesmo raciocínio para o capital próprio: se suas economias rendem a <b>Selic</b> (13,75% a.a. no exemplo), esse rendimento perdido é custo do negócio.</p>
+    <p><b>Custo de oportunidade</b> é a <b>melhor alternativa de que se abre mão</b> ao dedicar um recurso (tempo, dinheiro, um imóvel) a um empreendimento. Não sai do bolso, mas é custo de verdade: é o que você <b>deixa de ganhar</b>.</p>
+    <div class="grid2">
+      <div class="box"><b>Lucro contábil</b> = receita − gastos <b>explícitos</b> (o que sai do bolso).</div>
+      <div class="box"><b>Lucro econômico</b> = receita − <b>custo econômico</b> = receita − (gastos explícitos + custos de oportunidade). <b>É o que se usa para decidir.</b></div>
+    </div>
+    <div class="ex"><b>Virar motorista de aplicativo?</b> Receita: $200/dia. Combustível: $80. Depreciação, lavagens, seguro: $50. Com o mesmo tempo e esforço, ganharia $150 em outra ocupação.
+      <ul class="mini">
+        <li>Lucro contábil = 200 − 80 − 50 = <b>+70</b> (parece bom…).</li>
+        <li>Custo econômico = 80 + 50 + <b>150</b> (o salário que deixou de ganhar) = 280.</li>
+        <li>Lucro econômico = 200 − 280 = <b class="no">−80</b> ⇒ <b>não vale a pena</b>: na outra ocupação ganharia mais.</li>
+      </ul></div>
+    <div class="ex"><b>Exemplo do livro — revender carros usados:</b> compra por R$ 25.000 e vende por R$ 25.020, um carro por dia, trabalhando 8 horas. Lucro contábil: R$ 20/dia. Mas, com o mesmo esforço, ganharia R$ 200/dia em outro trabalho ⇒ custo econômico = 25.000 + 200 = 25.200 ⇒ lucro econômico = <b class="no">−R$ 180</b>/dia.</div>
+    <p>Mesmo raciocínio para o <b>capital próprio</b>: se suas economias rendem a <b>Selic</b> (13,75% a.a. no exemplo da aula), esse rendimento que você deixa de receber ao investir no negócio é custo do negócio.</p>
   </section>
 
   <section class="sec">
-    <h3><span class="n">2</span> Produção: produto marginal do trabalho</h3>
-    <p>Confeitaria de delivery com instalações, 1 forno e 1 veículo <b>fixos</b>:</p>
+    <h3><span class="n">2</span> Produção: o produto marginal do trabalho</h3>
+    <p>Confeitaria de delivery com instalações, 1 forno e 1 veículo <b>fixos</b>. Só o número de funcionários pode mudar:</p>
     <table class="t sm"><thead><tr><th>Funcionários (L)</th><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead>
       <tbody><tr><td>Bolos por dia (q)</td><td>0</td><td>1</td><td>5</td><td>7</td><td>8</td></tr>
-      <tr class="hl"><td>Produto marginal (PML)</td><td>—</td><td>1</td><td><b>4</b></td><td>2</td><td>1</td></tr></tbody></table>
+      <tr class="hl"><td>Produto marginal (PML = Δq/ΔL)</td><td>—</td><td>1 (=1−0)</td><td><b>4</b> (=5−1)</td><td>2 (=7−5)</td><td>1 (=8−7)</td></tr></tbody></table>
     <div class="grid2">
-      <div class="box"><b class="ok">Ganhos de especialização</b>: no início, o PML <b>cresce</b> (o 2º funcionário rende mais que o 1º, pois cada um se especializa).</div>
-      <div class="box"><b class="no">Rendimentos marginais decrescentes</b>: aumentando o trabalho com os outros insumos fixos, o PML eventualmente <b>cai</b> ⇒ para cada bolo extra é preciso cada vez mais trabalho ⇒ o custo <b>cresce cada vez mais rápido</b>.</div>
+      <div class="box"><b class="ok">Ganhos de especialização</b> (PML sobe de 1 para 4): com 2 pessoas, uma faz a massa e outra entrega; cada uma fica melhor na sua tarefa.</div>
+      <div class="box"><b class="no">Rendimentos marginais decrescentes</b> (PML cai de 4 para 2 e 1): com o forno e o veículo fixos, cada funcionário extra tem menos equipamento para usar e acaba esperando a vez. <b>Consequência:</b> cada bolo extra exige cada vez mais trabalho ⇒ o custo cresce <b>cada vez mais rápido</b>.</div>
     </div>
   </section>
 
   <section class="sec">
-    <h3><span class="n">3</span> As medidas de custo</h3>
+    <h3><span class="n">3</span> As medidas de custo, uma a uma</h3>
     <div class="grid3">
-      <div class="box"><b>CF — custo fixo</b><br>Não varia com q; no curto prazo é pago mesmo se q = 0. Quando não dá para recuperá-lo, é custo <b>afundado</b> (<i>sunk cost</i>).</div>
-      <div class="box"><b>CV — custo variável</b><br>Muda com a quantidade produzida.</div>
-      <div class="box"><b>CT = CF + CV</b></div>
-      <div class="box"><b>CFM = \\(\\dfrac{CF}{q}\\)</b><br>Sempre decrescente (diluição).</div>
-      <div class="box"><b>CVM = \\(\\dfrac{CV}{q}\\)</b></div>
-      <div class="box"><b>CTM = \\(\\dfrac{CT}{q}\\) = CVM + CFM</b></div>
+      <div class="box"><b>CF — custo fixo</b><br>Não varia com q; no curto prazo é pago mesmo se q = 0 (ex.: aluguel de R$ 154/dia). Quando não dá para recuperá-lo (“leite derramado”), é custo <b>afundado</b> (<i>sunk cost</i>).</div>
+      <div class="box"><b>CV — custo variável</b><br>Muda com a quantidade produzida (farinha, ovos, entregas). Se q = 0, CV = 0.</div>
+      <div class="box"><b>CT = CF + CV</b><br>No gráfico, a curva de CT é a curva de CV <b>empurrada para cima</b> pelo valor do CF.</div>
+      <div class="box"><b>CFM = \\(\\dfrac{CF}{q}\\)</b><br>Sempre decrescente: o mesmo aluguel é <b>diluído</b> em mais bolos (154, 77, 51,3…).</div>
+      <div class="box"><b>CVM = \\(\\dfrac{CV}{q}\\)</b><br>Custo variável por bolo. Formato de U.</div>
+      <div class="box"><b>CTM = \\(\\dfrac{CT}{q}\\) = CVM + CFM</b><br>Custo total por bolo. Formato de U. A distância entre CTM e CVM é o CFM, que encolhe ⇒ as duas curvas se aproximam.</div>
     </div>
+    <h4>Custo marginal: a peça mais importante</h4>
     <p class="f big">\\(CM(q) = \\dfrac{\\Delta CT}{\\Delta q} \\;\\xrightarrow{\\;\\Delta q\\to 0\\;}\\; \\dfrac{dCT}{dq}\\)</p>
-    <p>Como o CF não muda com q, \\(CM = \\dfrac{dCV}{dq}\\): <b>o custo fixo não afeta o custo marginal</b> (nem o CVM).</p>
+    <p><b>Em palavras:</b> “quanto a mais eu gasto para fazer mais uma unidade”. Na tabela: CM(q) = CT(q) − CT(q − 1). Com fórmula: derive o CT.</p>
+    <p><b>O custo fixo não afeta o custo marginal:</b> como CT = CF + CV e o CF não muda, toda variação do custo vem do CV ⇒ \\(CM = \\dfrac{dCV}{dq}\\). (O CF também não afeta o CVM; só afeta CT, CTM e CFM.)</p>
     <div class="two"><div class="figslot" data-fig="cu_bolo"></div><div>
-      <table class="t sm"><thead><tr><th>q</th><th>CT</th><th>CVM</th><th>CTM</th><th>CM</th></tr></thead><tbody>
-        <tr><td>1</td><td>214</td><td>60</td><td>214</td><td>60</td></tr><tr><td>2</td><td>250</td><td>48</td><td>125</td><td>36</td></tr>
-        <tr><td>3</td><td>280</td><td>42</td><td>93,3</td><td>30</td></tr><tr class="hl"><td>4</td><td>322</td><td><b>42</b></td><td>80,5</td><td>42</td></tr>
-        <tr><td>5</td><td>380</td><td>45,2</td><td>76</td><td>58</td></tr><tr class="hl"><td>6</td><td>456</td><td>50,3</td><td><b>76</b></td><td><b>76</b></td></tr>
-        <tr><td>7</td><td>552</td><td>56,9</td><td>78,9</td><td>96</td></tr><tr><td>8</td><td>670</td><td>64,5</td><td>83,8</td><td>118</td></tr><tr><td>9</td><td>815</td><td>73,4</td><td>90,6</td><td>145</td></tr></tbody></table>
-      <p class="note">Planilha da aula (CF = 154). Mín CVM = 42 (empate em q = 3 e 4); mín CTM = 76 (empate em q = 5 e 6); em q = 6, CM = CTM = 76.</p>
+      <table class="t sm"><thead><tr><th>q</th><th>CT</th><th>CFM</th><th>CVM</th><th>CTM</th><th>CM</th></tr></thead><tbody>
+        <tr><td>1</td><td>214</td><td>154</td><td>60</td><td>214</td><td>60</td></tr><tr><td>2</td><td>250</td><td>77</td><td>48</td><td>125</td><td>36</td></tr>
+        <tr><td>3</td><td>280</td><td>51,3</td><td>42</td><td>93,3</td><td>30</td></tr><tr class="hl"><td>4</td><td>322</td><td>38,5</td><td><b>42</b></td><td>80,5</td><td>42</td></tr>
+        <tr><td>5</td><td>380</td><td>30,8</td><td>45,2</td><td>76</td><td>58</td></tr><tr class="hl"><td>6</td><td>456</td><td>25,7</td><td>50,3</td><td><b>76</b></td><td><b>76</b></td></tr>
+        <tr><td>7</td><td>552</td><td>22</td><td>56,9</td><td>78,9</td><td>96</td></tr><tr><td>8</td><td>670</td><td>19,3</td><td>64,5</td><td>83,8</td><td>118</td></tr><tr><td>9</td><td>815</td><td>17,1</td><td>73,4</td><td>90,6</td><td>145</td></tr></tbody></table>
+      <p class="note">Planilha da aula (CF = 154). Exemplo de cálculo em q = 4: CV = 322 − 154 = 168 ⇒ CVM = 168/4 = 42; CTM = 322/4 = 80,5; CM = 322 − 280 = 42. Mín CVM = 42 (empate em q = 3 e 4); mín CTM = 76 (empate em q = 5 e 6); em q = 6, CM = CTM = 76.</p>
     </div></div>
+    <div class="ler"><b>📊 Como ler o gráfico de custos</b>
+      <ul>
+        <li>Eixo horizontal: q (bolos por dia). Eixo vertical: R$ <b>por bolo</b> (são custos médios e marginais, não totais).</li>
+        <li><b class="no">CM (vermelha)</b>: cai um pouco no início (especialização) e depois sobe forte (rendimentos decrescentes).</li>
+        <li><b class="c2">CTM (verde)</b> e <b class="c1">CVM (azul)</b>: dois “U”. O CTM fica sempre <b>acima</b> do CVM; a distância entre eles é o CFM.</li>
+        <li><b class="c3">CFM (roxa)</b>: sempre descendo (diluição do aluguel).</li>
+        <li>Repare onde a <b>vermelha cruza</b> as outras: passa pelo <b>fundo do CVM</b> (ponto “mín CVM”) e depois pelo <b>fundo do CTM</b> (ponto “CM = CTM”, em q = 6 e R$ 76).</li>
+      </ul></div>
   </section>
 
   <section class="sec">
-    <h3><span class="n">4</span> Por que o CM corta o CTM no mínimo?</h3>
-    <p>Intuição: se o custo da próxima unidade (CM) é menor que a média, ele <b>puxa a média para baixo</b>; se é maior, <b>puxa para cima</b>. A média para de cair exatamente quando CM = CTM.</p>
-    <div class="ex">\\(\\dfrac{dCTM}{dq} = \\dfrac{d}{dq}\\Big(\\dfrac{CT(q)}{q}\\Big) = \\dfrac{CM(q)\\,q - CT(q)}{q^2} = 0 \\;\\Rightarrow\\; CM(q) = \\dfrac{CT(q)}{q} = CTM(q)\\)</div>
-    <div class="ex"><b>Estilo prova:</b> \\(CT(q) = 2q^2 + 800\\) ⇒ \\(CM = 4q\\), \\(CVM = 2q\\), \\(CTM = 2q + \\dfrac{800}{q}\\). Mínimo: \\(2 - \\dfrac{800}{q^2} = 0 \\Rightarrow q = 20\\), \\(CTM(20) = 80\\). Confere: CM(20) = 80. ✔<br>
-      Café (prova 2025): \\(CT = 1800q^2 + 18\\) ⇒ \\(CTM = 1800q + \\dfrac{18}{q}\\) ⇒ \\(q = 0{,}1\\) e CTM mín = <b>360</b>.</div>
+    <h3><span class="n">4</span> Por que o CM corta o CTM no ponto mínimo?</h3>
+    <p><b>Intuição com notas:</b> sua média na disciplina é 7. Se a próxima prova (a “nota marginal”) for 5, a média <b>cai</b>; se for 9, a média <b>sobe</b>. A média só fica parada quando a nova nota é igual à média. Com custos é igual: enquanto CM &lt; CTM, o CTM está caindo; quando CM &gt; CTM, o CTM está subindo. Logo, o fundo do U (nem caindo nem subindo) é onde <b>CM = CTM</b>.</p>
+    <div class="ex"><b>Demonstração (derivada de um quociente):</b> no mínimo, a derivada do CTM é zero.
+      \\[\\dfrac{dCTM}{dq} = \\dfrac{d}{dq}\\Big(\\dfrac{CT(q)}{q}\\Big) = \\dfrac{CM(q)\\cdot q - CT(q)\\cdot 1}{q^2} = 0 \\;\\Rightarrow\\; CM(q)\\,q = CT(q) \\;\\Rightarrow\\; CM(q) = \\dfrac{CT(q)}{q} = CTM(q)\\]
+      O mesmo vale para o CVM (troque CT por CV).</div>
+    <div class="extra"><b>Leitura geométrica (livro):</b> o <b>CTM</b> num ponto do gráfico de CT é a <b>inclinação da reta que liga a origem</b> a esse ponto (CT/q = “altura ÷ base”). O <b>CM</b> é a <b>inclinação da reta tangente</b> à curva de CT. No ponto em que a reta da origem fica tangente à curva, as duas inclinações coincidem: é o mínimo do CTM.</div>
+    <div class="ex"><b>Questão de prova — CT = 2q² + 800</b>
+      <div class="qslot" data-q="Tema 3#11"></div>
+      <b>Resolução (e um passo a mais: o mínimo do CTM):</b>
+      <ol class="mini">
+        <li>Identifique: CF = 800 (o termo sem q) e CV = 2q².</li>
+        <li>\\(CM = \\dfrac{dCT}{dq} = 4q\\) &nbsp;·&nbsp; \\(CVM = \\dfrac{2q^2}{q} = 2q\\) &nbsp;·&nbsp; \\(CTM = 2q + \\dfrac{800}{q}\\).</li>
+        <li>Mínimo do CTM: derive e iguale a zero: \\(2 - \\dfrac{800}{q^2} = 0 \\Rightarrow q^2 = 400 \\Rightarrow q = 20\\) ⇒ \\(CTM(20) = 40 + 40 = 80\\).</li>
+        <li>Confira com a regra CM = CTM: CM(20) = 80. ✔</li>
+      </ol>
+      Alternativa correta: <b>B</b> (CVM = 2q; CM = 4q). A alternativa A é o <b>CTM</b>, não o CVM — o 800 é custo fixo e não entra no CVM.<br>
+      <b>Atalho:</b> para \\(CT = aq^2 + F\\), o mínimo do CTM está em \\(q = \\sqrt{F/a}\\) e vale \\(2\\sqrt{aF}\\).</div>
+    <div class="ex"><b>Prova 2025 (manhã) — custo do café</b>
+      <div class="qslot" data-q="Tema 3#8"></div>
+      <b>Resolução:</b> \\(CTM = \\dfrac{1800q^2 + 18}{q} = 1800q + \\dfrac{18}{q}\\). Mínimo: \\(1800 - \\dfrac{18}{q^2} = 0 \\Rightarrow q^2 = 0{,}01 \\Rightarrow q = 0{,}1\\) ⇒ CTM = 180 + 180 = <b>360</b> (B). Pelo atalho: \\(q = \\sqrt{18/1800} = 0{,}1\\) e \\(2\\sqrt{1800\\times 18} = 2 \\times 180 = 360\\). Confere com CM = CTM: CM = 3600q = 360. ✔</div>
   </section>
 
   <section class="sec">
     <h3><span class="n">5</span> Curto prazo × longo prazo</h3>
     <div class="grid2">
-      <div class="box"><b>Curto prazo</b>: período em que <b>pelo menos um insumo está fixo</b> ⇒ existe custo fixo.</div>
-      <div class="box"><b>Longo prazo</b>: tempo suficiente para alterar <b>todos</b> os insumos ⇒ <b>não há custo fixo</b>. Pode haver custos que só existem se q &gt; 0 (ex.: instalações), mas eles somem se a empresa sair — por isso não são custo fixo no LP.</div>
+      <div class="box"><b>Curto prazo</b>: período em que <b>pelo menos um insumo está fixo</b> ⇒ existe custo fixo. Ex. do livro: uma creche contrata professoras em dias, mas leva 7 meses para construir novas salas; durante esses 7 meses, está no curto prazo.</div>
+      <div class="box"><b>Longo prazo</b>: tempo suficiente para alterar <b>todos</b> os insumos ⇒ <b>não há custo fixo</b>. Pode haver custos que só existem se q &gt; 0 (custos <b>quase-fixos</b>, ex.: licença de software), mas eles somem se a empresa fechar — por isso não são custo fixo no LP.</div>
     </div>
     <p>Hipótese simplificadora do curso (não vale em geral): as curvas de custo de curto e longo prazo são <b>iguais para q &gt; 0</b>; só diferem em q = 0 (no LP, CT(0) = 0).</p>
+    <div class="ex"><b>Livro — o transporte de Jorge</b> (São José dos Campos → São Paulo) <span class="tag">Livro</span>: ele pode comprar um carro (4 lugares, $200/viagem), uma van (10 lugares, $400) ou um minibus (20 lugares, $800). Cada veículo tem sua curva de CTM de curto prazo (cai até lotar). Até 4 passageiros, o carro é mais barato por pessoa; de 5 a 10, a van; de 11 a 20, o minibus. A curva de <b>CTM de longo prazo</b> é o <b>“contorno de baixo”</b> (envoltória inferior) das curvas de curto prazo: no LP, Jorge escolhe o veículo mais barato para cada quantidade.</div>
+    <div class="grid3">
+      <div class="box"><b>Economias de escala</b><br>Produzir mais <b>reduz</b> o CTM de LP (ex.: especializar fábricas).</div>
+      <div class="box"><b>Retornos constantes</b><br>Produzir mais <b>não muda</b> o CTM de LP.</div>
+      <div class="box"><b>Deseconomias de escala</b><br>Produzir mais <b>aumenta</b> o CTM de LP (dificuldade de coordenação).</div>
+    </div>
   </section>`,
   pegadinhas: [
     "Lucro econômico desconta o custo de oportunidade (tempo, capital). Lucro contábil positivo pode ser prejuízo econômico.",
@@ -296,7 +510,8 @@ const AULAS = [
     "O CM corta CVM e CTM nos seus MÍNIMOS (não nos máximos).",
     "Rendimentos marginais decrescentes: o produto marginal cai quando se aumenta um insumo mantendo os outros fixos — por isso o CM sobe.",
     "No longo prazo não existe custo fixo (todos os insumos são variáveis).",
-    "CTM − CVM = CFM, que diminui com q: as curvas de CTM e CVM se aproximam."
+    "CTM − CVM = CFM, que diminui com q: as curvas de CTM e CVM se aproximam.",
+    "CM (marginal) ≠ CTM (médio): o “M” do final das siglas quer dizer MÉDIO."
   ],
   cards: [
     ["Custo de oportunidade", "A melhor alternativa de que se abre mão ao dedicar um recurso a um empreendimento."],
@@ -310,7 +525,10 @@ const AULAS = [
     ["Curto prazo", "Pelo menos um insumo fixo ⇒ há custo fixo."],
     ["Longo prazo", "Todos os insumos variáveis ⇒ não há custo fixo."],
     ["CT = 2q² + 800: mínimo do CTM", "q = 20, CTM = 80 (= CM)."],
-    ["CT = 1800q² + 18: mínimo do CTM", "q = 0,1 e CTM = 360."]
+    ["CT = 1800q² + 18: mínimo do CTM", "q = 0,1 e CTM = 360."],
+    ["Atalho: CT = aq² + F", "Mínimo do CTM em q = √(F/a), com CTM = 2√(aF)."],
+    ["CTM de longo prazo", "Envoltória inferior das curvas de CTM de curto prazo (Jorge: carro, van ou minibus)."],
+    ["Economias de escala", "Produzir mais reduz o custo médio de longo prazo."]
   ]
 },
 /* ============================================================ TEMA 4 */
@@ -322,65 +540,138 @@ const AULAS = [
   tema: "p = CM, suspender × sair, oferta de mercado e equilíbrio de longo prazo",
   lab: "compet",
   resumo: `
-  <div class="tldr"><b>Em uma frase:</b> a empresa competitiva é <b>tomadora de preço</b> (RM = p) e produz onde <b>p = CM</b>. No curto prazo ela só para se p &lt; mín CVM; no longo prazo sai se p &lt; mín CTM. Entrada e saída levam o preço ao <b>mínimo do CTM</b>: <b>lucro econômico zero</b> e p = CM = CTM.</div>
-  <p class="note"><b>Siglas:</b> CM = custo marginal · CVM/CTM = custo variável/total médio · RM/RT = receita marginal/total · O_CP/O_LP = curva de oferta de curto/longo prazo · EC/EP = excedente do consumidor/produtor.</p>
+  <div class="tldr"><b>A ideia central:</b> numa competição perfeita a empresa é pequena demais para mexer no preço — ela é <b>tomadora de preço</b>. Então só decide <b>quanto</b> produzir, e a regra é produzir até o ponto em que <b>preço = custo marginal</b>. No curto prazo ela só para se o preço não cobrir nem o custo variável médio; no longo prazo sai se não cobrir o custo total médio. Como empresas entram quando há lucro e saem quando há prejuízo, o preço acaba no <b>mínimo do CTM</b>: <b>lucro econômico zero</b> e p = CM = CTM.</div>
+
+  <section class="sec sig">
+    <h3>🔤 Siglas e símbolos deste tema</h3>
+    <dl class="sym">
+      <dt>p</dt><dd>Preço de mercado (dado para a empresa).</dd>
+      <dt>q / Q</dt><dd>q = produção de <b>uma</b> empresa; Q = produção do <b>mercado</b> (soma de todas).</dd>
+      <dt>RT</dt><dd>Receita Total = p × q (faturamento).</dd>
+      <dt>RM</dt><dd>Receita <b>Marginal</b>: quanto a receita aumenta vendendo uma unidade a mais. Na competição, RM = p.</dd>
+      <dt>π (pi)</dt><dd>Lucro = RT − CT.</dd>
+      <dt>CM, CVM, CTM, CF</dt><dd>Custo marginal, variável médio, total médio e fixo (Tema 3).</dd>
+      <dt>O_CP</dt><dd>Curva de Oferta de <b>Curto Prazo</b> do mercado (número de empresas fixo).</dd>
+      <dt>O_LP</dt><dd>Curva de Oferta de <b>Longo Prazo</b> do mercado (empresas podem entrar e sair). Com empresas iguais, é <b>horizontal</b>.</dd>
+      <dt>D</dt><dd>Demanda de mercado.</dd>
+      <dt>J ou n</dt><dd>Número de empresas no mercado.</dd>
+      <dt>Σ (sigma)</dt><dd>“Soma de”: \\(\\sum_{j=1}^{J} q_j\\) = q₁ + q₂ + … + q<sub>J</sub>.</dd>
+      <dt>A e B</dt><dd>Nos gráficos de 2 painéis: A = o choque (desloca D ou O_CP); B = entrada/saída de empresas.</dd>
+      <dt>EC / EP</dt><dd>Excedente do consumidor / produtor.</dd>
+    </dl>
+  </section>
 
   <section class="sec">
     <h3><span class="n">1</span> O que é um mercado (perfeitamente) competitivo</h3>
     <div class="grid3">
       <div class="box">Vários vendedores e compradores, cada um <b>pequeno</b> em relação ao mercado.</div>
-      <div class="box">Produtos <b>idênticos</b>.</div>
+      <div class="box">Produtos <b>idênticos</b> (o consumidor não vê diferença entre vendedores).</div>
       <div class="box"><b>Livre entrada</b> (e saída) de empresas.</div>
     </div>
-    <p>Logo, um produtor sozinho não altera o preço de equilíbrio: é <b>tomador de preço</b>. Ex.: produtos agrícolas. Contraexemplo: Sabesp e EDP, que são monopólios. Objetivo da empresa, em qualquer estrutura: <b>maximizar o lucro</b> = RT − CT.</p>
+    <p>Consequência: se uma empresa cobrar um centavo a mais que as outras, <b>ninguém compra dela</b> (o produto é igual); e ao preço de mercado, consegue vender <b>tudo o que quiser</b> (é pequena). Por isso a demanda que <b>uma empresa</b> enxerga é uma <b>reta horizontal</b> na altura do preço — mesmo que a demanda do mercado seja inclinada. Ex.: produtos agrícolas. Contraexemplo: Sabesp e EDP, que são monopólios.</p>
+    <p>Objetivo da empresa, em qualquer estrutura de mercado: <b>maximizar o lucro</b> \\(\\pi = RT - CT\\).</p>
   </section>
 
   <section class="sec">
-    <h3><span class="n">2</span> Quanto produzir: p = CM</h3>
+    <h3><span class="n">2</span> Quanto produzir: a regra p = CM</h3>
     <p class="f big">\\(\\max_q\\; RT(q) - CT(q) \\;\\Rightarrow\\; \\dfrac{dRT}{dq} = \\dfrac{dCT}{dq} \\;\\Rightarrow\\; RM(q) = CM(q)\\)</p>
-    <p>Na competição \\(RT = p\\cdot q\\) com p dado ⇒ \\(RM = p\\). Logo a empresa produz onde <b>p = CM(q)</b> (no ramo <b>crescente</b> do CM: onde o CM ainda cai, p = CM é ponto de lucro mínimo, não máximo).</p>
-    <div class="ex"><b>Confeitaria a p = 145:</b> produz q = 9 (CM(9) = 145). Lucro = 145×9 − 815 = <b>490</b> = (145 − 90,56)×9: o retângulo “(p − CTM) × q”.</div>
+    <p><b>Em palavras:</b> para achar o máximo do lucro, derive e iguale a zero. A derivada da receita é a receita marginal; a do custo é o custo marginal. Então no ponto ótimo <b>o que entra com a última unidade (RM) = o que custa a última unidade (CM)</b>.</p>
+    <p>Na competição, \\(RT = p\\cdot q\\) com p fixo ⇒ cada unidade extra traz exatamente p de receita ⇒ \\(RM = p\\). Logo a empresa produz onde <b>p = CM(q)</b> (no ramo <b>crescente</b> do CM: onde o CM ainda está caindo, p = CM é ponto de lucro mínimo, não máximo).</p>
+    <div class="ex"><b>Intuição com a confeitaria (livro), preço p = 145:</b>
+      <ul class="mini">
+        <li>Se produz 7, vale fazer o 8º bolo? Custa CM(8) = 118 e vende por 145 ⇒ lucro <b>+27</b>. Sim, produza mais.</li>
+        <li>Se produz 10, vale cortar o 10º? Economiza CM(10) = 176 e perde 145 de receita ⇒ lucro <b>+31</b>. Sim, produza menos.</li>
+        <li>O 9º bolo custa CM(9) = 145 = p: tanto faz; pela convenção, em caso de empate escolhe-se a maior quantidade ⇒ <b>q = 9</b>.</li>
+      </ul>
+      Lucro = 145×9 − 815 = <b>490</b>. Outra forma de ver: lucro = (p − CTM) × q = (145 − 90,56) × 9 = 490 ⇒ o <b>retângulo</b> de altura “lucro por unidade” e base q.</div>
+    <div class="extra"><b>Por que a curva de CM é a curva de oferta da empresa?</b> Para cada preço, a empresa escolhe q onde p = CM(q). A curva que diz “a este preço, ofereço esta quantidade” é, por definição, uma curva de oferta. Na confeitaria: p = 96 ⇒ q = 7; p = 76 ⇒ q = 6; p = 145 ⇒ q = 9.</div>
   </section>
 
   <section class="sec">
     <h3><span class="n">3</span> Suspender (curto prazo) × sair (longo prazo)</h3>
+    <p>A empresa sempre pode produzir zero. Quando isso é melhor? Depende do prazo, porque no curto prazo o <b>custo fixo é pago de qualquer jeito</b>.</p>
     <div class="grid2">
-      <div class="box"><b>Curto prazo — suspende se p &lt; CVM</b><br>Se parar, perde o CF: lucro(0) = −CF. Produzindo: RT − CV − CF. Suspende se RT − CV − CF &lt; −CF ⇔ RT &lt; CV ⇔ <b>p &lt; CVM</b>. “Se o preço não cobre nem o custo variável por unidade, não vale a pena produzir.”</div>
-      <div class="box"><b>Longo prazo — sai se p &lt; CTM</b><br>No LP todo custo é evitável: quem sai tem CT = 0. Logo sai se lucro &lt; 0 ⇔ RT &lt; CT ⇔ <b>p &lt; CTM</b>. (Em CT = 2q² + 800, o 800 só é pago por quem produz: CT(0) = 0.)</div>
+      <div class="box"><b>Curto prazo — suspende se p &lt; CVM</b><br>
+        <ul>
+          <li>Se parar: lucro = −CF (paga o aluguel, não vende nada).</li>
+          <li>Se produzir: lucro = RT − CV − CF.</li>
+          <li>Para se −CF &gt; RT − CV − CF ⇔ <b>RT &lt; CV</b> ⇔ (÷ q) <b>p &lt; CVM</b>.</li>
+        </ul>
+        “Se o preço não cobre nem o custo variável de cada unidade, cada bolo vendido aumenta o prejuízo.”</div>
+      <div class="box"><b>Longo prazo — sai se p &lt; CTM</b><br>
+        <ul>
+          <li>No LP todo custo é evitável: quem sai tem CT = 0 e lucro = 0.</li>
+          <li>Sai se lucro &lt; 0 ⇔ RT &lt; CT ⇔ (÷ q) <b>p &lt; CTM</b>.</li>
+        </ul>
+        “Se o preço não cobre o custo por unidade, é melhor mudar de ramo.” (Em CT = 2q² + 800, o 800 só é pago por quem produz: CT(0) = 0 no LP.)</div>
     </div>
     <div class="grid2">
-      <div class="box"><b>Oferta da empresa no CP</b>: p = CM(q) somente se p ≥ CVM<sub>CP</sub>(q) — o CM acima do mínimo do CVM (o CM cruza o CVM justamente no mínimo deste).</div>
-      <div class="box"><b>Oferta da empresa no LP</b>: p = CM(q) somente se p ≥ CTM<sub>LP</sub>(q) — o CM acima do mínimo do CTM.</div>
+      <div class="box"><b>Oferta da empresa no CP</b>: p = CM(q) somente se p ≥ CVM<sub>CP</sub>(q) ⇒ é o pedaço da curva de CM <b>acima do mínimo do CVM</b>.</div>
+      <div class="box"><b>Oferta da empresa no LP</b>: p = CM(q) somente se p ≥ CTM<sub>LP</sub>(q) ⇒ é o pedaço da curva de CM <b>acima do mínimo do CTM</b>.</div>
     </div>
-    <table class="t sm"><thead><tr><th>Preço (planilha)</th><th>q</th><th>Lucro</th><th>Curto prazo</th><th>Longo prazo</th></tr></thead><tbody>
+    <table class="t sm"><thead><tr><th>Preço (planilha)</th><th>q (p = CM)</th><th>Lucro</th><th>Curto prazo</th><th>Longo prazo</th></tr></thead><tbody>
       <tr><td>145 (muito favorável)</td><td>9</td><td class="ok">+490</td><td>produz</td><td>fica; empresas entram</td></tr>
       <tr><td>96 (favorável)</td><td>7</td><td class="ok">+120</td><td>produz</td><td>fica; empresas entram</td></tr>
       <tr class="hl"><td>76 (= mín CTM)</td><td>6</td><td>0</td><td>produz</td><td>fica (equilíbrio de LP)</td></tr>
-      <tr><td>58 (muito desfavorável)</td><td>5</td><td class="no">−90</td><td>produz (−90 &gt; −154)</td><td><b>sai</b></td></tr>
+      <tr><td>58 (muito desfavorável)</td><td>5</td><td class="no">−90</td><td>produz (perder 90 é melhor que perder 154)</td><td><b>sai</b></td></tr>
       <tr><td>42 (= mín CVM)</td><td>4</td><td class="no">−154</td><td>indiferente</td><td>sai</td></tr>
     </tbody></table>
-    <div class="ex"><b>Questão de prova (Reforma Tributária).</b> \\(CT_{CP} = 2q^2 + 800\\). \\(CM = 4q\\), \\(CVM = 2q\\). Como 4q ≥ 2q para todo q ≥ 0, a oferta de CP é <b>p = 4q para qualquer q ≥ 0</b> (alternativa c). No LP: p = 4q só para p ≥ mín CTM = 80 (q ≥ 20).</div>
+    <p class="note">Como ler a linha do preço 58: p = 58 está acima do CVM (45,2) mas abaixo do CTM (76) ⇒ no CP a empresa cobre todo o custo variável e ainda “sobra” um pouco para abater do aluguel; por isso produz com prejuízo. No LP, sai.</p>
+    <div class="ex"><b>Questão de prova (Reforma Tributária) — oferta de curto prazo</b>
+      <div class="qslot" data-q="Tema 4#7"></div>
+      <b>Resolução:</b> oferta de CP = p = CM, desde que CM ≥ CVM. \\(CM = 4q\\) e \\(CVM = 2q\\). Como 4q ≥ 2q para todo q ≥ 0, o CM está sempre acima do CVM ⇒ <b>p = 4q para qualquer q ≥ 0</b> (C). A alternativa E (“só para q ≥ 20”) seria a oferta de <b>longo</b> prazo, que usa o CTM — veja a próxima.</div>
+    <div class="ex"><b>Questão de prova — a mesma empresa no longo prazo</b>
+      <div class="qslot" data-q="Tema 4#8"></div>
+      <b>Resolução:</b> no LP a empresa só produz se p ≥ CTM. Mínimo do CTM = 2q + 800/q: q = 20, CTM = 80 ⇒ p = 4q somente para p ≥ 80 (q ≥ 20); abaixo disso, sai (q = 0) (B).</div>
   </section>
 
   <section class="sec">
     <h3><span class="n">4</span> Oferta de mercado</h3>
-    <p>Ao preço p, a quantidade ofertada no mercado é a <b>soma</b> do que cada empresa oferta: \\(Q(p) = \\sum_{j=1}^{J} q_j(p)\\) — a <b>soma horizontal</b> de segmentos das curvas de CM. Cada ponto da curva de oferta de mercado mostra o custo adicional que o setor incorre para produzir a n-ésima unidade.</p>
+    <p>A cada preço, a quantidade ofertada no mercado é a <b>soma</b> do que cada empresa oferta a esse preço:</p>
+    <p class="f big">\\(Q(p) = \\sum_{j=1}^{J} q_j(p)\\)</p>
+    <p>Isso é uma <b>soma horizontal</b>: fixe um preço (uma altura no gráfico) e some as quantidades (as distâncias horizontais). Ex.: 120 empresas, cada uma oferecendo q = p/8 ⇒ \\(Q = 120\\cdot\\dfrac{p}{8} = 15p\\).</p>
+    <p>Cada ponto da oferta de mercado mostra o <b>custo marginal</b> de produzir aquela unidade — o custo adicional que o setor tem para produzir a N-ésima unidade.</p>
     <div class="trap"><b>Se cada CM sobe A, a soma horizontal sobe A.</b> Um choque de custo de A por unidade desloca a O_CP de mercado <b>verticalmente para cima em A</b>.</div>
   </section>
 
   <section class="sec">
-    <h3><span class="n">5</span> Equilíbrio de longo prazo</h3>
+    <h3><span class="n">5</span> Equilíbrio de longo prazo: entrada e saída</h3>
     <div class="chain lbl" data-lbl="Lucro &gt; 0"><span>empresas entram</span><span>O_CP → direita</span><span>preço cai</span><span>até p = mín CTM</span></div>
     <div class="chain lbl" data-lbl="Lucro &lt; 0"><span>empresas saem</span><span>O_CP → esquerda</span><span>preço sobe</span><span>até p = mín CTM</span></div>
-    <p>No equilíbrio de LP: p = CTM (lucro zero, por entrada/saída) e p = CM (maximização) ⇒ <b>p = CM = CTM</b> ⇒ cada empresa produz no <b>mínimo do CTM</b> (cada unidade ao menor custo médio possível). Com empresas iguais, a <b>oferta de longo prazo é horizontal</b> no mínimo do CTM.</p>
+    <p>O processo só para quando o lucro é zero. No equilíbrio de LP valem <b>duas condições ao mesmo tempo</b>:</p>
+    <ul>
+      <li>p = CTM (lucro zero — senão haveria entrada ou saída);</li>
+      <li>p = CM (cada empresa maximiza lucro).</li>
+    </ul>
+    <p>Logo <b>CM = CTM</b>, o que só acontece no <b>mínimo do CTM</b> (seção 4 do Tema 3). Resultado: <b>p = CM = mín CTM</b> — cada unidade é produzida ao menor custo médio possível. Com empresas iguais, a <b>oferta de longo prazo é horizontal</b> na altura do mínimo do CTM: o mercado oferece qualquer quantidade a esse preço (basta ter o número certo de empresas).</p>
+    <div class="extra"><b>Lucro zero não é ruim!</b> É lucro <b>econômico</b> zero: todos os insumos, incluindo o tempo e o capital do dono, estão sendo pagos pelo que ganhariam na melhor alternativa. O dono não está “trabalhando de graça”.</div>
     <div class="figslot" data-fig="co_lp"></div>
+    <div class="ler"><b>📊 Como ler os dois gráficos lado a lado</b>
+      <ul>
+        <li><b>Esquerda — empresa típica:</b> eixo horizontal q (pequeno), curvas <b class="no">CM (vermelha)</b> e <b class="c2">CTM (verde)</b>. O ponto 1 é o fundo do CTM, por onde passa o CM.</li>
+        <li><b>Direita — mercado:</b> eixo horizontal Q (grande), <b class="c2">demanda D</b>, <b class="c1">oferta de curto prazo O_CP</b> e <b class="c3">oferta de longo prazo O_LP (horizontal, roxa)</b>. As três passam pelo ponto 1.</li>
+        <li>Os <b>eixos verticais têm a mesma escala</b>: o preço p₁ do mercado é a mesma altura do fundo do CTM da empresa.</li>
+      </ul></div>
+    <div class="ex"><b>Exemplo numérico do livro — transporte de carga (greve dos caminhoneiros de 2018)</b> <span class="tag">Livro</span><br>
+      Cada empresa: \\(CT = 100 + 4q^2\\). Demanda de mercado: \\(Q_D = 1000 - 10p\\).
+      <ol class="mini">
+        <li><b>LP inicial:</b> \\(CTM = \\dfrac{100}{q} + 4q\\), mínimo em \\(q = \\sqrt{100/4} = 5\\), CTM = 40 ⇒ <b>p = 40</b>. Demanda: Q = 1000 − 400 = 600 ⇒ <b>600/5 = 120 empresas</b>.</li>
+        <li><b>Oferta de CP:</b> CM = 8q ≥ CVM = 4q sempre ⇒ cada empresa oferta q = p/8 ⇒ mercado: Q<sub>s</sub> = 120·p/8 = 15p.</li>
+        <li><b>Choque — demanda cai</b> para \\(Q_D = 800 - 10p\\). Curto prazo: 800 − 10p = 15p ⇒ <b>p = 32</b>, Q = 480. Cada empresa: q = 32/8 = 4, lucro = 4·32 − (100 + 4·16) = <b class="no">−36</b> (prejuízo).</li>
+        <li><b>Longo prazo:</b> empresas saem até o preço voltar a 40. Q = 800 − 400 = 400 ⇒ <b>400/5 = 80 empresas</b> (40 saíram).</li>
+      </ol></div>
   </section>
 
   <section class="sec warn">
     <h3><span class="n">6</span> A questão de 10 pontos: dois gráficos, curto e longo prazo</h3>
-    <p>Caiu nas duas provas de 2025 (Reforma Tributária; feijão de sequeiro) e nos exercícios das aulas (El Niño; bets). Veja o <a href="#/discursiva">roteiro completo e as respostas-modelo</a>.</p>
+    <p>Caiu nas duas provas de 2025 (Reforma Tributária; feijão de sequeiro) e nos exercícios das aulas (El Niño; bets). As versões de múltipla escolha dessas duas questões aparecem na íntegra logo abaixo da tabela; o <a href="#/discursiva">roteiro completo e as respostas-modelo</a> da versão discursiva estão na página da questão de gráficos.</p>
     <div class="extra"><b>Convenções:</b> pontos <b>1</b> (LP inicial), <b>2</b> (curto prazo) e <b>3</b> (LP final); movimento <b>A</b> = o choque (desloca D ou a O_CP); movimento <b>B</b> = entrada/saída de empresas (desloca a O_CP). No gráfico da empresa: choque de <b>demanda</b> ⇒ CM e CTM ficam parados, só a linha de preço muda; choque de <b>custo</b> ⇒ CM e CTM sobem/descem A.<br><b>Por que no CP o preço muda menos que A?</b> A O_CP se desloca A na vertical, mas a demanda é decrescente: o novo cruzamento ajusta parte pelo preço e parte pela quantidade. Como o CTM mudou A inteiro e o preço menos, surge prejuízo (custo ↑) ou lucro (custo ↓).<br><b>Feijão:</b> a terra de sequeiro é limitada (ninguém “entra” no sequeiro), então ele segue lucrando no LP; quem define o preço é o produtor irrigado, que entra e sai livremente.</div>
     <div class="figslot" data-fig="co_bets"></div>
+    <div class="ler"><b>📊 Como ler este par de gráficos (bets reduzem a renda)</b>
+      <ul>
+        <li><b>Mercado (direita):</b> a demanda tracejada (“D inicial”) vai para a esquerda até “D final” — <b>seta A</b>. O novo cruzamento com a O_CP antiga é o <b>ponto 2</b> (preço p₂ menor). Depois, a O_CP se desloca para a esquerda (empresas saindo) — <b>seta B</b> — até cruzar a nova demanda na altura do preço original: <b>ponto 3</b>, sobre a O_LP.</li>
+        <li><b>Empresa (esquerda):</b> as curvas de custo não se mexem (o choque foi de demanda). A linha laranja p₂ fica <b>abaixo</b> do CTM: o retângulo vermelho é o <b>prejuízo</b> = (CTM − p₂) × q₂. No ponto 3 a empresa volta ao fundo do CTM.</li>
+      </ul></div>
     <div class="model"><p><b>Resposta-modelo (bets reduzem a renda para o varejo):</b> Inicialmente o mercado está no equilíbrio de longo prazo, nos pontos 1. Com menos renda, para cada preço a demanda é menor (movimento A). No curto prazo, o novo equilíbrio é o ponto 2: <b>preço e quantidade menores</b>. No gráfico da empresa, o custo por unidade excede o preço (seta vermelha): há <b>prejuízo</b>. À medida que se livram dos custos fixos, empresas <b>saem</b>, até a O_CP cruzar a nova demanda no preço de LP (ponto 3, movimento B). Comparado ao início: <b>quantidade menor, mesmo preço, menos empresas</b>.</p></div>
     <table class="t sm"><thead><tr><th>Choque</th><th>Curto prazo</th><th>Longo prazo</th><th>Nº de empresas</th></tr></thead><tbody>
       <tr><td>Demanda ↓ (bets)</td><td>P ↓, Q ↓, prejuízo</td><td>P = inicial, Q ↓</td><td>↓</td></tr>
@@ -389,14 +680,26 @@ const AULAS = [
       <tr><td>Custo ↓ em A (Reforma Tributária)</td><td>P ↓ (menos que A), Q ↑, lucro</td><td>P ↓ exatamente A, Q ↑</td><td>↑</td></tr>
       <tr><td>Menos terra de sequeiro (feijão)</td><td>P ↑, Q ↓, lucro dos irrigados</td><td>P e Q = iniciais</td><td>irrigados ↑</td></tr>
     </tbody></table>
+    <div class="ex"><b>Prova 2025 (manhã) — Reforma Tributária reduz o custo</b>
+      <div class="qslot" data-q="Tema 4#14"></div>
+      <b>Resolução:</b> é a linha “Custo ↓ em A” da tabela. CM e CTM descem ⇒ a O_CP desce (movimento A). No CP (ponto 2): preço cai menos que A e quantidade sobe ⇒ p &gt; novo CTM ⇒ <b>lucro</b>. O lucro atrai empresas (movimento B), até p = novo mín CTM (ponto 3): preço ainda menor, quantidade maior, mais empresas (D).</div>
+    <div class="ex"><b>Prova 2025 (tarde) — feijão de sequeiro</b>
+      <div class="qslot" data-q="Tema 4#15"></div>
+      <b>Resolução:</b> no CP, a capacidade de sequeiro (a mais barata) diminui ⇒ oferta para a esquerda ⇒ P ↑ e Q ↓, com lucro para os irrigados. No LP, como qualquer um pode entrar no feijão irrigado, entram irrigados até o preço voltar ao mínimo do CTM do irrigado ⇒ <b>mesmo preço, mesma quantidade e mais produtores irrigados</b> (E). O preço de LP é definido por quem pode entrar livremente (o irrigado), não pelo sequeiro.</div>
   </section>
 
   <section class="sec art">
     <h3><span class="n">7</span> Questão numérica (Reforma Tributária)</h3>
-    <div class="ex">\\(CT_{LP} = 2q^2 + 800\\) (q &gt; 0), demanda \\(Q_D = 1030 - 0{,}2p\\). A isenção reduz o custo em <b>30 por unidade</b>: \\(CT = 2q^2 + 800 - 30q\\).<br>
-    Novo CTM = \\(2q + \\dfrac{800}{q} - 30\\) ⇒ mínimo em q = 20 (o deslocamento constante não muda o ponto de mínimo) ⇒ <b>p de LP = 80 − 30 = 50</b>.<br>
-    Quantidade de LP: \\(Q_D(50) = 1030 - 10 = 1020\\). Cada empresa produz 20 ⇒ <b>\\(\\dfrac{1020}{20}\\) = 51 empresas</b>.<br>
-    EC = \\(\\dfrac{(5150 - 50)\\cdot 1020}{2}\\) = 2.601.000 (a demanda zera em p = 5150).</div>
+    <div class="qslot" data-q="Tema 4#9"></div>
+    <div class="qslot" data-q="Tema 4#10"></div>
+    <div class="ex"><b>Resolução das duas:</b> \\(CT_{LP} = 2q^2 + 800\\) (q &gt; 0), demanda \\(Q_D = 1030 - 0{,}2p\\). A isenção reduz o custo em <b>30 por unidade</b>: \\(CT = 2q^2 + 800 - 30q\\).
+    <ol class="mini">
+      <li>Novo CTM = \\(2q + \\dfrac{800}{q} - 30\\). Subtrair uma constante abaixa a curva inteira, mas <b>não muda onde fica o fundo</b> ⇒ mínimo continua em q = 20.</li>
+      <li>Preço de LP = mín CTM = 80 − 30 = <b>50</b> (1ª questão: B).</li>
+      <li>Quantidade de LP: \\(Q_D(50) = 1030 - 10 = 1020\\).</li>
+      <li>Nº de empresas = Q total ÷ q de cada = \\(\\dfrac{1020}{20}\\) = <b>51 empresas</b> (2ª questão: C).</li>
+      <li>EC: a demanda zera em p = 1030/0,2 = 5150 ⇒ EC = \\(\\dfrac{(5150 - 50)\\cdot 1020}{2}\\) = 2.601.000.</li>
+    </ol></div>
   </section>`,
   pegadinhas: [
     "No CP a empresa suspende se p < mín CVM (e não CTM). Com CVM ≤ p < CTM ela produz COM prejuízo, porque perde menos que o custo fixo.",
@@ -405,7 +708,8 @@ const AULAS = [
     "Choque de custo de A por unidade: no LP o preço muda exatamente A; no CP, muda menos que A.",
     "Não esqueça de nomear a curva de oferta de LONGO prazo (horizontal) e de dizer o que acontece com o NÚMERO de empresas.",
     "Os dois gráficos ficam lado a lado, na mesma altura: os preços são os mesmos nos dois eixos verticais.",
-    "Um deslocamento constante no CTM (−30 por unidade) não muda a quantidade que minimiza o CTM."
+    "Um deslocamento constante no CTM (−30 por unidade) não muda a quantidade que minimiza o CTM.",
+    "A demanda que UMA empresa competitiva enxerga é horizontal (no preço de mercado), mesmo com a demanda de mercado inclinada."
   ],
   cards: [
     ["Tomador de preço", "Empresa pequena demais para alterar o preço: RM = p."],
@@ -419,7 +723,8 @@ const AULAS = [
     ["Lucro > 0 no CP leva a…", "Entrada de empresas ⇒ O_CP para a direita ⇒ preço cai até o mín CTM."],
     ["Prejuízo no CP leva a…", "Saída de empresas ⇒ O_CP para a esquerda ⇒ preço sobe até o mín CTM."],
     ["Oferta de LP (empresas iguais)", "Horizontal no nível do mínimo do CTM."],
-    ["Custo cai 30/unid. com CT = 2q² + 800 e Qd = 1030 − 0,2p", "p LP = 50; Q = 1020; 51 empresas."]
+    ["Custo cai 30/unid. com CT = 2q² + 800 e Qd = 1030 − 0,2p", "p LP = 50; Q = 1020; 51 empresas."],
+    ["Caminhoneiros: CT = 100 + 4q², Qd = 1000 − 10p", "LP: q = 5, p = 40, 120 empresas. Demanda cai para 800 − 10p: CP p = 32 (prejuízo 36); LP 80 empresas."]
   ]
 },
 /* ============================================================ TEMA 5 */
@@ -431,49 +736,108 @@ const AULAS = [
   tema: "Excedente total, mão invisível, redistribuição, falhas de mercado e peso morto",
   lab: "efic",
   resumo: `
-  <div class="tldr"><b>Em uma frase:</b> no equilíbrio de longo prazo competitivo, (i) o lucro econômico é zero, (ii) cada unidade é produzida ao menor custo médio possível e (iii) o <b>excedente total é máximo</b> — todos os ganhos de troca são explorados. Mas os mercados <b>não garantem</b> distribuição justa nem eficiência quando há <b>falhas de mercado</b>.</div>
+  <div class="tldr"><b>A ideia central:</b> o equilíbrio de um mercado competitivo tem três propriedades boas: (i) lucro econômico zero, (ii) cada unidade produzida ao menor custo médio possível e (iii) <b>excedente total máximo</b> — todas as trocas que geram ganho acontecem e nenhuma troca que destrói valor acontece. Mas o mercado <b>não garante</b> uma distribuição justa e <b>falha</b> quando há externalidades, poder de mercado ou informação assimétrica. Impostos sobre um bem reduzem as trocas e criam <b>peso morto</b>.</div>
+
+  <section class="sec sig">
+    <h3>🔤 Siglas e símbolos deste tema</h3>
+    <dl class="sym">
+      <dt>EC / EP / ET</dt><dd>Excedente do consumidor / do produtor / total (= EC + EP, mais a arrecadação do governo se houver imposto).</dd>
+      <dt>PM</dt><dd><b>Peso morto</b> (<i>deadweight loss</i>): excedente que <b>ninguém</b> recebe — perda líquida da sociedade.</dd>
+      <dt>T</dt><dd>Imposto <b>por unidade</b> vendida (em R$).</dd>
+      <dt>Pc (ou P<sup>C</sup>)</dt><dd>Preço efetivamente pago pelo <b>comprador</b> (incluindo o imposto).</dd>
+      <dt>Ps (ou P<sup>V</sup>)</dt><dd>Preço efetivamente recebido pelo <b>vendedor</b> (já descontado o imposto). Pc − Ps = T.</dd>
+      <dt>Q* / Q<sub>T</sub></dt><dd>Quantidade sem imposto (eficiente) / quantidade com imposto.</dd>
+      <dt>Incidência</dt><dd>Quem de fato “paga” o imposto (quanto o preço do comprador sobe e o do vendedor cai).</dd>
+      <dt>Alíquota efetiva</dt><dd>Imposto pago ÷ renda. Mostra o peso real do imposto para cada pessoa.</dd>
+    </dl>
+  </section>
 
   <section class="sec">
     <h3><span class="n">1</span> A quantidade eficiente</h3>
+    <p>Relembrando os excedentes, agora com o olhar de “ganho para a sociedade”:</p>
+    <ul>
+      <li><b class="c2">Excedente do consumidor</b> = valor máximo que está disposto a pagar − valor que de fato paga.</li>
+      <li><b class="c1">Excedente do produtor</b> = valor que recebe − custo de produzir aquela unidade. Esse custo é o <b>custo marginal</b>: cada ponto da curva de oferta diz quanto custa produzir aquela unidade específica (Tema 4).</li>
+      <li><b>Excedente total</b> = EC + EP = (valor para quem compra) − (custo de quem produz), somado em todas as unidades trocadas.</li>
+    </ul>
     <div class="two"><div class="figslot" data-fig="ef_exc"></div><div>
-      <p><b class="c2">Excedente do consumidor</b> = valor máximo que está disposto a pagar − valor que de fato paga.</p>
-      <p><b class="c1">Excedente do produtor</b> = valor que recebe − custo de produção da unidade (o <b>custo marginal</b>, o custo extra de produzir aquela unidade).</p>
-      <p><b>Excedente total</b> = área entre a demanda e a oferta, até Q. É máximo em <b>Q* = 16</b>: qualquer outra quantidade gera excedente menor ⇒ <b>quantidade eficiente</b>.</p>
-      <p class="note">Exemplo dos slides: P* = 220, Q* = 16 ⇒ EC = EP = 1.600, ET = 3.200. A oferta aqui é inclinada (produtores com custos diferentes, ou curto prazo), por isso há EP. Com empresas iguais no LP a oferta é horizontal e o EP é zero — e o excedente total continua máximo.</p>
-      <p><b>Peso morto (regra geral):</b> triângulo com base = unidades que deixaram de ser trocadas e altura = valor (demanda) − custo (oferta) na quantidade negociada.</p>
+      <div class="ler"><b>📊 Como ler este gráfico (planta decorativa, slides)</b>
+        <ul>
+          <li><b class="c2">D (verde)</b>: \\(P = 420 - 12{,}5Q\\) — altura = quanto o consumidor daquela unidade valoriza o bem.</li>
+          <li><b class="c1">O (azul)</b>: \\(P = 20 + 12{,}5Q\\) — altura = quanto custa produzir aquela unidade.</li>
+          <li>Equilíbrio: <b>Q* = 16, P* = 220</b>.</li>
+          <li>Triângulo verde EC = \\(\\dfrac{(420-220)\\times 16}{2}\\) = 1.600; triângulo azul EP = \\(\\dfrac{(220-20)\\times 16}{2}\\) = 1.600 ⇒ <b>ET = 3.200</b>.</li>
+        </ul></div>
     </div></div>
+    <h4>Por que Q* maximiza o excedente total?</h4>
+    <div class="grid2">
+      <div class="box"><b>Produzir menos (Q &lt; Q*)</b><br>Para as unidades entre Q e Q*, alguém <b>valoriza mais</b> do que custa produzir (demanda acima da oferta). Deixar de produzi-las é jogar ganho fora ⇒ perde-se o triângulo entre D e O, de Q até Q*.</div>
+      <div class="box"><b>Produzir mais (Q &gt; Q*)</b><br>As unidades além de Q* <b>custam mais do que valem</b> para quem compra (oferta acima da demanda). Ex. do livro: a 15ª unidade custou R$ 320 e valia só R$ 120 ⇒ destruiu R$ 200. Também gera peso morto.</div>
+    </div>
+    <p>Logo, a quantidade de equilíbrio é a <b>quantidade eficiente</b>: não dá para aumentar o ganho de alguém sem reduzir o de outro.</p>
+    <p class="note">A oferta aqui é inclinada (produtores com custos diferentes, ou curto prazo), por isso há EP. Com empresas iguais no LP a oferta é horizontal e o EP é zero — e o excedente total continua máximo.</p>
+    <div class="extra"><b>Peso morto (regra geral):</b> é um triângulo com <b>base</b> = unidades que deixaram de ser trocadas (ou trocadas a mais) e <b>altura</b> = diferença entre valor (demanda) e custo (oferta) na quantidade que de fato foi negociada. Área = base × altura ÷ 2.</div>
   </section>
 
   <section class="sec">
     <h3><span class="n">2</span> A mão invisível… e seus limites</h3>
     <p class="quote">“Não é da benevolência do açougueiro, do cervejeiro ou do padeiro que esperamos o nosso jantar, mas da consideração que eles têm pelos seus próprios interesses.” <span>Adam Smith, A Riqueza das Nações (1776)</span></p>
-    <p>Indivíduos buscando o próprio interesse, sem coordenação central, geram um resultado com muitas características positivas para a sociedade. Os mercados coordenam a produção de forma descentralizada; se algo muda, preços se ajustam e um novo equilíbrio surge.</p>
+    <p><b>O que isso significa:</b> cada pessoa busca o próprio interesse, sem coordenação central, e mesmo assim o resultado tem muitas características boas para a sociedade. Os preços fazem o papel de coordenador: se algo muda, preços se ajustam e um novo equilíbrio surge. É “como se” uma mão invisível organizasse tudo.</p>
     <div class="pc">
-      <div class="pro"><b>O que os mercados fazem bem</b><ul><li>Organizam a produção de milhões de pessoas de forma razoavelmente eficiente.</li><li>Livre comércio e competição geram ganhos líquidos para a sociedade (Piketty, <i>O Capital no século XXI</i>, citado nos slides).</li></ul></div>
-      <div class="con"><b>O que não garantem</b><ul><li>Que <b>cada indivíduo</b> ganhe ⇒ papel do governo de <b>redistribuir</b>.</li><li>Eficiência na presença de <b>falhas de mercado</b> — externalidade (efeito sobre terceiros não considerado por quem decide), poder de mercado (p &gt; CM) e informação assimétrica (um lado sabe mais que o outro) (poluir um rio para produzir tecido; uma empresa sozinha não banca medidas custosas — seria engolida pela concorrência ⇒ regulação).</li></ul></div>
+      <div class="pro"><b>O que os mercados fazem bem</b><ul><li>Organizam a produção de milhões de pessoas de forma razoavelmente eficiente (“maximizam o tamanho do bolo”).</li><li>Livre comércio e competição geram ganhos líquidos para a sociedade (Piketty, <i>O Capital no século XXI</i>, citado nos slides).</li></ul></div>
+      <div class="con"><b>O que não garantem</b><ul><li>Que <b>cada indivíduo</b> ganhe, nem que não haja miséria (“como dividir o bolo”) ⇒ papel do governo de <b>redistribuir</b> (via impostos e gastos, sem precisar mexer no funcionamento dos mercados).</li><li>Eficiência na presença de <b>falhas de mercado</b>:
+        <ul><li><b>Externalidade</b>: efeito sobre terceiros que quem decide não considera (poluir um rio para produzir tecido).</li>
+        <li><b>Poder de mercado</b>: p &gt; CM (Tema 6).</li>
+        <li><b>Informação assimétrica</b>: um lado sabe mais que o outro (Tema 8).</li></ul>
+        Numa competição, uma empresa sozinha não banca medidas custosas (seria engolida pela concorrência) ⇒ é preciso <b>regulação</b>.</li></ul></div>
     </div>
   </section>
 
   <section class="sec">
     <h3><span class="n">3</span> Tributação e desigualdade no Brasil</h3>
+    <div class="extra"><b>Regressivo × progressivo:</b> <b>regressivo</b> = a alíquota efetiva <b>cai</b> quando a renda sobe (pesa mais nos pobres); <b>progressivo</b> = a alíquota efetiva <b>sobe</b> com a renda (pesa mais nos ricos).</div>
+    <div class="ex"><b>Por que o imposto sobre consumo é regressivo (livro):</b> alíquota de 10% sobre o consumo.
+      <table class="t sm"><thead><tr><th></th><th>Renda</th><th>Consumo</th><th>Imposto (10% do consumo)</th><th>Alíquota efetiva (imposto ÷ renda)</th></tr></thead><tbody>
+        <tr><td>Maria</td><td>R$ 1.000</td><td>R$ 900 (90%)</td><td>R$ 90</td><td class="no">9%</td></tr>
+        <tr><td>José</td><td>R$ 20.000</td><td>R$ 10.000 (50%)</td><td>R$ 1.000</td><td class="ok">5%</td></tr></tbody></table>
+      Quem é mais pobre gasta uma parte maior da renda em consumo ⇒ paga proporcionalmente mais. No Brasil, cerca de 42% da arrecadação vem de impostos sobre bens e serviços.</div>
     <ul>
       <li>Estudo do EU Tax Observatory (2025): a alíquota efetiva <b>cai</b> no topo da distribuição. Isenções e lacunas fiscais; arrecadação baseada fortemente em <b>impostos sobre o consumo</b>.</li>
-      <li>Ipea (2024): alíquota efetiva média do 1% mais rico = 13,6%; dos 153 mil do topo = 13,2%; de quem ganha R$ 26 milhões/ano = 12,9% ⇒ tributação <b>regressiva</b> nessas faixas (item verdadeiro na prova de 2025).</li>
       <li>Benefícios fiscais devem superar R$ 900 bilhões em 2026, dos quais quase R$ 620 bilhões seriam “privilégios”.</li>
     </ul>
-    <div class="extra"><b>Regressivo × progressivo:</b> regressivo = a alíquota efetiva <b>cai</b> quando a renda sobe; progressivo = <b>sobe</b> com a renda.</div>
+    <div class="ex"><b>Prova 2025 (manhã) — dados do Ipea</b>
+      <div class="qslot" data-q="Tema 5#6"></div>
+      <b>Resolução:</b> compare as alíquotas efetivas à medida que a renda <b>sobe</b>: 1% mais rico → 13,6%; os 153 mil do topo (mais ricos ainda) → 13,2%; renda de R$ 26 milhões → 12,9%. Renda maior, alíquota menor ⇒ <b>regressiva</b> nessas faixas (A). Foi item verdadeiro na prova.</div>
   </section>
 
   <section class="sec art">
     <h3><span class="n">4</span> Impostos: incidência e peso morto <span class="tag">Complemento</span></h3>
+    <p>Um imposto de T por unidade cria uma <b>cunha</b> (uma diferença) entre o que o comprador paga e o que o vendedor recebe: \\(P_c = P_s + T\\).</p>
+    <div class="ex"><b>Passo a passo com o exemplo do livro:</b> \\(Q_D = 150 - 2{,}5P_c\\), \\(Q_S = -100 + 10P_s\\), imposto T = R$ 25.
+      <ol class="mini">
+        <li><b>Sem imposto:</b> 150 − 2,5P = −100 + 10P ⇒ P = 20, Q = 100.</li>
+        <li><b>Com imposto</b> são 4 equações: Q<sub>D</sub> = 150 − 2,5P<sub>c</sub>; Q<sub>S</sub> = −100 + 10P<sub>s</sub>; Q<sub>D</sub> = Q<sub>S</sub>; P<sub>c</sub> = P<sub>s</sub> + 25.</li>
+        <li>Substituindo: 150 − 2,5(P<sub>s</sub> + 25) = −100 + 10P<sub>s</sub> ⇒ 187,5 = 12,5P<sub>s</sub> ⇒ <b>P<sub>s</sub> = 15</b> e <b>P<sub>c</sub> = 40</b>; Q = −100 + 150 = <b>50</b>.</li>
+        <li><b>Quem pagou?</b> O comprador pagava 20 e agora paga 40 (arcou com <b>20</b> dos 25). O vendedor recebia 20 e agora recebe 15 (arcou com <b>5</b>).</li>
+        <li>Arrecadação = T × Q<sub>T</sub> = 25 × 50 = 1.250. Peso morto = \\(\\dfrac{25 \\times (100 - 50)}{2}\\) = 625.</li>
+      </ol>
+      <b>Não importa quem recolhe:</b> se o imposto for cobrado do vendedor em vez do comprador, o sistema de equações é o mesmo ⇒ mesmos P<sub>c</sub>, P<sub>s</sub> e Q. Só muda qual curva desenhamos deslocada (demanda para baixo ou oferta para cima, em T).</div>
     <div class="two"><div class="figslot" data-fig="ef_tax"></div><div>
-      <p>Um imposto de T por unidade cria uma <b>cunha</b>: o consumidor paga Pc, o produtor recebe Ps = Pc − T, e a quantidade cai de 16 para Qt.</p>
-      <ul>
-        <li><b>Incidência</b>: quem paga mais é o lado <b>mais inelástico</b> — não importa quem recolhe ao governo.</li>
-        <li><b>Peso morto</b>: as trocas que deixam de acontecer (triângulo vermelho). Com T = 100: Qt = 12, Pc = 270, Ps = 170, arrecadação 1.200, peso morto = \\(\\dfrac{100\\times 4}{2}\\) = <b>200</b>. Aqui as duas curvas têm a mesma inclinação, por isso o ônus fica 50/50 (consumidor paga +50, produtor recebe −50).</li>
-        <li>Dobrar o imposto (T = 200) ⇒ Qt = 8 e peso morto = 800: <b>quadruplica</b>.</li>
-      </ul>
+      <div class="ler"><b>📊 Como ler este gráfico (planta, T = 100)</b>
+        <ul>
+          <li>Em Q<sub>t</sub> = 12, a distância vertical entre D e O é exatamente T = 100: <b>Pc = 270</b> (na demanda) e <b>Ps = 170</b> (na oferta).</li>
+          <li><b class="c2">Verde (EC)</b>: abaixo da demanda e acima de Pc (encolheu).</li>
+          <li><b class="c1">Azul (EP)</b>: acima da oferta e abaixo de Ps (encolheu).</li>
+          <li><b class="c4">Retângulo amarelo (arrecadação)</b>: altura T × base Q<sub>t</sub> = 100 × 12 = <b>1.200</b>. Vai para o governo, não é perda.</li>
+          <li><b class="no">Triângulo vermelho (peso morto)</b>: entre Q<sub>t</sub> = 12 e Q* = 16 — trocas que deixaram de existir. Área = \\(\\dfrac{100\\times 4}{2}\\) = <b>200</b>.</li>
+        </ul></div>
     </div></div>
+    <ul>
+      <li><b>Incidência</b>: quem paga mais é o lado <b>mais inelástico</b> (que tem menos como fugir). No exemplo do livro, os compradores pagaram 20 de 25 porque sua demanda é menos sensível ao preço do que a oferta. No gráfico da planta as duas curvas têm a mesma inclinação ⇒ ônus 50/50 (consumidor +50, produtor −50).</li>
+      <li><b>No longo prazo competitivo</b>, a oferta é horizontal (perfeitamente elástica) ⇒ o imposto é <b>repassado inteiro</b> ao consumidor (as empresas continuam com lucro zero).</li>
+      <li><b>Peso morto cresce com o quadrado do imposto</b>: dobrar o imposto (T = 200) ⇒ Q<sub>t</sub> = 8 e peso morto = \\(\\dfrac{200\\times 8}{2}\\) = 800: <b>quadruplica</b> (base e altura do triângulo dobram).</li>
+      <li>Quanto <b>mais elástica</b> a demanda, mais a quantidade cai com o imposto ⇒ maior o peso morto e menor a arrecadação (por isso é difícil tributar bens de luxo: o rico troca o iate pela Ferrari).</li>
+    </ul>
   </section>`,
   pegadinhas: [
     "Eficiente = maximiza o excedente TOTAL; não significa distribuição justa.",
@@ -481,7 +845,8 @@ const AULAS = [
     "Produzir MAIS que o equilíbrio também gera peso morto (unidades que custam mais do que valem).",
     "Alíquota efetiva que cai com a renda = tributação REGRESSIVA.",
     "Mercados competitivos não garantem eficiência com falhas de mercado (externalidades, poder de mercado, informação assimétrica).",
-    "A incidência de um imposto depende das elasticidades, não de quem o recolhe legalmente."
+    "A incidência de um imposto depende das elasticidades, não de quem o recolhe legalmente.",
+    "A arrecadação (retângulo) NÃO é peso morto: é transferência para o governo. Peso morto é só o triângulo."
   ],
   cards: [
     ["Três propriedades do equilíbrio de LP competitivo", "(i) lucro econômico zero; (ii) produção ao menor custo médio; (iii) excedente total máximo."],
@@ -492,7 +857,10 @@ const AULAS = [
     ["Tributação regressiva", "Alíquota efetiva cai à medida que a renda aumenta."],
     ["Peso morto", "Perda de excedente total por trocas que deixam de acontecer (ou por trocas que destroem valor)."],
     ["Incidência de imposto", "Recai mais sobre o lado mais inelástico do mercado."],
-    ["Peso morto × tamanho do imposto", "Cresce com o quadrado: dobrar o imposto ≈ quadruplica o peso morto."]
+    ["Peso morto × tamanho do imposto", "Cresce com o quadrado: dobrar o imposto ≈ quadruplica o peso morto."],
+    ["Imposto T = 25 com Qd = 150 − 2,5Pc e Qs = −100 + 10Ps", "Pc = 40, Ps = 15, Q = 50: comprador arca com 20 e vendedor com 5."],
+    ["Maria × José (imposto de 10% sobre consumo)", "Maria paga 9% da renda; José, 5% ⇒ imposto sobre consumo é regressivo."],
+    ["Imposto no longo prazo competitivo", "Oferta de LP horizontal ⇒ o imposto é repassado inteiro ao consumidor."]
   ]
 },
 /* ============================================================ TEMA 6 */
@@ -504,56 +872,120 @@ const AULAS = [
   tema: "Monopólio, receita marginal, peso morto, monopólio natural e regulação",
   lab: "mono",
   resumo: `
-  <div class="tldr"><b>Em uma frase:</b> quem tem poder de mercado enfrenta demanda <b>negativamente inclinada</b>, então para vender mais precisa baixar o preço de todas as unidades: a <b>receita marginal fica abaixo da demanda</b>. Produz onde <b>RM = CM</b>, com <b>preço maior e quantidade menor</b> que o eficiente (p = CM) ⇒ <b>peso morto</b>.</div>
+  <div class="tldr"><b>A ideia central:</b> quem tem poder de mercado enfrenta uma demanda <b>inclinada</b>: para vender mais, precisa <b>baixar o preço de todas as unidades</b>, não só da última. Por isso a <b>receita marginal fica abaixo da demanda</b>. A empresa produz onde <b>RM = CM</b> e cobra o preço que a demanda aceita nessa quantidade. Resultado: <b>preço maior e quantidade menor</b> que o eficiente (onde p = CM) ⇒ <b>peso morto</b>.</div>
 
-  <section class="sec">
-    <h3><span class="n">1</span> Monopólio e de onde vem o poder</h3>
-    <div class="grid3"><div class="box">Uma <b>única</b> empresa</div><div class="box">Sem <b>substitutos próximos</b></div><div class="box"><b>Barreiras à entrada</b></div></div>
-    <p>Exemplos: EDP e Sabesp, linhas de metrô, rodovias, pontes. Big Techs (Amazon, Microsoft, Meta): <b>efeitos de rede</b> — um produto vale mais quanto mais usuários tem (mais vendedores na Amazon atraem mais compradores, e vice-versa) ⇒ mercados muito concentrados (“o vencedor leva tudo”).</p>
+  <section class="sec sig">
+    <h3>🔤 Siglas e símbolos deste tema</h3>
+    <dl class="sym">
+      <dt>p(q)</dt><dd><b>Demanda inversa</b>: o preço máximo que se consegue cobrar vendendo q unidades. Ex.: p = 56 − 2,5q.</dd>
+      <dt>a, b</dt><dd>Em p = a − bq: a = intercepto (preço em que ninguém compra), b = inclinação.</dd>
+      <dt>RT</dt><dd>Receita total = q × p(q).</dd>
+      <dt>RM</dt><dd>Receita marginal = dRT/dq: quanto a receita aumenta vendendo uma unidade a mais.</dd>
+      <dt>CM, CTM, CF</dt><dd>Custo marginal, custo total médio, custo fixo.</dd>
+      <dt>q<sub>m</sub>, p<sub>m</sub></dt><dd>Quantidade e preço do monopólio (RM = CM).</dd>
+      <dt>q<sub>e</sub>, p<sub>e</sub></dt><dd>Quantidade e preço eficientes (p(q) = CM).</dd>
+      <dt>PM</dt><dd>Peso morto (perda social, <i>deadweight loss</i>).</dd>
+      <dt>π</dt><dd>Lucro = RT − CT.</dd>
+      <dt>ANA, Aneel, ANAC</dt><dd>Agências reguladoras de Águas, Energia Elétrica e Aviação Civil.</dd>
+      <dt>SBDC / CADE</dt><dd>Sistema Brasileiro de Defesa da Concorrência; o CADE é o órgão que julga fusões e cartéis.</dd>
+    </dl>
   </section>
 
   <section class="sec">
-    <h3><span class="n">2</span> Receita marginal e a regra RM = CM</h3>
-    <p>A empresa não pode vender qualquer quantidade ao preço que quiser: está restrita aos pares (q, p) da demanda. \\(RT(q) = q \\times p(q)\\).</p>
+    <h3><span class="n">1</span> Monopólio e de onde vem o poder</h3>
+    <div class="grid3"><div class="box">Uma <b>única</b> empresa</div><div class="box">Sem <b>substitutos próximos</b></div><div class="box"><b>Barreiras à entrada</b> (algo impede outras de entrar)</div></div>
+    <p><b>Fontes de barreiras:</b> custo de infraestrutura que não compensa duplicar (EDP e Sabesp, linhas de metrô, rodovias, pontes); controle de um recurso escasso (De Beers e os diamantes); <b>patentes</b> e direitos autorais (proteção legal que incentiva a pesquisa); <b>efeitos de rede</b>.</p>
+    <p><b>Efeitos de rede</b> (Big Techs como Amazon, Microsoft, Meta): um produto vale mais quanto mais usuários tem — mais vendedores na Amazon atraem mais compradores, e vice-versa. “Todos querem estar onde todos estão” ⇒ mercados muito concentrados (“o vencedor leva tudo”).</p>
+    <p><b>Poder de mercado</b> não exige monopólio: basta que a empresa possa subir o preço <b>sem perder todos os clientes</b> (seu salão de beleza preferido, por exemplo).</p>
+  </section>
+
+  <section class="sec">
+    <h3><span class="n">2</span> Receita marginal: por que fica abaixo da demanda</h3>
+    <p>A empresa não escolhe preço e quantidade livremente: está presa aos pares (q, p) da demanda. Então \\(RT(q) = q \\times p(q)\\). Derivando pela regra do produto:</p>
+    <p class="f big">\\(RM(q) = \\dfrac{dRT}{dq} = \\underbrace{p(q)}_{\\text{ganha o preço da nova unidade}} + \\underbrace{q\\cdot\\dfrac{dp}{dq}}_{\\text{perde nas unidades anteriores } (&lt;0)}\\)</p>
+    <div class="ex"><b>Com números</b> (livro: \\(p = 20 - q\\)): vendendo 7, o preço é 13 e RT = 91. Para vender 8, o preço tem de cair para 12 ⇒ RT = 96.
+      <ul class="mini"><li>Ganha 12 com a 8ª unidade…</li><li>…mas perde R$ 1 em cada uma das 7 que já vendia (−7).</li><li>Receita marginal ≈ 12 − 7 = <b>5</b>, bem abaixo do preço 12.</li></ul></div>
+    <p>Para demanda <b>linear</b> há um atalho:</p>
     <p class="f big">\\(p(q) = a - bq \\;\\Rightarrow\\; RT = aq - bq^2 \\;\\Rightarrow\\; RM(q) = a - 2bq\\)</p>
-    <p>Para demanda linear, a RM tem o <b>mesmo intercepto</b> e o <b>dobro da inclinação</b>.</p>
+    <p><b>Em palavras:</b> a RM tem o <b>mesmo intercepto</b> que a demanda e o <b>dobro da inclinação</b> (no gráfico, corta o eixo horizontal na metade da distância da demanda).</p>
+    <div class="trap"><b>Se a demanda vier como q(p)</b> (ex.: q = 16 − 4p), primeiro <b>isole p</b> (p = 4 − 0,25q) e só depois dobre a inclinação: RM = 4 − 0,5q.</div>
+  </section>
+
+  <section class="sec">
+    <h3><span class="n">3</span> A receita do monopolista: RM = CM, depois preço na demanda</h3>
+    <ol>
+      <li>Calcule a RM (dobre a inclinação da demanda inversa).</li>
+      <li>Calcule o CM (derive o CT).</li>
+      <li>Iguale <b>RM = CM</b> ⇒ encontra q<sub>m</sub>.</li>
+      <li>Leve q<sub>m</sub> à <b>demanda</b> ⇒ encontra p<sub>m</sub>.</li>
+      <li>Lucro = p<sub>m</sub>·q<sub>m</sub> − CT(q<sub>m</sub>).</li>
+      <li>Para o peso morto: ache o eficiente (p(q) = CM ⇒ q<sub>e</sub>) e calcule o triângulo.</li>
+    </ol>
     <div class="two"><div class="figslot" data-fig="mo_agua"></div><div>
       <div class="ex"><b>Companhia de água</b>: \\(p = 56 - 2{,}5q\\), \\(CT = q + 100\\).<br>
-      \\(RM = 56 - 5q\\), \\(CM = 1\\) ⇒ \\(56 - 5q = 1 \\Rightarrow q = 11\\) milhões de m³.<br>
-      Preço na demanda: \\(p(11) = 56 - 27{,}5 = 28{,}5\\).<br>
-      Lucro = 28,5×11 − 111 = <b>202,5</b>.<br>
-      Eficiente: p = CM = 1 ⇒ q = 22. Peso morto = \\(\\dfrac{(28{,}5 - 1)(22 - 11)}{2}\\) = <b>151,25</b>.</div>
+      1–2. \\(RM = 56 - 5q\\), \\(CM = 1\\).<br>
+      3. \\(56 - 5q = 1 \\Rightarrow q = 11\\) milhões de m³.<br>
+      4. Preço na demanda: \\(p(11) = 56 - 27{,}5 = 28{,}5\\).<br>
+      5. Lucro = 28,5×11 − (11 + 100) = <b>202,5</b>.<br>
+      6. Eficiente: p = CM ⇒ 56 − 2,5q = 1 ⇒ q = 22. Peso morto = \\(\\dfrac{(28{,}5 - 1)(22 - 11)}{2}\\) = <b>151,25</b>.</div>
     </div></div>
+    <div class="ler"><b>📊 Como ler o gráfico do monopólio</b>
+      <ul>
+        <li><b class="c2">D (verde)</b>: demanda. <b class="c4">RM (amarela)</b>: começa no mesmo ponto do eixo vertical e cai duas vezes mais rápido. <b class="no">CM (vermelha)</b>: aqui horizontal em 1. <b class="c3">CTM (roxa)</b>: decrescente (custo fixo alto).</li>
+        <li>Para achar o monopólio: vá até onde <b>RM cruza CM</b> (q = 11), depois <b>suba até a demanda</b> para ler o preço (28,5) — ponto “Máx. lucro”.</li>
+        <li>Ponto “Eficiente”: onde a <b>demanda cruza o CM</b> (q = 22, p = 1).</li>
+        <li><b class="no">Triângulo vermelho (PM)</b>: entre q = 11 e q = 22, abaixo da demanda e acima do CM — unidades que valiam mais do que custavam, mas não foram produzidas.</li>
+        <li><b class="c2">Triângulo verde (EC)</b>: abaixo da demanda e acima do preço 28,5.</li>
+      </ul></div>
     <div class="trap"><b>Erro clássico:</b> achar q por RM = CM e esquecer de levar q à <b>demanda</b> para achar o preço. O preço vem de p(q), não da RM nem do CM!</div>
   </section>
 
   <section class="sec">
-    <h3><span class="n">3</span> Por que é ineficiente?</h3>
-    <p>Na quantidade de máximo lucro há pessoas dispostas a pagar <b>mais</b> por unidades extras do que custaria produzi-las (p &gt; CM). Há espaço para aumentar o excedente total ⇒ <b>ônus do poder de mercado</b> (perda social, peso morto, <i>deadweight loss</i>).</p>
-    <div class="ex"><b>Outro exemplo:</b> \\(p = 20 - q\\), \\(CT = 0{,}2q^2 + 3{,}2q + 50\\). RM = 20 − 2q; CM = 0,4q + 3,2 ⇒ q = 7, p = 13 (CM(7) = 6). Eficiente: 20 − q = 0,4q + 3,2 ⇒ q = 12, p = 8. <b>Peso morto = \\(\\dfrac{(13 - 6)(12 - 7)}{2}\\) = 17,5</b>.</div>
+    <h3><span class="n">4</span> Por que é ineficiente?</h3>
+    <p>Na quantidade de máximo lucro, <b>p &gt; CM</b>: há consumidores dispostos a pagar <b>mais</b> por uma unidade extra do que custaria produzi-la. Produzir essa unidade geraria ganho para a sociedade, mas o monopolista não produz porque, para vendê-la, teria de baixar o preço de todas as outras. Esse ganho perdido é o <b>ônus do poder de mercado</b> (perda social, peso morto, <i>deadweight loss</i>).</p>
+    <p class="f big">\\(PM = \\dfrac{[\\,p_m - CM(q_m)\\,]\\times(q_e - q_m)}{2}\\)</p>
+    <p class="note">Altura do triângulo = distância entre a demanda e o CM em q<sub>m</sub>; base = quanto falta para chegar ao eficiente. (Fórmula de triângulo: vale quando demanda e CM são retas.)</p>
+    <div class="ex"><b>Exemplo do livro:</b> \\(p = 20 - q\\), \\(CT = 0{,}2q^2 + 3{,}2q + 50\\). RM = 20 − 2q; CM = 0,4q + 3,2 ⇒ 20 − 2q = 0,4q + 3,2 ⇒ <b>q = 7, p = 13</b> (CM(7) = 6). Lucro = 91 − 82,2 = 8,8. Eficiente: 20 − q = 0,4q + 3,2 ⇒ q = 12, p = 8. <b>Peso morto = \\(\\dfrac{(13 - 6)(12 - 7)}{2}\\) = 17,5</b>.</div>
     <p>O que fazer? <b>Lei da Concorrência</b> (Sistema Brasileiro de Defesa da Concorrência): análise de fusões, aquisições, cartéis, acordos de preços. Na Europa, o <b>Digital Markets Act</b> multou o Google em US$ 1 bi por favorecer seus serviços na Google Play.</p>
   </section>
 
   <section class="sec">
-    <h3><span class="n">4</span> Monopólio natural e regulação</h3>
-    <p><b>Monopólio natural</b>: uma empresa atende todo o mercado a custo menor do que duas ou mais. Típico com custo fixo alto e CTM <b>decrescente</b> (água: CTM = 1 + \\(\\dfrac{100}{q}\\)). Dividir o mercado só duplicaria o custo fixo.</p>
+    <h3><span class="n">5</span> Monopólio natural e regulação</h3>
+    <p><b>Monopólio natural</b>: uma única empresa atende todo o mercado a um custo menor do que duas ou mais. Típico com <b>custo fixo alto</b> e CTM <b>sempre decrescente</b> (água: CTM = 1 + \\(\\dfrac{100}{q}\\)). Dividir o mercado só duplicaria o custo fixo (imagine duas redes de canos em cada rua).</p>
     <div class="two"><div class="figslot" data-fig="mo_reg"></div><div>
-    <table class="t sm"><thead><tr><th>Regra</th><th>Resultado</th></tr></thead><tbody>
-      <tr><td><b>Sem regulação</b> (RM = CM)</td><td>Lucro máximo, peso morto grande.</td></tr>
-      <tr><td><b>p = CM</b></td><td>Eficiente (peso morto zero), mas como CM &lt; CTM há <b>prejuízo</b> = CF ⇒ precisa de <b>subsídio</b>.</td></tr>
-      <tr><td><b>p = CTM</b></td><td>Lucro zero, sem subsídio, peso morto <b>pequeno</b>. Mas regular pelo custo não dá incentivo a reduzir custos.</td></tr>
+    <table class="t sm"><thead><tr><th>Regra</th><th>Resultado (água)</th></tr></thead><tbody>
+      <tr><td><b>Sem regulação</b> (RM = CM)</td><td>q = 11, p = 28,5: lucro máximo (202,5), peso morto grande (151,25).</td></tr>
+      <tr><td><b>p = CM</b></td><td>q = 22, p = 1: eficiente (PM = 0), mas como CM &lt; CTM há <b>prejuízo</b> = CF = 100 ⇒ precisa de <b>subsídio</b>.</td></tr>
+      <tr><td><b>p = CTM</b></td><td>q = 20, p = 6: lucro zero, sem subsídio, peso morto <b>pequeno</b> (5). Mas regular pelo custo não dá incentivo a reduzir custos.</td></tr>
     </tbody></table>
-    <p>Alternativas: <b>leilões de concessão</b> (rodovias, pontes, metrô), <b>agências reguladoras</b> (ANA — águas, Aneel — energia, ANAC — aviação) ou o governo operar o monopólio (risco: baixa capacidade de investir, gestão ineficiente, corrupção).</p></div></div>
-    <div class="ex"><b>Questão de prova (pedágio, 2025).</b> \\(p = 85 - 6q\\), \\(CT = 168 + 5q + 2q^2\\).<br>
-      RM = 85 − 12q, CM = 5 + 4q ⇒ q = 5, p = 55, lucro = 275 − 243 = <b>32</b> (na prova, alternativa a). Eficiente: 85 − 6q = 5 + 4q ⇒ q = 8, p = 37 ⇒ peso morto = \\(\\dfrac{(55 - 25)(8 - 5)}{2}\\) = 45; EC = \\(\\dfrac{(85 - 55)\\cdot 5}{2}\\) = 75.<br>
-      <b>Teto que maximiza q sem prejuízo e sem subsídio:</b> lucro = 80q − 8q² − 168 = 0 ⇒ q² − 10q + 21 = 0 ⇒ q = 3 ou 7 ⇒ escolhe <b>q = 7 ⇒ p = 43</b> (na prova, alternativa d). Fica-se com a maior raiz porque, respeitando lucro ≥ 0, quanto maior q, mais perto do eficiente. Com p = 37 (eficiente), o lucro seria −40.</div>
-    <div class="ex"><b>App de mobilidade.</b> \\(p = 4 - 0{,}2q\\), \\(CT = 0{,}4q + 6{,}4\\): q = 9, p = 2,2, lucro = 9,8, peso morto = \\(\\dfrac{(2{,}2 - 0{,}4)(18 - 9)}{2}\\) = 8,1. Teto p = 0,4 ⇒ q = 18 e prejuízo = 6,4 ⇒ subsídio de 6,4.<br>
-      Versão \\(q = 16 - 4p\\), \\(CT = q + 6{,}4\\): primeiro isole p (p = 4 − 0,25q) e use RT = p(q)·q ⇒ RM = 4 − 0,5q = CM = 1 ⇒ q = 6, p = 2,5, lucro 2,6. Melhor teto sem subsídio: p = CTM ⇒ 0,25q² − 3q + 6,4 = 0 (×4: q² − 12q + 25,6 = 0 ⇒ q = \\(\\dfrac{12 \\pm \\sqrt{41{,}6}}{2}\\) ≈ 2,78 ou 9,22) ⇒ maior raiz q ≈ 9,22 ⇒ <b>p ≈ 1,69</b>.</div>
+    <div class="ler"><b>📊 Gráfico ao lado</b>: mostra a regra <b>p = CTM</b>. O ponto “regulado” fica onde a <b>demanda cruza o CTM roxo</b> (q = 20, p = 6). Sobra só um triangulinho vermelho de peso morto até q = 22.</div>
+    </div></div>
+    <p>Alternativas: <b>leilões de concessão</b> (rodovias, pontes, metrô), <b>agências reguladoras</b> (ANA — águas, Aneel — energia, ANAC — aviação) ou o governo operar o monopólio (risco: baixa capacidade de investir, gestão ineficiente, corrupção).</p>
+    <div class="extra"><b>Como achar o “melhor teto sem subsídio”:</b> queremos a maior quantidade possível (mais perto do eficiente) sem prejuízo ⇒ lucro = 0 ⇔ p(q) = CTM(q). Isso dá uma equação do 2º grau com duas raízes; escolha a <b>maior raiz</b> (maior q ⇒ menor preço). Mas primeiro teste p = CM: se não der prejuízo, é ele o melhor teto.</div>
+    <div class="ex"><b>Prova 2025 (tarde) — pedágio da ponte</b>
+      <div class="qslot" data-q="Tema 6#11"></div>
+      <b>Resolução:</b>
+      <ul class="mini">
+        <li><b>Monopólio:</b> RM = 85 − 12q, CM = 5 + 4q ⇒ 80 = 16q ⇒ q = 5 (mil veículos), p = 85 − 30 = 55, lucro = 55·5 − (168 + 25 + 50) = 275 − 243 = <b>32</b> mil/dia ⇒ <b>C</b>.</li>
+        <li>Por que as outras estão erradas: o <b>eficiente</b> é p(q) = CM ⇒ 85 − 6q = 5 + 4q ⇒ q = 8, p = 37 — B e E descrevem o eficiente, não o monopólio. Peso morto = \(\dfrac{(55 - 25)(8 - 5)}{2}\) = 45 (não 30, A). EC do monopólio = \(\dfrac{(85 - 55)\cdot 5}{2}\) = 75 (não 45, D).</li>
+      </ul></div>
+    <div class="ex"><b>Prova 2025 (tarde) — teto do pedágio</b>
+      <div class="qslot" data-q="Tema 6#12"></div>
+      <b>Resolução:</b> primeiro teste o eficiente: com p = 37 (q = 8), lucro = 296 − (168 + 40 + 128) = −40 ⇒ precisaria de subsídio, não serve. Então procure o maior q com lucro zero: lucro = (85 − 6q)q − 168 − 5q − 2q² = 80q − 8q² − 168 = 0 ⇒ (÷8) q² − 10q + 21 = 0 ⇒ q = 3 ou 7. Fica com a <b>maior raiz</b> (mais veículos, menor preço): <b>q = 7 ⇒ p = 85 − 42 = 43</b> (D).</div>
+    <div class="ex"><b>Questões de prova — app de mobilidade</b>
+      <div class="qslot" data-q="Tema 6#7"></div>
+      <b>Resolução:</b> RM = 4 − 0,4q (dobro da inclinação) e CM = 0,4 ⇒ 4 − 0,4q = 0,4 ⇒ q = 9; p(9) = 4 − 1,8 = 2,2; lucro = 2,2·9 − (0,4·9 + 6,4) = 19,8 − 10 = 9,8 (A).
+      <div class="qslot" data-q="Tema 6#8"></div>
+      <b>Resolução:</b> eficiente: p = CM ⇒ 4 − 0,2q = 0,4 ⇒ q = 18 ⇒ peso morto sem regulação = \(\dfrac{(2{,}2 - 0{,}4)(18 - 9)}{2}\) = 8,1 (A é correta). Com p = 0,4: q = 18, PM = 0 (B correta) e lucro = 0,4·18 − (0,4·18 + 6,4) = −6,4 ⇒ subsídio de 6,4 (C correta). E (lucro 9,8) também é correta. A <b>INCORRETA</b> é a <b>D</b>: com p = 0,8 &gt; CM ainda sobra peso morto; o máximo de excedente é em p = 0,4.
+      <div class="qslot" data-q="Tema 6#9"></div>
+      <b>Resolução:</b> a demanda veio como q(p): <b>isole p</b> primeiro ⇒ p = 4 − 0,25q ⇒ RM = 4 − 0,5q = CM = 1 ⇒ q = 6 ⇒ p = 2,5 (C); lucro = 15 − 6 − 6,4 = 2,6.
+      <div class="qslot" data-q="Tema 6#10"></div>
+      <b>Resolução:</b> p = CM = 1 daria prejuízo (= CF = 6,4), então usa-se p = CTM: 4 − 0,25q = 1 + \(\dfrac{6{,}4}{q}\) ⇒ 0,25q² − 3q + 6,4 = 0 (×4: q² − 12q + 25,6 = 0 ⇒ q = \(\dfrac{12 \pm \sqrt{41{,}6}}{2}\) ≈ 2,78 ou 9,22) ⇒ maior raiz q ≈ 9,22 ⇒ <b>p = 4 − 0,25·9,22 ≈ 1,69</b> (B).</div>
   </section>
 
   <section class="sec">
-    <h3><span class="n">5</span> Casos menos extremos</h3>
-    <p><b>Competição monopolística</b>: várias empresas com produtos similares mas não idênticos (restaurantes). Cada uma pode subir o preço sem perder todos os clientes. (Tratado no livro.)</p>
+    <h3><span class="n">6</span> Casos menos extremos</h3>
+    <p><b>Competição monopolística</b>: várias empresas com produtos <b>parecidos, mas não idênticos</b> (restaurantes, salões de beleza). Cada uma pode subir um pouco o preço sem perder todos os clientes (tem algum poder de mercado), mas há livre entrada. (Tratado no livro.)</p>
   </section>`,
   pegadinhas: [
     "O preço do monopolista vem da DEMANDA no q onde RM = CM — não da RM.",
@@ -562,12 +994,14 @@ const AULAS = [
     "Peso morto: triângulo entre a demanda e o CM, da quantidade do monopólio até a eficiente.",
     "Monopólio natural com p = CM gera prejuízo (CM < CTM) ⇒ precisa de subsídio.",
     "O melhor teto sem subsídio é p = CTM na MAIOR quantidade que zera o lucro (a menor raiz dá o preço mais alto).",
-    "Efeitos de rede tendem a gerar monopólios — e monopólios não são eficientes."
+    "Efeitos de rede tendem a gerar monopólios — e monopólios não são eficientes.",
+    "Se a demanda vier como q = f(p), isole p ANTES de dobrar a inclinação para achar a RM."
   ],
   cards: [
     ["Monopólio", "Uma empresa, sem substitutos próximos, com barreiras à entrada."],
     ["Efeitos de rede", "O produto vale mais quanto mais usuários tem ⇒ mercados muito concentrados."],
     ["Receita marginal (demanda p = a − bq)", "\\(RM = a - 2bq\\)"],
+    ["Por que RM < p?", "Para vender mais uma unidade, o monopolista baixa o preço de TODAS as unidades: ganha p na nova, perde nas anteriores."],
     ["Regra do monopolista", "RM = CM; o preço sai da demanda nesse q."],
     ["Água: p = 56 − 2,5q, CT = q + 100", "q = 11, p = 28,5, lucro = 202,5; eficiente q = 22; peso morto = 151,25."],
     ["Peso morto do monopólio", "Triângulo entre demanda e CM, de q_monopólio até q_eficiente."],
@@ -575,7 +1009,8 @@ const AULAS = [
     ["Regular com p = CM", "Peso morto zero, mas prejuízo (= CF se CM constante) ⇒ subsídio."],
     ["Regular com p = CTM", "Lucro zero, sem subsídio, peso morto pequeno; sem incentivo a reduzir custo."],
     ["Pedágio: p = 85 − 6q, CT = 168 + 5q + 2q²", "Monopólio: q = 5, p = 55, lucro 32. Teto sem prejuízo e sem subsídio: p = 43."],
-    ["Lei da Concorrência", "Estrutura o Sistema Brasileiro de Defesa da Concorrência (fusões, cartéis, acordos de preço)."]
+    ["Lei da Concorrência", "Estrutura o Sistema Brasileiro de Defesa da Concorrência (fusões, cartéis, acordos de preço)."],
+    ["p = 20 − q, CT = 0,2q² + 3,2q + 50 (livro)", "q = 7, p = 13, lucro 8,8; eficiente q = 12; peso morto 17,5."]
   ]
 },
 /* ============================================================ TEMA 7 */
@@ -587,7 +1022,26 @@ const AULAS = [
   tema: "Dilema dos prisioneiros, estratégia dominante, Nash, Cournot e jogos repetidos",
   lab: "oligo",
   resumo: `
-  <div class="tldr"><b>Em uma frase:</b> no oligopólio, poucas empresas têm consciência da sua <b>interdependência</b>: a melhor escolha de cada uma depende da escolha das outras. A teoria dos jogos organiza isso: <b>estratégia dominante</b>, <b>Equilíbrio de Nash</b> e o <b>dilema dos prisioneiros</b> (cooperar seria melhor para todos, mas não é individualmente racional).</div>
+  <div class="tldr"><b>A ideia central:</b> no oligopólio há <b>poucas</b> empresas, e cada uma sabe que sua melhor escolha <b>depende do que as outras fizerem</b> (interdependência). A teoria dos jogos organiza esse raciocínio com três ferramentas: <b>estratégia dominante</b> (a melhor jogada não importa o que o outro faça), <b>Equilíbrio de Nash</b> (ninguém se arrepende da própria escolha, dada a do outro) e o <b>dilema dos prisioneiros</b> (cooperar seria melhor para todos, mas cada um, sozinho, tem incentivo a trair).</div>
+
+  <section class="sec sig">
+    <h3>🔤 Siglas e símbolos deste tema</h3>
+    <dl class="sym">
+      <dt>Jogador</dt><dd>Quem decide (empresa, país, prisioneiro).</dd>
+      <dt>Estratégia</dt><dd>Uma opção de ação (preço alto/baixo, confessar/não confessar).</dd>
+      <dt>Payoff</dt><dd>O resultado que cada jogador obtém (lucro, anos de prisão). Na matriz, cada célula traz o payoff dos dois.</dd>
+      <dt>EN</dt><dd>Equilíbrio de Nash.</dd>
+      <dt>HHI</dt><dd>Índice Herfindahl-Hirschman: mede a concentração de um mercado.</dd>
+      <dt>q<sub>i</sub></dt><dd>Quantidade da empresa i.</dd>
+      <dt>Q<sub>−i</sub></dt><dd>Quantidade de <b>todas as outras</b> empresas (o “menos i” quer dizer “exceto i”).</dd>
+      <dt>a, b, c</dt><dd>Em Cournot: demanda P = a − bQ e custo marginal constante c.</dd>
+      <dt>n</dt><dd>Número de empresas.</dd>
+      <dt>π<sub>c</sub>, π<sub>d</sub>, π<sub>N</sub></dt><dd>Lucro por período cooperando, desviando (traindo) e no Nash sem cooperação.</dd>
+      <dt>r</dt><dd>Taxa de juros por período (usada para trazer lucros futuros a valor presente).</dd>
+      <dt>VP</dt><dd>Valor presente: quanto vale hoje um dinheiro que só chega no futuro.</dd>
+      <dt>AGI</dt><dd>Inteligência Artificial Geral (<i>Artificial General Intelligence</i>).</dd>
+    </dl>
+  </section>
 
   <section class="sec">
     <h3><span class="n">1</span> Oligopólios por toda parte</h3>
@@ -597,54 +1051,126 @@ const AULAS = [
       <div class="box">Bandeiras de cartão: Mastercard 52%, Visa 31–37%.</div>
       <div class="box">Telecom: Vivo 38%, Claro 33%, TIM 22%.</div>
     </div>
+    <div class="ex"><b>Medindo a concentração: HHI</b> <span class="tag">Livro</span><br>
+      <span class="f">\\(HHI = \\sum_i (\\text{participação \\% da empresa } i)^2\\)</span>
+      Some o <b>quadrado</b> da fatia de mercado (em %) de cada empresa. 4 empresas iguais: 25² × 4 = 2.500. Monopólio: 100² = <b>10.000</b> (o máximo). Quanto maior, mais concentrado.<br>
+      Aviação doméstica: 41² + 32² + 27² = 1.681 + 1.024 + 729 = <b>3.434</b>. Usando frações (0,3434), o inverso 1/0,3434 ≈ 2,9 = “equivale a ~3 empresas do mesmo tamanho”.</div>
   </section>
 
   <section class="sec">
     <h3><span class="n">2</span> Dilema dos prisioneiros e estratégia dominante</h3>
-    <div class="two"><div class="figslot" data-fig="ol_prec"></div><div>
-      <p>Dois criminosos interrogados separadamente. Ninguém confessa: 4 anos cada. Um confessa e o outro não: 3 e 15 anos. Os dois confessam: 10 cada.</p>
-      <p>Para A: se B confessa, confessar dá 10 anos e não confessar dá 15; se B não confessa, confessar dá 3 e não confessar dá 4. Em qualquer cenário, confessar = <b>menos anos de prisão</b> ⇒ <b>estratégia dominante</b>.</p>
-      <p>Resultado: os dois confessam e pegam 10 anos — poderiam pegar 4 cooperando, mas cooperar é <b>individualmente irracional</b>.</p>
-    </div></div>
+    <p>Dois parceiros de crime são interrogados em salas separadas. Penas: ninguém confessa ⇒ 4 anos cada; um confessa e o outro não ⇒ quem confessou pega 3 e o outro 15; os dois confessam ⇒ 10 cada.</p>
+    <table class="t sm"><thead><tr><th>A \\ B</th><th>B confessa</th><th>B não confessa</th></tr></thead><tbody>
+      <tr><td><b>A confessa</b></td><td class="ok">A: 10; B: 10 ★</td><td>A: 3; B: 15</td></tr>
+      <tr><td><b>A não confessa</b></td><td>A: 15; B: 3</td><td>A: 4; B: 4</td></tr></tbody></table>
+    <p class="note">Como ler a matriz: as <b>linhas</b> são as opções de A; as <b>colunas</b>, as de B. Cada célula mostra o que acontece com cada um se aquelas duas escolhas forem feitas. Aqui o payoff é <b>anos de prisão</b>: quanto menor, melhor.</p>
+    <p><b>Raciocínio de A:</b> “Se B confessar, eu pego 10 confessando ou 15 calado ⇒ confesso. Se B não confessar, pego 3 confessando ou 4 calado ⇒ confesso.” Em <b>qualquer</b> cenário, confessar dá menos anos ⇒ confessar é <b>estratégia dominante</b>. B raciocina igual.</p>
+    <p><b>Resultado:</b> os dois confessam e pegam 10 anos — quando poderiam pegar 4 se ambos ficassem calados. Cooperar é melhor <b>para os dois juntos</b>, mas é <b>individualmente irracional</b>: cada um, sozinho, ganha traindo. Esse é o “dilema”.</p>
     <p><b>Estratégia dominante</b>: a melhor estratégia para um jogador, <b>independentemente</b> das estratégias dos demais.</p>
-    <p>Mesmo padrão em: corridas armamentistas, guerra fiscal, pesca predatória, <b>guerra de preços</b> (preço baixo é dominante: 75 cada, em vez de 100 com preço alto), corrida pela AGI.</p>
+    <div class="two"><div class="figslot" data-fig="ol_prec"></div><div>
+      <div class="ler"><b>📊 Como ler a matriz da guerra de preços</b> (payoff = lucro: quanto maior, melhor)
+        <ul>
+          <li>Os payoffs <b>sublinhados e destacados em verde</b> são as <b>melhores respostas</b>: dado o que o outro fez, é o melhor que se pode obter.</li>
+          <li>A célula com <b>contorno verde</b> é o Equilíbrio de Nash: os dois payoffs são melhores respostas.</li>
+          <li>Se B cobra alto, A prefere baixo (150 &gt; 100); se B cobra baixo, A prefere baixo (75 &gt; 50) ⇒ <b>preço baixo é dominante</b>. Resultado: 75 cada, em vez de 100 com os dois cobrando alto.</li>
+        </ul></div>
+    </div></div>
+    <p>Mesmo padrão em: corridas armamentistas, guerra fiscal entre estados, pesca predatória, <b>guerra de preços</b>, corrida pela AGI.</p>
   </section>
 
   <section class="sec">
     <h3><span class="n">3</span> Equilíbrio de Nash</h3>
-    <p><b>Um par de estratégias em que, dada a escolha do oponente, cada um está escolhendo o que é melhor para si.</b> Ninguém se arrepende.</p>
-    <div class="extra"><b>Método do sublinhado:</b> para cada estratégia do adversário, sublinhe seu melhor payoff. Célula com os dois payoffs sublinhados = Equilíbrio de Nash. Teste as 4 combinações!</div>
-    <div class="ex"><b>Exercício Embraer (E) × ABDG</b> (concorrente do exercício; cada uma escolhe entre jatos executivos e aviões comerciais de <b>corredor único</b>, os de fuselagem estreita; lucros em milhões de US$):
-      <table class="t sm"><thead><tr><th>E \\ ABDG</th><th>Jatos executivos</th><th>Corredor único</th></tr></thead><tbody>
+    <p><b>Um par de estratégias em que, dada a escolha do oponente, cada um está escolhendo o que é melhor para si.</b> Teste: depois de ver o que o outro fez, alguém se arrependeria e mudaria sozinho? Se ninguém mudaria, é Nash.</p>
+    <div class="extra"><b>Método do sublinhado (passo a passo):</b>
+      <ol class="mini">
+        <li>Fixe uma coluna (uma escolha de B). Olhando só os payoffs de <b>A</b> nessa coluna, sublinhe o maior.</li>
+        <li>Repita para a outra coluna.</li>
+        <li>Fixe uma linha (uma escolha de A). Olhando só os payoffs de <b>B</b> nessa linha, sublinhe o maior. Repita para a outra linha.</li>
+        <li>Célula com <b>os dois payoffs sublinhados</b> = Equilíbrio de Nash. Pode haver zero, um ou mais.</li>
+        <li>Se um jogador sublinhou a <b>mesma linha (ou coluna) nas duas vezes</b>, essa é a estratégia dominante dele.</li>
+      </ol></div>
+    <div class="ex"><b>Exercício da aula — Embraer (E) × ABDG</b> (ABDG é a concorrente do exercício; cada uma escolhe entre jatos executivos e aviões comerciais de <b>corredor único</b>, os de fuselagem estreita; lucros em milhões de US$)
+      <div class="qslot" data-q="Tema 7#4"></div>
+      <b>Resolução</b> — monte a matriz:
+      <table class="t sm"><thead><tr><th>E \ ABDG</th><th>Jatos executivos</th><th>Corredor único</th></tr></thead><tbody>
         <tr><td><b>Jatos executivos</b></td><td>E: 2; ABDG: 7</td><td class="ok">E: 5; ABDG: 15 ★</td></tr>
         <tr><td><b>Corredor único</b></td><td class="ok">E: 6; ABDG: 11 ★</td><td>E: 4; ABDG: 9</td></tr></tbody></table>
-      <b>Não há estratégias dominantes</b> (a melhor resposta de cada um muda conforme o outro). <b>Há dois Equilíbrios de Nash</b>: (E: jatos; ABDG: corredor único) e (E: corredor único; ABDG: jatos). O mesmo ocorre no jogo GLP-1 (orais × injetáveis).</div>
-    <div class="trap">O Equilíbrio de Nash é um <b>par de estratégias</b>, não um par de payoffs. Em jogo <b>não simétrico</b>, analise cada jogador separadamente.</div>
-    <div class="ex"><b>Prova 2025 — IA relacional × funcional.</b> Lucro = receita − custo: (rel, rel) = 140 − 70 = 70 cada; (func, func) = 120 − 30 = 90 cada; quem faz relacional contra funcional: 200 − 70 = 130 e o outro 70 − 30 = 40. Relacional é <b>dominante</b> (130 &gt; 90 e 70 &gt; 40) ⇒ Nash = (rel, rel), mesmo (func, func) sendo melhor para ambos ⇒ dilema dos prisioneiros (não é “dilema dos recursos comuns”: não há recurso comum).</div>
+      <ul class="mini">
+        <li>Embraer: se ABDG faz jatos, melhor corredor único (6 &gt; 2); se ABDG faz corredor único, melhor jatos (5 &gt; 4). A melhor resposta <b>muda</b> ⇒ sem dominante (A errada).</li>
+        <li>ABDG: se E faz jatos, melhor corredor único (15 &gt; 7); se E faz corredor único, melhor jatos (11 &gt; 9). Também sem dominante.</li>
+        <li>Células com as duas melhores respostas: <b>dois Equilíbrios de Nash</b> — (E: jatos; ABDG: corredor único) e (E: corredor único; ABDG: jatos) (C). Cada uma prefere ficar num segmento diferente da outra. E está errada porque Nash é par de <b>estratégias</b>, não de payoffs.</li>
+      </ul></div>
+    <div class="ex"><b>Slides — GLP-1 (empresas E e L, orais × injetáveis)</b>, mesmo padrão da Embraer:
+      <div class="qslot" data-q="Tema 7#5"></div>
+      <b>Resolução:</b> E prefere orais se L faz injetáveis (14 &gt; 7) e injetáveis se L faz orais (10 &gt; 8); L prefere injetáveis se E faz orais (10 &gt; 7) e orais se E faz injetáveis (14 &gt; 8). Nash: (E orais, L injetáveis) e (E injetáveis, L orais) (B) — cada uma num segmento.</div>
+    <div class="trap">O Equilíbrio de Nash é um <b>par de estratégias</b> (ex.: “E faz jatos, ABDG faz corredor único”), não um par de payoffs (“5 e 15”). Em jogo <b>não simétrico</b>, analise cada jogador separadamente.</div>
+    <div class="ex"><b>Prova 2025 (tarde) — IA relacional × funcional</b>
+      <div class="qslot" data-q="Tema 7#6"></div>
+      <b>Resolução:</b> payoff = receita − custo:
+      <table class="t sm"><thead><tr><th>A \ B</th><th>Relacional</th><th>Funcional</th></tr></thead><tbody>
+        <tr><td><b>Relacional</b></td><td class="ok">140 − 70 = 70; 70 ★</td><td>200 − 70 = 130; 70 − 30 = 40</td></tr>
+        <tr><td><b>Funcional</b></td><td>40; 130</td><td>120 − 30 = 90; 90</td></tr></tbody></table>
+      Se a outra faz relacional: 70 &gt; 40; se faz funcional: 130 &gt; 90 ⇒ relacional é <b>dominante</b> para ambas (A). Nash = (rel, rel), mesmo (func, func) sendo melhor para as duas ⇒ dilema dos prisioneiros (D está errada: não há recurso comum sendo esgotado).</div>
   </section>
 
   <section class="sec">
     <h3><span class="n">4</span> Cartel × Cournot × concorrência <span class="tag">Provas 2025</span></h3>
-    <p><b>Cournot</b>: empresas escolhem <b>quantidades</b> simultaneamente; cada uma maximiza seu lucro dada a expectativa sobre a produção das outras, e no equilíbrio as expectativas se confirmam.</p>
-    <p class="f big">\\(\\pi_i = [a - b(q_i + Q_{-i})]\\,q_i - c\\,q_i \\;\\Rightarrow\\; q_i = \\dfrac{a - c - bQ_{-i}}{2b}\\)</p>
-    <p>Derivando o lucro em relação a \\(q_i\\) e igualando a zero: \\(a - 2bq_i - bQ_{-i} - c = 0\\), que dá a função de reação acima. Com n empresas iguais, \\(Q_{-i} = (n-1)q\\):</p>
-    <p class="f big">\\(n \\text{ empresas: } q = \\dfrac{a-c}{b(n+1)},\\quad P = \\dfrac{a + nc}{n+1},\\quad PM = \\dfrac{(a-c)^2}{2b(n+1)^2}\\)</p>
-    <div class="ex"><b>Planos de saúde</b>: \\(p = 10 - \\dfrac{Q}{12}\\), CM = 4, CF = 0 (p em mil R$/ano, Q em milhões de pessoas).
-      <ul class="mini">
-        <li><b>Cartel</b> (age como monopólio): lucro conjunto = 6Q − \\(\\dfrac{Q^2}{12}\\) ⇒ 6 − \\(\\dfrac{Q}{6}\\) = 0 ⇒ Q = 36 (18 cada), p = 7, lucro de cada = (7 − 4)·18 = <b>54 bilhões</b>. Peso morto = \\(\\dfrac{(7 - 4)(72 - 36)}{2}\\) = <b>54 bilhões</b>.</li>
-        <li><b>Teto que elimina o peso morto</b>: p = CM = <b>4</b> (Q = 72).</li>
-        <li><b>Desvio</b>: se a empresa 2 produz 18, a 1 maximiza 4,5q₁ − \\(\\dfrac{q_1^2}{12}\\) ⇒ q₁ = 27, Q = 45, p = <b>6,25</b>; lucros 60,75 e 40,5 ⇒ cartel instável.</li>
-        <li><b>Cournot</b>: q₁ = 36 − 0,5q₂ e q₂ = 36 − 0,5q₁ ⇒ <b>q = 24 cada</b>, Q = 48, p = 6, lucro = 48 cada.</li>
-        <li><b>Concorrência</b>: p = 4, Q = 72, lucro zero.</li>
-      </ul></div>
+    <p>Três cenários possíveis num mercado com poucas empresas, do pior para o melhor para o consumidor:</p>
+    <div class="grid3">
+      <div class="box"><b class="no">Cartel</b><br>As empresas combinam e agem <b>como um único monopolista</b>: maximizam o lucro <b>conjunto</b> e dividem a produção.</div>
+      <div class="box"><b class="c4">Cournot</b><br>Cada empresa escolhe sua <b>quantidade</b> ao mesmo tempo, sem combinar, tentando prever a produção das outras. No equilíbrio, as previsões se confirmam.</div>
+      <div class="box"><b class="ok">Concorrência</b><br>Preço = custo marginal: lucro zero, sem peso morto.</div>
+    </div>
+    <h4>Função de reação de Cournot, passo a passo</h4>
+    <ol class="mini">
+      <li>O preço depende da produção <b>total</b>: \\(P = a - b(q_i + Q_{-i})\\).</li>
+      <li>Lucro da empresa i: \\(\\pi_i = [a - b(q_i + Q_{-i})]\\,q_i - c\\,q_i\\).</li>
+      <li>Derive em relação a q<sub>i</sub> (tratando Q<sub>−i</sub> como dado) e iguale a zero: \\(a - 2bq_i - bQ_{-i} - c = 0\\).</li>
+      <li>Isole q<sub>i</sub>:</li>
+    </ol>
+    <p class="f big">\\(q_i = \\dfrac{a - c - bQ_{-i}}{2b}\\)</p>
+    <p><b>Em palavras:</b> é a “melhor resposta” da empresa i a cada produção das rivais. Repare o sinal de menos: <b>quanto mais as outras produzem, menos i quer produzir</b> (porque o preço já está mais baixo).</p>
+    <p>Com n empresas iguais, no equilíbrio todas produzem o mesmo q e \\(Q_{-i} = (n-1)q\\). Substituindo e resolvendo:</p>
+    <p class="f big">\\(q = \\dfrac{a-c}{b(n+1)},\\quad P = \\dfrac{a + nc}{n+1},\\quad PM = \\dfrac{(a-c)^2}{2b(n+1)^2}\\)</p>
+    <p class="note">Teste dos extremos: n = 1 dá o <b>monopólio</b> (q = (a − c)/2b). Quando n cresce muito, P → c (preço = custo marginal) e PM → 0: <b>concorrência</b>. Cournot fica no meio do caminho.</p>
+    <div class="ex"><b>Prova 2025 (manhã) — planos de saúde</b> (quatro questões em sequência): \(p = 10 - \dfrac{Q}{12}\), CM = 4, CF = 0 (p em mil R$/ano, Q em milhões de pessoas). Aqui a = 10, b = 1/12, c = 4.
+      <div class="qslot" data-q="Tema 7#9"></div>
+      <b>Resolução — cartel</b> (age como monopólio): lucro conjunto = (p − 4)Q = 6Q − \(\dfrac{Q^2}{12}\) ⇒ derivada 6 − \(\dfrac{Q}{6}\) = 0 ⇒ Q = 36 (18 cada), p = 7, lucro de cada = (7 − 4)·18 = <b>54 bilhões</b> (E).
+      <div class="qslot" data-q="Tema 7#10"></div>
+      <b>Resolução — peso morto do cartel:</b> eficiente é p = CM = 4 ⇒ Q = 72. Triângulo entre a demanda e o CM, de 36 a 72: \(\dfrac{(7 - 4)(72 - 36)}{2}\) = <b>54 bilhões</b> (D).
+      <div class="qslot" data-q="Tema 6#15"></div>
+      <b>Resolução — teto que elimina o peso morto:</b> o peso morto some quando p(Q) = CM ⇒ <b>p = 4</b> mil reais por ano (D), com Q = 72.
+      <div class="qslot" data-q="Tema 7#11"></div>
+      <b>Resolução — desvio do cartel:</b> se a empresa 2 mantém 18, a 1 maximiza [10 − (q₁ + 18)/12 − 4]q₁ = 4,5q₁ − \(\dfrac{q_1^2}{12}\) ⇒ 4,5 − \(\dfrac{q_1}{6}\) = 0 ⇒ q₁ = 27, Q = 45, p = 10 − 45/12 = <b>6,25 mil = 6.250 reais</b> (E). Lucros: 60,75 (quem traiu, mais que 54) e 40,5 (quem cumpriu) ⇒ trair compensa ⇒ <b>cartel instável</b>.
+      <div class="qslot" data-q="Tema 7#12"></div>
+      <b>Resolução — Cournot:</b> pela função de reação, \(q_1 = \dfrac{10 - 4 - q_2/12}{2/12} = 36 - 0{,}5q_2\) e, por simetria, q₂ = 36 − 0,5q₁. Com q₁ = q₂ = q: q = 36 − 0,5q ⇒ <b>q = 24 cada</b> (A), Q = 48, p = 6, lucro = (6 − 4)·24 = 48 cada. Pela fórmula: \(q = \dfrac{6}{(1/12)\cdot 3} = 24\). ✔<br>
+      <b>Concorrência</b>, para comparar: p = 4, Q = 72, lucro zero.</div>
+    <table class="t sm"><thead><tr><th>Planos de saúde</th><th>Q total</th><th>Preço</th><th>Lucro de cada</th><th>Peso morto</th></tr></thead><tbody>
+      <tr><td>Cartel</td><td>36</td><td>7</td><td>54</td><td>54</td></tr>
+      <tr><td>Cournot</td><td>48</td><td>6</td><td>48</td><td>24</td></tr>
+      <tr><td>Concorrência</td><td>72</td><td>4</td><td>0</td><td>0</td></tr></tbody></table>
   </section>
 
   <section class="sec">
     <h3><span class="n">5</span> Jogos repetidos: a cooperação pode se sustentar</h3>
-    <p>Jogado uma vez, o dilema leva à não cooperação. Repetido <b>para sempre</b>, com a estratégia <b>gatilho</b> (coopera enquanto o outro cooperou; se alguém desviar, nunca mais coopera), cooperar pode ser ótimo.</p>
-    <div class="ex"><b>Fragrâncias (prova 2025)</b>: cooperam: 9 cada; um desvia: quem desvia ganha 11,53 e quem coopera, 4,88; ninguém coopera: 6,75 cada. Juros de 10% ao mês.<br>
-      Coopera sempre: \\(9 + \\dfrac{9}{0{,}1} = 99\\). Desvia hoje: \\(11{,}53 + \\dfrac{6{,}75}{0{,}1} = 79{,}03\\). Como 99 &gt; 79,03, seguir a estratégia é ótimo em todo mês ⇒ <b>há Equilíbrio de Nash em que as duas cooperam</b>. Jogado uma única vez, “não cooperar” é dominante e o único Nash é (não coopera, não coopera).</div>
-    <p class="note">Valor presente: com juros r por mês (aqui r = 0,1), receber π todo mês, a partir do próximo, para sempre, vale \\(\\dfrac{\\pi}{r}\\) hoje. O lucro do mês atual entra sem desconto: cooperar = 9 (hoje) + \\(\\dfrac{9}{0{,}1}\\) (futuro) = 99.</p>
+    <p>Jogado <b>uma vez</b>, o dilema leva à não cooperação. Mas empresas reais se enfrentam <b>todo mês</b>. Se o jogo se repete <b>para sempre</b>, entra em cena a estratégia <b>gatilho</b>: “coopero enquanto você cooperar; se você trair uma vez, nunca mais coopero”. Agora trair dá um ganho hoje, mas custa a cooperação para sempre.</p>
+    <p class="f big">\\(\\underbrace{\\pi_c + \\dfrac{\\pi_c}{r}}_{\\text{cooperar sempre}} \\;\\ge\\; \\underbrace{\\pi_d + \\dfrac{\\pi_N}{r}}_{\\text{trair hoje e ser punido depois}}\\)</p>
+    <dl class="sym">
+      <dt>π<sub>c</sub> e π<sub>d</sub></dt><dd>O lucro de <b>hoje</b> (entra sem desconto): cooperando ou traindo.</dd>
+      <dt>π/r</dt><dd>Valor presente de receber π <b>todo período, a partir do próximo, para sempre</b> (perpetuidade). Com juros de 10% ao mês, R$ 9 por mês para sempre valem hoje 9/0,1 = R$ 90.</dd>
+      <dt>Intuição</dt><dd>Juros <b>baixos</b> ⇒ o futuro vale muito ⇒ a punição pesa ⇒ cooperar fica mais fácil.</dd>
+    </dl>
+    <div class="ex"><b>Prova 2025 (manhã) — fragrâncias, jogado uma vez</b>
+      <div class="qslot" data-q="Tema 7#7"></div>
+      <b>Resolução:</b> para cada empresa, “não cooperar” rende mais em qualquer caso: se a outra coopera, 11,53 &gt; 9; se a outra não coopera, 6,75 &gt; 4,88 ⇒ não cooperar é <b>dominante</b> ⇒ o único Nash é (não coopera, não coopera) (C) — embora (9, 9) fosse melhor para as duas: dilema dos prisioneiros.</div>
+    <div class="ex"><b>Prova 2025 (manhã) — fragrâncias, jogado todo mês</b>
+      <div class="qslot" data-q="Tema 7#8"></div>
+      <b>Resolução:</b> compare os dois caminhos, em valor presente, com r = 0,1:
+      <ul class="mini">
+        <li>Cooperar sempre: 9 hoje + 9 por mês para sempre = \(9 + \dfrac{9}{0{,}1} = 9 + 90 = 99\).</li>
+        <li>Desviar hoje: 11,53 hoje, depois a rival pune e ficam em 6,75 para sempre = \(11{,}53 + \dfrac{6{,}75}{0{,}1} = 11{,}53 + 67{,}5 = 79{,}03\).</li>
+      </ul>
+      Como 99 &gt; 79,03, seguir a estratégia é a melhor resposta à estratégia da rival em todo mês ⇒ <b>há Equilíbrio de Nash em que as duas cooperam</b> (D). Os valores 8,18 e 12,89 (A, B) não correspondem a nenhuma conta correta, e desviar rende 79,03, não 99 (E).</div>
   </section>`,
   pegadinhas: [
     "Equilíbrio de Nash é um PAR DE ESTRATÉGIAS, não de payoffs.",
@@ -653,7 +1179,8 @@ const AULAS = [
     "No dilema dos prisioneiros, existe resultado melhor para os dois, mas ele não é equilíbrio.",
     "Jogo não simétrico: analise cada jogador separadamente.",
     "Cartel: maximize o lucro CONJUNTO (age como monopólio) e divida; desviar é tentador ⇒ instável.",
-    "No jogo repetido infinitamente, juros baixos (futuro valioso) favorecem a cooperação."
+    "No jogo repetido infinitamente, juros baixos (futuro valioso) favorecem a cooperação.",
+    "Se o payoff for anos de prisão (ou custo), o MENOR é o melhor — leia o enunciado antes de sublinhar."
   ],
   cards: [
     ["Oligopólio", "Poucas empresas concentram o mercado e têm consciência da interdependência."],
@@ -667,7 +1194,8 @@ const AULAS = [
     ["Planos de saúde: cartel", "Q = 36, p = 7, lucro 54 cada, peso morto 54."],
     ["Planos de saúde: Cournot", "q = 24 cada, Q = 48, p = 6, lucro 48 cada."],
     ["Estratégia gatilho", "Coopera enquanto o outro cooperou; se alguém desviar, nunca mais coopera."],
-    ["Cooperação sustentável quando…", "π_c + \\(\\dfrac{\\pi _c}{r}\\) ≥ π_desvio + \\(\\dfrac{\\pi _{\\text{Nash}}}{r}\\)."]
+    ["Cooperação sustentável quando…", "π_c + \\(\\dfrac{\\pi _c}{r}\\) ≥ π_desvio + \\(\\dfrac{\\pi _{\\text{Nash}}}{r}\\)."],
+    ["HHI", "Soma dos quadrados das participações (%). Monopólio = 10.000; 4 empresas iguais = 2.500."]
   ]
 },
 /* ============================================================ TEMA 8 */
@@ -679,37 +1207,70 @@ const AULAS = [
   tema: "Externalidades, perigo moral, seleção adversa, tragédia dos comuns e carona",
   lab: "falhas",
   resumo: `
-  <div class="tldr"><b>Por que este tema?</b> As duas provas de 2025 cobraram <b>falhas de mercado</b> (externalidade, perigo moral, seleção adversa) com textos de jornal. A chave é identificar <b>quem é afetado</b> e <b>qual informação está escondida</b>. <span class="tag">Complemento</span></div>
+  <div class="tldr"><b>Por que este tema?</b> As duas provas de 2025 cobraram <b>falhas de mercado</b> (externalidade, perigo moral, seleção adversa) com textos de jornal. Falha de mercado = situação em que o mercado, sozinho, <b>não</b> chega ao resultado eficiente. A chave para acertar é responder duas perguntas: <b>quem é afetado</b> (terceiros de fora da transação?) e <b>qual informação está escondida</b> (uma ação ou uma característica?). <span class="tag">Complemento</span></div>
+
+  <section class="sec sig">
+    <h3>🔤 Siglas e termos deste tema</h3>
+    <dl class="sym">
+      <dt>CS</dt><dd>Custo social = custo privado + custo externo.</dd>
+      <dt>Custo privado</dt><dd>O custo que o próprio produtor paga (é a curva de oferta).</dd>
+      <dt>Custo externo</dt><dd>O custo que recai sobre <b>terceiros</b> (poluição, doenças) e que o produtor não paga.</dd>
+      <dt>Principal / agente</dt><dd>Principal = quem contrata ou delega (cliente, seguradora); agente = quem age em nome dele (assessor, segurado).</dd>
+      <dt>CDB</dt><dd>Certificado de Depósito Bancário: título de renda fixa emitido por banco.</dd>
+      <dt>Rival</dt><dd>Bem em que o uso de um reduz o que sobra para os outros (peixe pescado).</dd>
+      <dt>Livre acesso</dt><dd>Ninguém pode ser impedido de usar.</dd>
+      <dt>Free rider</dt><dd>“Carona”: quem usa sem pagar.</dd>
+    </dl>
+  </section>
 
   <section class="sec">
     <h3><span class="n">1</span> Externalidades</h3>
-    <p>A ação de um agente afeta o bem-estar de <b>terceiros que não tiveram poder de escolha</b>, e esse efeito <b>não é considerado</b> por quem decide.</p>
+    <p><b>Definição:</b> a ação de um agente afeta o bem-estar de <b>terceiros que não tiveram poder de escolha</b>, e esse efeito <b>não é considerado</b> por quem decide.</p>
     <div class="two"><div class="figslot" data-fig="fm_ext"></div><div>
-      <p><b>Negativa</b> (termelétrica e aquecimento global; ludopatia e bets; corrida pela AGI): <b>custo social = custo privado + custo externo</b> ⇒ curva de custo social <b>acima</b> da oferta. O mercado produz <b>demais</b>. Perda social = triângulo entre custo social e demanda, da Q eficiente até a Q de mercado.</p>
-      <p><b>Positiva</b> (vacinação, educação, P&amp;D): o mercado produz <b>de menos</b>.</p>
-      <p>Correções: imposto (ou subsídio) por unidade igual ao efeito externo, regulação.</p>
+      <p><b>Negativa</b> (termelétrica e aquecimento global; ludopatia e bets; corrida pela AGI): <b>custo social = custo privado + custo externo</b> ⇒ a curva de custo social fica <b>acima</b> da oferta. Como o produtor só olha o próprio custo, o mercado produz <b>demais</b>.</p>
+      <p><b>Positiva</b> (vacinação, educação, P&amp;D): quem consome gera benefício para outros (quem se vacina protege os vizinhos) ⇒ o benefício social fica acima da demanda e o mercado produz <b>de menos</b>.</p>
+      <p><b>Correções:</b> imposto por unidade igual ao custo externo (ou subsídio igual ao benefício externo), regulação.</p>
     </div></div>
-    <div class="trap"><b>Como ler o gráfico:</b> Demanda = valor para os consumidores; Oferta = custo privado; Custo social = privado + externo. Mercado: Oferta = Demanda. Eficiente: Custo social = Demanda.<br><b>Prova 2025 (gráficos):</b> a alternativa certa tem o custo social <b>acima</b> da oferta e a perda à <b>direita</b> da quantidade eficiente. Custo social abaixo da oferta = “custo externo negativo” (errado); mexer na demanda só faz sentido com externalidade positiva.</div>
+    <div class="ler"><b>📊 Como ler o gráfico de externalidade negativa</b>
+      <ul>
+        <li><b class="c2">Demanda</b> = quanto os consumidores valorizam cada unidade.</li>
+        <li><b class="c1">Oferta (custo privado)</b> = quanto custa para o produtor.</li>
+        <li><b class="no">Custo social (vermelha)</b> = custo privado + custo externo. É a oferta <b>deslocada para cima</b> pelo valor do dano a terceiros (aqui, 120 por unidade).</li>
+        <li><b>Mercado</b>: onde Oferta = Demanda (Q = 16, P = 220). <b>Eficiente</b>: onde Custo social = Demanda (Q = 11,2, P = 280).</li>
+        <li><b class="no">Triângulo vermelho (perda)</b>: as unidades entre 11,2 e 16 custam à sociedade mais do que valem para quem compra. Área = \\(\\dfrac{(340 - 220)\\times(16 - 11{,}2)}{2}\\) = 288. Fica à <b>direita</b> da quantidade eficiente.</li>
+        <li>Um imposto de 120 por unidade faria o produtor “sentir” o custo externo: a oferta subiria até coincidir com o custo social.</li>
+      </ul></div>
+    <div class="ex"><b>Prova 2025 (tarde) — qual gráfico está certo?</b>
+      <div class="qslot" data-q="Tema 8#4"></div>
+      <b>Resolução:</b> os custos com familiares e com o SUS são <b>custo externo</b> ⇒ custo social = privado + externo ⇒ curva de custo social <b>acima</b> da oferta. O mercado produz onde oferta = demanda (mais que o eficiente, onde custo social = demanda) ⇒ a perda é o triângulo à <b>direita</b> da quantidade eficiente: gráfico <b>(a)</b>. Em (b) o custo social está abaixo da oferta (seria um “custo externo negativo”); em (c) e (d) mexe-se na demanda, o que só faria sentido com externalidade de consumo/positiva.</div>
   </section>
 
   <section class="sec">
     <h3><span class="n">2</span> Informação assimétrica</h3>
+    <p>Um lado da transação sabe algo que o outro não sabe. Existem dois tipos — a diferença é <b>o que</b> está escondido:</p>
     <div class="grid2">
-      <div class="box"><b class="c1">Perigo moral</b> (risco moral, <i>moral hazard</i>)<br>Assimetria quanto ao <b>comportamento/ação</b> + <b>desalinhamento de interesses</b> entre agente e principal. O agente faz algo que o principal não observa perfeitamente.<br><i>Ex.:</i> assessor recomenda o CDB (título de renda fixa emitido por banco) do Banco Master por pagar mais comissão (o cliente não vê o critério); plataforma que impulsiona conteúdo danoso; motorista com seguro total.</div>
-      <div class="box"><b class="c3">Seleção adversa</b><br>Assimetria quanto ao <b>tipo/característica</b>. As condições atraem relativamente mais o “pior tipo” ⇒ <b>sobrerrepresentação</b> dele no equilíbrio.<br><i>Ex.:</i> investidores não distinguem plataformas criteriosas ⇒ as menos criteriosas ganham mercado; Disciplina Consciente (código de honra do ITA: atividades e provas sem fiscal) <b>reduz</b> seleção adversa ao revelar quem é confiável.</div>
+      <div class="box"><b class="c1">Perigo moral</b> (risco moral, <i>moral hazard</i>)<br>Assimetria quanto ao <b>comportamento/ação</b> + <b>desalinhamento de interesses</b> entre agente e principal. O agente faz algo que o principal não observa perfeitamente — e o que é bom para o agente não é bom para o principal.<br><i>Ex.:</i> assessor recomenda o CDB do Banco Master por pagar mais comissão (o cliente não vê o critério); plataforma que impulsiona conteúdo danoso; motorista com seguro total que passa a dirigir sem cuidado.</div>
+      <div class="box"><b class="c3">Seleção adversa</b><br>Assimetria quanto ao <b>tipo/característica</b>. As condições do mercado atraem relativamente mais o “pior tipo” ⇒ ele fica <b>sobrerrepresentado</b> no equilíbrio.<br><i>Ex.:</i> investidores não distinguem plataformas criteriosas das outras ⇒ as menos criteriosas ganham mercado; Disciplina Consciente (código de honra do ITA: atividades e provas sem fiscal) <b>reduz</b> seleção adversa ao revelar quem é confiável.</div>
     </div>
-    <div class="extra"><b>Teste rápido:</b> o problema é o que a pessoa <b>FAZ</b> (escondido)? → perigo moral. O problema é o que a pessoa/empresa <b>É</b> (escondido) e isso muda <b>quem fica</b> no mercado? → seleção adversa.</div>
+    <div class="extra"><b>Teste rápido:</b> o problema é o que a pessoa <b>FAZ</b> depois do contrato (e o outro não vê)? → <b>perigo moral</b>. O problema é o que a pessoa/empresa <b>É</b> (e o outro não sabe), e isso muda <b>quem fica</b> no mercado? → <b>seleção adversa</b>.</div>
+    <div class="ex"><b>Prova 2025 (manhã) — Disciplina Consciente</b>
+      <div class="qslot" data-q="Tema 8#5"></div>
+      <b>Resolução:</b> o que fica escondido é o <b>tipo</b> da pessoa (confiável ou não), não uma ação depois de um contrato ⇒ assunto de <b>seleção adversa</b>. Ao permitir observar os colegas sem supervisão, a DC <b>revela</b> o tipo e reduz a assimetria ⇒ reduz a seleção adversa em contratações e indicações (C).</div>
   </section>
 
   <section class="sec">
     <h3><span class="n">3</span> Outras falhas</h3>
     <div class="grid3">
-      <div class="box"><b>Tragédia dos comuns</b><br>Recurso <b>rival e de livre acesso</b>: cada um fazendo o melhor para si esgota o recurso (pesca predatória).</div>
-      <div class="box"><b>Problema do carona</b> (<i>free rider</i>)<br>Usufruir de um bem público sem contribuir para o seu custeio.</div>
+      <div class="box"><b>Tragédia dos comuns</b><br>Recurso <b>rival e de livre acesso</b>: cada um, fazendo o melhor para si, retira demais e o recurso se esgota para todos (pesca predatória).</div>
+      <div class="box"><b>Problema do carona</b> (<i>free rider</i>)<br>Usufruir de um bem público sem contribuir para o seu custeio. Se todos pensam assim, ninguém paga e o bem não é provido.</div>
       <div class="box"><b>Poder de mercado</b><br>Tema 6: p &gt; CM ⇒ peso morto. Efeitos de rede favorecem monopólios.</div>
     </div>
-    <div class="ex"><b>Redes sociais (prova 2025)</b>: algoritmos que priorizam engajamento juntam várias falhas — <b>externalidade negativa</b> (custo com saúde mental recai sobre a sociedade), <b>perigo moral</b> (a plataforma sabe mais sobre o algoritmo e lucra com conteúdo danoso), <b>seleção adversa</b> (sobrevivem as empresas do “pior tipo”) e <b>poder de mercado</b>. Por isso a competição intensa <b>não</b> gera resultado eficiente.</div>
-    <div class="ex"><b>Banco Master (prova 2025)</b>: a competição entre plataformas <b>não</b> alinhou incentivos — quem retirava os títulos perdia clientes para quem continuava vendendo (afirmação FALSA). Regulações nos EUA e Europa exigem divulgar comissões.</div>
+    <div class="ex"><b>Prova 2025 (manhã) — redes sociais</b>
+      <div class="qslot" data-q="Tema 8#11"></div>
+      <b>Resolução:</b> o custo com a saúde mental recai sobre a sociedade (terceiros) ⇒ <b>externalidade negativa</b>; a plataforma sabe mais sobre o algoritmo e lucra com conteúdo danoso (ação que o usuário não observa) ⇒ <b>perigo moral</b> (D). A resposta-modelo ainda cita <b>seleção adversa</b> (sobrevivem as empresas do “pior tipo”) e <b>poder de mercado</b> (efeitos de rede). Com tantas falhas, a competição intensa <b>não</b> garante eficiência (C errada).</div>
+    <div class="ex"><b>Prova 2025 (tarde) — Banco Master</b>
+      <div class="qslot" data-q="Tema 8#3"></div>
+      <b>Resolução:</b> a afirmação é <b>FALSA</b> (B): quem parava de vender os títulos perdia clientes para quem continuava. A competição, sozinha, não alinhou incentivos — pode até ter atrasado a interrupção. Por isso regulações nos EUA e na Europa exigem divulgar as comissões (corrige o perigo moral do assessor).</div>
   </section>`,
   pegadinhas: [
     "Externalidade afeta TERCEIROS que não participaram da decisão. Se o prejuízo é do próprio cliente da transação, pense em informação assimétrica.",
@@ -728,7 +1289,8 @@ const AULAS = [
     ["Assessor e CDB do Master", "Perigo moral (ação oculta + comissão desalinhada)."],
     ["Plataformas menos criteriosas ganham mercado", "Seleção adversa."],
     ["Corrida pela AGI com risco de extinção", "Externalidade negativa."],
-    ["Disciplina Consciente (código de honra do ITA)", "Reduz a assimetria de informação sobre o tipo ⇒ reduz seleção adversa na contratação."]
+    ["Disciplina Consciente (código de honra do ITA)", "Reduz a assimetria de informação sobre o tipo ⇒ reduz seleção adversa na contratação."],
+    ["Correção de externalidade negativa", "Imposto por unidade igual ao custo externo: o produtor passa a enxergar o custo social."]
   ]
 }
 ];
@@ -737,28 +1299,35 @@ const FORMULAS = [
   ["Tema 1", "Equilíbrio", "\\(Q_d(P^*) = Q_s(P^*)\\)", "arroz: 5,6 − 0,2P = −1 + 2P ⇒ P* = 3"],
   ["Tema 1", "Excedente do consumidor (linear)", "\\(EC = \\tfrac{1}{2}(P_{\\max} - P^*)\\,Q^*\\)", "P_max: onde a demanda zera"],
   ["Tema 1", "Excedente do produtor (linear)", "\\(EP = \\tfrac{1}{2}(P^* - P_{\\min})\\,Q^*\\)", "P_min: onde a oferta começa"],
+  ["Tema 1", "Excesso de demanda (teto)", "\\(Q_d(\\bar P) - Q_s(\\bar P)\\)", "piso: Q_s − Q_d = excesso de oferta"],
   ["Tema 2", "Elasticidade-preço da demanda", "\\(\\varepsilon = \\dfrac{\\Delta\\%Q}{\\Delta\\%P} = \\dfrac{dQ}{dP}\\cdot\\dfrac{P}{Q}\\)", "|ε| < 1 inelástica; > 1 elástica"],
   ["Tema 2", "Variação percentual", "\\(\\Delta\\% = \\dfrac{\\text{final} - \\text{inicial}}{\\text{inicial}}\\times 100\\%\\)", ""],
   ["Tema 2", "Elasticidade-renda", "\\(\\varepsilon_R = \\dfrac{\\Delta\\%Q}{\\Delta\\%R}\\)", "> 0 normal; > 1 luxo; < 0 inferior"],
   ["Tema 2", "Elasticidade cruzada", "\\(\\varepsilon_{AB} = \\dfrac{\\Delta\\%Q_A}{\\Delta\\%P_B}\\)", "> 0 substitutos; < 0 complementares"],
   ["Tema 2", "Regressão log-log", "\\(\\ln y = \\alpha + \\beta \\ln x\\)", "β = elasticidade"],
+  ["Tema 2", "Elasticidade e receita", "\\(\\dfrac{dRT}{dP} = Q\\,(1 - |\\varepsilon|)\\)", "inelástica: preço ↑ ⇒ receita ↑"],
   ["Tema 3", "Custo total", "\\(CT = CF + CV\\)", ""],
   ["Tema 3", "Custos médios", "\\(CTM = \\dfrac{CT}{q} = CVM + CFM\\)", ""],
   ["Tema 3", "Custo marginal", "\\(CM = \\dfrac{dCT}{dq} = \\dfrac{dCV}{dq}\\)", "não depende do CF"],
   ["Tema 3", "Mínimo do CTM", "\\(CM(q) = CTM(q)\\)", "CT = aq² + F ⇒ q = \\(\\sqrt{\\tfrac{F}{a}}\\), CTM = 2√(aF)"],
   ["Tema 4", "Maximização de lucro", "\\(RM(q) = CM(q)\\)", "competição: p = CM"],
+  ["Tema 4", "Lucro (retângulo)", "\\(\\pi = (p - CTM)\\times q\\)", "p = 145, q = 9: (145 − 90,56)·9 = 490"],
   ["Tema 4", "Suspender no curto prazo", "\\(p < \\min CVM\\)", ""],
   ["Tema 4", "Sair no longo prazo", "\\(p < \\min CTM\\)", ""],
   ["Tema 4", "Equilíbrio de LP", "\\(p = CM = \\min CTM\\)", "lucro econômico zero"],
   ["Tema 4", "Nº de empresas no LP", "\\(n = \\dfrac{Q_D(p_{LP})}{q_{\\min CTM}}\\)", "\\(\\dfrac{1020}{20}\\) = 51"],
   ["Tema 4", "Oferta de mercado", "\\(Q(p) = \\sum_j q_j(p)\\)", "soma horizontal"],
   ["Tema 5", "Excedente total", "\\(ET = EC + EP\\)", "máximo no equilíbrio competitivo"],
+  ["Tema 5", "Cunha do imposto", "\\(P_c = P_s + T\\)", "Qd(Pc) = Qs(Ps)"],
+  ["Tema 5", "Arrecadação", "\\(T \\times Q_T\\)", "retângulo entre Pc e Ps"],
   ["Tema 5", "Peso morto de imposto (linear)", "\\(PM = \\tfrac{1}{2}\\,T\\,(Q^* - Q_T)\\)", "Complemento"],
+  ["Tema 6", "Receita marginal (geral)", "\\(RM = p(q) + q\\,\\dfrac{dp}{dq}\\)", "RM < p quando a demanda é inclinada"],
   ["Tema 6", "Receita marginal (linear)", "\\(p = a - bq \\Rightarrow RM = a - 2bq\\)", ""],
   ["Tema 6", "Lucro", "\\(\\pi = RT - CT = p(q)\\,q - CT(q)\\)", ""],
   ["Tema 6", "Excedente do consumidor (demanda linear)", "\\(EC = \\tfrac{1}{2}\\,(a - p_m)\\,q_m\\)", "a: intercepto da demanda"],
   ["Tema 6", "Peso morto do monopólio", "\\(PM = \\tfrac{1}{2}\\,[p_m - CM(q_m)]\\,(q_e - q_m)\\)", "curvas lineares; q_e: p(q) = CM"],
   ["Tema 6", "Teto sem subsídio", "\\(p(q) = CTM(q)\\)", "resolva em q e use a maior raiz (menor preço)"],
+  ["Tema 7", "Índice HHI", "\\(HHI = \\sum_i s_i^2\\)", "s em %; monopólio = 10.000"],
   ["Tema 7", "Função de reação (Cournot)", "\\(q_i = \\dfrac{a - c - bQ_{-i}}{2b}\\)", ""],
   ["Tema 7", "Cournot com n empresas", "\\(q = \\dfrac{a-c}{b(n+1)},\\; P = \\dfrac{a+nc}{n+1}\\)", ""],
   ["Tema 7", "Peso morto de Cournot", "\\(\\dfrac{(a-c)^2}{2b(n+1)^2}\\)", "n = 1: monopólio"],

@@ -73,7 +73,19 @@ const FIGLIB = {
   q_saude: () => monoChart(monoModel(10, 1 / 12, 0, 4, 0), 'livre', { xl: 'Q (milhões)', yl: 'p (mil R$)', h: 270 }),
   q_ext4: ext4
 };
-function fillFigs(el) { $$('.figslot', el).forEach(s => { const f = FIGLIB[s.dataset.fig]; if (f) s.innerHTML = f(); }); }
+// <div class="qslot" data-q="Tema 4#7"></div> mostra a questão do banco na íntegra (com a correta marcada)
+function qFull(ref) {
+  const [t, i] = ref.split('#'), q = (QUESTOES[t] || [])[+i];
+  if (!q) return '';
+  const fig = q.fig && q.when === 'before' && FIGLIB[q.fig];
+  return `<div class="qfull"><div class="qfull-h">📝 Questão na íntegra${q.p ? `<span class="q-src">${esc(q.p)}</span>` : ''}</div>
+    <p class="q-txt">${esc(q.q.replace(/^\d+\.\s*/, ''))}</p>${fig ? `<figure class="qfig">${fig()}</figure>` : ''}
+    <ul class="qalts">${q.o.map((o, k) => `<li${k === q.c ? ' class="right"' : ''}>${esc(o)}${k === q.c ? ' <b>✓ correta</b>' : ''}</li>`).join('')}</ul></div>`;
+}
+function fillFigs(el) {
+  $$('.figslot', el).forEach(s => { const f = FIGLIB[s.dataset.fig]; if (f) s.innerHTML = f(); });
+  $$('.qslot', el).forEach(s => { s.innerHTML = qFull(s.dataset.q); });
+}
 
 /* =====================================================================
    QUESTÕES
