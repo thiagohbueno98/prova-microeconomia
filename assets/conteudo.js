@@ -454,7 +454,7 @@ const AULAS = [
       <b>Resolução (e um passo a mais: o mínimo do CTM):</b>
       <ol class="mini">
         <li>Identifique: CF = 800 (o termo sem q) e CV = 2q².</li>
-        <li>\\(CM = \\dfrac{dCT}{dq} = 4q\\) &nbsp;·&nbsp; \\(CVM = \\dfrac{2q^2}{q} = 2q\\) &nbsp;·&nbsp; \\(CTM = 2q + \\dfrac{800}{q}\\).</li>
+        <li>\\(CM = \\dfrac{dCT}{dq} = 4q\\)<br>\\(CVM = \\dfrac{2q^2}{q} = 2q\\)<br>\\(CTM = 2q + \\dfrac{800}{q}\\)</li>
         <li>Mínimo do CTM: derive e iguale a zero: \\(2 - \\dfrac{800}{q^2} = 0 \\Rightarrow q^2 = 400 \\Rightarrow q = 20\\) ⇒ \\(CTM(20) = 40 + 40 = 80\\).</li>
         <li>Confira com a regra CM = CTM: CM(20) = 80. ✔</li>
       </ol>

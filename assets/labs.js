@@ -236,7 +236,7 @@ LAB.custos = el => {
     const xmax = Math.max(qm * 2.2, 0.0001), ymax = Math.max(cm * 2.2, c + 2 * a * xmax * 0.9, 1);
     $('#cuQCh', el).innerHTML = chart({ xr: [0, xmax], yr: [Math.min(0, c), ymax], xl: 'q', yl: 'R$', curves: [{ f: q => c + 2 * a * q, a: 0, b: xmax, cls: 'm', lab: 'CM' }, { f: q => c + a * q + F / q, a: xmax * 0.02, b: xmax, cls: 'd', lab: 'CTM' }, { f: q => c + a * q, a: 0, b: xmax, cls: 's', lab: 'CVM' }], points: [{ x: qm, y: cm, xt: fmtA(qm, 3), yt: fmtA(cm, 2), lab: 'mín CTM' }], h: 280 });
     $('#cuQRo', el).innerHTML = `<div><small>q do mín CTM</small><b>${fmtA(qm, 4)}</b></div><div><small>CTM mínimo</small><b>${fmtA(cm, 3)}</b></div>`;
-    $('#cuQEx', el).innerHTML = `<p>CM = ${fr('dCT', 'dq')} = ${fmtA(c)} + ${fmtA(2 * a)}q · CVM = ${fr('CV', 'q')} = ${fmtA(c)} + ${fmtA(a)}q · CTM = ${fmtA(c)} + ${fmtA(a)}q + ${fr(fmtA(F), 'q')}</p>
+    $('#cuQEx', el).innerHTML = `<p>CM = ${fr('dCT', 'dq')} = ${fmtA(c)} + ${fmtA(2 * a)}q<br>CVM = ${fr('CV', 'q')} = ${fmtA(c)} + ${fmtA(a)}q<br>CTM =${fmtA(c)} + ${fmtA(a)}q + ${fr(fmtA(F), 'q')}</p>
       <p><b>Mínimo do CTM:</b> ${fr('dCTM', 'dq')} = ${fmtA(a)} − ${fr(fmtA(F), 'q²')} = 0 ⇒ q = <span class="sq">√<span>${fr(fmtA(F), fmtA(a))}</span></span> = <b>${fmtA(qm, 4)}</b> ⇒ CTM = <b>${fmtA(cm, 3)}</b>. Confira: CM(${fmtA(qm, 4)}) = ${fmtA(c + 2 * a * qm, 3)} = CTM. ✔</p>
       <p class="note">${CU_PRE[pre] ? CU_PRE[pre].u : ''}. Esse mínimo será o <b>preço de equilíbrio de longo prazo</b> no mercado competitivo (Tema 4).</p>`;
   };
@@ -348,7 +348,7 @@ LAB.efic = el => {
   let Qf = 16;
   el.innerHTML = `
   <div class="lab"><h3>⚖️ O equilíbrio maximiza o excedente total</h3>
-    <p class="muted">D: P = 420 − 12,5Q · O: P = 20 + 12,5Q (o exemplo dos slides: Q* = 16, P* = 220). Force outra quantidade e veja a perda.</p>
+    <p class="muted">Demanda: P = 420 − 12,5Q; oferta: P = 20 + 12,5Q (o exemplo dos slides: Q* = 16, P* = 220). Force outra quantidade e veja a perda.</p>
     <div class="fields"><label class="field">Quantidade produzida e trocada Q = <span id="efQv"></span><input type="range" id="efQ" min="0" max="30" step="0.5" value="16"></label></div>
     <div class="lab-grid"><div id="efCh"></div><div><div class="readout" id="efRo"></div><div class="explain" id="efEx"></div></div></div>
   </div>`;
