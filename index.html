@@ -134,6 +134,8 @@ input,select{font:inherit;color:inherit}
 .katex-display{overflow-x:auto;overflow-y:hidden;padding:2px 0}
 .f{max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;box-sizing:border-box}
 .f .katex{display:inline-block;margin:3px 0}
+/* fórmula dentro de tabela não quebra no meio (ex.: |ε| → ∞); no celular a tabela rola */
+.t .katex{white-space:nowrap}
 @media (max-width:420px){.f.big .katex{font-size:1.15em}.f.big:has(.katex){padding:8px 10px}}
 @media (max-width:340px){.katex-display .katex{font-size:.95em}.f.big .katex{font-size:1.05em}}
 .fb .katex,.fc .katex,.traps .katex{font-size:1.08em}
