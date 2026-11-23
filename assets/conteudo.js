@@ -552,13 +552,25 @@ const AULAS = [
     <p class="f big">\\(\\max_q\\; RT(q) - CT(q) \\;\\Rightarrow\\; \\dfrac{dRT}{dq} = \\dfrac{dCT}{dq} \\;\\Rightarrow\\; RM(q) = CM(q)\\)</p>
     <p><b>Em palavras:</b> para achar o máximo do lucro, derive e iguale a zero. A derivada da receita é a receita marginal; a do custo é o custo marginal. Então no ponto ótimo <b>o que entra com a última unidade (RM) = o que custa a última unidade (CM)</b>.</p>
     <p>Na competição, \\(RT = p\\cdot q\\) com p fixo ⇒ cada unidade extra traz exatamente p de receita ⇒ \\(RM = p\\). Logo a empresa produz onde <b>p = CM(q)</b> (no ramo <b>crescente</b> do CM: onde o CM ainda está caindo, p = CM é ponto de lucro mínimo, não máximo).</p>
-    <div class="ex"><b>Intuição com a confeitaria (livro), preço p = 145:</b>
+    <div class="ex"><b>Intuição com a confeitaria (livro), preço p = 145:</b><br>
+      <b>Dados usados</b> (tabela de custos da confeitaria, Tema 3; custo fixo = 154).<br>q = bolos; CT = custo total; CM = quanto o CT aumenta com mais um bolo.
+      <table class="t sm"><thead><tr><th>q</th><th>CT</th><th>CM = ΔCT</th></tr></thead><tbody>
+        <tr><td>7</td><td>552</td><td>96</td></tr>
+        <tr><td>8</td><td>670</td><td>670 − 552 = 118</td></tr>
+        <tr class="hl"><td>9</td><td><b>815</b></td><td>815 − 670 = <b>145</b></td></tr>
+        <tr><td>10</td><td>991</td><td>991 − 815 = 176</td></tr></tbody></table>
       <ul class="mini">
-        <li>Se produz 7, vale fazer o 8º bolo? Custa CM(8) = 118 e vende por 145 ⇒ lucro <b>+27</b>. Sim, produza mais.</li>
-        <li>Se produz 10, vale cortar o 10º? Economiza CM(10) = 176 e perde 145 de receita ⇒ lucro <b>+31</b>. Sim, produza menos.</li>
+        <li>Se produz 7, vale fazer o 8º bolo? Custa CM(8) = 118 e vende por 145 ⇒ lucro sobe 145 − 118 = <b>+27</b>. Sim, produza mais.</li>
+        <li>Se produz 10, vale cortar o 10º? Economiza CM(10) = 176 e perde 145 de receita ⇒ lucro sobe 176 − 145 = <b>+31</b>. Sim, produza menos.</li>
         <li>O 9º bolo custa CM(9) = 145 = p: tanto faz; pela convenção, em caso de empate escolhe-se a maior quantidade ⇒ <b>q = 9</b>.</li>
       </ul>
-      Lucro = 145×9 − 815 = <b>490</b>. Outra forma de ver: lucro = (p − CTM) × q = (145 − 90,56) × 9 = 490 ⇒ o <b>retângulo</b> de altura “lucro por unidade” e base q.</div>
+      <b>Lucro com q = 9:</b><br>
+      Receita: RT = p × q = 145 × 9 = 1.305.<br>
+      Custo: CT(9) = 815 (da tabela).<br>
+      Lucro = RT − CT = 1.305 − 815 = <b>490</b>.<br>
+      <b>Outra forma de ver:</b> custo por bolo CTM = \\(\\dfrac{CT}{q} = \\dfrac{815}{9}\\) ≈ 90,56.<br>
+      Lucro por bolo = p − CTM = 145 − 90,56 = 54,44.<br>
+      Lucro = 54,44 × 9 ≈ 490 ⇒ o <b>retângulo</b> de altura “lucro por unidade” (p − CTM) e base q.</div>
     <div class="extra"><b>Por que a curva de CM é a curva de oferta da empresa?</b> Para cada preço, a empresa escolhe q onde p = CM(q). A curva que diz “a este preço, ofereço esta quantidade” é, por definição, uma curva de oferta. Na confeitaria: p = 96 ⇒ q = 7; p = 76 ⇒ q = 6; p = 145 ⇒ q = 9.</div>
   </section>
 
