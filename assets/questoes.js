@@ -115,7 +115,7 @@ const QUESTOES = {
      c:2, e:"Custo econômico = 80 + 50 + 150 (custo de oportunidade do trabalho) = 280. Lucro econômico = 200 − 280 = −80 ⇒ não vale a pena. O “lucro contábil” seria 200 − 130 = 70.", p:"Slides"},
     {q:"3. Na confeitaria da aula (CF = 154), o custo variável é 96 para 2 bolos e 126 para 3 bolos. O custo marginal do 3º bolo é:",
      o:["A) 30.","B) 42.","C) 93,33.","D) 126.","E) 280."],
-     c:0, e:"CM = \\(\\dfrac{\\Delta CT}{\\Delta q}\\) = \\(\\dfrac{280 - 250}{3 - 2}\\) = 30 (= ΔCV, pois o CF não muda).", p:"Slides"},
+     c:0, e:"Custo marginal = quanto o custo total aumenta ao produzir mais uma unidade: CM = \\(\\dfrac{\\Delta CT}{\\Delta q}\\).\nPrimeiro monte o custo total (CT = CF + CV):\n2 bolos: CT = 154 + 96 = 250.\n3 bolos: CT = 154 + 126 = 280.\nDo 2º para o 3º bolo: ΔCT = 280 − 250 = 30 e Δq = 3 − 2 = 1.\nCM = \\(\\dfrac{30}{1}\\) = 30.\nAtalho: o CF (154) é igual nos dois casos e se cancela, então dá para usar só o CV: 126 − 96 = 30.", p:"Slides"},
     {q:"4. Na confeitaria (CF = 154; CV(4) = 168), o custo total médio para 4 bolos é:",
      o:["A) 42.","B) 38,5.","C) 80,5.","D) 322.","E) 76."],
      c:2, e:"CT(4) = 154 + 168 = 322 ⇒ CTM = \\(\\dfrac{322}{4}\\) = 80,5 (= CVM 42 + CFM 38,5)."},
