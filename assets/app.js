@@ -110,7 +110,7 @@ function qCard(mi, qi, tag) {
     <p class="q-txt">${esc(q.q)}</p>
     ${fig && q.when === 'before' ? figHtml() : ''}
     <div class="opts">${opts}</div>
-    ${done ? `<div class="fb ${ok ? 'ok' : 'no'}"><div class="fb-h"><span>${ok ? '✅ Correto!' : '❌ Incorreto — a certa é a ' + 'ABCDE'[q.c]}</span><button data-act="retry" data-m="${mi}" data-q="${qi}">Tentar de novo</button></div><p>${esc(q.e)}</p>${fig && q.when !== 'before' ? figHtml() : ''}</div>` : ''}
+    ${done ? `<div class="fb ${ok ? 'ok' : 'no'}"><div class="fb-h"><span>${ok ? '✅ Correto!' : '❌ Incorreto — a certa é a ' + 'ABCDE'[q.c]}</span><button data-act="retry" data-m="${mi}" data-q="${qi}">Tentar de novo</button></div><p>${esc(q.e).split(String.fromCharCode(10)).join("<br>")}</p>${fig && q.when !== 'before' ? figHtml() : ''}</div>` : ''}
   </article>`;
 }
 function passes(mi, qi) {
@@ -263,7 +263,7 @@ function renderSimResult(el) {
     <div class="btns" style="margin-top:14px"><button class="btn pri" data-act="sim-new">Novo simulado</button>${wrong.length ? `<button class="btn" data-act="sim-redo">Refazer só as ${wrong.length} erradas</button>` : ''}</div></div>
     <h4 class="h2">Correção</h4>
     ${res.map(r => { const m = MODS[r.mi], q = m.qs[r.qi]; const long = q.q.length > 90; return `<details class="rev" ${r.ok ? '' : 'open'} style="--a:${m.cor}"><summary>${r.ok ? '✅' : r.a === undefined ? '⬜' : '❌'} ${r.k + 1}. <span class="q-tag">${m.id} · Q${r.qi + 1}</span> ${long ? esc(q.q.slice(0, 90)) + '…' : esc(q.q)}</summary>
-      ${long ? `<p>${esc(q.q)}</p>` : ''}<p>Sua resposta: <b class="${r.ok ? 'ok' : 'no'}">${r.a === undefined ? 'em branco' : esc(q.o[r.a])}</b></p>${r.ok ? '' : `<p>Correta: <b class="ok">${esc(q.o[q.c])}</b></p>`}<p class="muted">${esc(q.e)}</p></details>`; }).join('')}`;
+      ${long ? `<p>${esc(q.q)}</p>` : ''}<p>Sua resposta: <b class="${r.ok ? 'ok' : 'no'}">${r.a === undefined ? 'em branco' : esc(q.o[r.a])}</b></p>${r.ok ? '' : `<p>Correta: <b class="ok">${esc(q.o[q.c])}</b></p>`}<p class="muted">${esc(q.e).split(String.fromCharCode(10)).join("<br>")}</p></details>`; }).join('')}`;
 }
 function simAct(act, v) {
   if (act === 'sim-mod') { const i = +v; simCfg.mods = simCfg.mods.includes(i) ? simCfg.mods.filter(x => x !== i) : simCfg.mods.concat(i).sort((a, b) => a - b); }

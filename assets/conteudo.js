@@ -94,7 +94,7 @@ const AULAS = [
         <li><b>EP:</b> triângulo com base Q* e altura (P* − P<sub>mín</sub>). A oferta começa em P = 0,5 ⇒ \\(EP = \\dfrac{(3-0{,}5)\\times 5.000}{2} =\\) <b>R$ 6.250</b>.</li>
       </ol>
       <p class="f big">\\(EC = \\dfrac{(P_{\\max} - P^*)\\times Q^*}{2}\\)&emsp;&emsp; \\(EP = \\dfrac{(P^* - P_{\\min})\\times Q^*}{2}\\)</p>
-      <span class="muted">Por que dividir por 2? Porque é a área de um <b>triângulo</b>: base × altura ÷ 2. <b>Cuidado com unidades:</b> P está em R$/<b>kg</b> e Q em <b>toneladas</b> ⇒ converta Q para kg antes, senão a resposta sai 1.000 vezes menor.</span></div>
+      <span class="muted">Por que dividir por 2? Porque é a área de um <b>triângulo</b>: base × altura ÷ 2.<br><b>Cuidado com unidades:</b> P está em R$/<b>kg</b> e Q em <b>toneladas</b> ⇒ converta Q para kg antes, senão a resposta sai 1.000 vezes menor.</span></div>
   </section>
 
   <section class="sec">
@@ -254,7 +254,7 @@ const AULAS = [
         <li>Pela fórmula do ponto, em P = 8: \\(\\dfrac{dQ}{dP} = -0{,}5\\) ⇒ \\(\\varepsilon = -0{,}5\\times\\dfrac{8}{5} = -0{,}8\\). ✔ Mesmo resultado.</li>
       </ol>
       <b>Leitura:</b> “cada 1% de aumento no preço reduz a quantidade demandada em 0,8%”.</div>
-    <div class="ex"><b>Gasolina (FMI, 2013):</b> preço +20% ⇒ quantidade −6% ⇒ \\(\\varepsilon = \\dfrac{-6\\%}{20\\%} = -0{,}3\\).<br><b>Leitura correta:</b> “um aumento de <b>1%</b> no preço causa uma queda de <b>0,3%</b> na quantidade demandada”. <span class="no">Errado:</span> “queda de 0,3 litro” ou “queda de 0,3 por real”.</div>
+    <div class="ex"><b>Gasolina (FMI, 2013):</b> preço +20% ⇒ quantidade −6% ⇒ \\(\\varepsilon = \\dfrac{-6\\%}{20\\%} = -0{,}3\\).<br><b>Leitura correta:</b> “um aumento de <b>1%</b> no preço causa uma queda de <b>0,3%</b> na quantidade demandada”.<br><span class="no">Errado:</span> “queda de 0,3 litro” ou “queda de 0,3 por real”.</div>
     <h4>Classificação (sempre pelo valor absoluto)</h4>
     <table class="t">
       <thead><tr><th>Valor</th><th>Nome</th><th>Significado</th><th>Exemplo</th></tr></thead>
@@ -275,7 +275,7 @@ const AULAS = [
     </ul>
     <div class="ex"><b>Questão 6 do livro (versão do banco, com 5 alternativas)</b>
       <div class="qslot" data-q="Tema 2#4"></div>
-      <b>Resolução:</b> A, B e C são exatamente os três fatores acima (tempo, substitutos, produtor individual) — todas corretas. E também é correta: elasticidade é % ÷ %, sem unidade. A errada é a <b>D</b>: em Y = a + bX, b é uma <b>inclinação</b> (depende das unidades); para obter elasticidade é preciso estimar ln Y = α + β ln X (seção 4).</div>
+      <b>Resolução:</b> A, B e C são exatamente os três fatores acima (tempo, substitutos, produtor individual) — todas corretas.<br>E também é correta: elasticidade é % ÷ %, sem unidade.<br><span class="no">A errada é a D:</span> em Y = a + bX, b é uma <b>inclinação</b> (depende das unidades); para obter elasticidade é preciso estimar ln Y = α + β ln X (seção 4).</div>
   </section>
 
   <section class="sec">
@@ -294,10 +294,10 @@ const AULAS = [
     <div class="trap"><b>Pegadinhas das provas de 2025:</b> as duas questões abaixo testam a <b>leitura</b> da elasticidade — qual variável mudou (preço ou renda?) e em que unidade (% ou unidades?).</div>
     <div class="ex"><b>Prova 2025 (tarde) — canetinhas emagrecedoras</b>
       <div class="qslot" data-q="Tema 2#2"></div>
-      <b>Resolução:</b> a palavra-chave é <b>renda</b>: \\(\\varepsilon_R = \\dfrac{\\Delta\\%Q}{\\Delta\\%\\text{Renda}} = 0{,}25\\) ⇒ renda +1% ⇒ quantidade +0,25% (A). A alternativa B troca renda por preço (foi a afirmação FALSA da prova). Como 0 &lt; 0,25 &lt; 1, é bem <b>normal</b>, não inferior (precisaria ser &lt; 0) nem de luxo (precisaria ser &gt; 1).</div>
+      <b>Resolução:</b> a palavra-chave é <b>renda</b>: \\(\\varepsilon_R = \\dfrac{\\Delta\\%Q}{\\Delta\\%\\text{Renda}} = 0{,}25\\) ⇒ renda +1% ⇒ quantidade +0,25% (A).<br><span class="no">B está errada:</span> troca renda por preço (foi a afirmação FALSA da prova).<br>Como 0 &lt; 0,25 &lt; 1, é bem <b>normal</b>, não inferior (precisaria ser &lt; 0) nem de luxo (precisaria ser &gt; 1).</div>
     <div class="ex"><b>Prova 2025 (manhã) — café</b>
       <div class="qslot" data-q="Tema 2#0"></div>
-      <b>Resolução:</b> elasticidade é <b>% sobre %</b>: preço +1% ⇒ quantidade −0,25% (E). “0,25 unidade” (A) e “US$ 1” (B) misturam unidades com porcentagens. Como |−0,25| &lt; 1, a demanda é <b>inelástica</b>, então C também está errada.</div>
+      <b>Resolução:</b> elasticidade é <b>% sobre %</b>: preço +1% ⇒ quantidade −0,25% (E).<br><span class="no">A e B estão erradas:</span> “0,25 unidade” e “US$ 1” misturam unidades com porcentagens.<br><span class="no">C está errada:</span> como |−0,25| &lt; 1, a demanda é <b>inelástica</b>.</div>
   </section>
 
   <section class="sec">
@@ -316,11 +316,11 @@ const AULAS = [
       </ol></div>
     <div class="ex"><b>Questão de prova — diversidade e produtividade</b>
       <div class="qslot" data-q="Tema 2#11"></div>
-      <b>Resolução:</b> o resultado está em <b>porcentagens</b> (10% ⇒ 4%), ou seja, é uma elasticidade (≈ 0,4). Pela demonstração acima, para o coeficiente sair como elasticidade é preciso aplicar o <b>logaritmo neperiano</b> nas variáveis antes da regressão (A). MQO em nível (E) dá a inclinação, em unidades.</div>
+      <b>Resolução:</b> o resultado está em <b>porcentagens</b> (10% ⇒ 4%), ou seja, é uma elasticidade (≈ 0,4). Pela demonstração acima, para o coeficiente sair como elasticidade é preciso aplicar o <b>logaritmo neperiano</b> nas variáveis antes da regressão (A).<br><span class="no">E está errada:</span> MQO em nível dá a inclinação, em unidades.</div>
     <div class="trap"><b>Viés de variável omitida:</b> salário = a + b·escolaridade. A <b>habilidade</b> aumenta o salário (pessoa mais produtiva) e também a escolaridade (estudar é mais fácil para quem é hábil). Como a habilidade ficou fora da regressão, o b estimado “pega carona” no efeito dela ⇒ <b>viés positivo</b> (superestima o efeito da educação). Mesmo que estudar não afetasse em nada o salário, veríamos correlação positiva entre os dois!</div>
     <div class="ex"><b>Questão de prova — viés de variável omitida</b>
       <div class="qslot" data-q="Tema 2#12"></div>
-      <b>Resolução:</b> a variável omitida (habilidade) tem correlação <b>positiva</b> com a escolaridade e efeito <b>positivo</b> no salário ⇒ + × + = viés <b>positivo</b>: b superestima o efeito da escolaridade (D). Também não é elasticidade (E), porque a regressão está em nível, não em log.</div>
+      <b>Resolução:</b> a variável omitida (habilidade) tem correlação <b>positiva</b> com a escolaridade e efeito <b>positivo</b> no salário ⇒ + × + = viés <b>positivo</b>: b superestima o efeito da escolaridade (D).<br><span class="no">E está errada:</span> não é elasticidade, porque a regressão está em nível, não em log.</div>
   </section>`,
   pegadinhas: [
     "Elasticidade é % sobre %: −0,25 significa 0,25% (não 0,25 unidade) para cada 1% no preço.",
@@ -456,7 +456,7 @@ const AULAS = [
         <li>Mínimo do CTM: derive e iguale a zero: \\(2 - \\dfrac{800}{q^2} = 0 \\Rightarrow q^2 = 400 \\Rightarrow q = 20\\) ⇒ \\(CTM(20) = 40 + 40 = 80\\).</li>
         <li>Confira com a regra CM = CTM: CM(20) = 80. ✔</li>
       </ol>
-      Alternativa correta: <b>B</b> (CVM = 2q; CM = 4q). A alternativa A é o <b>CTM</b>, não o CVM — o 800 é custo fixo e não entra no CVM.<br>
+      Alternativa correta: <b>B</b> (CVM = 2q; CM = 4q).<br><span class="no">A está errada:</span> é o <b>CTM</b>, não o CVM — o 800 é custo fixo e não entra no CVM.<br>
       <b>Atalho:</b> para \\(CT = aq^2 + F\\), o mínimo do CTM está em \\(q = \\sqrt{F/a}\\) e vale \\(2\\sqrt{aF}\\).</div>
     <div class="ex"><b>Prova 2025 (manhã) — custo do café</b>
       <div class="qslot" data-q="Tema 3#8"></div>
@@ -513,7 +513,7 @@ const AULAS = [
   tema: "p = CM, suspender × sair, oferta de mercado e equilíbrio de longo prazo",
   lab: "compet",
   resumo: `
-  <div class="tldr"><b>A ideia central:</b> numa competição perfeita a empresa é pequena demais para mexer no preço — ela é <b>tomadora de preço</b>. Então só decide <b>quanto</b> produzir, e a regra é produzir até o ponto em que <b>preço = custo marginal</b>. No curto prazo ela só para se o preço não cobrir nem o custo variável médio; no longo prazo sai se não cobrir o custo total médio. Como empresas entram quando há lucro e saem quando há prejuízo, o preço acaba no <b>mínimo do CTM</b>: <b>lucro econômico zero</b> e p = CM = CTM.</div>
+  <div class="tldr"><b>A ideia central:</b> numa competição perfeita a empresa é pequena demais para mexer no preço — ela é <b>tomadora de preço</b>. Então só decide <b>quanto</b> produzir, e a regra é produzir até o ponto em que <b>preço = custo marginal</b>.<br><b>Curto prazo:</b> só para se o preço não cobrir nem o custo variável médio.<br><b>Longo prazo:</b> sai se não cobrir o custo total médio.<br>Como empresas entram quando há lucro e saem quando há prejuízo, o preço acaba no <b>mínimo do CTM</b>: <b>lucro econômico zero</b> e p = CM = CTM.</div>
 
   <section class="sec sig">
     <h3>🔤 Siglas e símbolos deste tema</h3>
@@ -592,7 +592,7 @@ const AULAS = [
     <p class="note">Como ler a linha do preço 58: p = 58 está acima do CVM (45,2) mas abaixo do CTM (76) ⇒ no CP a empresa cobre todo o custo variável e ainda “sobra” um pouco para abater do aluguel; por isso produz com prejuízo. No LP, sai.</p>
     <div class="ex"><b>Questão de prova (Reforma Tributária) — oferta de curto prazo</b>
       <div class="qslot" data-q="Tema 4#7"></div>
-      <b>Resolução:</b> oferta de CP = p = CM, desde que CM ≥ CVM. \\(CM = 4q\\) e \\(CVM = 2q\\). Como 4q ≥ 2q para todo q ≥ 0, o CM está sempre acima do CVM ⇒ <b>p = 4q para qualquer q ≥ 0</b> (C). A alternativa E (“só para q ≥ 20”) seria a oferta de <b>longo</b> prazo, que usa o CTM — veja a próxima.</div>
+      <b>Resolução:</b> oferta de CP = p = CM, desde que CM ≥ CVM. \\(CM = 4q\\) e \\(CVM = 2q\\). Como 4q ≥ 2q para todo q ≥ 0, o CM está sempre acima do CVM ⇒ <b>p = 4q para qualquer q ≥ 0</b> (C).<br><span class="no">E está errada:</span> “só para q ≥ 20” seria a oferta de <b>longo</b> prazo, que usa o CTM — veja a próxima.</div>
     <div class="ex"><b>Questão de prova — a mesma empresa no longo prazo</b>
       <div class="qslot" data-q="Tema 4#8"></div>
       <b>Resolução:</b> no LP a empresa só produz se p ≥ CTM. Mínimo do CTM = 2q + 800/q: q = 20, CTM = 80 ⇒ p = 4q somente para p ≥ 80 (q ≥ 20); abaixo disso, sai (q = 0) (B).</div>
@@ -638,7 +638,7 @@ const AULAS = [
   <section class="sec warn">
     <h3><span class="n">6</span> A questão de 10 pontos: dois gráficos, curto e longo prazo</h3>
     <p>Caiu nas duas provas de 2025 (Reforma Tributária; feijão de sequeiro) e nos exercícios das aulas (El Niño; bets). As versões de múltipla escolha dessas duas questões aparecem na íntegra logo abaixo da tabela; o <a href="#/discursiva">roteiro completo e as respostas-modelo</a> da versão discursiva estão na página da questão de gráficos.</p>
-    <div class="extra"><b>Convenções:</b> pontos <b>1</b> (LP inicial), <b>2</b> (curto prazo) e <b>3</b> (LP final); movimento <b>A</b> = o choque (desloca D ou a O_CP); movimento <b>B</b> = entrada/saída de empresas (desloca a O_CP). No gráfico da empresa: choque de <b>demanda</b> ⇒ CM e CTM ficam parados, só a linha de preço muda; choque de <b>custo</b> ⇒ CM e CTM sobem/descem A.<br><b>Por que no CP o preço muda menos que A?</b> A O_CP se desloca A na vertical, mas a demanda é decrescente: o novo cruzamento ajusta parte pelo preço e parte pela quantidade. Como o CTM mudou A inteiro e o preço menos, surge prejuízo (custo ↑) ou lucro (custo ↓).<br><b>Feijão:</b> a terra de sequeiro é limitada (ninguém “entra” no sequeiro), então ele segue lucrando no LP; quem define o preço é o produtor irrigado, que entra e sai livremente.</div>
+    <div class="extra"><b>Convenções:</b> pontos <b>1</b> (LP inicial), <b>2</b> (curto prazo) e <b>3</b> (LP final); movimento <b>A</b> = o choque (desloca D ou a O_CP); movimento <b>B</b> = entrada/saída de empresas (desloca a O_CP).<br><b>Gráfico da empresa, choque de demanda:</b> CM e CTM ficam parados, só a linha de preço muda.<br><b>Gráfico da empresa, choque de custo:</b> CM e CTM sobem/descem A.<br><b>Por que no CP o preço muda menos que A?</b> A O_CP se desloca A na vertical, mas a demanda é decrescente: o novo cruzamento ajusta parte pelo preço e parte pela quantidade. Como o CTM mudou A inteiro e o preço menos, surge prejuízo (custo ↑) ou lucro (custo ↓).<br><b>Feijão:</b> a terra de sequeiro é limitada (ninguém “entra” no sequeiro), então ele segue lucrando no LP; quem define o preço é o produtor irrigado, que entra e sai livremente.</div>
     <div class="figslot" data-fig="co_bets"></div>
     <div class="ler"><b>📊 Como ler este par de gráficos (bets reduzem a renda)</b>
       <ul>
@@ -655,10 +655,10 @@ const AULAS = [
     </tbody></table>
     <div class="ex"><b>Prova 2025 (manhã) — Reforma Tributária reduz o custo</b>
       <div class="qslot" data-q="Tema 4#14"></div>
-      <b>Resolução:</b> é a linha “Custo ↓ em A” da tabela. CM e CTM descem ⇒ a O_CP desce (movimento A). No CP (ponto 2): preço cai menos que A e quantidade sobe ⇒ p &gt; novo CTM ⇒ <b>lucro</b>. O lucro atrai empresas (movimento B), até p = novo mín CTM (ponto 3): preço ainda menor, quantidade maior, mais empresas (D).</div>
+      <b>Resolução:</b> é a linha “Custo ↓ em A” da tabela. CM e CTM descem ⇒ a O_CP desce (movimento A).<br><b>Curto prazo (ponto 2):</b> preço cai menos que A e quantidade sobe ⇒ p &gt; novo CTM ⇒ <b>lucro</b>.<br><b>Longo prazo:</b> o lucro atrai empresas (movimento B), até p = novo mín CTM (ponto 3): preço ainda menor, quantidade maior, mais empresas (D).</div>
     <div class="ex"><b>Prova 2025 (tarde) — feijão de sequeiro</b>
       <div class="qslot" data-q="Tema 4#15"></div>
-      <b>Resolução:</b> no CP, a capacidade de sequeiro (a mais barata) diminui ⇒ oferta para a esquerda ⇒ P ↑ e Q ↓, com lucro para os irrigados. No LP, como qualquer um pode entrar no feijão irrigado, entram irrigados até o preço voltar ao mínimo do CTM do irrigado ⇒ <b>mesmo preço, mesma quantidade e mais produtores irrigados</b> (E). O preço de LP é definido por quem pode entrar livremente (o irrigado), não pelo sequeiro.</div>
+      <b>Resolução:</b><br><b>Curto prazo:</b> a capacidade de sequeiro (a mais barata) diminui ⇒ oferta para a esquerda ⇒ P ↑ e Q ↓, com lucro para os irrigados.<br><b>Longo prazo:</b> como qualquer um pode entrar no feijão irrigado, entram irrigados até o preço voltar ao mínimo do CTM do irrigado ⇒ <b>mesmo preço, mesma quantidade e mais produtores irrigados</b> (E).<br>O preço de LP é definido por quem pode entrar livremente (o irrigado), não pelo sequeiro.</div>
   </section>
 
   <section class="sec art">
@@ -862,7 +862,10 @@ const AULAS = [
     </div></div>
     <div class="ler"><b>📊 Como ler o gráfico do monopólio</b>
       <ul>
-        <li><b class="c2">D (verde)</b>: demanda. <b class="c4">RM (amarela)</b>: começa no mesmo ponto do eixo vertical e cai duas vezes mais rápido. <b class="no">CM (vermelha)</b>: aqui horizontal em 1. <b class="c3">CTM (roxa)</b>: decrescente (custo fixo alto).</li>
+        <li><b class="c2">D (verde)</b>: demanda.</li>
+        <li><b class="c4">RM (amarela)</b>: começa no mesmo ponto do eixo vertical e cai duas vezes mais rápido.</li>
+        <li><b class="no">CM (vermelha)</b>: aqui horizontal em 1.</li>
+        <li><b class="c3">CTM (roxa)</b>: decrescente (custo fixo alto).</li>
         <li>Para achar o monopólio: vá até onde <b>RM cruza CM</b> (q = 11), depois <b>suba até a demanda</b> para ler o preço (28,5) — ponto “Máx. lucro”.</li>
         <li>Ponto “Eficiente”: onde a <b>demanda cruza o CM</b> (q = 22, p = 1).</li>
         <li><b class="no">Triângulo vermelho (PM)</b>: entre q = 11 e q = 22, abaixo da demanda e acima do CM — unidades que valiam mais do que custavam, mas não foram produzidas.</li>
@@ -898,7 +901,9 @@ const AULAS = [
       <b>Resolução:</b>
       <ul class="mini">
         <li><b>Monopólio:</b> RM = 85 − 12q, CM = 5 + 4q ⇒ 80 = 16q ⇒ q = 5 (mil veículos), p = 85 − 30 = 55, lucro = 55·5 − (168 + 25 + 50) = 275 − 243 = <b>32</b> mil/dia ⇒ <b>C</b>.</li>
-        <li>Por que as outras estão erradas: o <b>eficiente</b> é p(q) = CM ⇒ 85 − 6q = 5 + 4q ⇒ q = 8, p = 37 — B e E descrevem o eficiente, não o monopólio. Peso morto = \(\dfrac{(55 - 25)(8 - 5)}{2}\) = 45 (não 30, A). EC do monopólio = \(\dfrac{(85 - 55)\cdot 5}{2}\) = 75 (não 45, D).</li>
+        <li><span class="no">B e E estão erradas:</span> descrevem o <b>eficiente</b> (p(q) = CM ⇒ 85 − 6q = 5 + 4q ⇒ q = 8, p = 37), não o monopólio.</li>
+        <li><span class="no">A está errada:</span> peso morto = \(\dfrac{(55 - 25)(8 - 5)}{2}\) = 45, não 30.</li>
+        <li><span class="no">D está errada:</span> EC do monopólio = \(\dfrac{(85 - 55)\cdot 5}{2}\) = 75, não 45.</li>
       </ul></div>
     <div class="ex"><b>Prova 2025 (tarde) — teto do pedágio</b>
       <div class="qslot" data-q="Tema 6#12"></div>
@@ -907,7 +912,7 @@ const AULAS = [
       <div class="qslot" data-q="Tema 6#7"></div>
       <b>Resolução:</b> RM = 4 − 0,4q (dobro da inclinação) e CM = 0,4 ⇒ 4 − 0,4q = 0,4 ⇒ q = 9; p(9) = 4 − 1,8 = 2,2; lucro = 2,2·9 − (0,4·9 + 6,4) = 19,8 − 10 = 9,8 (A).
       <div class="qslot" data-q="Tema 6#8"></div>
-      <b>Resolução:</b> eficiente: p = CM ⇒ 4 − 0,2q = 0,4 ⇒ q = 18 ⇒ peso morto sem regulação = \(\dfrac{(2{,}2 - 0{,}4)(18 - 9)}{2}\) = 8,1 (A é correta). Com p = 0,4: q = 18, PM = 0 (B correta) e lucro = 0,4·18 − (0,4·18 + 6,4) = −6,4 ⇒ subsídio de 6,4 (C correta). E (lucro 9,8) também é correta. A <b>INCORRETA</b> é a <b>D</b>: com p = 0,8 &gt; CM ainda sobra peso morto; o máximo de excedente é em p = 0,4.
+      <b>Resolução:</b> eficiente: p = CM ⇒ 4 − 0,2q = 0,4 ⇒ q = 18 ⇒ peso morto sem regulação = \(\dfrac{(2{,}2 - 0{,}4)(18 - 9)}{2}\) = 8,1 ⇒ A é correta.<br>Com p = 0,4: q = 18 e PM = 0 ⇒ B é correta.<br>Com p = 0,4: lucro = 0,4·18 − (0,4·18 + 6,4) = −6,4 ⇒ subsídio de 6,4 ⇒ C é correta.<br>Lucro do monopolista = 9,8 ⇒ E também é correta.<br><span class="no">A INCORRETA é a D:</span> com p = 0,8 &gt; CM ainda sobra peso morto; o máximo de excedente é em p = 0,4.
       <div class="qslot" data-q="Tema 6#9"></div>
       <b>Resolução:</b> a demanda veio como q(p): <b>isole p</b> primeiro ⇒ p = 4 − 0,25q ⇒ RM = 4 − 0,5q = CM = 1 ⇒ q = 6 ⇒ p = 2,5 (C); lucro = 15 − 6 − 6,4 = 2,6.
       <div class="qslot" data-q="Tema 6#10"></div>
@@ -983,7 +988,7 @@ const AULAS = [
       <tr><td><b>A confessa</b></td><td class="ok">A: 10; B: 10 ★</td><td>A: 3; B: 15</td></tr>
       <tr><td><b>A não confessa</b></td><td>A: 15; B: 3</td><td>A: 4; B: 4</td></tr></tbody></table>
     <p class="note">Como ler a matriz: as <b>linhas</b> são as opções de A; as <b>colunas</b>, as de B. Cada célula mostra o que acontece com cada um se aquelas duas escolhas forem feitas. Aqui o payoff é <b>anos de prisão</b>: quanto menor, melhor.</p>
-    <p><b>Raciocínio de A:</b> “Se B confessar, eu pego 10 confessando ou 15 calado ⇒ confesso. Se B não confessar, pego 3 confessando ou 4 calado ⇒ confesso.” Em <b>qualquer</b> cenário, confessar dá menos anos ⇒ confessar é <b>estratégia dominante</b>. B raciocina igual.</p>
+    <p><b>Raciocínio de A:</b><br>“Se B confessar, eu pego 10 confessando ou 15 calado ⇒ confesso.”<br>“Se B não confessar, pego 3 confessando ou 4 calado ⇒ confesso.”<br>Em <b>qualquer</b> cenário, confessar dá menos anos ⇒ confessar é <b>estratégia dominante</b>. B raciocina igual.</p>
     <p><b>Resultado:</b> os dois confessam e pegam 10 anos — quando poderiam pegar 4 se ambos ficassem calados. Cooperar é melhor <b>para os dois juntos</b>, mas é <b>individualmente irracional</b>: cada um, sozinho, ganha traindo. Esse é o “dilema”.</p>
     <p><b>Estratégia dominante</b>: a melhor estratégia para um jogador, <b>independentemente</b> das estratégias dos demais.</p>
     <div class="two"><div class="figslot" data-fig="ol_prec"></div><div>
@@ -991,7 +996,7 @@ const AULAS = [
         <ul>
           <li>Os payoffs <b>sublinhados e destacados em verde</b> são as <b>melhores respostas</b>: dado o que o outro fez, é o melhor que se pode obter.</li>
           <li>A célula com <b>contorno verde</b> é o Equilíbrio de Nash: os dois payoffs são melhores respostas.</li>
-          <li>Se B cobra alto, A prefere baixo (150 &gt; 100); se B cobra baixo, A prefere baixo (75 &gt; 50) ⇒ <b>preço baixo é dominante</b>. Resultado: 75 cada, em vez de 100 com os dois cobrando alto.</li>
+          <li>Se B cobra alto, A prefere baixo (150 &gt; 100).<br>Se B cobra baixo, A prefere baixo (75 &gt; 50).<br>⇒ <b>preço baixo é dominante</b>.<br>Resultado: 75 cada, em vez de 100 com os dois cobrando alto.</li>
         </ul></div>
     </div></div>
     <p>Mesmo padrão em: corridas armamentistas, guerra fiscal entre estados, pesca predatória, <b>guerra de preços</b>, corrida pela AGI.</p>
@@ -1015,13 +1020,13 @@ const AULAS = [
         <tr><td><b>Jatos executivos</b></td><td>E: 2; ABDG: 7</td><td class="ok">E: 5; ABDG: 15 ★</td></tr>
         <tr><td><b>Corredor único</b></td><td class="ok">E: 6; ABDG: 11 ★</td><td>E: 4; ABDG: 9</td></tr></tbody></table>
       <ul class="mini">
-        <li>Embraer: se ABDG faz jatos, melhor corredor único (6 &gt; 2); se ABDG faz corredor único, melhor jatos (5 &gt; 4). A melhor resposta <b>muda</b> ⇒ sem dominante (A errada).</li>
-        <li>ABDG: se E faz jatos, melhor corredor único (15 &gt; 7); se E faz corredor único, melhor jatos (11 &gt; 9). Também sem dominante.</li>
-        <li>Células com as duas melhores respostas: <b>dois Equilíbrios de Nash</b> — (E: jatos; ABDG: corredor único) e (E: corredor único; ABDG: jatos) (C). Cada uma prefere ficar num segmento diferente da outra. E está errada porque Nash é par de <b>estratégias</b>, não de payoffs.</li>
+        <li><b>Embraer:</b><br>se ABDG faz jatos, melhor corredor único (6 &gt; 2);<br>se ABDG faz corredor único, melhor jatos (5 &gt; 4).<br>A melhor resposta <b>muda</b> ⇒ sem dominante (A errada).</li>
+        <li><b>ABDG:</b><br>se E faz jatos, melhor corredor único (15 &gt; 7);<br>se E faz corredor único, melhor jatos (11 &gt; 9).<br>Também sem dominante.</li>
+        <li>Células com as duas melhores respostas: <b>dois Equilíbrios de Nash</b> — (E: jatos; ABDG: corredor único) e (E: corredor único; ABDG: jatos) (C). Cada uma prefere ficar num segmento diferente da outra.<br><span class="no">E está errada:</span> Nash é par de <b>estratégias</b>, não de payoffs.</li>
       </ul></div>
     <div class="ex"><b>Slides — GLP-1 (empresas E e L, orais × injetáveis)</b>, mesmo padrão da Embraer:
       <div class="qslot" data-q="Tema 7#5"></div>
-      <b>Resolução:</b> E prefere orais se L faz injetáveis (14 &gt; 7) e injetáveis se L faz orais (10 &gt; 8); L prefere injetáveis se E faz orais (10 &gt; 7) e orais se E faz injetáveis (14 &gt; 8). Nash: (E orais, L injetáveis) e (E injetáveis, L orais) (B) — cada uma num segmento.</div>
+      <b>Resolução:</b><br><b>E</b> prefere orais se L faz injetáveis (14 &gt; 7) e injetáveis se L faz orais (10 &gt; 8).<br><b>L</b> prefere injetáveis se E faz orais (10 &gt; 7) e orais se E faz injetáveis (14 &gt; 8).<br>Nash: (E orais, L injetáveis) e (E injetáveis, L orais) (B) — cada uma num segmento.</div>
     <div class="trap">O Equilíbrio de Nash é um <b>par de estratégias</b> (ex.: “E faz jatos, ABDG faz corredor único”), não um par de payoffs (“5 e 15”). Em jogo <b>não simétrico</b>, analise cada jogador separadamente.</div>
     <div class="ex"><b>Prova 2025 (tarde) — IA relacional × funcional</b>
       <div class="qslot" data-q="Tema 7#6"></div>
@@ -1029,7 +1034,7 @@ const AULAS = [
       <table class="t sm"><thead><tr><th>A \ B</th><th>Relacional</th><th>Funcional</th></tr></thead><tbody>
         <tr><td><b>Relacional</b></td><td class="ok">140 − 70 = 70; 70 ★</td><td>200 − 70 = 130; 70 − 30 = 40</td></tr>
         <tr><td><b>Funcional</b></td><td>40; 130</td><td>120 − 30 = 90; 90</td></tr></tbody></table>
-      Se a outra faz relacional: 70 &gt; 40; se faz funcional: 130 &gt; 90 ⇒ relacional é <b>dominante</b> para ambas (A). Nash = (rel, rel), mesmo (func, func) sendo melhor para as duas ⇒ dilema dos prisioneiros (D está errada: não há recurso comum sendo esgotado).</div>
+      Se a outra faz relacional: 70 &gt; 40.<br>Se a outra faz funcional: 130 &gt; 90.<br>⇒ relacional é <b>dominante</b> para ambas (A).<br>Nash = (rel, rel), mesmo (func, func) sendo melhor para as duas ⇒ dilema dos prisioneiros.<br><span class="no">D está errada:</span> não há recurso comum sendo esgotado.</div>
     <div class="ex"><b>Prova 2025 (manhã) — fragrâncias, jogado uma vez</b>
       <div class="qslot" data-q="Tema 7#7"></div>
       <b>Resolução:</b> para cada empresa, “não cooperar” rende mais em qualquer caso: se a outra coopera, 11,53 &gt; 9; se a outra não coopera, 6,75 &gt; 4,88 ⇒ não cooperar é <b>dominante</b> ⇒ o único Nash é (não coopera, não coopera) (C) — embora (9, 9) fosse melhor para as duas: dilema dos prisioneiros.</div>

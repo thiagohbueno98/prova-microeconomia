@@ -18,7 +18,7 @@ Site estático de estudo para a Prova 1 de Microeconomia (GED-72, ITA), no mesmo
 - **Laboratórios interativos**: deslocamentos de curvas, controle de preços, elasticidade e regressão log-log,
   custos da confeitaria, simulador empresa × mercado (curto e longo prazo), excedente total e peso morto,
   monopólio e regulação e resolvedor de jogos 2×2.
-- **103 questões comentadas**, muitas tiradas das provas de 2025 (filtro “Das provas 2025”).
+- **102 questões comentadas**, muitas tiradas das provas de 2025 (filtro “Das provas 2025”).
 - **Questão de gráficos (10 pts)**: checklist da correção, simulador passo a passo e respostas-modelo.
 - **Flashcards**, **simulado** cronometrado, **formulário** e **pegadinhas**.
 
