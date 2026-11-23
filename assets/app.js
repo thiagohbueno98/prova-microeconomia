@@ -6,9 +6,28 @@
    ===================================================================== */
 
 /* ---------- dados ---------- */
-const KEY_ANS = 'micro_ita_ans_v1';
+const KEY_ANS = 'micro_ita_ans_v2', KEY_CARDS = 'micro_ita_cards_v2';
+/* v2 (nov/2026): saiu o conteúdo que não está nos slides de 2026 (Cournot/cartel, jogos repetidos,
+   impostos, Tema 8, elasticidade e receita, HHI). Progresso é salvo por posição ("tema-item"),
+   então os itens removidos são descartados e os seguintes sobem de posição. */
+(function migrarV2() {
+  if (LS.get(KEY_ANS, null) !== null) return;
+  const remap = (obj, rm) => {
+    const out = {};
+    for (const k in obj) {
+      const [m, j] = k.split('-').map(Number), r = rm[m];
+      if (r === 'all' || (r && r.includes(j))) continue;
+      out[m + '-' + (j - (r ? r.filter(x => x < j).length : 0))] = obj[k];
+    }
+    return out;
+  };
+  const range = (a, b) => Array.from({ length: b - a + 1 }, (_, i) => a + i);
+  LS.set(KEY_ANS, remap(LS.get('micro_ita_ans_v1', {}), { 4: [8, 9, 10], 6: range(8, 15), 7: 'all' }));
+  LS.set(KEY_CARDS, remap(LS.get('micro_ita_cards', {}), { 1: [12], 4: [7, 8, 9, 11], 6: range(6, 12), 7: 'all' }));
+  LS.set('micro_ita_sim', null);
+})();
 let answers = LS.get(KEY_ANS, {});
-let known = LS.get('micro_ita_cards', {});
+let known = LS.get(KEY_CARDS, {});
 const MODS = AULAS.map((a, i) => Object.assign({}, a, { idx: i, qs: QUESTOES[a.id] || [] }));
 const TOTAL = MODS.reduce((s, m) => s + m.qs.length, 0);
 const ui = { filter: 'all', search: '' };
@@ -34,16 +53,6 @@ function payTable(G, star) {
   return `<table class="mtx"><tr><th></th><th></th><th colspan="2" class="pB">${G.B}</th></tr><tr><th></th><th></th><th class="pB">${G.s[0]}</th><th class="pB">${G.s[1]}</th></tr>
     ${[0, 1].map(r => `<tr>${r === 0 ? `<th rowspan="2" class="pA">${G.A}</th>` : ''}<th class="pA rowh">${G.s[r]}</th>${cell(r, 0)}${cell(r, 1)}</tr>`).join('')}</table>`;
 }
-function ext4() {
-  const sm = (title, curves, areas) => chart({ title, xr: [0, 32], yr: [0, 460], xl: 'Quantidade', yl: 'Preço', curves, areas, w: 300, h: 240 });
-  const D = { g: y => (420 - y) / 12.5, cls: 'd', lab: 'Demanda', labEnd: 'a', dy: -6, anchor: 'end' };
-  const O = { g: y => (y - 20) / 12.5, cls: 's', lab: 'Oferta', dy: 14 };
-  const a = sm('(a)', [D, O, { g: y => (y - 140) / 12.5, cls: 'm', lab: 'Custo social' }], [{ pts: [[11.2, 280], [16, 220], [16, 340]], cls: 'dwl' }]);
-  const b = sm('(b)', [D, { g: y => (y - 140) / 12.5, cls: 's', lab: 'Oferta' }, { g: y => (y - 20) / 12.5, cls: 'm', lab: 'Custo social', dy: 14, dx: -4, anchor: 'end' }], [{ pts: [[11.2, 280], [16, 220], [11.2, 160]], cls: 'dwl' }]);
-  const c = sm('(c)', [D, O, { g: y => (540 - y) / 12.5, cls: 'm', lab: 'Custo social', labEnd: 'a', dy: -6 }], [{ pts: [[16, 220], [20.8, 280], [16, 340]], cls: 'dwl' }]);
-  const d = sm('(d)', [D, O, { g: y => (300 - y) / 12.5, cls: 'm', lab: 'Custo social', labEnd: 'a', dy: 14, anchor: 'end' }], [{ pts: [[16, 220], [11.2, 160], [11.2, 280]], cls: 'dwl' }]);
-  return `<div class="two">${a}${b}</div><div class="two">${c}${d}</div>`;
-}
 const FIGLIB = {
   do_eq: () => dsChart(5.6, 0.2, -1, 2, { xl: 'Q (t)', yl: 'P (R$/kg)', h: 270 }),
   do_teto: () => dsChart(7000, 600, -1000, 400, { ctrl: 5, ctrlLab: 'teto = 5', areas: false, h: 250 }),
@@ -56,7 +65,6 @@ const FIGLIB = {
   },
   do_usados: () => doShiftChart(DO_SCEN.usados),
   do_desenrola: () => doShiftChart(DO_SCEN.desenrola),
-  el_linear: () => chart({ xr: [0, 108], yr: [0, 22], xl: 'Q', yl: 'P', curves: [{ pts: [[0, 20], [50, 10]], cls: 'm', lab: '|ε| > 1', labAt: [12, 18], dx: 12 }, { pts: [[50, 10], [100, 0]], cls: 's', lab: '|ε| < 1', labAt: [70, 6], dx: 8 }], points: [{ x: 50, y: 10, lab: '|ε| = 1', xt: 'a/2', yt: 'a/2b' }], h: 250 }),
   cu_bolo: () => boloChart(154, { cfm: true, h: 280 }),
   co_lp: () => { const r = shockCharts('demanda_cai', 1); return two(r.firm, r.market, 'Empresa no mínimo do CTM: p = CM = CTM.', 'Oferta de LP horizontal no mínimo do CTM.'); },
   co_bets: () => shock2('demanda_cai'),
@@ -65,13 +73,9 @@ const FIGLIB = {
   co_feijao: () => shock2('feijao'),
   co_demanda_sobe: () => shock2('demanda_sobe'),
   ef_exc: () => taxChart(0, 12.5, 12.5, { h: 270 }),
-  ef_tax: () => taxChart(100, 12.5, 12.5, { h: 270 }),
   mo_agua: () => monoChart(monoModel(56, 2.5, 100, 1, 0), 'livre', { profit: false, h: 280 }),
   mo_reg: () => monoChart(monoModel(56, 2.5, 100, 1, 0), 'pctm', { h: 280 }),
   ol_prec: () => `<div class="mtx-wrap">${payTable(GAMES.precos, true)}</div>`,
-  fm_ext: () => extChart(120, 'neg', { h: 270 }),
-  q_saude: () => monoChart(monoModel(10, 1 / 12, 0, 4, 0), 'livre', { xl: 'Q (milhões)', yl: 'p (mil R$)', h: 270 }),
-  q_ext4: ext4
 };
 // <div class="qslot" data-q="Tema 4#7"></div> mostra a questão do banco na íntegra (com a correta marcada)
 function qFull(ref) {
@@ -182,11 +186,11 @@ function fcAct(act, v, el, mi) {
   if (act === 'fc-prev') { fc.i = (fc.i - 1 + list.length) % Math.max(1, list.length); fc.flip = false; }
   if (act === 'fc-only') { fc.only = v === '1'; fc.i = 0; fc.flip = false; }
   if (act === 'fc-shuffle') { fc.deck = shuffle(fc.deck); fc.i = 0; fc.flip = false; }
-  if (act === 'fc-clear') { fc.deck.forEach(c => delete known[c.mi + '-' + c.ci]); LS.set('micro_ita_cards', known); }
+  if (act === 'fc-clear') { fc.deck.forEach(c => delete known[c.mi + '-' + c.ci]); LS.set(KEY_CARDS, known); }
   if (act === 'fc-mark') {
     const c = list[fc.i]; if (!c) return;
     if (v === '1') known[c.mi + '-' + c.ci] = 1; else delete known[c.mi + '-' + c.ci];
-    LS.set('micro_ita_cards', known); fc.flip = false;
+    LS.set(KEY_CARDS, known); fc.flip = false;
     if (!(fc.only && v === '1')) fc.i = (fc.i + 1) % Math.max(1, list.length);
   }
   renderCards(el, mi);
@@ -325,10 +329,10 @@ function viewHome(el) {
   const s = stats();
   const weak = MODS.map((m, i) => ({ m, i, st: stats(i) })).filter(x => x.st.ans >= 5).sort((a, b) => a.st.ok / a.st.ans - b.st.ok / b.st.ans)[0];
   const next = MODS.map((m, i) => ({ m, i, st: stats(i) })).find(x => x.st.ans < x.st.tot);
-  el.innerHTML = `<div class="hero"><h2>Estudo de Microeconomia — Prova 1</h2><p>GED-72 (Princípios de Economia, ITA). Demanda e oferta, elasticidade, custos, mercados competitivos, eficiência, poder de mercado, oligopólio e falhas de mercado. Resumos, laboratórios interativos, flashcards, ${TOTAL} questões comentadas (muitas tiradas das provas de 2025) e um treino guiado da questão de gráficos.</p>
+  el.innerHTML = `<div class="hero"><h2>Estudo de Microeconomia — Prova 1</h2><p>GED-72 (Princípios de Economia, ITA). Demanda e oferta, elasticidade, custos, mercados competitivos, eficiência, poder de mercado e oligopólio (teoria dos jogos) — só o que está nos slides de 2026. Resumos, laboratórios interativos, flashcards, ${TOTAL} questões comentadas (muitas tiradas das provas de 2025) e um treino guiado da questão de gráficos.</p>
     <div class="stats"><div class="stat"><small>Respondidas</small><b>${s.ans}/${s.tot}</b></div><div class="stat"><small>Acerto</small><b>${pct(s.ok, s.ans)}%</b></div><div class="stat"><small>Erros para revisar</small><b>${s.bad}</b></div><div class="stat"><small>Flashcards “sei”</small><b>${Object.keys(known).length}/${MODS.reduce((a, m) => a + m.cards.length, 0)}</b></div></div>
     <div class="btns" style="margin-top:16px">${next ? `<a class="btn pri" href="#/aula/${next.i}/${next.st.ans ? 'questoes' : 'resumo'}">${next.st.ans ? 'Continuar' : 'Começar'}: ${next.m.id} →</a>` : '<a class="btn pri" href="#/simulado">Fazer um simulado →</a>'}<a class="btn" href="#/discursiva">✍️ Treinar a questão de gráficos (10 pts)</a>${s.bad ? `<a class="btn" href="#/erros">Revisar ${s.bad} erro(s)</a>` : ''}${weak ? `<a class="btn" href="#/aula/${weak.i}/resumo">Ponto fraco: ${weak.m.id} (${pct(weak.st.ok, weak.st.ans)}%)</a>` : ''}</div></div>
-  <div class="trap"><b>O que mais cai (provas de 2025):</b> (1) a questão de <b>dois gráficos</b> empresa × mercado no curto e longo prazo (10 pts); (2) contas de <b>monopólio/regulação</b> e de <b>cartel/Cournot</b>; (3) <b>jogos 2×2</b> (estratégia dominante, Nash, jogo repetido); (4) <b>V/F de elasticidade</b> (% × unidades, renda × preço); (5) identificar a <b>falha de mercado</b> num texto de jornal.</div>
+  <div class="trap"><b>O que mais cai:</b> (1) a questão de <b>dois gráficos</b> empresa × mercado no curto e longo prazo (10 pts, caiu nas duas provas de 2025 e nos exercícios das aulas); (2) contas de <b>monopólio/regulação</b> (RM = CM, peso morto, teto sem subsídio); (3) <b>jogos 2×2</b> (estratégia dominante, equilíbrio de Nash, dilema dos prisioneiros); (4) <b>V/F de elasticidade</b> (% × unidades, renda × preço); (5) contas de <b>equilíbrio, excedentes e custos</b>.</div>
   <h3 class="h2">Roteiro sugerido para cada tema</h3>
   <ol class="how"><li><b>Resumo</b>: leia o “Em uma frase” e as pegadinhas.</li><li><b>Laboratório</b>: mexa nos gráficos até prever o resultado antes de clicar.</li><li><b>Flashcards</b>: definições e fórmulas na ponta da língua.</li><li><b>Questões</b>: resolva no papel e leia o comentário de cada erro.</li><li><b>Simulado</b>: misture temas, com cronômetro.</li></ol>
   <h3 class="h2">Temas</h3>

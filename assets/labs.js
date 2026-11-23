@@ -148,18 +148,13 @@ const EL_GAME = [
   ['Se habilidade (não observada) aumenta salário e escolaridade, o b de “salário = a + b·escolaridade” tende a superestimar o efeito da educação', 'V', 'Viés de variável omitida positivo: parte do efeito da habilidade é atribuída à escolaridade.']
 ];
 LAB.elast = el => {
-  const E = { p1: 10, q1: 100, p2: 12, q2: 94 }, L = { a: 100, b: 5, p: 6 };
+  const E = { p1: 10, q1: 100, p2: 12, q2: 94 };
   let logv = true;
   el.innerHTML = `
   <div class="lab"><h3>📏 Calculadora de elasticidade entre dois pontos</h3>
     <p class="muted">O exemplo dos slides: o preço da gasolina sobe 20% e a quantidade cai 6% ⇒ ε = −0,3.</p>
     <div class="fields">${[['p1', 'Preço inicial'], ['q1', 'Quantidade inicial'], ['p2', 'Preço final'], ['q2', 'Quantidade final']].map(([k, l]) => `<label class="field">${l}<input type="number" step="any" data-e="${k}" value="${E[k]}"></label>`).join('')}</div>
     <div class="readout" id="elRo"></div><div class="explain" id="elEx"></div>
-  </div>
-  <div class="lab"><h3>📉 Elasticidade ao longo de uma demanda linear <span class="tag">Complemento</span></h3>
-    <p class="muted">Demanda <b>Q = a − bP</b>. A inclinação é constante, mas a elasticidade <b>muda</b> em cada ponto: ε = ${fr('dQ', 'dP')} · ${fr('P', 'Q')} = −b · ${fr('P', 'Q')}.</p>
-    <div class="fields">${[['a', 'a'], ['b', 'b']].map(([k, l]) => `<label class="field">${l}<input type="number" step="any" data-l="${k}" value="${L[k]}"></label>`).join('')}<label class="field">Preço P = <span id="elPv"></span><input type="range" id="elP" min="0" max="100" value="30"></label></div>
-    <div class="lab-grid"><div id="elLinCh"></div><div><div class="readout" id="elLinRo"></div><div class="explain" id="elLinEx"></div></div></div>
   </div>
   <div class="lab"><h3>📊 Regressão em log: o coeficiente vira elasticidade</h3>
     <p class="muted">Dados da planilha da aula (renda do indivíduo × renda do pai, 47 observações). Estimamos por Mínimos Quadrados Ordinários (MQO).</p>
@@ -173,14 +168,6 @@ LAB.elast = el => {
     const cls = Math.abs(eps) < 1 ? 'inelástica' : Math.abs(eps) > 1 ? 'elástica' : 'unitária';
     $('#elRo', el).innerHTML = `<div><small>Δ%Q</small><b>${fmt(dq, 2)}%</b></div><div><small>Δ%P</small><b>${fmt(dp, 2)}%</b></div><div><small>ε</small><b>${isFinite(eps) ? fmt(eps, 3) : '—'}</b></div><div><small>ε (ponto médio)</small><b>${isFinite(mq / mp) ? fmt(mq / mp, 3) : '—'}</b></div>`;
     $('#elEx', el).innerHTML = isFinite(eps) ? `<p>ε = ${fr('Δ%Q', 'Δ%P')} = ${fr(fmt(dq, 2) + '%', fmt(dp, 2) + '%')} = <b>${fmt(eps, 3)}</b> ⇒ demanda <b>${cls}</b> nesse trecho (|ε| ${Math.abs(eps) < 1 ? '<' : Math.abs(eps) > 1 ? '>' : '='} 1).</p><p><b>Leitura:</b> um aumento de 1% no preço está associado a uma ${eps < 0 ? 'queda' : 'alta'} de ${fmt(Math.abs(eps), 2)}% na quantidade.</p><p class="note">Variação percentual = ${fr('final − inicial', 'inicial')} × 100%. É adimensional: trocar reais por dólares não muda nada. O “ponto médio” (divide pela média dos dois valores) dá o mesmo resultado nos dois sentidos — é um complemento do Mankiw.</p>` : '<p>Δ%P não pode ser zero.</p>';
-  };
-  const drawL = () => {
-    const pmax = L.a / L.b, P = pmax * (+$('#elP', el).value) / 100, Q = L.a - L.b * P, eps = Q > 0 ? -L.b * P / Q : -Infinity;
-    $('#elPv', el).textContent = fmt(P, 2);
-    const mid = pmax / 2;
-    $('#elLinCh', el).innerHTML = chart({ xr: [0, L.a * 1.08], yr: [0, pmax * 1.1], xl: 'Q', yl: 'P', curves: [{ pts: [[0, pmax], [L.a / 2, mid]], cls: 'm', lab: '|ε| > 1 (elástica)', labAt: [L.a * 0.12, pmax * 0.9], dx: 12 }, { pts: [[L.a / 2, mid], [L.a, 0]], cls: 's', lab: '|ε| < 1 (inelástica)', labAt: [L.a * 0.62, mid * 0.62], dx: 8 }], points: [{ x: Q, y: P, xt: fmtA(Q, 1), yt: fmtA(P, 2) }, { x: L.a / 2, y: mid, cls: 'old', guide: false, lab: '|ε| = 1', dx: 10, dy: 4 }], areas: [{ pts: [[0, 0], [0, P], [Q, P], [Q, 0]], cls: 'tax' }], h: 280 });
-    $('#elLinRo', el).innerHTML = `<div><small>Q</small><b>${fmt(Q, 1)}</b></div><div><small>ε</small><b>${isFinite(eps) ? fmt(eps, 2) : '−∞'}</b></div><div><small>Receita P·Q</small><b>${fmt(P * Q, 1)}</b></div>`;
-    $('#elLinEx', el).innerHTML = `<p>ε = −b · ${fr('P', 'Q')} = −${fmtA(L.b)} × ${fr(fmt(P, 2), fmt(Q, 1))} = <b>${isFinite(eps) ? fmt(eps, 2) : '−∞'}</b>.</p><p>Acima do ponto médio a demanda é elástica: <b>baixar</b> o preço aumenta a receita (área amarela). Abaixo, é inelástica: <b>subir</b> o preço aumenta a receita. A receita é máxima em |ε| = 1.</p>`;
   };
   const drawR = () => {
     const xs = RENDA.map(r => logv ? Math.log(r[1]) : r[1]), ys = RENDA.map(r => logv ? Math.log(r[0]) : r[0]);
@@ -199,11 +186,9 @@ LAB.elast = el => {
   };
   el.addEventListener('input', e => {
     if (e.target.dataset.e) { E[e.target.dataset.e] = parseNum(e.target.value, E[e.target.dataset.e]); drawE(); }
-    if (e.target.dataset.l) { L[e.target.dataset.l] = Math.max(0.01, parseNum(e.target.value, L[e.target.dataset.l])); drawL(); }
-    if (e.target.id === 'elP') drawL();
   });
   el.addEventListener('click', e => { if (e.target.id === 'elLog1' || e.target.id === 'elLog0') { logv = e.target.id === 'elLog1'; drawR(); } });
-  drawE(); drawL(); drawR();
+  drawE(); drawR();
   classGame(el, 'elG', EL_GAME, [['V', 'V'], ['F', 'F']]);
 };
 
@@ -360,19 +345,12 @@ LAB.compet = el => {
    TEMA 5 — Eficiência e impostos
    ===================================================================== */
 LAB.efic = el => {
-  let Qf = 16, T = 100, bD = 12.5, bS = 12.5;
+  let Qf = 16;
   el.innerHTML = `
   <div class="lab"><h3>⚖️ O equilíbrio maximiza o excedente total</h3>
     <p class="muted">D: P = 420 − 12,5Q · O: P = 20 + 12,5Q (o exemplo dos slides: Q* = 16, P* = 220). Force outra quantidade e veja a perda.</p>
     <div class="fields"><label class="field">Quantidade produzida e trocada Q = <span id="efQv"></span><input type="range" id="efQ" min="0" max="30" step="0.5" value="16"></label></div>
     <div class="lab-grid"><div id="efCh"></div><div><div class="readout" id="efRo"></div><div class="explain" id="efEx"></div></div></div>
-  </div>
-  <div class="lab"><h3>🧾 Imposto por unidade: quem paga e quanto se perde <span class="tag">Complemento</span></h3>
-    <p class="muted">O imposto T cria uma “cunha” entre o preço pago pelo consumidor (Pc) e o recebido pelo produtor (Ps). Mude a inclinação das curvas: o lado <b>mais inelástico</b> (curva mais inclinada, comparando no mesmo ponto P e Q) paga a maior parte.</p>
-    <div class="fields"><label class="field">Imposto T = R$ <span id="efTv"></span><input type="range" id="efT" min="0" max="380" step="10" value="100"></label>
-      <label class="field">Demanda<select class="sel-inline" id="efBD"><option value="6.25">mais elástica</option><option value="12.5" selected>média</option><option value="25">mais inelástica</option></select></label>
-      <label class="field">Oferta<select class="sel-inline" id="efBS"><option value="6.25">mais elástica</option><option value="12.5" selected>média</option><option value="25">mais inelástica</option></select></label></div>
-    <div class="lab-grid"><div id="efTCh"></div><div><div class="readout" id="efTRo"></div><div class="explain" id="efTEx"></div></div></div>
   </div>`;
   const drawQ = () => {
     const pd = q => 420 - 12.5 * q, ps = q => 20 + 12.5 * q;
@@ -388,20 +366,10 @@ LAB.efic = el => {
     $('#efRo', el).innerHTML = `<div><small>Excedente total</small><b>${fmtA(et)}</b></div><div><small>Máximo (Q = 16)</small><b>3.200</b></div><div><small>Perda</small><b class="${3200 - et > 0.01 ? 'no' : ''}">${fmtA(3200 - et)}</b></div>`;
     $('#efEx', el).innerHTML = Qf < 16 ? `<p>Produzindo menos que 16, deixamos de trocar unidades que valem para o comprador (altura da D) <b>mais</b> do que custam para produzir (altura da O). Essa oportunidade perdida é o <b>peso morto</b>.</p>` : Qf > 16 ? `<p>Produzindo mais que 16, as unidades extras custam (O) <b>mais</b> do que valem para quem compra (D): destrói valor. Também há peso morto.</p>` : `<p>Q = 16: <b>todos os possíveis ganhos de troca são explorados</b>. EC = ${fr('(420 − 220) · 16', 2)} = 1.600; EP = ${fr('(220 − 20) · 16', 2)} = 1.600; ET = 3.200. É a quantidade <b>eficiente</b> — a “mão invisível” de Adam Smith.</p>`;
   };
-  const drawT = () => {
-    const t = taxModel(T, bD, bS);
-    $('#efTv', el).textContent = T;
-    $('#efTCh', el).innerHTML = taxChart(T, bD, bS);
-    $('#efTRo', el).innerHTML = `<div><small>Q com imposto</small><b>${fmt(t.Qt, 2)}</b></div><div><small>Pc (consumidor)</small><b>${fmt(t.Pc, 1)}</b></div><div><small>Ps (produtor)</small><b>${fmt(t.Ps, 1)}</b></div><div><small>Arrecadação</small><b>${fmtA(t.rev, 1)}</b></div><div><small>Peso morto</small><b class="no">${fmtA(t.dwl, 1)}</b></div>`;
-    $('#efTEx', el).innerHTML = `<p>Consumidor paga ${fmt(t.Pc - 220, 1)} a mais (<b>${pct(t.Pc - 220, T || 1)}%</b> do imposto) e o produtor recebe ${fmt(220 - t.Ps, 1)} a menos (<b>${pct(220 - t.Ps, T || 1)}%</b>). Não importa quem recolhe o imposto ao governo: a divisão depende só das elasticidades.</p>
-      <p>Peso morto = ${fr('T × (16 − Qt)', 2)} = ${fmtA(t.dwl, 1)}. Dobrar o imposto ≈ <b>quadruplica</b> o peso morto (base e altura do triângulo dobram).</p>`;
-  };
   el.addEventListener('input', e => {
     if (e.target.id === 'efQ') { Qf = +e.target.value; drawQ(); }
-    if (e.target.id === 'efT') { T = +e.target.value; drawT(); }
   });
-  el.addEventListener('change', e => { if (e.target.id === 'efBD') { bD = +e.target.value; drawT(); } if (e.target.id === 'efBS') { bS = +e.target.value; drawT(); } });
-  drawQ(); drawT();
+  drawQ();
 };
 
 /* =====================================================================
@@ -413,7 +381,6 @@ const MO_PRE = {
   app: { nome: 'App de mobilidade (prova)', a: 4, b: 0.2, F: 6.4, c: 0.4, d: 0, u: 'q em milhões de matches · R$' },
   app2: { nome: 'App: q = 16 − 4p (questão)', a: 4, b: 0.25, F: 6.4, c: 1, d: 0, u: 'q em milhões de matches · R$' },
   ponte: { nome: 'Ponte com pedágio (prova 2025)', a: 85, b: 6, F: 168, c: 5, d: 2, u: 'q em mil veículos/dia · R$ mil' },
-  saude: { nome: 'Planos de saúde (monopólio)', a: 10, b: 1 / 12, F: 0, c: 4, d: 0, u: 'Q em milhões de pessoas · p em R$ mil/ano' }
 };
 LAB.mono = el => {
   let pre = 'agua', K = Object.assign({}, MO_PRE.agua), mode = 'livre';
@@ -479,24 +446,11 @@ function solveGame(g) {
 }
 LAB.oligo = el => {
   let gk = 'precos', G = JSON.parse(JSON.stringify(GAMES.precos));
-  const C = { a: '10', b: '1/12', c: '4', n: 2 };
-  const R = { pc: 9, pd: 11.53, pn: 6.75, r: 10 };
   el.innerHTML = `
   <div class="lab"><h3>🎲 Resolvedor de jogos 2×2: estratégia dominante e Equilíbrio de Nash</h3>
     <p class="muted">Edite os payoffs. As <b>melhores respostas</b> ficam sublinhadas em verde; a célula com contorno verde é <b>Equilíbrio de Nash</b> (as duas melhores respostas ao mesmo tempo).</p>
     <div class="btns" id="gmPre">${Object.entries(GAMES).map(([k, v]) => `<button class="btn sm ${k === gk ? 'on' : ''}" data-g="${k}">${v.nome}</button>`).join('')}</div>
     <div id="gmT" style="overflow-x:auto"></div><div class="explain" id="gmEx"></div>
-  </div>
-  <div class="lab"><h3>🏭🏭 Cournot × cartel × concorrência</h3>
-    <p class="muted">Demanda <b>p = a − b·Q</b>, custo marginal constante <b>c</b>, <b>n</b> empresas idênticas que escolhem quantidades simultaneamente. Padrão: planos de saúde da prova (p = 10 − ${fr('Q', 12)}, CM = 4).</p>
-    <div class="fields">${[['a', 'a'], ['b', 'b'], ['c', 'c (CM)']].map(([k, l]) => `<label class="field">${l}<input type="text" inputmode="decimal" data-c="${k}" value="${C[k]}"></label>`).join('')}<label class="field">n empresas = <span id="coNv">2</span><input type="range" id="coN" min="1" max="12" value="2"></label></div>
-    <div id="coT" style="overflow-x:auto"></div>
-    <div class="lab-grid"><div id="coCh"></div><div class="explain" id="coEx"></div></div>
-  </div>
-  <div class="lab"><h3>🔁 Jogo repetido infinitamente: a cooperação se sustenta?</h3>
-    <p class="muted">Estratégia “gatilho”: coopera enquanto o outro cooperou; se alguém desviar, nunca mais coopera. Padrão: fragrâncias (prova 2025).</p>
-    <div class="fields">${[['pc', 'Lucro se ambos cooperam'], ['pd', 'Lucro de quem desvia'], ['pn', 'Lucro se ninguém coopera']].map(([k, l]) => `<label class="field">${l}<input type="number" step="any" data-r="${k}" value="${R[k]}"></label>`).join('')}<label class="field">Taxa de juros r = <span id="rpRv"></span>%<input type="range" id="rpR" min="1" max="150" value="10"></label></div>
-    <div class="readout" id="rpRo"></div><div class="explain" id="rpEx"></div>
   </div>`;
   const drawG = () => {
     const S = solveGame(G), s = G.s;
@@ -513,82 +467,7 @@ LAB.oligo = el => {
       <p class="note">Lembre: o Equilíbrio de Nash é um <b>par de estratégias</b>, não um par de payoffs. Método: para cada coluna, sublinhe o melhor payoff de A; para cada linha, o melhor de B. Célula com os dois sublinhados = Nash.</p>`;
     $$('#gmPre button', el).forEach(b => b.classList.toggle('on', b.dataset.g === gk));
   };
-  const drawC = () => {
-    const a = parseNum(C.a, 10), b = parseNum(C.b, 1 / 12), c = parseNum(C.c, 4), n = C.n;
-    if (!(a > c && b > 0)) { $('#coEx', el).innerHTML = '<p>Use a &gt; c e b &gt; 0.</p>'; return; }
-    const Qc = (a - c) / b, Qm = (a - c) / (2 * b), qn = (a - c) / (b * (n + 1)), Qn = n * qn, Pn = (a + n * c) / (n + 1);
-    const row = (nm, q, Q, P) => { const pi = (P - c) * q, dwl = (P - c) * (Qc - Q) / 2, ec = (a - P) * Q / 2; return `<tr><td>${nm}</td><td>${fmtA(q, 3)}</td><td>${fmtA(Q, 3)}</td><td>${fmtA(P, 3)}</td><td>${fmtA(pi, 3)}</td><td>${fmtA(ec, 3)}</td><td>${fmtA(dwl, 3)}</td></tr>`; };
-    const dev = n === 2 ? (() => { const q2 = Qm / 2, q1 = (a - c - b * q2) / (2 * b), P = a - b * (q1 + q2); return { q1, q2, P, pi1: (P - c) * q1, pi2: (P - c) * q2 }; })() : null;
-    $('#coNv', el).textContent = n;
-    $('#coT', el).innerHTML = `<table class="t sm"><thead><tr><th>Resultado</th><th>q por empresa</th><th>Q total</th><th>Preço</th><th>Lucro por empresa</th><th>Exc. consumidor</th><th>Peso morto</th></tr></thead><tbody>
-      ${row('Cartel / monopólio (RM = CM)', Qm / n, Qm, a - b * Qm)}${row(`Cournot-Nash (n = ${n})`, qn, Qn, Pn)}${row('Concorrência perfeita (p = CM)', Qc / n, Qc, c)}</tbody></table>
-      ${dev ? `<p class="note">Desvio do cartel: se a empresa 2 produz ${fmtA(dev.q2, 3)} (sua parte) e a 1 maximiza o próprio lucro: q₁ = ${fmtA(dev.q1, 3)}, Q = ${fmtA(dev.q1 + dev.q2, 3)}, p = ${fmtA(dev.P, 4)}, lucro₁ = <b>${fmtA(dev.pi1, 3)}</b> (contra ${fmtA((a - b * Qm - c) * Qm / 2, 3)} cooperando) e lucro₂ = ${fmtA(dev.pi2, 3)}. Por isso cartéis são instáveis.</p>` : ''}`;
-    // funções de reação (n = 2)
-    const r = q => (a - c) / (2 * b) - q / 2, lim = (a - c) / b * 1.08;
-    $('#coCh', el).innerHTML = n === 2 ? chart({ xr: [0, lim], yr: [0, lim], xl: 'q₁', yl: 'q₂', curves: [{ f: x => (a - c) / b - 2 * x, a: 0, b: (a - c) / (2 * b), n: 120, cls: 's', lab: 'R₁(q₂)', labAt: [(a - c) / (12 * b), (a - c) / b * 5 / 6], dx: 8 }, { f: x => r(x), a: 0, b: (a - c) / b, n: 120, cls: 'm', lab: 'R₂(q₁)', labAt: [(a - c) / (1.6 * b), (a - c) / (5.3 * b)], dy: -8 }, { f: x => Qm - x, a: 0, b: Qm, n: 60, cls: 'ghost' }], points: [{ x: qn, y: qn, lab: 'Nash', xt: fmtA(qn, 2), yt: fmtA(qn, 2) }, { x: Qm / 2, y: Qm / 2, cls: 'old', lab: 'cartel', anchor: 'end', dx: -8, dy: 16, guide: false }, { x: dev.q1, y: dev.q2, cls: 'old', lab: 'desvio', guide: false, dy: 16 }], h: 300 }) : '<p class="note">Com n ≠ 2 o gráfico de funções de reação não se aplica — veja a tabela.</p>';
-    $('#coEx', el).innerHTML = `<p><b>Empresa i:</b> lucro = [a − b(qᵢ + Q₋ᵢ)]qᵢ − c·qᵢ. CPO: a − 2bqᵢ − bQ₋ᵢ − c = 0 ⇒ <b>qᵢ = ${fr('a − c − bQ₋ᵢ', '2b')}</b> (função de reação).</p>
-      <p>Simétrico (qᵢ = q): <b>q = ${fr('a − c', 'b(n + 1)')}</b> = ${fmtA(qn, 3)}, <b>P = ${fr('a + n·c', 'n + 1')}</b> = ${fmtA(Pn, 3)}.</p>
-      <p>Peso morto de Cournot = ${fr('(a − c)²', '2b(n + 1)²')} = ${fmtA((a - c) ** 2 / (2 * b * (n + 1) ** 2), 3)}. Quanto mais empresas, mais perto da concorrência (P → c).</p>`;
-  };
-  const drawR = () => {
-    const r = R.r / 100, vc = R.pc + R.pc / r, vd = R.pd + R.pn / r, rs = (R.pc - R.pn) / (R.pd - R.pc);
-    $('#rpRv', el).textContent = R.r;
-    $('#rpRo', el).innerHTML = `<div><small>VP se coopera</small><b>${fmt(vc, 2)}</b></div><div><small>VP se desvia</small><b>${fmt(vd, 2)}</b></div><div><small>r crítico</small><b>${isFinite(rs) && rs > 0 ? fmt(100 * rs, 1) + '%' : '—'}</b></div>`;
-    $('#rpEx', el).innerHTML = `<p><b>Coopera sempre:</b> ${fmtA(R.pc)} + ${fr(fmtA(R.pc), fmtA(r, 3))} = <b>${fmt(vc, 2)}</b>. <b>Desvia hoje:</b> ganha ${fmtA(R.pd)} agora e depois ${fmtA(R.pn)} para sempre: ${fmtA(R.pd)} + ${fr(fmtA(R.pn), fmtA(r, 3))} = <b>${fmt(vd, 2)}</b>.</p>
-      <p>${vc >= vd ? '✅ Cooperar vale mais ⇒ seguir a estratégia gatilho é a melhor resposta à estratégia gatilho do outro ⇒ <b>há Equilíbrio de Nash em que ambos cooperam</b> (todo mês).' : '❌ Desviar vale mais: a cooperação não se sustenta com juros tão altos (o futuro pesa pouco).'}</p>
-      <p class="note">Valor presente de uma perpetuidade que começa no mês seguinte = ${fr('π', 'r')}. Coopera-se enquanto r ≤ ${fr('π_coop − π_Nash', 'π_desvio − π_coop')}.</p>`;
-  };
   el.addEventListener('click', e => { const b = e.target.closest('#gmPre [data-g]'); if (b) { gk = b.dataset.g; G = JSON.parse(JSON.stringify(GAMES[gk])); drawG(); } });
   el.addEventListener('change', e => { const k = e.target.dataset.pr; if (k) { G.p[+k[0]][+k[1]][+k[2]] = parseNum(e.target.value, 0); drawG(); } });
-  el.addEventListener('input', e => {
-    if (e.target.dataset.c) { C[e.target.dataset.c] = e.target.value; drawC(); }
-    if (e.target.id === 'coN') { C.n = +e.target.value; drawC(); }
-    if (e.target.dataset.r) { R[e.target.dataset.r] = parseNum(e.target.value, R[e.target.dataset.r]); drawR(); }
-    if (e.target.id === 'rpR') { R.r = +e.target.value; drawR(); }
-  });
-  drawG(); drawC(); drawR();
-};
-
-/* =====================================================================
-   TEMA 8 — Falhas de mercado
-   ===================================================================== */
-const FM_GAME = [
-  ['Termelétrica emite gases de efeito estufa sem considerar o custo do aquecimento global para a sociedade', 'EXN', 'Custo recai sobre terceiros que não escolheram: externalidade negativa.'],
-  ['Laboratórios de IA aceleram rumo à AGI; o risco de extinção recai sobre toda a humanidade (prova 2025)', 'EXN', 'Ação de alguns gera custo para terceiros não considerado pelas empresas. Não há assimetria de informação descrita.'],
-  ['Ludopatia por bets gera custos para famílias e para o SUS (prova 2025)', 'EXN', 'Parte do custo recai sobre terceiros e não entra na decisão privada.'],
-  ['Assessor recomenda o CDB que paga mais comissão a ele; o cliente não observa o critério usado (Banco Master)', 'PM', 'Assimetria quanto ao COMPORTAMENTO (ação oculta) + desalinhamento de interesses agente-principal: perigo moral.'],
-  ['Investidores não distinguem plataformas criteriosas das menos criteriosas; as menos criteriosas ganham mercado', 'SA', 'Assimetria quanto ao TIPO; a composição do mercado piora (sobrerrepresentação do “pior tipo”): seleção adversa.'],
-  ['A Disciplina Consciente revela quem é confiável, ajudando na hora de contratar/indicar (prova 2025)', 'SA', 'Reduz a assimetria de informação quanto ao tipo da pessoa ⇒ reduz seleção adversa.'],
-  ['Algoritmo da rede social prioriza engajamento danoso; a plataforma sabe como ele funciona, o usuário não', 'PM', 'Assimetria quanto às ações da plataforma e incentivos desalinhados.'],
-  ['Pescadores, cada um pensando em si, esgotam um cardume de livre acesso', 'TC', 'Recurso comum (rival e de livre acesso) sobre-explorado: tragédia dos comuns.'],
-  ['Moradores usam a iluminação pública sem contribuir para seu custeio', 'CAR', 'Bem público não excludente: problema do carona (free rider).'],
-  ['Vacinação protege também quem não se vacinou', 'EXP', 'Benefício para terceiros não considerado na decisão: externalidade positiva (produz-se menos que o eficiente).'],
-  ['Com efeitos de rede, uma única plataforma domina o mercado (“o vencedor leva tudo”)', 'POD', 'Tendência a monopólio ⇒ poder de mercado ⇒ ineficiência (preço acima do CM).'],
-  ['Depois de contratar seguro total, o motorista passa a dirigir com menos cuidado', 'PM', 'Ação oculta depois do contrato: perigo moral (risco moral, moral hazard).'],
-  ['Só quem sabe que tem saúde frágil procura o plano de saúde mais completo', 'SA', 'Característica oculta antes do contrato: seleção adversa.']
-];
-LAB.falhas = el => {
-  let E = 120, tipo = 'neg';
-  el.innerHTML = `
-  <div class="lab"><h3>🏭💨 Externalidades: custo social × custo privado</h3>
-    <p class="muted">D: P = 420 − 12,5Q · Oferta (custo privado): P = 20 + 12,5Q. O mercado só olha o custo privado.</p>
-    <div class="seg" id="exT"><button data-t="neg" class="on">Externalidade negativa</button><button data-t="pos">Externalidade positiva</button></div>
-    <div class="fields"><label class="field">Efeito externo por unidade = R$ <span id="exEv"></span><input type="range" id="exE" min="0" max="300" step="10" value="120"></label></div>
-    <div class="lab-grid"><div id="exCh"></div><div><div class="readout" id="exRo"></div><div class="explain" id="exEx"></div></div></div>
-  </div>
-  ${gameBox('fmG', '🎯 Qual é a falha de mercado?', 'Questões das provas de 2025 e exemplos clássicos. EXT− = externalidade negativa · EXT+ = positiva · PM = perigo moral · SA = seleção adversa · TC = tragédia dos comuns · Carona = free rider · Poder = poder de mercado.')}`;
-  const draw = () => {
-    $('#exEv', el).textContent = E;
-    $('#exCh', el).innerHTML = extChart(E, tipo);
-    const Qe = tipo === 'neg' ? (400 - E) / 25 : (400 + E) / 25, dwl = E * Math.abs(16 - Qe) / 2;
-    $('#exRo', el).innerHTML = `<div><small>Q de mercado</small><b>16</b></div><div><small>Q eficiente</small><b>${fmt(Qe, 1)}</b></div><div><small>Perda social</small><b class="no">${fmtA(dwl, 1)}</b></div><div><small>${tipo === 'neg' ? 'Imposto' : 'Subsídio'} corretivo</small><b>R$ ${E}</b></div>`;
-    $('#exEx', el).innerHTML = tipo === 'neg'
-      ? `<p><b>Custo social = custo privado + custo externo</b> ⇒ a curva de custo social fica <b>acima</b> da oferta. O mercado produz 16, mais que o eficiente (${fmt(Qe, 1)}), onde custo social = demanda.</p><p>Nas unidades entre ${fmt(Qe, 1)} e 16, o custo social supera o benefício: é a <b>perda social (peso morto)</b>, o triângulo à <b>direita</b> da quantidade eficiente, entre o custo social e a demanda. Um imposto por unidade igual ao custo externo (pigouviano) corrige.</p>`
-      : `<p><b>Benefício social = benefício privado (demanda) + benefício externo</b> ⇒ curva acima da demanda. O mercado produz 16, <b>menos</b> que o eficiente (${fmt(Qe, 1)}). Um subsídio igual ao benefício externo corrige.</p>`;
-    $$('#exT button', el).forEach(b => b.classList.toggle('on', b.dataset.t === tipo));
-  };
-  el.addEventListener('input', e => { if (e.target.id === 'exE') { E = +e.target.value; draw(); } });
-  el.addEventListener('click', e => { const b = e.target.closest('#exT [data-t]'); if (b) { tipo = b.dataset.t; draw(); } });
-  draw();
-  classGame(el, 'fmG', FM_GAME, [['EXN', 'EXT−'], ['EXP', 'EXT+'], ['PM', 'PM'], ['SA', 'SA'], ['TC', 'TC'], ['CAR', 'Carona'], ['POD', 'Poder']]);
+  drawG();
 };

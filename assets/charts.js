@@ -162,14 +162,15 @@ function boloTab(CF = 154, CV = BOLO_CV) {
 }
 function boloChart(CF = 154, opt = {}) {
   const T = boloTab(CF).slice(1);
+  // Como nos slides: CM desenhado em q. Ele encontra o CVM em (4, 42) e o CTM em (6, 76),
+  // os dois nos mínimos (a tabela tem empates 3–4 e 5–6; o CM chega neles no 2º ponto do empate)
   const curves = [
     { pts: T.map(r => [r.q, r.CM]), cls: 'm', lab: 'CM' },
     { pts: T.map(r => [r.q, r.CTM]), cls: 'd', lab: 'CTM', labAt: [10, T[9].CTM], dy: -6 },
     { pts: T.map(r => [r.q, r.CVM]), cls: 's', lab: 'CVM', labAt: [10, T[9].CVM], dy: 14 }
   ];
   if (opt.cfm) curves.push({ pts: T.map(r => [r.q, r.CFM]), cls: 'v', lab: 'CFM' });
-  const minT = T.reduce((a, r) => r.CTM < a.CTM ? r : a), minV = T.reduce((a, r) => r.CVM < a.CVM ? r : a);
-  const points = (opt.points || []).concat(opt.noMin ? [] : [{ x: 6, y: 76, lab: 'CM = CTM', xt: '6', yt: '76', dx: 8, dy: 22 }, { x: minV.q, y: minV.CVM, lab: 'mín CVM', dy: 18, guide: false }]);
+  const points = (opt.points || []).concat(opt.noMin ? [] : [{ x: 6, y: 76, lab: 'CM = mín CTM', xt: '6', yt: '76', dx: 8, dy: 22 }, { x: 4, y: 42, lab: 'CM = mín CVM', dy: 18, guide: false }]);
   return chart({ xr: [0, 11], yr: [0, opt.ymax || 230], xl: 'q (bolos/dia)', yl: 'R$', curves, points, hlines: opt.hlines, areas: opt.areas, title: opt.title, h: opt.h || 300, w: opt.w });
 }
 
@@ -339,18 +340,3 @@ function monoChart(M, mode = 'livre', opt = {}) {
   return chart({ xr: [0, xmax], yr: [0, ymax], xl: opt.xl || 'q', yl: opt.yl || 'R$', curves, areas, points, title: opt.title, h: opt.h || 300, w: opt.w });
 }
 
-/* ---------- Externalidade: D: P = 420 − 12,5Q ; Oferta (custo privado): P = 20 + 12,5Q ---------- */
-function extChart(E, tipo = 'neg', opt = {}) {
-  const curves = [{ g: y => (420 - y) / 12.5, cls: 'd', lab: 'Demanda', labEnd: 'a', dy: -6, anchor: 'end' }, { g: y => (y - 20) / 12.5, cls: 's', lab: 'Oferta (custo privado)', dy: 14, anchor: 'end', dx: -4 }];
-  const areas = [], points = [{ x: 16, y: 220, lab: 'mercado', yt: '', xt: 'Q_mercado', dx: 8 }];
-  if (tipo === 'neg') {
-    curves.push({ g: y => (y - 20 - E) / 12.5, cls: 'm', lab: 'Custo social' });
-    const Qe = (400 - E) / 25, Pe = 420 - 12.5 * Qe;
-    if (E > 0) { areas.push({ pts: [[Qe, Pe], [16, 220], [16, 20 + E + 200]], cls: 'dwl', lab: opt.noLab ? '' : 'Perda', at: [16 + 1.6, 220 + E * 0.45] }); points.push({ x: Qe, y: Pe, xt: 'Q_eficiente', lab: 'eficiente', dx: -70, dy: -8 }); }
-  } else {
-    curves.push({ g: y => (420 + E - y) / 12.5, cls: 'v', lab: 'Benefício social' });
-    const Qe = (400 + E) / 25, Pe = 20 + 12.5 * Qe;
-    if (E > 0) { areas.push({ pts: [[16, 220], [Qe, Pe], [16, 220 + E]], cls: 'dwl', lab: opt.noLab ? '' : 'Perda', at: [16 + 1.4, 220 + E * 0.5] }); points.push({ x: Qe, y: Pe, xt: 'Q_eficiente', lab: 'eficiente', dx: 8 }); }
-  }
-  return chart({ xr: [0, 32], yr: [0, 460], xl: 'Quantidade', yl: 'Preço', curves, areas, points, title: opt.title, h: opt.h || 290, w: opt.w });
-}

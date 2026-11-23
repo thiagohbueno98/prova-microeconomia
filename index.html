@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Microeconomia ITA — Estudo</title>
-<meta name="description" content="Resumos, laboratórios interativos, flashcards e questões comentadas de Microeconomia (GED-72, ITA) — demanda e oferta, elasticidade, custos, mercados competitivos, eficiência, poder de mercado, oligopólio e falhas de mercado.">
+<meta name="description" content="Resumos, laboratórios interativos, flashcards e questões comentadas de Microeconomia (GED-72, ITA) — demanda e oferta, elasticidade, custos, mercados competitivos, eficiência, poder de mercado e oligopólio (teoria dos jogos).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
@@ -130,6 +130,12 @@ input,select{font:inherit;color:inherit}
 .f:has(.katex){font-family:inherit;padding:6px 12px}
 .f.big:has(.katex){padding:10px 18px}
 .katex-display{margin:.4em 0}
+/* celular: equação larga rola dentro da própria caixa em vez de vazar da tela */
+.katex-display{overflow-x:auto;overflow-y:hidden;padding:2px 0}
+.f{max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;box-sizing:border-box}
+.f .katex{display:inline-block;margin:3px 0}
+@media (max-width:420px){.f.big .katex{font-size:1.15em}.f.big:has(.katex){padding:8px 10px}}
+@media (max-width:340px){.katex-display .katex{font-size:.95em}.f.big .katex{font-size:1.05em}}
 .fb .katex,.fc .katex,.traps .katex{font-size:1.08em}
 .f.big{display:block;width:fit-content;max-width:100%;font-size:16px;padding:8px 14px;margin:10px auto;text-align:center;border-color:color-mix(in srgb,var(--a) 45%,var(--line));color:var(--at)}
 .t{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0}

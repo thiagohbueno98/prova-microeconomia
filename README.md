@@ -7,7 +7,7 @@ Site estático de estudo para a Prova 1 de Microeconomia (GED-72, ITA), no mesmo
 
 ## O que tem
 
-- **8 temas** com resumo didático, gráficos, exemplos resolvidos e pegadinhas:
+- **7 temas** (só o conteúdo dos slides de 2026) com resumo didático, gráficos, exemplos resolvidos e pegadinhas:
   1. Demanda e Oferta
   2. Elasticidade
   3. Produção e Custos
@@ -15,11 +15,10 @@ Site estático de estudo para a Prova 1 de Microeconomia (GED-72, ITA), no mesmo
   5. Eficiência e Impostos
   6. Poder de Mercado
   7. Oligopólio e Teoria dos Jogos
-  8. Falhas de Mercado (complemento cobrado nas provas de 2025)
 - **Laboratórios interativos**: deslocamentos de curvas, controle de preços, elasticidade e regressão log-log,
-  custos da confeitaria, simulador empresa × mercado (curto e longo prazo), peso morto e impostos,
-  monopólio e regulação, resolvedor de jogos 2×2, Cournot × cartel, jogo repetido e externalidades.
-- **126 questões comentadas**, muitas tiradas das provas de 2025 (filtro “Das provas 2025”).
+  custos da confeitaria, simulador empresa × mercado (curto e longo prazo), excedente total e peso morto,
+  monopólio e regulação e resolvedor de jogos 2×2.
+- **103 questões comentadas**, muitas tiradas das provas de 2025 (filtro “Das provas 2025”).
 - **Questão de gráficos (10 pts)**: checklist da correção, simulador passo a passo e respostas-modelo.
 - **Flashcards**, **simulado** cronometrado, **formulário** e **pegadinhas**.
 
