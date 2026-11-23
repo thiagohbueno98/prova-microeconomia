@@ -268,8 +268,7 @@ const AULAS = [
     </table>
     <div class="extra"><b>Memorize assim:</b> compare a variação % da <b>quantidade</b> com a variação % do <b>preço</b> (sem olhar o sinal).<br>
       <b>Elástica</b> (|ε| &gt; 1): a quantidade muda <b>mais</b> que o preço. Ex.: preço +10% ⇒ quantidade −25% (ε = −2,5).<br>
-      <b>Inelástica</b> (|ε| &lt; 1): a quantidade muda <b>menos</b> que o preço. Ex.: preço +10% ⇒ quantidade −3% (gasolina, ε = −0,3).<br>
-      Imagem mental: um <b>elástico</b> estica bastante com pouca força; o prefixo “<b>in</b>” quer dizer “não” ⇒ <b>in</b>elástica = quase não estica.</div>
+      <b>Inelástica</b> (|ε| &lt; 1): a quantidade muda <b>menos</b> que o preço. Ex.: preço +10% ⇒ quantidade −3% (gasolina, ε = −0,3).</div>
     <h4>O que torna a demanda mais elástica?</h4>
     <ul>
       <li><b>Mais substitutos próximos</b>: se há alternativas, o consumidor foge quando o preço sobe. Os morangos de <b>um produtor</b> têm demanda muito mais elástica que a demanda de mercado: os dos vizinhos são idênticos — substitutos perfeitos.</li>
