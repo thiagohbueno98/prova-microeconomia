@@ -777,8 +777,9 @@ const AULAS = [
     <div class="two"><div class="figslot" data-fig="ef_exc"></div><div>
       <div class="ler"><b>📊 Como ler este gráfico (planta decorativa, slides)</b>
         <ul>
-          <li><b class="c2">D (verde)</b>: \\(P = 420 - 12{,}5Q\\)<br>A altura da curva em cada Q = quanto o consumidor daquela unidade valoriza o bem.</li>
-          <li><b class="c1">O (azul)</b>: \\(P = 20 + 12{,}5Q\\)<br>A altura da curva em cada Q = quanto custa produzir aquela unidade.</li>
+          <li><b class="c2">D (verde)</b>: \\(P = 420 - 12{,}5Q\\)<br>A altura da curva em cada Q = o <b>máximo que o comprador</b> daquela unidade está disposto a pagar (preço de reserva do comprador).</li>
+          <li><b class="c1">O (azul)</b>: \\(P = 20 + 12{,}5Q\\)<br>A altura da curva em cada Q = o <b>custo marginal</b> daquela unidade: quanto custa produzir <b>só ela</b>, a mais (não o custo total).<br>Por isso é também o mínimo que o vendedor aceita por ela: abaixo disso, ele perde dinheiro vendendo.</li>
+          <li><b>O valor de venda não é a curva:</b> é a linha do preço, P* = 220, igual para todas as unidades.<br>Excedente do produtor de cada unidade = preço recebido − custo marginal dela.<br>Ex.: a 1ª unidade custa <span class="nw">20 + 12,5 × 1 = 32,5</span> e é vendida por 220 ⇒ <span class="nw">excedente = 187,5</span>.<br>A 16ª custa <span class="nw">20 + 12,5 × 16 = 220</span> e é vendida por 220 ⇒ <span class="nw">excedente = 0</span>.<br>Somando todas as unidades ⇒ o triângulo azul (EP).</li>
           <li>Equilíbrio: <b>Q* = 16, P* = 220</b>.</li>
           <li>Triângulo verde:<br><span class="nw">EC = \\(\\dfrac{(420-220)\\times 16}{2}\\) = 1.600</span></li>
           <li>Triângulo azul:<br><span class="nw">EP = \\(\\dfrac{(220-20)\\times 16}{2}\\) = 1.600</span></li>
