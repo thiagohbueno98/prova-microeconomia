@@ -777,10 +777,12 @@ const AULAS = [
     <div class="two"><div class="figslot" data-fig="ef_exc"></div><div>
       <div class="ler"><b>📊 Como ler este gráfico (planta decorativa, slides)</b>
         <ul>
-          <li><b class="c2">D (verde)</b>: \\(P = 420 - 12{,}5Q\\) — altura = quanto o consumidor daquela unidade valoriza o bem.</li>
-          <li><b class="c1">O (azul)</b>: \\(P = 20 + 12{,}5Q\\) — altura = quanto custa produzir aquela unidade.</li>
+          <li><b class="c2">D (verde)</b>: \\(P = 420 - 12{,}5Q\\)<br>A altura da curva em cada Q = quanto o consumidor daquela unidade valoriza o bem.</li>
+          <li><b class="c1">O (azul)</b>: \\(P = 20 + 12{,}5Q\\)<br>A altura da curva em cada Q = quanto custa produzir aquela unidade.</li>
           <li>Equilíbrio: <b>Q* = 16, P* = 220</b>.</li>
-          <li>Triângulo verde EC = \\(\\dfrac{(420-220)\\times 16}{2}\\) = 1.600; triângulo azul EP = \\(\\dfrac{(220-20)\\times 16}{2}\\) = 1.600 ⇒ <b>ET = 3.200</b>.</li>
+          <li>Triângulo verde:<br><span class="nw">EC = \\(\\dfrac{(420-220)\\times 16}{2}\\) = 1.600</span></li>
+          <li>Triângulo azul:<br><span class="nw">EP = \\(\\dfrac{(220-20)\\times 16}{2}\\) = 1.600</span></li>
+          <li>Excedente total:<br><span class="nw">ET = EC + EP</span> = <b class="nw">3.200</b></li>
         </ul></div>
     </div></div>
     <h4>Por que Q* maximiza o excedente total?</h4>
