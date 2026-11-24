@@ -667,12 +667,29 @@ const AULAS = [
   <section class="sec warn">
     <h3><span class="n">6</span> A questão de 10 pontos: dois gráficos, curto e longo prazo</h3>
     <p>Caiu nas duas provas de 2025 (Reforma Tributária; feijão de sequeiro) e nos exercícios das aulas (El Niño; bets). As versões de múltipla escolha dessas duas questões aparecem na íntegra logo abaixo da tabela; o <a href="#/discursiva">roteiro completo e as respostas-modelo</a> da versão discursiva estão na página da questão de gráficos.</p>
-    <div class="extra"><b>Convenções:</b> pontos <b>1</b> (LP inicial), <b>2</b> (curto prazo) e <b>3</b> (LP final); movimento <b>A</b> = o choque (desloca D ou a O_CP); movimento <b>B</b> = entrada/saída de empresas (desloca a O_CP).<br><b>Gráfico da empresa, choque de demanda:</b> CM e CTM ficam parados, só a linha de preço muda.<br><b>Gráfico da empresa, choque de custo:</b> CM e CTM sobem/descem A.<br><b>Por que no CP o preço muda menos que A?</b> A O_CP se desloca A na vertical, mas a demanda é decrescente: o novo cruzamento ajusta parte pelo preço e parte pela quantidade. Como o CTM mudou A inteiro e o preço menos, surge prejuízo (custo ↑) ou lucro (custo ↓).<br><b>Feijão:</b> a terra de sequeiro é limitada (ninguém “entra” no sequeiro), então ele segue lucrando no LP; quem define o preço é o produtor irrigado, que entra e sai livremente.</div>
+    <div class="extra"><b>Roteiro da questão (vale para qualquer choque)</b>
+      <ol class="mini">
+        <li><b>Ponto 1 — equilíbrio de longo prazo inicial.</b><br>No mercado, D, O_CP e O_LP se cruzam no mesmo ponto.<br>Na empresa, o preço está no fundo do CTM (p = CM = mín CTM) ⇒ lucro zero.</li>
+        <li><b>Movimento A — o choque.</b><br>Choque de <b>demanda</b> (renda, crédito, bets): desloca a <b>D</b>.<br>Choque de <b>custo</b> (El Niño, imposto): desloca <b>CM e CTM</b> da empresa e, junto, a <b>O_CP</b> do mercado.</li>
+        <li><b>Ponto 2 — curto prazo.</b> O número de empresas ainda é o mesmo.<br>No mercado: novo cruzamento entre D e O_CP ⇒ novo preço p₂.<br>Na empresa, compare p₂ com o CTM:<br>p₂ &gt; CTM ⇒ <b>lucro</b>.<br>p₂ &lt; CTM ⇒ <b>prejuízo</b>.</li>
+        <li><b>Movimento B — entrada ou saída de empresas.</b><br>Lucro atrai empresas ⇒ O_CP vai para a direita.<br>Prejuízo expulsa empresas ⇒ O_CP vai para a esquerda.<br>Para quando o preço volta ao mínimo do CTM (lucro zero de novo).</li>
+        <li><b>Ponto 3 — equilíbrio de longo prazo final.</b> Fica sobre a O_LP (preço = mín CTM).<br>Choque de demanda: o CTM não mudou ⇒ <b>mesmo preço</b> do início; só a quantidade e o nº de empresas mudam.<br>Choque de custo: o CTM mudou A ⇒ o preço muda <b>exatamente A</b>.</li>
+      </ol>
+      <b>Por que no curto prazo o preço muda menos que A (choque de custo)?</b><br>
+      A O_CP sobe A inteiro na vertical.<br>
+      Mas a demanda é decrescente: com o preço mais alto, os consumidores compram menos.<br>
+      O novo cruzamento divide o ajuste: parte vira preço maior, parte vira quantidade menor ⇒ o preço sobe <b>menos</b> que A.<br>
+      Como o custo por unidade subiu A inteiro e o preço subiu menos ⇒ <b>prejuízo</b>. (Se o custo cai, é o contrário: <b>lucro</b>.)<br>
+      <b>Feijão (caso especial):</b> a terra de sequeiro é limitada, ninguém “entra” no sequeiro, então ele segue lucrando no LP.<br>
+      Quem define o preço de LP é o produtor <b>irrigado</b>, que entra e sai livremente.</div>
     <div class="figslot" data-fig="co_bets"></div>
     <div class="ler"><b>📊 Como ler este par de gráficos (bets reduzem a renda)</b>
       <ul>
-        <li><b>Mercado (direita):</b> a demanda tracejada (“D inicial”) vai para a esquerda até “D final” — <b>seta A</b>. O novo cruzamento com a O_CP antiga é o <b>ponto 2</b> (preço p₂ menor). Depois, a O_CP se desloca para a esquerda (empresas saindo) — <b>seta B</b> — até cruzar a nova demanda na altura do preço original: <b>ponto 3</b>, sobre a O_LP.</li>
-        <li><b>Empresa (esquerda):</b> as curvas de custo não se mexem (o choque foi de demanda). A linha laranja p₂ fica <b>abaixo</b> do CTM: o retângulo vermelho é o <b>prejuízo</b> = (CTM − p₂) × q₂. No ponto 3 a empresa volta ao fundo do CTM.</li>
+        <li><b>Ponto 1:</b> no mercado, D inicial (tracejada), O_CP inicial (tracejada) e O_LP se cruzam em p₁.<br>Na empresa: p₁ está no fundo do CTM.</li>
+        <li><b>Seta A:</b> com menos renda, a demanda vai para a esquerda, de “D inicial” para “D final”.</li>
+        <li><b>Ponto 2 (curto prazo):</b> a D final cruza a O_CP inicial (as mesmas empresas) ⇒ preço cai para p₂ e a quantidade cai.<br>Na empresa: as curvas de custo <b>não se mexem</b> (o choque foi de demanda); a linha laranja p₂ fica <b>abaixo</b> do CTM ⇒ o retângulo vermelho é o <b>prejuízo</b> = (CTM − p₂) × q₂.</li>
+        <li><b>Seta B:</b> com prejuízo, empresas saem ⇒ a O_CP vai para a esquerda, até “O_CP final”.</li>
+        <li><b>Ponto 3 (longo prazo):</b> a O_CP final cruza a D final na altura de p₁, sobre a O_LP ⇒ <b>mesmo preço</b>, quantidade menor, menos empresas.<br>Na empresa: o preço volta ao fundo do CTM ⇒ lucro zero.</li>
       </ul></div>
     <div class="model"><p><b>Resposta-modelo (bets reduzem a renda para o varejo):</b> Inicialmente o mercado está no equilíbrio de longo prazo, nos pontos 1. Com menos renda, para cada preço a demanda é menor (movimento A). No curto prazo, o novo equilíbrio é o ponto 2: <b>preço e quantidade menores</b>. No gráfico da empresa, o custo por unidade excede o preço (seta vermelha): há <b>prejuízo</b>. À medida que se livram dos custos fixos, empresas <b>saem</b>, até a O_CP cruzar a nova demanda no preço de LP (ponto 3, movimento B). Comparado ao início: <b>quantidade menor, mesmo preço, menos empresas</b>.</p></div>
     <table class="t sm"><thead><tr><th>Choque</th><th>Curto prazo</th><th>Longo prazo</th><th>Nº de empresas</th></tr></thead><tbody>
