@@ -260,7 +260,9 @@ function shockCharts(key, step) {
     if (cost && step >= 2) { sLP(M.p1, 'O_LP inicial', 'ghost'); sLP(M.p3, 'O_LP final', 'v'); }
     else sLP(M.p1, 'O_LP', 'v');
     if (dem && step >= 2) mc.push({ g: y => 9 * (M.D0 - y), cls: 'ghost', lab: 'D inicial', anchor: 'end', dx: -4 });
-    mc.push({ g: y => 9 * (M.D1 - y), cls: 'd', lab: dem && step >= 2 ? 'D final' : 'D' });
+    // no passo 1 (equilíbrio inicial) a demanda ainda é a inicial: D, O_CP e O_LP se cruzam no ponto 1
+    const Dnow = step >= 2 ? M.D1 : M.D0;
+    mc.push({ g: y => 9 * (Dnow - y), cls: 'd', lab: dem && step >= 2 ? 'D final' : 'D' });
     const yT = ymax * 0.9, finRight = step >= 3 && M.n3 * qsS(yT, A) > M.n1 * qsS(yT);
     mc.push({ pts: supplyPts(M.n1, 0, 0, 0, ymax), cls: (cost && step >= 2) || step >= 3 ? 'ghost' : 's', lab: (cost && step >= 2) || step >= 3 ? 'O_CP inicial' : 'O_CP', ...(finRight ? { anchor: 'end', dx: -6 } : {}) });
     if (cost && step >= 2) mc.push({ pts: supplyPts(M.n1, A, 0, 0, ymax), cls: step >= 3 ? 'ghost' : 's', lab: step >= 3 ? '' : 'O_CP (custo)' });
