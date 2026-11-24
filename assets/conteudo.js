@@ -582,28 +582,30 @@ const AULAS = [
         No curto prazo o custo fixo (aluguel, máquinas) <b>já está contratado</b>: a empresa paga o CF mesmo produzindo zero.<br>
         <b>Compare as duas opções:</b>
         <ul>
-          <li><b>Parar:</b> não vende nada, mas paga o aluguel ⇒ lucro = −CF.</li>
-          <li><b>Produzir:</b> lucro = RT − CV − CF.</li>
+          <li><b>Parar:</b> não vende nada, mas paga o aluguel ⇒ <span class="nw">lucro = −CF</span>.</li>
+          <li><b>Produzir:</b> <span class="nw">lucro = RT − CV − CF</span>.</li>
         </ul>
         O −CF aparece nos dois lados, então ele <b>não decide nada</b>. Só importa se a receita cobre o custo variável:<br>
-        Parar é melhor se −CF &gt; RT − CV − CF.<br>
-        Cancelando o −CF: RT &lt; CV.<br>
-        Dividindo por q (RT ÷ q = p; CV ÷ q = CVM): <b>p &lt; CVM</b>.<br>
+        Parar é melhor se <span class="nw">−CF &gt; RT − CV − CF</span>.<br>
+        Cancelando o −CF: <span class="nw">RT &lt; CV</span>.<br>
+        Dividindo por q (<span class="nw">RT ÷ q = p</span>; <span class="nw">CV ÷ q = CVM</span>): <b class="nw">p &lt; CVM</b>.<br>
         <b>Em palavras:</b> se o preço não cobre nem o custo variável de cada unidade, cada bolo vendido aumenta o prejuízo ⇒ melhor parar.<br>
-        <b>Exemplo (confeitaria, CF = 154):</b> com p = 60, produzindo 5 bolos: RT = 300, CT = 380 ⇒ lucro = −80.<br>
-        Parando: lucro = −154.<br>
-        −80 é melhor que −154 ⇒ <b>continua produzindo, mesmo com prejuízo</b> (60 &gt; mín CVM = 42).</div>
+        <b>Exemplo (confeitaria, CF = 154), com <span class="nw">p = 60</span>:</b><br>
+        Produzindo 5 bolos: <span class="nw">RT = 300</span> e <span class="nw">CT = 380</span> ⇒ <span class="nw">lucro = −80</span>.<br>
+        Parando: <span class="nw">lucro = −154</span>.<br>
+        −80 é melhor que −154 ⇒ <b>continua produzindo, mesmo com prejuízo</b> (<span class="nw">60 &gt; mín CVM = 42</span>).</div>
       <div class="box"><b>Longo prazo — sai se p &lt; CTM</b><br>
-        No longo prazo dá para encerrar o aluguel e vender as máquinas: <b>nenhum custo é fixo</b>. Quem sai tem CT = 0 (ex.: em CT = 2q² + 800, CT(0) = 0 no LP, o 800 só é pago por quem produz).<br>
+        No longo prazo dá para encerrar o aluguel e vender as máquinas: <b>nenhum custo é fixo</b>. Quem sai tem <span class="nw">CT = 0</span> (ex.: em <span class="nw">CT = 2q² + 800</span>, <span class="nw">CT(0) = 0</span> no LP, o 800 só é pago por quem produz).<br>
         <b>Compare as duas opções:</b>
         <ul>
           <li><b>Sair:</b> lucro = 0.</li>
-          <li><b>Ficar:</b> lucro = RT − CT.</li>
+          <li><b>Ficar:</b> <span class="nw">lucro = RT − CT</span>.</li>
         </ul>
-        Sair é melhor se 0 &gt; RT − CT, ou seja, RT &lt; CT.<br>
-        Dividindo por q (CT ÷ q = CTM): <b>p &lt; CTM</b>.<br>
+        Sair é melhor se <span class="nw">0 &gt; RT − CT</span>, ou seja, <span class="nw">RT &lt; CT</span>.<br>
+        Dividindo por q (<span class="nw">CT ÷ q = CTM</span>): <b class="nw">p &lt; CTM</b>.<br>
         <b>Em palavras:</b> se o preço não cobre o custo total de cada unidade, é melhor mudar de ramo.<br>
-        <b>Exemplo (confeitaria):</b> com p = 60, o preço fica abaixo do mín CTM = 76 ⇒ dá prejuízo em qualquer quantidade ⇒ no LP a empresa <b>sai</b>.</div>
+        <b>Exemplo (confeitaria), com <span class="nw">p = 60</span>:</b><br>
+        o preço fica abaixo do <span class="nw">mín CTM = 76</span> ⇒ dá prejuízo em qualquer quantidade ⇒ no LP a empresa <b>sai</b>.</div>
     </div>
     <div class="grid2">
       <div class="box"><b>Oferta da empresa no CP</b>: p = CM(q) somente se p ≥ CVM<sub>CP</sub>(q) ⇒ é o pedaço da curva de CM <b>acima do mínimo do CVM</b>.</div>
